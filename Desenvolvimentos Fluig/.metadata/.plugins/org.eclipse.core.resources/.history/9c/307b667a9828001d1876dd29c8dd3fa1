@@ -1,3 +1,0 @@
-function afterStateEntry(sequenceId){
-	Swal.fire('Atenção: '+  'É OBRIGATÓRIO a inclusão do anexo da Nota Fiscal da despesa. ' + 'A não inclusão acarretará no não processamento da solicitação.')
-}
