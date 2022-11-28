@@ -1,0 +1,51 @@
+@media (max-width: 768px) {
+    .widget-my-rh .card .card-body .fs-wrapper-thumbnail {
+        background-image: linear-gradient(var(--themeResponsiveBrandColor) 34%, white 30%);
+    }
+
+    .widget-my-rh .card .card-body .fs-wrapper-information {
+        text-align: center;
+    }
+
+    .widget-my-rh .nav-tabs > li {
+        width: 50%;
+        text-align: center;
+    }
+
+    .responsive_theme div.wcm-all-content {
+        padding-top: 80px;
+    }
+
+    .responsive_theme div.wcm-all-content > #wcm-content {
+        padding-right: 0 !important;
+    }
+}
+
+.widget-my-rh .card .card-body {
+    padding-top: 0;
+}
+
+.widget-my-rh .card .card-body .fs-wrapper-thumbnail img {
+    outline: 2px solid #D2D3D6;
+}
+
+.widget-my-rh .card .card-body .fs-thumbnail {
+    max-width: 120px;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.widget-my-rh .card .card-body .tab-pane .panel-custom .panel-heading {
+    background-color: var(--themeResponsiveBrandColor);
+    color: #fff;
+}
+
+.widget-my-rh .card .card-body .tab-pane .panel-custom,
+.widget-my-rh .card .card-body .tab-pane .panel-custom .panel-heading {
+    border-color: var(--themeResponsiveBrandColor);
+}
+
+/* Esconde o título da página */
+#visualizacaoPagina div.slotfull.layout-1-1:first-child {
+    display: none;
+}

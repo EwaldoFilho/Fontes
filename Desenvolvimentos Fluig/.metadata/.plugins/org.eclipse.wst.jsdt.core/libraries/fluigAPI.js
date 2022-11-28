@@ -17371,7 +17371,13 @@ com.fluig.sdk.service.GlobalParameterService.prototype = {
 	* @memberOf fluigAPI
 	* @returns {boolean} 
 	*/
-	"getViewJustProcessWithApproval": function() {}
+	"getViewJustProcessWithApproval": function() {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @returns {long} 
+	*/
+	"getMaxUploadSize": function() {}
 };
 GlobalParameterService.prototype = {
 	/**
@@ -17391,7 +17397,13 @@ GlobalParameterService.prototype = {
 	* @memberOf fluigAPI
 	* @returns {boolean} 
 	*/
-	"getViewJustProcessWithApproval": function() {}
+	"getViewJustProcessWithApproval": function() {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @returns {long} 
+	*/
+	"getMaxUploadSize": function() {}
 };
 com.fluig.sdk.api.workflow.ProcessDefinitionVersionVO.prototype = {
 	/**

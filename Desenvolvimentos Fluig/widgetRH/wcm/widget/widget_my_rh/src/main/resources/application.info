@@ -1,0 +1,17 @@
+application.type=widget
+application.code=widget_my_rh
+application.title=Widget My RH
+application.description=Widget My RH
+application.category=Universo
+application.renderer=freemarker
+application.icon=icon.png
+application.uiwidget=true
+developer.code=TOTVS
+developer.name=TOTVS S.A.
+developer.url=http\://www.totvs.com
+view.file=view.ftl
+locale.file.base.name=widget_my_rh
+simple.deploy=true
+application.mobileapp=true
+application.resource.js.1=/resources/js/widgetmyrh.js
+application.resource.css.1=/resources/css/widgetmyrh.css

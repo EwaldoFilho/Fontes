@@ -1,0 +1,824 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="http://portal.medmais.com:8007/style-guide/css/fluig-style-guide.min.css">
+    <script src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery.js"></script>
+    <script src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="http://portal.medmais.com:8007/portal/resources/js/mustache/mustache-min.js"></script>
+    <script src="http://portal.medmais.com:8007/style-guide/js/fluig-style-guide.min.js"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/dist/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="zoomAdmissao.js"></script>
+    <script type="text/javascript" src="validaCampo.js"></script>
+    <script type="text/javascript" src="anexos.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
+    <script type="text/javascript" src="BuscaCep.js"></script>
+
+
+
+
+</head>
+<style>
+    hr {
+        height: 4px;
+        background-color: red;
+
+    }
+
+    input.type.text {
+        border-radius: 1em;
+        border-radius: 10px/20px;
+        box-shadow: black 0.5em 0.5em 0.3em
+    }
+
+    form {
+        width: 100%;
+        margin: 100px 0;
+        border: 5px solid black;
+        padding: 20px;
+        border-style: inset;
+        border-radius: 40px;
+        border-color: rgb(101 163 13);
+        position: absolute;
+
+    }
+
+    .linha {
+        color: #cc3d3d;
+
+
+
+    }
+
+    .linha:after {
+        content: "_____________________________________________________________________________________________________________";
+        color: #d9edf7;
+    }
+
+    .borda {
+        background: #d9edf7;
+        border-radius: 20px 20px 0px 0px;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" autocomplete="off"
+            style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+            <div class="row text-center" data-type="header" data-field-name="">
+
+                <div class="col-md-2">
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/responsive_logo_image.png"
+                        style="width: auto; height: 100px; opacity: 100%;">
+                </div>
+                <div class="col-md-8">
+
+                    <h1 class="text-center" id="tituloSolicitacaoVaga"
+                        style="font-family: Verdana, sans-serif;font-size: 60px;">
+                        Abertura de Vagas
+                    </h1>
+                </div>
+                <div class="col-md-2">
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/responsive_logo_image.png"
+                        style="width: auto; height: 100px; opacity: 100%;">
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitante"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados do Solicitante</b>
+                    </h3>
+                </div>
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="col-md-1 ">
+                        <div class="form-group">
+                            <label class="control-label" for="datasolicitacao">Data</label>
+                            <input id="datasolicitacao" type="text" class="form-control" name="datasolicitacao"
+                                readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label class="control-label  " for="solicitanteNome">Nome do Solicitante</label>
+                            <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                            <input type="text" readonly class="form-control" id="solicitanteNome" name="solicitanteNome" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="descricaoCentroCustoSol">Centro de custo<strong class="required text-danger"
+                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                            <div class="input-group col-sm-12">
+                                <input type="hidden" class="form-control zoom-tdi" id="codCentroCustoSol"
+                                    name="codCentroCustoSol" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                <input type="text" class="form-control zoom-tdi" id="descricaoCentroCustoSol"
+                                    name="descricaoCentroCustoSol" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                    readonly onchange="validaCampo(this)" analytics="true" gooddataid="2">
+                                <div class="input-group-addon zoom-tdi" onclick="zoomCustoSol(this)" data-toggle=""
+                                    data-placement="bottom" title="Pesquisar centro de custo">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="solicitanteEmail">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-drafts icon-sm" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitacao"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados da Solicitação</b>
+                    </h3>
+                </div>
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <label for="headcount">Headcount<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="headCount" name="headCount" readonly onchange="myFunction1()">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="vaga_nova" data-fluig-state-valid="0,4" data-fluig-write="0,4">Nova vaga
+                                </option>
+                                <option value="substituicao" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    Substituição</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="Tcontratacao">Tipo de contratação<strong
+                                    class="required text-danger"></strong></label>
+                            <select class="form-control" readonly id="Tcontratacao" name="Tcontratacao" analytics="true"
+                                onchange="myFunction3()" gooddataid="13">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="PJ" data-fluig-state-valid="0,4" data-fluig-write="0,4">PJ</option>
+                                <option value="CLT" data-fluig-state-valid="0,4" data-fluig-write="0,4">CLT</option>
+                                <option value="RPA" data-fluig-state-valid="0,4" data-fluig-write="0,4">RPA</option>
+                                <option value="FOLGUISTA-FERISTA" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    Folguista / Ferista </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="substituicaoNome">
+                                <label class="control-label" for="substituicaoNome" data-fluig-state-valid="0,4"
+                                    data-fluig-write="0,4">Substituição de:</label>
+                                <input type="text" class="form-control" id="substituicaoNome"  readonly name="substituicaoNome"
+                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                    placeholder="Profissional que será substituído" />
+                            </div>
+                        </div>
+                        <div class="col-md-1" id="tipoFolguista">
+                            <label for="tipoFolguista">Folguista/Ferista<strong
+                                    class="required text-danger"></strong></label>
+                            <select class="form-control" id="tipoFolguista" name="tipoFolguista"  readonly analytics="true"
+                                gooddataid="13">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="PJFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12"
+                                    data-fluig-write="0,4">PJ</option>
+                                <option value="CLTFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12"
+                                    data-fluig-write="0,4">CLT</option>
+                                <option value="RPAFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12"
+                                    data-fluig-write="0,4">RPA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="descricaoCentroCusto">Centro de custo<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codCentroCusto"
+                                        name="codCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    <input type="text" class="form-control zoom-tdi" id="descricaoCentroCusto"
+                                        name="descricaoCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                        readonly onchange="validaCampo(this)" analytics="true" gooddataid="2">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle=""
+                                        data-placement="bottom" title="Pesquisar centro de custo">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Tcontrato">Tipo de contrato<strong
+                                        class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codTcontrato"
+                                        name="codTcontrato">
+                                    <select class="form-control" name="descricaoTcontrato" readonly id="descricaoTcontrato"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" analytics="true"
+                                        gooddataid="2">
+                                        <option value=" " data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                        <option value="AD" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            ADMINISTRATIVO</option>
+                                        <option value="AE" data-fluig-state-valid="0,4" data-fluig-write="0,4">AEROPORTO
+                                        </option>
+                                        <option value="CA" data-fluig-state-valid="0,4" data-fluig-write="0,4">CAIXA DE
+                                            ASSISTENCIA</option>
+                                        <option value="EM" data-fluig-state-valid="0,4" data-fluig-write="0,4">ECONOMIA
+                                            MISTA</option>
+                                        <option value="EN" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENERGIA
+                                        </option>
+                                        <option value="ES" data-fluig-state-valid="0,4" data-fluig-write="0,4">ESCOLA
+                                        </option>
+                                        <option value="ET" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            ENTRETENIMENTO</option>
+                                        <option value="EP" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENTIDADES
+                                            PRIVADAS</option>
+                                        <option value="FE" data-fluig-state-valid="0,4" data-fluig-write="0,4">FERROVIA
+                                        </option>
+                                        <option value="GO" data-fluig-state-valid="0,4" data-fluig-write="0,4">GOVERNO
+                                        </option>
+                                        <option value="MN" data-fluig-state-valid="0,4" data-fluig-write="0,4">MINERACAO
+                                        </option>
+                                        <option value="OG" data-fluig-state-valid="0,4" data-fluig-write="0,4">OLEO E
+                                            GAS</option>
+                                        <option value="PE" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            PETROLIFERA</option>
+                                        <option value="PO" data-fluig-state-valid="0,4" data-fluig-write="0,4">PORTO
+                                        </option>
+                                        <option value="RO" data-fluig-state-valid="0,4" data-fluig-write="0,4">RODOVIA
+                                        </option>
+                                        <option value="RF" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            REFINARIAS</option>
+                                        <option value="SP" data-fluig-state-valid="0,4" data-fluig-write="0,4">SHOPPING
+                                        </option>
+                                        <option value="TN" data-fluig-state-valid="0,4" data-fluig-write="0,4">TURISMO
+                                            NAUTICO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="descricaoFunc">Cargo<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="text" class="form-control zoom-tdi" id="descricaoFunc"
+                                        name="descricaoFunc" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                        readonly onchange="validaCampo(this)" readonly required="required" analytics="true"
+                                        gooddataid="2" data-toggle="tooltip" title="Informe o Código da função do
+                                        funcionário de  acordo com tabela
+                                        definida no Cadastro  de Funçöes.">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomFuncaoC(this)">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group" id="localVaga">
+                                <label class="control-label" for="localVaga">Local da Vaga/Cidade</label>
+                                <input type="text" class="form-control" id="localVaga" readonly name="localVaga" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="indicacao">Tem indicação<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="indicacao" name="indicacao" readonly analytics="true"
+                                gooddataid="13" onchange="myFunction2()">
+                                <option value=""></option>
+                                <option value="sim">SIM</option>
+                                <option value="nao">NAO</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="indicacaoNome">
+                                <label class="control-label" for="indicacaoNome">Nome</label>
+                                <input type="text" class="form-control" id="indicacaoNome" readonly name="indicacaoNome" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="indicacaoContato">
+                                <label class="control-label" for="indicacaoContato">Contato</label>
+                                <input type="text" class="form-control" id="indicacaoContato" readonly name="indicacaoContato" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="dataDocumentacao">Data de retorno da documentação<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="date" name="dataDocumentacao" id="dataDocumentacao" readonly class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="dataDesejada">Data desejada para inicio<strong
+                                        class="required text-danger"></strong></label>
+                                <input id="dataDesejada" type="Date" class="form-control" readonly name="dataDesejada">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cargahora">Carga Horária Semanal/Escala<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="text" name="cargahora" id="cargahora" readonly class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class=" col-md-3">
+                            <label for="salario">Salário<strong class="required text-danger"></strong></label>
+                            <input type="text" name="salario" id="salario" readonly class="form-control" mask="R$99999,99">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="adicional">Adicional <strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="adicional" readonly id="adicional" required="required"
+                                data-toggle="tooltip" title="">
+                                <option value="1">Não</option>
+                                <option value="2">Periculosidade</option>
+                                <option value="3">Insalubridade Média</option>
+                                <option value="4">Insalubridade Máxima</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3" data-field-name="valeRefeicao">
+                            <label for="adicionais">Valor diario vale refeição<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="text" name="valeRefeicao" readonly id="valeRefeicao" class="form-control"
+                                mask="R$99999,99">
+                        </div>
+
+                        <div class=" col-md-3" data-field-name="adicionais">
+                            <label for="valorTransporte">Valor diário vale transporte<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="text" name="valorTransporte" readonly id="valorTransporte" class="form-control"
+                                mask="R$99999,99">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Requisitos obrigatorios<strong
+                                    class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" readonly id="cursos" name="cursos" rows="4"
+                                cols="16"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Experiência profissional<strong
+                                    class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" readonly id="experienciaPro" name="experienciaPro"
+                                rows="4" cols="16"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Atividades a serem desenvolvidas<strong
+                                    class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" readonly id="atividade" name="atividade" rows="4"
+                                cols="33"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Observação</label>
+                            <textarea type="text" class="form-control" readonly id="observacao" name="observacao" rows="4"
+                                cols="33"></textarea>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="panel panel-danger fs-xl-margin-top" id="panelDadosCandidato"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados dos Candidatos</b>
+                    </h3>
+                </div>
+                <div>
+                    <td colspan="100%" style="width: 100%;">
+                        <div class="row">
+                            <br>
+                            <br>
+                            <div class="col-md-12" id="botaoAdicionar">
+                                <label class="control-label" style="padding-left: 25px;">Entrevistas:</label>
+                                <button type="button" class="wcm-panel-bt-custom wcm-panel-right"
+                                    onclick="adicionarCandidato()">Adicionar Candidatos</button>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row" style="padding-left: 20px;padding-right: 20px;">
+                            <div class="col-md-12"
+                                style="border-top: 1px solid #D1D3D4;border-left: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px; text-align: center;">
+                                <label class="control-label">&nbsp;&nbsp;
+                                    Candidatos</label>
+                            </div>
+                            <div class="col-md-10 hide"
+                                style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+                                <label class="control-label">&nbsp;&nbsp;&nbsp;Descrição</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-left: 20px;padding-right: 20px;">
+                            <div class="table-responsive">
+                                <table class="table table-condensed" id="adicionarCandidato"
+                                    tablename="adicionarCandidato" noaddbutton="true" nodeletebutton="false">
+                                    <thead>
+                                        <tr class="fs-display-none">
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr detail="true" detailname="VIEW_ITEM"
+                                            class="fw-table-tr itensadicionarCandidato">
+                                            <td id="tdFields" class="fw-table-td fs-full-width">
+                                                <div class="row">
+                                                    <div class="form-group col-md-4">
+                                                        <label class="control-label"
+                                                            for="nomeCandidato">Nome</label><span
+                                                            class="required text-danger"><strong></strong></span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="flaticon flaticon-assignment-turned-in icon-sm"
+                                                                    aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control" name="nomeCandidato"
+                                                                id="nomeCandidato" data-toggle="tooltip"
+                                                                title="Informe o nome do Gestor(a) do Contrato"
+                                                                data-size="small" data-fluig-state-valid="0,5"
+                                                                data-fluig-write="0,5" required="required">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label class="control-label"
+                                                            for="emailCandidato">Email</label><span
+                                                            class="required text-danger"><strong></strong></span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="flaticon flaticon-assignment-turned-in icon-sm"
+                                                                    aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control"
+                                                                name="emailCandidato" id="emailCandidato"
+                                                                data-toggle="tooltip"
+                                                                title="Informe o nome do Gestor(a) do Contrato"
+                                                                data-size="small" data-fluig-state-valid="0,5"
+                                                                data-fluig-write="0,5" required="required">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label class="control-label"
+                                                            for="telefoneCandidato">Telefone</label><span
+                                                            class="required text-danger"><strong></strong></span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="flaticon flaticon-assignment-turned-in icon-sm"
+                                                                    aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control"
+                                                                name="telefoneCandidato" id="telefoneCandidato"
+                                                                data-toggle="tooltip"
+                                                                title="Informe o nome do Gestor(a) do Contrato"
+                                                                data-size="small" data-fluig-state-valid="0,5"
+                                                                data-fluig-write="0,5" required="required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="card card-horizontal">
+                                                            <div class="card-thumb">
+                                                                <i class="illustration illustration-layout-group illustration-md"
+                                                                    aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <h1 class="card-title">Anexos</h1>
+                                                                <div class="card-list-items">
+                                                                    <div class="componentAnexo">
+                                                                        <div class="input-group">
+                                                                            <input type="hidden" class="descAnexo"
+                                                                                name="fdAnexoCandidato"
+                                                                                value="Anexo Candidato" />
+                                                                            <input type="text" id="fnanexoCandidato"
+                                                                                name="fnanexoCandidato"
+                                                                                class="form-control inputAnexo input-sm"
+                                                                                placeholder="Selecione um arquivo"
+                                                                                readonly />
+                                                                        </div>
+                                                                        <div class="icones">
+                                                                            <button type="button"
+                                                                                class="btnUpFile btn btn-success btn-sm"
+                                                                                data-acao="upload"
+                                                                                onclick="anexo(event)"
+                                                                                title="Selecionar">
+                                                                                <i
+                                                                                    class="fluigicon fluigicon-file-upload icon-sm"></i>
+                                                                            </button>
+                                                                            <button style="display: none;" type="button"
+                                                                                class="btnViewerFile btn btn-info btn-sm"
+                                                                                data-acao="viewer"
+                                                                                onclick="anexo(event)"
+                                                                                title="Visualizar" disabled>
+                                                                                <i
+                                                                                    class="fluigicon fluigicon-eye-open icon-sm"></i>
+                                                                            </button>
+                                                                            <button style="display: none;" type="button"
+                                                                                class="btnDownloadFile btn btn-info btn-sm"
+                                                                                data-acao="download"
+                                                                                onclick="anexo(event)" title="Download"
+                                                                                disabled>
+                                                                                <i
+                                                                                    class="fluigicon fluigicon-download icon-sm"></i>
+                                                                            </button>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="form-field" data-type="textarea" data-show-properties=""
+                                                        data-field-name="observacaoCandidato">
+                                                        <div class="form-input col-md-12">
+                                                            <div class="form-group"><label>Observação</label><span
+                                                                    class="required text-danger"><strong></strong></span><textarea
+                                                                    class="form-control" rows="3"
+                                                                    name="observacaoCandidato" id="observacaoCandidato"
+                                                                    data-toggle="tooltip"
+                                                                    title="Justifique o motivo da análise."
+                                                                    data-size="big" required="required"
+                                                                    data-fluig-state-valid="0,4"
+                                                                    data-fluig-write="0,4"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosContratado"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Seleção do Candidato</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="nomeColaborador">Nome do Colaborador<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="nomeColaborador" name="nomeColaborador" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="emalColaborador">Email do Colaborador<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="emalColaborador" name="emalColaborador"
+                                    onblur="validacaoEmail(f1.email)" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="telCandidato">Telefone<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="telCandidato" name="telCandidato" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="cpfAso">CPF<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" maxlength="11" class="form-control" id="cpfAso" name="cpfAso" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="rgAso">RG<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" maxlength="12" class="form-control" id="rgAso" name="rgAso" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="dtNascimentoAso">Data de Nascimento<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="Date" class="form-control" id="dtNascimentoAso" name="dtNascimentoAso" value=""
+                                    required data-toggle="tooltip" title="Informe a Data de Nascimento do
+                                funcionário." />
+                            </div>
+                        </div>                        
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="uniformeSoa">Uniforme<strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="uniformeSoa" id="uniformeSoa" required data-toggle="tooltip"
+                                title="Selecione o tamanho do uniforme">
+                                <option value=""></option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                                <option value="EXG">EXG</option>                                
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="botaSoa">Bota<strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="botaSoa" id="botaSoa" required data-toggle="tooltip"
+                                title="Selecione o tamanho da bota">
+                                <option value=""></option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>                                
+                            </select>
+                        </div>
+                    </div>                                      
+                </div>
+            </div>
+            <!-- Campos de controle -->
+            <input type="hidden" class="form-control" id="isGerente" name="isGerente" value="false">
+            <input type="hidden" class="form-control" id="matriculaUsuario" name="matriculaUsuario">
+            <input type="hidden" id="responsavelAtendimento" name="responsavelAtendimento">
+            <input type="hidden" id="processo" name="processo">
+            <input type="hidden" id="estado" name="estado">
+            <input type="hidden" id="valorFormatado" name="valorFormatado">
+            <input type="hidden" id="qtdCandidato" name="qtdCandidato">
+            <input type="hidden" id="dataFormatada" name="dataFormatada">
+            <!-- -->
+        </form>
+
+        <script type="text/javascript">
+            $('input[type="text"]').keyup(function (e) { $(this).val($(this).val().toUpperCase()); });
+        </script>
+        <script type="text/javascript">
+            const nameField = document.querySelector("input");
+
+            nameField.addEventListener("input", () => {
+                nameField.setCustomValidity("");
+                nameField.checkValidity();
+                console.log(nameField.checkValidity());
+            });
+
+            nameField.addEventListener("invalid", () => {
+                nameField.setCustomValidity("Please fill in your First Name.");
+            });
+        </script>
+        <script>
+            $("#RA_CTDEPSA").keyup(function () {
+                this.value = ("000000000000" + this.value).slice(-12)
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.date').mask('11/11/1111');
+                $('.time').mask('00:00:00');
+                $('.date_time').mask('00/00/0000 00:00:00');
+                $('.cep').mask('00000-000');
+                $('.phone').mask('0000-0000');
+                $('.phone_with_ddd').mask('(00) 0000-0000');
+                $("#RA_HRSMES").mask('000.0000');
+                $('.mixed').mask('AAA 000-S0S');
+                $('.cpf').mask('000.000.000-00', { reverse: true });
+                $('#RA_SALARIO').mask('000.000.000.000.000,00', { reverse: true });
+                $('.money').mask('000.000.000.000.000,00', { reverse: true });
+            });
+        </script>
+        <script type="text/javascript">
+            $("#substituicaoNome").hide();
+            $("#indicacaoNome").hide();
+            $("#indicacaoContato").hide();
+            $("#tipoFolguista").hide();
+            $('#cardFuncionais').show();
+            $('#cardDocumentos').show();
+            $('#cardBeneficios').show();
+            $('#cardPonto').show();
+            $('#cardInformacoes').show();
+            $('#cardAdicionais').show();
+            $('#cardEndereco').show();
+
+            function campos() {
+                var x = document.getElementById("headCount").value;
+            }
+        </script>
+        <script type="text/javascript">
+
+
+
+
+            function myFunction1() {
+                var x = document.getElementById("headCount").value;
+                //document.getElementById("substituicaoNome").innerHTML = " " + x;    
+
+                if (x == "substituicao") {
+                    $("#substituicaoNome").show();
+                } else if (x == "vaga_nova") {
+                    $("#substituicaoNome").hide();
+                } else if (x == "") {
+                    $("#substituicaoNome").hide();
+                }
+            };
+
+            function myFunction2() {
+                var x = document.getElementById("indicacao").value;
+                //document.getElementById("indicacaoNome").innerHTML = " " + x;
+                //document.getElementById("indicacaoContato").innerHTML = " " + x;
+
+                if (x == "sim") {
+                    $("#indicacaoNome").show();
+                    $("#indicacaoContato").show();
+                } else if (x == "nao") {
+                    $("#indicacaoNome").hide();
+                    $("#indicacaoContato").hide();
+                } else if (x == "") {
+                    $("#indicacaoNome").hide();
+                    $("#indicacaoContato").hide();
+                }
+            };
+
+            function myFunction3() {
+                var x = document.getElementById("Tcontratacao").value;
+                //document.getElementById("substituicaoNome").innerHTML = " " + x;    
+
+                if (x == "FOLGUISTA-FERISTA") {
+                    $("#tipoFolguista").show();
+                } else if (x == "") {
+                    $("#tipoFolguista").hide();
+                } else if (x == "PJ") {
+                    $("#tipoFolguista").hide();
+                } else if (x == "CLT") {
+                    $("#tipoFolguista").hide();
+                } else if (x == "RPA") {
+                    $("#tipoFolguista").hide();
+                }
+            };
+
+
+        </script>
+        <script>
+            function lettersOnly(evt) {
+                evt = (evt) ? evt : event;
+                var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                    ((evt.which) ? evt.which : 0));
+                if (charCode > 32 && (charCode < 65 || charCode > 90) &&
+                    (charCode < 97 || charCode > 122)) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Digite Apenas Letras sem Acentos'
+                    })
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
+        <script type="text/javascript" src="javaAdmissao.js"></script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1835 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="http://portal.medmais.com:8007/style-guide/css/fluig-style-guide.min.css">
+    <script src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery.js"></script>
+    <script src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="http://portal.medmais.com:8007/portal/resources/js/mustache/mustache-min.js"></script>
+    <script src="http://portal.medmais.com:8007/style-guide/js/fluig-style-guide.min.js"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/dist/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="zoomAdmissao.js"></script>
+    <script type="text/javascript" src="validaCampo.js"></script>
+    <script type="text/javascript" src="anexos.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
+    <script type="text/javascript" src="BuscaCep.js"></script>
+    <script type="text/javascript" src="scriptGerenteResponsavel.js"></script>
+    <script type="text/javascript" src="resgataDados.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="objetoIntegracao.js"></script>
+    
+    
+
+
+
+
+</head>
+<style>
+    hr {
+        height: 4px;
+        background-color: red;
+
+    }
+
+    input.type.text {
+        border-radius: 1em;
+        border-radius: 10px/20px;
+        box-shadow: black 0.5em 0.5em 0.3em
+    }
+
+    form {
+        width: 100%;
+        margin: 100px 0;
+        border: 5px solid black;
+        padding: 20px;
+        border-style: inset;
+        border-radius: 40px;
+        border-color: rgb(101 163 13);
+        position: absolute;
+
+    }
+
+    .linha {
+        color: #cc3d3d;
+
+
+
+    }
+
+    .linha:after {
+        content: "_____________________________________________________________________________________________________________";
+        color: #d9edf7;
+    }
+
+    .borda {
+        background: #d9edf7;
+        border-radius: 20px 20px 0px 0px;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" autocomplete="off"
+            style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+            <div class="row text-center" data-type="header" data-field-name="">
+
+                <div class="col-md-2">
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/responsive_logo_image.png"
+                        style="width: auto; height: 100px; opacity: 100%;">
+                </div>
+                <div class="col-md-8">
+
+                    <h1 class="text-center" id="tituloSolicitacaoVaga"
+                        style="font-family: Verdana, sans-serif;font-size: 45px;">
+                        Admissão - Abertura de Vagas
+                    </h1>
+                </div>
+                <div class="col-md-2">
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/responsive_logo_image.png"
+                        style="width: auto; height: 100px; opacity: 100%;">
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitante"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados do Solicitante</b>
+                    </h3>
+                </div>
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="col-md-1 ">
+                        <div class="form-group">
+                            <label class="control-label" for="datasolicitacao">Data</label>
+                            <input id="datasolicitacao" type="text" class="form-control" name="datasolicitacao"
+                                readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label class="control-label  " for="solicitanteNome">Nome do Solicitante</label>
+                            <input type="hidden" id="solicitanteCode" readonly name="solicitanteCode" />
+                            <input type="text" class="form-control" id="solicitanteNome" readonly name="solicitanteNome" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="descricaoCentroCustoSol">Centro de custo<strong class="required text-danger"
+                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                            <div class="input-group col-sm-12">
+                                <input type="hidden" class="form-control zoom-tdi" id="codCentroCustoSol"
+                                    name="codCentroCustoSol" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                <input type="text" class="form-control zoom-tdi" id="descricaoCentroCustoSol"
+                                    name="descricaoCentroCustoSol" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                    readonly onchange="validaCampo(this)" analytics="true" gooddataid="2">
+                                <div class="input-group-addon zoom-tdi" onclick="zoomCustoSol(this)" data-toggle=""
+                                    data-placement="bottom" title="Pesquisar centro de custo">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="solicitanteEmail">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-drafts icon-sm" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitacao"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados da Solicitação</b>
+                    </h3>
+                </div>
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <label for="headcount">Headcount<strong class="required text-danger"></strong></label>
+                            <select class="form-control" readonly id="headCount" name="headCount" onchange="myFunction1()">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="vaga_nova" data-fluig-state-valid="0,4" data-fluig-write="0,4">Nova vaga
+                                </option>
+                                <option value="substituicao" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    Substituição</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="Tcontratacao">Tipo de contratação<strong
+                                    class="required text-danger"></strong></label>
+                            <select class="form-control" readonly id="Tcontratacao" name="Tcontratacao" analytics="true"
+                                onchange="myFunction3()" gooddataid="13">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="PJ" data-fluig-state-valid="0,4" data-fluig-write="0,4">PJ</option>
+                                <option value="CLT" data-fluig-state-valid="0,4" data-fluig-write="0,4">CLT</option>
+                                <option value="RPA" data-fluig-state-valid="0,4" data-fluig-write="0,4">RPA</option>
+                                <option value="FOLGUISTA-FERISTA" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    Folguista / Ferista </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="substituicaoNome">
+                                <label class="control-label" for="substituicaoNome" data-fluig-state-valid="0,4"
+                                    data-fluig-write="0,4">Substituição de:</label>
+                                <input type="text" class="form-control" id="substituicaoNome" name="substituicaoNome"
+                                    data-fluig-state-valid="0,4" readonly data-fluig-write="0,4"
+                                    placeholder="Profissional que será substituído" />
+                            </div>
+                        </div>
+                        <div class="col-md-1" id="tipoFolguista">
+                            <label for="tipoFolguista">Folguista/Ferista<strong
+                                    class="required text-danger"></strong></label>
+                            <select class="form-control" id="tipoFolguista" readonly name="tipoFolguista" analytics="true"
+                                gooddataid="13">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="PJFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12"
+                                    data-fluig-write="0,4">PJ</option>
+                                <option value="CLTFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12"
+                                    data-fluig-write="0,4">CLT</option>
+                                <option value="RPAFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12"
+                                    data-fluig-write="0,4">RPA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="descricaoCentroCusto">Centro de custo<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codCentroCusto"
+                                        name="codCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    <input type="text" class="form-control zoom-tdi" id="descricaoCentroCusto"
+                                        name="descricaoCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                        readonly onchange="validaCampo(this)" analytics="true" gooddataid="2">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle=""
+                                        data-placement="bottom" title="Pesquisar centro de custo">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Tcontrato">Tipo de contrato<strong
+                                        class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codTcontrato"
+                                        name="codTcontrato">
+                                    <select class="form-control" readonly name="descricaoTcontrato" id="descricaoTcontrato"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" analytics="true"
+                                        gooddataid="2">
+                                        <option value=" " data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                        <option value="AD" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            ADMINISTRATIVO</option>
+                                        <option value="AE" data-fluig-state-valid="0,4" data-fluig-write="0,4">AEROPORTO
+                                        </option>
+                                        <option value="CA" data-fluig-state-valid="0,4" data-fluig-write="0,4">CAIXA DE
+                                            ASSISTENCIA</option>
+                                        <option value="EM" data-fluig-state-valid="0,4" data-fluig-write="0,4">ECONOMIA
+                                            MISTA</option>
+                                        <option value="EN" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENERGIA
+                                        </option>
+                                        <option value="ES" data-fluig-state-valid="0,4" data-fluig-write="0,4">ESCOLA
+                                        </option>
+                                        <option value="ET" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            ENTRETENIMENTO</option>
+                                        <option value="EP" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENTIDADES
+                                            PRIVADAS</option>
+                                        <option value="FE" data-fluig-state-valid="0,4" data-fluig-write="0,4">FERROVIA
+                                        </option>
+                                        <option value="GO" data-fluig-state-valid="0,4" data-fluig-write="0,4">GOVERNO
+                                        </option>
+                                        <option value="MN" data-fluig-state-valid="0,4" data-fluig-write="0,4">MINERACAO
+                                        </option>
+                                        <option value="OG" data-fluig-state-valid="0,4" data-fluig-write="0,4">OLEO E
+                                            GAS</option>
+                                        <option value="PE" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            PETROLIFERA</option>
+                                        <option value="PO" data-fluig-state-valid="0,4" data-fluig-write="0,4">PORTO
+                                        </option>
+                                        <option value="RO" data-fluig-state-valid="0,4" data-fluig-write="0,4">RODOVIA
+                                        </option>
+                                        <option value="RF" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            REFINARIAS</option>
+                                        <option value="SP" data-fluig-state-valid="0,4" data-fluig-write="0,4">SHOPPING
+                                        </option>
+                                        <option value="TN" data-fluig-state-valid="0,4" data-fluig-write="0,4">TURISMO
+                                            NAUTICO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="descricaoFunc">Cargo<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="text" class="form-control zoom-tdi" id="descricaoFunc"
+                                        name="descricaoFunc" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                        readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                        gooddataid="2" data-toggle="tooltip" title="Informe o Código da função do
+                                        funcionário de  acordo com tabela
+                                        definida no Cadastro  de Funçöes.">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomFuncaoC(this)">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group" id="localVaga">
+                                <label class="control-label" for="localVaga">Local da Vaga/Cidade</label>
+                                <input type="text" class="form-control" readonly id="localVaga" name="localVaga" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="indicacao">Tem indicação<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="indicacao" readonly name="indicacao" analytics="true"
+                                gooddataid="13" onchange="myFunction2()">
+                                <option value=""></option>
+                                <option value="sim">SIM</option>
+                                <option value="nao">NAO</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="indicacaoNome">
+                                <label class="control-label" for="indicacaoNome">Nome</label>
+                                <input type="text" class="form-control" readonly id="indicacaoNome" name="indicacaoNome" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="indicacaoContato">
+                                <label class="control-label" for="indicacaoContato">Contato</label>
+                                <input type="text" class="form-control" readonly id="indicacaoContato" name="indicacaoContato" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="dataDocumentacao">Data de retorno da documentação<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="date" name="dataDocumentacao" readonly id="dataDocumentacao" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="dataDesejada">Data desejada para inicio<strong
+                                        class="required text-danger"></strong></label>
+                                <input id="dataDesejada" type="Date" readonly class="form-control" name="dataDesejada">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cargahora">Carga Horária Semanal/Escala<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="text" name="cargahora" readonly id="cargahora" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class=" col-md-3">
+                            <label for="salario">Salário<strong class="required text-danger"></strong></label>
+                            <input type="text" name="salario" id="salario" readonly class="form-control" mask="R$99999,99">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="adicional">Adicional <strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="adicional" readonly id="adicional" required="required"
+                                data-toggle="tooltip" title="">
+                                <option value="1">Não</option>
+                                <option value="2">Periculosidade</option>
+                                <option value="3">Insalubridade Média</option>
+                                <option value="4">Insalubridade Máxima</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3" data-field-name="valeRefeicao">
+                            <label for="adicionais">Valor diario vale refeição<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="text" name="valeRefeicao" readonly id="valeRefeicao" class="form-control"
+                                mask="R$99999,99">
+                        </div>
+
+                        <div class=" col-md-3" data-field-name="adicionais">
+                            <label for="valorTransporte">Valor diário vale transporte<strong
+                                    class="required text-danger"></strong></label>
+                            <input type="text" name="valorTransporte"  readonly id="valorTransporte" class="form-control"
+                                mask="R$99999,99">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Requisitos obrigatorios<strong
+                                    class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" readonly id="cursos" name="cursos" rows="4"
+                                cols="16"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Experiência profissional<strong
+                                    class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" readonly id="experienciaPro" name="experienciaPro"
+                                rows="4" cols="16"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Atividades a serem desenvolvidas<strong
+                                    class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" readonly id="atividade" name="atividade" rows="4"
+                                cols="33"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Observação</label>
+                            <textarea type="text" class="form-control" readonly id="observacao" name="observacao" rows="4"
+                                cols="33"></textarea>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosContratado"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Seleção do Candidato</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="nomeColaborador">Nome do colaborador<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" readonly id="nomeColaborador" name="nomeColaborador" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="emalColaborador">Email do colaborador<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" readonly id="emalColaborador" name="emalColaborador"
+                                    onblur="validacaoEmail(f1.email)" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="telCandidato">Telefone<strong
+                                        class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" readonly id="telCandidato" name="telCandidato" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="uniformeSoa">Uniforme<strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="uniformeSoa" readonly id="uniformeSoa" required data-toggle="tooltip"
+                                title="Selecione o tamanho do uniforme">
+                                <option value=""></option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                                <option value="EXG">EXG</option>                                
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="botaSoa">Bota<strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="botaSoa" readonly id="botaSoa" required data-toggle="tooltip"
+                                title="Selecione o tamanho da bota">
+                                <option value=""></option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>                                
+                            </select>
+                        </div>
+                    </div>
+                    <div id="cardGestor" name="cardGestor">
+                        <h3 class="borda linha"
+                            style="text-align: center;width: 190px;padding: 10px 0 0 0px;height: 46px;">Gestor </h3>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="dataRealAdmissao">Data real de
+                                        admissão<strong class="required text-danger"></strong></label>
+                                    <input id="dataRealAdmissao" readonly type="Date" class="form-control"
+                                        name="dataRealAdmissao">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosProtheus"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Funcionário</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div id="cardCadastrais" name="cardCadastrais">
+                        <h3 class="borda linha" style="text-align: center;width: 190px;padding: 10px 0 0 50px">
+                            Cadastrais</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_NOMECMP">Nome Completo<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_NOMECMP" type="text" class="form-control" name="RA_NOMECMP"
+                                        onkeypress="return lettersOnly(event);" required maxlength="70" required
+                                        data-toggle="tooltip" title="Digite o Nome Completo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_NOME">Nome Abreviado<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_NOME" type="text" class="form-control" name="RA_NOME"
+                                        onkeypress="return lettersOnly(event);" required maxlength="30"
+                                        data-toggle="tooltip" title="Digite o Nome Completo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_MAE">Nome Mãe<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_MAE" type="text" class="form-control" name="RA_MAE" required
+                                        onkeypress="return lettersOnly(event);" maxlength="70" data-toggle="tooltip"
+                                        title="Digite o Nome da Mãe">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_PAI">Nome Pai<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_PAI" type="text" class="form-control" name="RA_PAI" required
+                                        onkeypress="return lettersOnly(event);" maxlength="70" data-toggle="tooltip"
+                                        title="Digite o Nome do Pai">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="RA_SEXO">Sexo<strong class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_SEXO" id="RA_SEXO" required data-toggle="tooltip"
+                                    title="Selecione o Sexo">
+                                    <option value=""></option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                    <option value="X">Anonimizado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_RACACOR">Raça/Cor<strong class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_RACACOR" id="RA_RACACOR" required
+                                    data-toggle="tooltip" title="Selecione a Raça/Cor">
+                                    <option value=""></option>
+                                    <option value="1">Indigena</option>
+                                    <option value="2">Branca</option>
+                                    <option value="4">Preta</option>
+                                    <option value="6">Amarela</option>
+                                    <option value="8">Parda</option>
+                                    <option value="9">Não Informado</option>
+                                    <option value="X">Anonimizado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_NASC">Data de Nascimento<strong
+                                            class="required text-danger"></strong></label>
+                                    <input type="Date" class="form-control" id="RA_NASC" name="RA_NASC" value=""
+                                        required data-toggle="tooltip" title="Informe a Data de Nascimento do
+                                    funcionário." />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_ESTCIVI">Estado Civil<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_ESTCIVI" id="RA_ESTCIVI" required
+                                    data-toggle="tooltip"
+                                    title="Selecione o estado civil do funcionário, conforme tabela 33. O valores União Estável e Outros não são aceitos para o eSocial.">
+                                    <option value=""></option>
+                                    <option value="C">Casado(a)</option>
+                                    <option value="D">Divorciado(a)</option>
+                                    <option value="M">União Estável</option>
+                                    <option value="Q">Desquitado(a)</option>
+                                    <option value="S">Solteiro(a)</option>
+                                    <option value="V">Viuvo(a)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoPais">Cod País Ori<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_CPAISOR"
+                                            name="RA_CPAISOR" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoPais"
+                                            name="descricaoPais" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip"
+                                            title="Código da nacionalidade do funcionário, caso este seja estrangeiro.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomPais(this)"
+                                            data-toggle="tooltip" data-placement="bottom" title="Pesquisar País">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoNac">Nacionalidade<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_NACIONA"
+                                            name="RA_NACIONA" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoNac"
+                                            name="descricaoNac" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip"
+                                            title="Selecione a nacionalidade do funcionário, conforme tabela 34 - utilizada na emissão da RAIS.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomNacionalidade(this)"
+                                            data-toggle="tooltip" data-placement="bottom" title="Pesquisar País">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoNatu">Naturalidade UF<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_NATURAL"
+                                            name="RA_NATURAL" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoNatu"
+                                            name="descricaoNatu" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip"
+                                            title="Selecione a sigla do estado (UF) de nascimento do funcionário, conforme tabela 12 - utilizada na emissão da RAIS">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomNaturalidade(this)"
+                                            data-toggle="tooltip" data-placement="bottom" title="Pesquisar País">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoMun">Cod Mun Nasc<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_CODMUNN"
+                                            name="RA_CODMUNN" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoMun"
+                                            name="descricaoMun" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip"
+                                            title="Informe o código de município de nascimento do funcionário. Uso eSocial.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomMunicipio(this)"
+                                            data-toggle="tooltip" data-placement="bottom" title="Pesquisar País">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoRais">Cd Inst RAIS<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_GRINRAI"
+                                            name="RA_GRINRAI" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoRais"
+                                            name="descricaoRais" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip"
+                                            title="Selecione o código do grau instrução do funcionário, de acordo com a RAIS, e conforme a tabela 26.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomInstRais(this)"
+                                            data-toggle="tooltip" data-placement="bottom" title="Pesquisar País">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <input type="text" class="form-control input-sm" id="RA_EMAIL" name="RA_EMAIL"
+                                        data-toggle="tooltip" required
+                                        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                                        title="Informe o Endereço de Correio Eletrônico do funcionário (e-mail)." />
+                                    <div id="msgemail"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_DEFIFIS">Deficiente<strong class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_DEFIFIS" id="RA_DEFIFIS" required
+                                    data-toggle="tooltip" title="Informe:
+                                1 se o funcionário for Deficiente Fisico;
+                                2 se o funcionario não for deficiente físico.">
+                                    <option value=""></option>
+                                    <option value="1">Sim</option>
+                                    <option value="2">Não</option>
+                                    <option value="X">Anonimizado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_BRPDH">BR/PDH<strong class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_BRPDH" id="RA_BRPDH" required
+                                    data-toggle="tooltip"
+                                    title="Informe se o funcionario é Beneficiario Habilitado ou não se aplica. Campo utilizado para geração do Perfil Profissiográfico Previdenciário.">
+                                    <option value=""></option>
+                                    <option value="1">Beneficiário Reabilitado</option>
+                                    <option value="2">Portador Deficiência Habilitado</option>
+                                    <option value="3">Não Aplicavel</option>
+                                    <option value="X">Anonimizado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <button id="buttonCadastrais" class="btn btn-success btn-lg"
+                                        onclick="btCadastrais()">Funcionais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cardFuncionais">
+                        <h3 class="borda linha" style="text-align: center;width: 190px;padding: 10px 0 0 50px">
+                            Funcionais</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoFilial">Filial<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_FILIAL"
+                                            name="RA_FILIAL" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoFilial"
+                                            name="descricaoFilial" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Pesquisar Filial">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomFilialFunc(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoCcFunc">Centro de custo<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_CC" name="RA_CC"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoCcFunc"
+                                            name="descricaoCcFunc" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="O Centro de Custo determina onde o empresa.
+                                    Este código será utilizado na seleção de
+                                    informações em relatórios, SEFIP,etc.
+                                    para definir critérios de agrupamento de
+                                    funcionários.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomCustoFunc(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_ADMISSA">Data Admissão<strong
+                                            class="required text-danger"></strong></label>
+                                    <input type="hidden" class="form-control" id="RA_OPCAO" name="RA_OPCAO" />
+                                    <input type="Date" class="form-control" id="RA_ADMISSA" name="RA_ADMISSA" value=""
+                                        required data-toggle="tooltip" title="Informe a Data de Admissão" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoTipoAdm">Tipo Admissão<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_TIPOADM"
+                                            name="RA_TIPOADM" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoTipoAdm"
+                                            name="descricaoTipoAdm" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Selecione o tipo de admissão para FGTS
+                                        do funcionário, conforme tabela 38 -
+                                        utilizado na geração de CAGED, RAIS,
+                                        etc.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomTipoAdm(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoBcDep">Bco Ag Sal<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="banco" name="banco"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="hidden" class="form-control zoom-tdi" id="agencia" name="agencia"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_BCDEPSA"
+                                            name="RA_BCDEPSA" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoBcDep"
+                                            name="descricaoBcDep" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Informe o Código do banco e agência  na
+                                                                qual será depositado o pagamento do
+                                                                salário do funcionário.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomBAg(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_CTDEPSA">Conta Dep<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_CTDEPSA" type="text" maxlength="13" class="form-control"
+                                        name="RA_CTDEPSA" required maxlength="13"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                        data-toggle="tooltip" title="Informe o número da conta bancária do
+                                        funcionário para depósito do pagamento
+                                        do salário.">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="RA_TPPREVI">Tp Previden<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_TPPREVI" id="RA_TPPREVI" required="required"
+                                    data-toggle="tooltip" title="Informe o tipo de regime previdenciário
+                                    do funcionário.
+                                    Uso eSocial.
+                                    Os tipos disponíveis são:
+                                    1=RGPS- Regime Geral da Previdência Social;
+                                    2=RPPS- Regime Próprio Previdência e
+                                    3=RPPE- Regime Próprio Previdência Social no Exterior.">
+                                    <option value=""></option>
+                                    <option value="1">Regime Geral da Previdência Social</option>
+                                    <option value="2">Regime Próprio Previdência</option>
+                                    <option value="3">Regime Próprio Previdência Social no Exterior</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="RA_PROCES">Cod Processo<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_PROCES" id="RA_PROCES" required
+                                    data-toggle="tooltip" title="Identifica o agrupador de funcionários
+                                    que sofrerão o mesmo tipo de cálculo">
+                                    <option value=""></option>
+                                    <option value="00001">Celetista/Estagiário Mensal</option>
+                                    <option value="00002">Celetista/Estagiário Semanal</option>
+                                    <option value="00003">Contribuinte Individual Mensal</option>
+                                    <option value="00004">Contribuinte Individual Semanal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_HRSMES">Hrs Mensais<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_HRSMES" type="text" class="form-control" name="RA_HRSMES" required onchange="HorasDia()" oninput="this.value = this.value.replace().toFixed(2)"
+                                        maxlength="12" data-toggle="tooltip" title="Informe o Número de horas contratuais
+                                        que o funcionário trabalha  por mês,
+                                        para efeito do cálculo do Salario-Hora.">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_HRSEMAN">Hrs Semanais<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_HRSEMAN" type="text" class="form-control" name="RA_HRSEMAN" required
+                                        maxlength="12" readonly data-toggle="tooltip" title="Informe o  Número de horas contratuais
+                                        que o  funcionário trabalha por semana.">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_HRSDIA">Horas Dia<strong
+                                            class="required text-danger"></strong></label>
+                                    <input id="RA_HRSDIA" type="text" class="form-control" name="RA_HRSDIA" required 
+                                        maxlength="12" readonly data-toggle="tooltip" title="Informe o número de horas contratuais
+                                        que o funcionário trabalha por dia.">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoCatFunc">Cat Funcional<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_CATFUNC"
+                                            name="RA_CATFUNC" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoCatFunc"
+                                            name="descricaoCatFunc" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Selecione a categoria funcional à qual
+                                            se enquadra o funcionário, conforme tabela 28.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomCatFunc(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoFuncao">Cod Função<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_CODFUNC"
+                                            name="RA_CODFUNC" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoFuncao"
+                                            name="descricaoFuncao" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Informe o Código da função do
+                                            funcionário de  acordo com tabela
+                                            definida no Cadastro  de Funçöes.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomFuncaoAdm(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_SALARIO">Salário<strong
+                                            class="required text-danger"></strong></label>
+                                    <input type="hidden" class="form-control zoom-tdi" id="RA_TIPOPGT" name="RA_TIPOPGT"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" value="M">
+                                    <input id="RA_SALARIO" type="text" class="form-control" name="RA_SALARIO" required onblur="formatar()"
+                                        maxlength="12" data-toggle="tooltip"
+                                        title="Informe o valor do Salário Contratual do funcionário, conforme categoria.">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="descricaoSindical">Con Sindical<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_PGCTSIN"
+                                            name="RA_PGCTSIN" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoSindical"
+                                            name="descricaoSindical" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Selecione o código correspondente ao
+                                            tipo de pagamento do Imposto Sindical,
+                                            descontado do funcionário, conforme
+                                            tabela 29.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomCSindical(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_TPCONTR">Tp Cont Trab<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_TPCONTR" id="RA_TPCONTR" onchange="tpContrato()" required
+                                    data-toggle="tooltip" title="De acordo com o tipo de contrato de
+                                    trabalho, informe:
+                                    1 - Prazo Indeterminado
+                                    2 - Prazo Determinado. Nesta opção estão
+                                    enquadrados os contratos referentes a
+                                    Lei 9.601/98, ao  Artigo 443 da CLT e
+                                    também os contratos por safra.
+                                    Quando informado o tipo de contrato
+                                    igual a 2- Determinado, a data fim do
+                                    contrato poderá ficar em branco ou
+                                    preenchida em um período máximo de 5
+                                    anos após data de admissão.
+                                    ">
+                                    <option value=""></option>
+                                    <option value="1">Indeterminado</option>
+                                    <option value="2">Determinado</option>
+                                    <option value="3">Intermitente</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_HOPARC">Ct T.Parcial<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_HOPARC" id="RA_HOPARC" required
+                                    data-toggle="tooltip" title="Informar se o contrato de trabalho é a
+                                    tempo parcial (jornada de trabalho).
+                                    Campo Utilizado no Homolognet e na RAIS.">
+                                    <option value="2">Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="RA_DTFIMCT">Dt Término Contrato<strong
+                                            class="required text-danger"></strong></label>                                    
+                                    <input id="RA_DTFIMCT" type="Date" class="form-control" name="RA_DTFIMCT" required 
+                                        maxlength="12" value="00000000"readonly data-toggle="tooltip"
+                                        title="Para Contrato de trabalho por prazo
+                                        determinado. Informe a data de término
+                                        do contrato de trabalho. Campo Utilizado
+                                        no Homolognet.">                                       
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoSindicato">Sindicato<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_SINDICA"
+                                            name="RA_SINDICA" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoSindicato"
+                                            name="descricaoSindicato" data-fluig-state-valid="0,4"
+                                            data-fluig-write="0,4" readonly onchange="validaCampo(this)" required
+                                            analytics="true" gooddataid="2" data-toggle="tooltip" title="Informe o Código do Sindicato do qual o
+                                            funcionário faz parte.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomSindicato(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoVRais">Vin Emp RAIS<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_VIEMRAI"
+                                            name="RA_VIEMRAI" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoVRais"
+                                            name="descricaoVRais" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Selecione o código de vínculo
+                                            empregatício do funcionário, com relação
+                                            à RAIS, conforme tabela 25. ">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomRais(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoEsocial">Cat eSocial<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_CATEFD"
+                                            name="RA_CATEFD" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoEsocial"
+                                            name="descricaoEsocial" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                            readonly onchange="validaCampo(this)" required="required" analytics="true"
+                                            gooddataid="2" data-toggle="tooltip" title="Preencher com o código da categoria do
+                                            trabalhador, conforme tabela 1 do
+                                            leiaute eSocial. ">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomEsocial(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="RA_ASSIST">Contr Assis<strong class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_ASSIST" id="RA_ASSIST" required
+                                    data-toggle="tooltip" title="Indicar se o Funcionário tem Desconto da
+                                    Contribuição Assistencial (S/N)">
+                                    <option value="2">Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="RA_CONFED">Contr Confed<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_CONFED" id="RA_CONFED" required
+                                    data-toggle="tooltip" title="Indicar se o Funcionário tem Desconto da
+                                    Contribuição Confederativa (S/N)">
+                                    <option value="2">Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_MENSIND">Mens Sindical<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_MENSIND" id="RA_MENSIND" required
+                                    data-toggle="tooltip" title="Indicar se o Funcionário tem Desconto da
+                                    Mensalidade Sindical (S/N)">
+                                    <option value="2">Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="RA_COMPSAB">Comp Sábado<strong
+                                        class="required text-danger"></strong></label>
+                                <select class="form-control" name="RA_COMPSAB" id="RA_COMPSAB" required
+                                    data-toggle="tooltip" title="Informe se o Sábado é compensado durante
+                                    a semana. Campo Utilizado no Homolognet.">
+                                    <option value="1">Sim</option>
+                                    <option value="2">Não</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="descricaoDepartamento">Departamento<strong class="required text-danger"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                    <div class="input-group col-sm-12">
+                                        <input type="hidden" class="form-control zoom-tdi" id="RA_DEPTO" name="RA_DEPTO"
+                                            data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                        <input type="text" class="form-control zoom-tdi" id="descricaoDepartamento"
+                                            name="descricaoDepartamento" data-fluig-state-valid="0,4"
+                                            data-fluig-write="0,4" readonly onchange="validaCampo(this)"
+                                            required="required" analytics="true" gooddataid="2" data-toggle="tooltip"
+                                            title="Codigo do departamento do funcionário,
+                                            de acordo com tabela definida em
+                                            Cadastro de Departamentos.">
+                                        <div class="input-group-addon zoom-tdi" onclick="zoomDepartamento(this)">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <button type="button" id="buttonFuncionais" class="btn btn-success btn-lg"
+                                        onclick="btFuncionais()">Documentos</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cardDocumentos" name="cardDocumentos">
+                            <h3 class="borda linha" style="text-align: center;width: 190px;padding: 10px 0 0 50px">
+                                Documentos</h3>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_CIC">CPF<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_CIC" type="text" class="form-control" name="RA_CIC" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            data-toggle="tooltip" title="Informe o número do C.P.F. do
+                                        Funcionario. Esta informação será
+                                        utilizada na emissão de relatórios e
+                                        geração de arquivos magnéticos de
+                                        carater legal. Ex.: DIRF, Informe de
+                                        rendimentos.
+                                        ">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_PIS">PIS<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_PIS" type="text" class="form-control" name="RA_PIS" maxlength="12"
+                                            data-toggle="tooltip"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            title="Informe o número do  P.I.S. do
+                                        Funcionário.
+                                        Esta informação será utilizada na
+                                        emissão de relatórios e geração de
+                                        arquivos magnéticos de carater legal.
+                                        Ex: RAIS, FGTS, Previdência. ">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_RG">RG<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_RG" type="text" class="form-control" name="RA_RG" maxlength="15"
+                                            data-toggle="tooltip"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            title="Informe o número do RG - Registro Geral
+                                        do funcionário.
+                                        Esta informação será utilizada na
+                                        emissão de relatórios e geração de
+                                        arquivos magnéticos de carater legal.">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_DTRGEXP">Dt Emiss RG<strong
+                                                class="required text-danger"></strong></label>
+                                        <input type="Date" class="form-control" id="RA_DTRGEXP" name="RA_DTRGEXP"
+                                            value="" data-toggle="tooltip" title="Informe a data de expedição do RG." />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="descricaoUfRg">UF do RG<strong class="required text-danger"
+                                                data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                        <div class="input-group col-sm-12">
+                                            <input type="hidden" class="form-control zoom-tdi" id="RA_RGUF"
+                                                name="RA_RGUF" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            <input type="text" class="form-control zoom-tdi" id="descricaoUfRg"
+                                                name="descricaoUfRg" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                                readonly onchange="validaCampo(this)" required="required"
+                                                analytics="true" gooddataid="2" data-toggle="tooltip" title="Selecione a Unidade Federativa do RG do
+                                                funcionário, conforme tabela 12.">
+                                            <div class="input-group-addon zoom-tdi" onclick="zoomUfRg(this)">
+                                                <i class="flaticon flaticon-search icon-sm"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="descricaoOEmissor">Orgão Emissor<strong class="required text-danger"
+                                                data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                        <div class="input-group col-sm-12">
+                                            <input type="hidden" class="form-control zoom-tdi" id="RA_RGORG"
+                                                name="RA_RGORG" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                            <input type="text" class="form-control zoom-tdi" id="descricaoOEmissor"
+                                                name="descricaoOEmissor" data-fluig-state-valid="0,4"
+                                                data-fluig-write="0,4" readonly onchange="validaCampo(this)"
+                                                required="required" analytics="true" gooddataid="2"
+                                                data-toggle="tooltip" title="Selecione o Órgão Emissor do Documento
+                                                Nacional de Identidade (RG), conforme
+                                                tabela 64.">
+                                            <div class="input-group-addon zoom-tdi" onclick="zoomEmissor(this)">
+                                                <i class="flaticon flaticon-search icon-sm"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_RGEXP">Orgão Exp RG<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_RGEXP" type="text" class="form-control" name="RA_RGEXP"
+                                            data-mask="000/00" maxlength="6" data-toggle="tooltip" title="Informe o Orgão Emissor do RG para uso
+                                            na emissão do CAT, TSA e eSocial.">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_ORGEMRG">Orgão Em RG<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_ORGEMRG" type="text" class="form-control" name="RA_ORGEMRG"
+                                            data-mask="000/00" maxlength="5" data-toggle="tooltip" title="Informe o Orgão Emissor do RG para uso
+                                            na emissão do CAT, TSA e eSocial.">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_TITULOE">Tit Eleitor<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_TITULOE" type="text" class="form-control" name="RA_TITULOE"
+                                            maxlength="12" data-toggle="tooltip"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            title="Informe o  número do Título Eleitoral do
+                                                funcionario.">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_ZONASEC">Zona Eleitoral<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_ZONASEC" type="text" class="form-control" name="RA_ZONASEC"
+                                            maxlength="8" data-toggle="tooltip"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            title="Informe o número da Zona do Título
+                                                Eleitoral do funcionário.">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="RA_SECAO">Seção Eleitoral<strong
+                                                class="required text-danger"></strong></label>
+                                        <input id="RA_SECAO" type="text" class="form-control" name="RA_SECAO"
+                                            maxlength="4" data-toggle="tooltip"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            title="Informe o número da Seção do Título
+                                                Eleitoral do funcionário. ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <button type="button" id="buttonDocumentos" class="btn btn-success btn-lg"
+                                            onclick="btDocumentos()">Benefícios</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="cardBeneficios" name="cardBeneficios">
+                                <h3 class="borda linha" style="text-align: center;width: 190px;padding: 10px 0 0 50px">
+                                    Benefícios</h3>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="descricaoLBenef">Local Benefícios<strong
+                                                    class="required text-danger" data-fluig-state-valid="0,4"
+                                                    data-fluig-write="0,4"></strong></label>
+                                            <div class="input-group col-sm-12">
+                                                <input type="hidden" class="form-control zoom-tdi" id="RA_LOCBNF"
+                                                    name="RA_LOCBNF" data-fluig-state-valid="0,4"
+                                                    data-fluig-write="0,4">
+                                                <input type="text" class="form-control zoom-tdi" id="descricaoLBenef"
+                                                    name="descricaoLBenef" data-fluig-state-valid="0,4"
+                                                    data-fluig-write="0,4" readonly onchange="validaCampo(this)"
+                                                    required="required" analytics="true" gooddataid="2"
+                                                    data-toggle="tooltip" title="Localidade para entrega de benefícios do
+                                            funcionário.">
+                                                <div class="input-group-addon zoom-tdi" onclick="zoomLBenef(this)">
+                                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+                                            <button type="button" id="buttonBeneficios" class="btn btn-success btn-lg"
+                                                onclick="btBeneficios()">Ponto Eletrônico</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="cardPonto" name="cardPonto">
+                                    <h3 class="borda linha"
+                                        style="text-align: left;width: 190px;padding: 10px 0 0 50px">Ponto
+                                        Eletrônico</h3>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="descricaoTurno">Turno de Trabalho<strong
+                                                        class="required text-danger" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4"></strong></label>
+                                                <div class="input-group col-sm-12">
+                                                    <input type="hidden" class="form-control zoom-tdi" id="RA_TNOTRAB"
+                                                        name="RA_TNOTRAB" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4">
+                                                    <input type="text" class="form-control zoom-tdi" id="descricaoTurno"
+                                                        name="descricaoTurno" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4" readonly onchange="validaCampo(this)"
+                                                        required="required" analytics="true" gooddataid="2"
+                                                        data-toggle="tooltip" title="Informe o Código Turno de Trabalho no
+                                            qual o funcionário está alocado.">
+                                                    <div class="input-group-addon zoom-tdi" onclick="zoomTTrab(this)">
+                                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="descricaoRegra">Regra de Apontamento<strong
+                                                        class="required text-danger" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4"></strong></label>
+                                                <div class="input-group col-sm-12">
+                                                    <input type="hidden" class="form-control zoom-tdi" id="RA_REGRA"
+                                                        name="RA_REGRA" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4">
+                                                    <input type="text" class="form-control zoom-tdi" id="descricaoRegra"
+                                                        name="descricaoRegra" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4" readonly onchange="validaCampo(this)"
+                                                        required="required" analytics="true" gooddataid="2"
+                                                        data-toggle="tooltip" title="Informe o código da regra de apontamento
+                                            ao qual o funcionário estará sujeito na
+                                            apuração das marcaçöes pelo Ponto
+                                            Eletrônico.">
+                                                    <div class="input-group-addon zoom-tdi" onclick="zoomRAp(this)">
+                                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="descricaoSeqT">Seq Inicial Turn<strong
+                                                        class="required text-danger" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4"></strong></label>
+                                                <div class="input-group col-sm-12">
+                                                    <input type="hidden" class="form-control zoom-tdi" id="RA_SEQTURN"
+                                                        name="RA_SEQTURN" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4">
+                                                    <input type="text" class="form-control zoom-tdi" id="descricaoSeqT"
+                                                        name="descricaoSeqT" data-fluig-state-valid="0,4"
+                                                        data-fluig-write="0,4" readonly onchange="validaCampo(this)"
+                                                        required="required" analytics="true" gooddataid="2"
+                                                        data-toggle="tooltip" title="Informe a Sequência de Turno do
+                                            funcionário, utilizado no Módulo de
+                                            Ponto Eletrônico.">
+                                                    <div class="input-group-addon zoom-tdi" onclick="zoomSeqTurn(this)">
+                                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <button type="button" id="buttonPonto" class="btn btn-success btn-lg"
+                                                    onclick="btPonto()">Outras Informações</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="cardInformacoes" name="cardInformacoes">
+                                        <h3 class="borda linha"
+                                            style="text-align: left;width: 190px;padding: 10px 0 0 50px">Outras
+                                            Informações</h3>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="RA_XTPCON">Tipo CC <strong
+                                                        class="required text-danger"></strong></label>
+                                                <select class="form-control" name="RA_XTPCON" id="RA_XTPCON"
+                                                    required="required" data-toggle="tooltip" title="Informe qual o tipo de conta corrente.
+                                    1
+                                    - Conta Corrente PJ (Pessoa Jurídica);2
+                                    - Conta Corrente PF (Pessoa Física).">
+                                                    <option value="1">Conta Corrente PJ</option>
+                                                    <option value="2">Conta Corrente PF</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <button type="button" id="buttonOInformacoes"
+                                                        class="btn btn-success btn-lg"
+                                                        onclick="btOInformacoes()">Adicionais</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="cardAdicionais" name="cardAdicionais">
+                                            <h3 class="borda linha"
+                                                style="text-align: center;width: 190px;padding: 10px 0 0 50px">
+                                                Adicionais</h3>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="RA_ADCPERI">Possui Periculosidade <strong
+                                                            class="required text-danger"></strong></label>
+                                                    <select class="form-control" name="RA_ADCPERI" id="RA_ADCPERI"
+                                                        required="required" data-toggle="tooltip"
+                                                        title="Informe se o funcionário possui Periculosidade.">
+                                                        <option value="1">Não</option>
+                                                        <option value="2">Sim</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="RA_ADCINS">Possui Insalubridade <strong
+                                                            class="required text-danger"></strong></label>
+                                                    <select class="form-control" name="RA_ADCINS" id="RA_ADCINS"
+                                                        required="required" data-toggle="tooltip" title="Informe 1=Não se o funcionário não
+                                        possuir insalubridade. Caso o
+                                        funcionário possua insalubridade,
+                                        informe o grau através das opções 2=
+                                        Insalubridade Mínima, 3= Insalubridade
+                                        Média ou 4= Insalubridade Máxima.">
+                                                        <option value="1">Não</option>
+                                                        <option value="2">Insalubridade Mínima</option>
+                                                        <option value="3">Insalubridade Média</option>
+                                                        <option value="4">Insalubridade Máxima</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <button type="button" id="buttonAdicionais"
+                                                            class="btn btn-success btn-lg"
+                                                            onclick="btAdicionais()">Endereço</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="cardEndereco" name="cardEndereco">
+                                                <h3 class="borda linha"
+                                                    style="text-align: center;width: 190px;padding: 10px 0 0 0px;height: 46px;">
+                                                    Endereço
+                                                </h3>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label for="RA_TIPENDE">Tip Endereço<strong
+                                                                class="required text-danger"></strong></label>
+                                                        <select class="form-control" name="RA_TIPENDE" id="RA_TIPENDE"
+                                                            required="required" data-toggle="tooltip" title="Informe o tipo de endereço: 1 para
+                                    Comercial ou 2 para Residencial.">
+                                                            <option value="1">Comercial</option>
+                                                            <option value="2">Residencial</option>
+                                                            <option value="X">Anonimizado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="descricaoTLog">Tipo Logradouro<strong class="required text-danger"
+                                                                    data-fluig-state-valid="0,4"
+                                                                    data-fluig-write="0,4"></strong></label>
+                                                            <div class="input-group col-sm-12">
+                                                                <input type="hidden" class="form-control zoom-tdi"
+                                                                    id="RA_LOGRTP" name="RA_LOGRTP"
+                                                                    data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                                                <input type="text" class="form-control zoom-tdi"
+                                                                    id="descricaoTLog" name="descricaoTLog"
+                                                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                                                    readonly onchange="ConcatenaLog()" 
+                                                                    required="required" analytics="true" gooddataid="2"
+                                                                    data-toggle="tooltip" title="Informe o tipo de logradouro em que o
+                                            funcionário reside.
+                                            Uso eSocial.">
+                                                                <div class="input-group-addon zoom-tdi"
+                                                                    onclick="zoomTLog(this)">
+                                                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_LOGRDSC">Desc
+                                                                Logradouro<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_LOGRDSC" type="text" class="form-control"
+                                                                name="RA_LOGRDSC" maxlength="80" data-toggle="tooltip" onchange="ConcatenaLog()"
+                                                                title="Informe o logradouro em que o
+                                        funcionário reside. Uso eSocial. ">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_LOGRNUM">Nr Logradouro<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_LOGRNUM" type="text" class="form-control" onchange="Concatena()"
+                                                                name="RA_LOGRNUM" maxlength="4" data-toggle="tooltip" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                                title="Informe o número do logradouro em que o
+                                        funcionário reside. Uso eSocial.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label"
+                                                                for="RA_ENDEREC">Endereço<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_ENDEREC" type="text" class="form-control"
+                                                                name="RA_ENDEREC" readonly maxlength="30"
+                                                                data-toggle="tooltip"
+                                                                title="Informe o endereço do Funcionário.">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_NUMENDE">Num
+                                                                Endereço<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_NUMENDE" type="text" class="form-control"
+                                                                name="RA_NUMENDE" readonly maxlength="6"
+                                                                data-toggle="tooltip"
+                                                                title="Informe o número do endereço.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_COMPLEM">Compl
+                                                                Ender<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_COMPLEM" type="text" class="form-control"
+                                                                name="RA_COMPLEM" maxlength="30" data-toggle="tooltip"
+                                                                title="Informe o Complemento do Endereço do
+                                            funcionário.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_BAIRRO">Bairro<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_BAIRRO" type="text" class="form-control"
+                                                                name="RA_BAIRRO" maxlength="15" data-toggle="tooltip"
+                                                                title="Informe o Bairro do Funcionario.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="descricaoEstado">Estado<strong
+                                                                    class="required text-danger"
+                                                                    data-fluig-state-valid="0,4"
+                                                                    data-fluig-write="0,4"></strong></label>
+                                                            <div class="input-group col-sm-12">
+                                                                <input type="hidden" class="form-control zoom-tdi"
+                                                                    id="RA_ESTADO" name="RA_ESTADO"
+                                                                    data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                                                <input type="text" class="form-control zoom-tdi"
+                                                                    id="descricaoEstado" name="descricaoEstado"
+                                                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                                                    readonly onchange="validaCampo(this)"
+                                                                    required="required" analytics="true" gooddataid="2"
+                                                                    data-toggle="tooltip" title="Selecione o Estado (Unidade de
+                                            Federacao) de origem do funcionário, conforme tabela 12 do SX5.">
+                                                                <div class="input-group-addon zoom-tdi"
+                                                                    onclick="zoomEstado(this)">
+                                                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="RA_MUNICIP">Cod Municip<strong
+                                                                    class="required text-danger"
+                                                                    data-fluig-state-valid="0,4"
+                                                                    data-fluig-write="0,4"></strong></label>
+                                                            <div class="input-group col-sm-12">
+                                                                <input type="hidden" class="form-control zoom-tdi"
+                                                                    id="RA_CODMUN" name="RA_CODMUN"
+                                                                    data-fluig-state-valid="0,4" data-fluig-write="0,4">                                                                
+                                                                <input type="text" class="form-control zoom-tdi"
+                                                                    id="RA_MUNICIP" name="RA_MUNICIP"
+                                                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                                                    readonly onchange="validaCampo(this)"
+                                                                    required="required" analytics="true" gooddataid="2"
+                                                                    data-toggle="tooltip" title="Informe o código de município do
+                                                endereço do funcionário. Uso eSocial.">
+                                                                <div class="input-group-addon zoom-tdi"
+                                                                    onclick="zoomCMuni(this)">
+                                                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_CEP">CEP<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_CEP" type="text" class="form-control"
+                                                                name="RA_CEP" maxlength="8" data-toggle="tooltip" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                                title="Informe o Código de endereçamento postal do endereço do funcionário.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_DDDCELU">DDD<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_DDDCELU" type="text" class="form-control"
+                                                                name="RA_DDDCELU" maxlength="2" data-toggle="tooltip" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                                title="Informe o DDD do celular.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_NUMCELU">Num
+                                                                Celular<strong
+                                                                    class="required text-danger"></strong></label>
+                                                            <input id="RA_NUMCELU" type="text" class="form-control"
+                                                                name="RA_NUMCELU" maxlength="10" data-toggle="tooltip" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                                title="Informe o número de celular do funcionário.">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="RA_NUMCELU">TESTAR JSON<strong
+                                                                    class="required text-danger"></strong></label>
+                                                                    <button onclick="TestarJSON();">Teste</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Campos de controle -->
+                                    <input type="hidden" class="form-control" id="isGerente" name="isGerente"
+                                        value="false">
+                                    <input type="hidden" class="form-control" id="matriculaUsuario"
+                                        name="matriculaUsuario">
+                                    <input type="hidden" id="responsavelAtendimento" name="responsavelAtendimento">
+                                    <input type="hidden" id="processo" name="processo">
+                                    <input type="hidden" id="estado" name="estado">
+                                    <input type="hidden" id="valorFormatado" name="valorFormatado">
+                                    <input type="hidden" id="qtdCandidato" name="qtdCandidato">
+                                    <input type="hidden" id="dataFormatada" name="dataFormatada">
+                                    <input type="hidden" id="modulo" name="modulo" value="Acesso ao sistema">
+                                    <input type="hidden" id="obj" name="obj" value="">
+                                    <!-- -->
+        </form>
+        
+        <script type="text/javascript">   
+         $('input[type="text"]').keyup(function (e) { $(this).val($(this).val().toUpperCase()); });
+         
+        </script>
+        <script type="text/javascript">
+            const nameField = document.querySelector("input");
+
+            nameField.addEventListener("input", () => {
+                nameField.setCustomValidity("");
+                nameField.checkValidity();
+                console.log(nameField.checkValidity());
+            });
+
+            nameField.addEventListener("invalid", () => {
+                nameField.setCustomValidity("Please fill in your First Name.");
+            });
+        </script>
+        <script>
+            $("#RA_CTDEPSA").keyup(function() {
+                this.value = ("000000000000" + this.value).slice(-12)
+            });
+        </script>       
+        <script>
+            $(document).ready(function () {
+                $('.date').mask('11/11/1111');
+                $('.time').mask('00:00:00');
+                $('.date_time').mask('00/00/0000 00:00:00');
+                $('.cep').mask('00000-000');
+                $('.phone').mask('0000-0000');
+                $('.phone_with_ddd').mask('(00) 0000-0000');
+                $("#RA_HRSMES").mask('000.0000');
+                $('.mixed').mask('AAA 000-S0S');
+                $('.cpf').mask('000.000.000-00', { reverse: true });
+                $('#RA_SALARIO').mask('000.000.000.000.000,00', {reverse: true});
+                $('.money').mask('000.000.000.000.000,00', { reverse: true });
+            });
+        </script>
+        <script type="text/javascript">
+            $("#substituicaoNome").hide();
+            $("#indicacaoNome").hide();
+            $("#indicacaoContato").hide();
+            $("#tipoFolguista").hide();
+            $('#cardFuncionais').show();
+            $('#cardDocumentos').show();
+            $('#cardBeneficios').show();
+            $('#cardPonto').show();
+            $('#cardInformacoes').show();
+            $('#cardAdicionais').show();
+            $('#cardEndereco').show();
+
+            function campos() {
+                var x = document.getElementById("headCount").value;
+            }
+        </script>
+        <script type="text/javascript">
+
+
+
+
+            function myFunction1() {
+                var x = document.getElementById("headCount").value;
+                //document.getElementById("substituicaoNome").innerHTML = " " + x;    
+
+                if (x == "substituicao") {
+                    $("#substituicaoNome").show();
+                } else if (x == "vaga_nova") {
+                    $("#substituicaoNome").hide();
+                } else if (x == "") {
+                    $("#substituicaoNome").hide();
+                }
+            };
+
+            function myFunction2() {
+                var x = document.getElementById("indicacao").value;
+                //document.getElementById("indicacaoNome").innerHTML = " " + x;
+                //document.getElementById("indicacaoContato").innerHTML = " " + x;
+
+                if (x == "sim") {
+                    $("#indicacaoNome").show();
+                    $("#indicacaoContato").show();
+                } else if (x == "nao") {
+                    $("#indicacaoNome").hide();
+                    $("#indicacaoContato").hide();
+                } else if (x == "") {
+                    $("#indicacaoNome").hide();
+                    $("#indicacaoContato").hide();
+                }
+            };
+
+            function myFunction3() {
+                var x = document.getElementById("Tcontratacao").value;
+                //document.getElementById("substituicaoNome").innerHTML = " " + x;    
+
+                if (x == "FOLGUISTA-FERISTA") {
+                    $("#tipoFolguista").show();
+                } else if (x == "") {
+                    $("#tipoFolguista").hide();
+                } else if (x == "PJ") {
+                    $("#tipoFolguista").hide();
+                } else if (x == "CLT") {
+                    $("#tipoFolguista").hide();
+                } else if (x == "RPA") {
+                    $("#tipoFolguista").hide();
+                }
+            };
+
+
+        </script>
+        <script>
+            function lettersOnly(evt) {
+                evt = (evt) ? evt : event;
+                var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                    ((evt.which) ? evt.which : 0));
+                if (charCode > 32 && (charCode < 65 || charCode > 90) &&
+                    (charCode < 97 || charCode > 122)) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Digite Apenas Letras sem Acentos'
+                    })
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
+        <script type="text/javascript" src="javaAdmissao.js"></script>
+        
+
+</body>
+
+</html>

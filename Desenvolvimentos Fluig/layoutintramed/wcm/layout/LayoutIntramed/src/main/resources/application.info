@@ -1,0 +1,19 @@
+application.type=layout
+application.code=LayoutIntramed
+application.title=Layout Intramed
+application.description=Layout Intramed
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=MEDMAIS-36
+developer.name=ewaldo.filho
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=LayoutIntramed
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotMenu=menu
+slot.SlotUsePolicy=usepolicy
+application.icon=icon.png
+

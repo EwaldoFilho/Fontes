@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Form</title>
+
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+    <script src="/resources/js/jquery/jquery.js"></script>
+    <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="/resources/js/mustache/mustache-min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+    <!-- CUSTOM -->
+    <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+    <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+    <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+    <!-- <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/1.css' type='text/css' rel='stylesheet' />-->
+
+
+
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <script type="text/javascript" src="zoom.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="scriptInputsControl.js"></script>
+    
+
+</head>
+
+<body class="fluig-style-guide">
+
+    <form name="form" role="form">
+        <div class="row text-center" data-type="header" data-field-name="headerCheckListAmb">
+            <br>
+            <div class="col-md-2">
+                <br>
+                <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                    style="width: auto; height: 30px">
+            </div>
+            <div class="col-md-8">
+
+                <h2 class="text-center" id="tituloSolicitacaoFinalizada">
+                   		Checklist Geral - VTR Socorrista
+                </h2>
+            </div>
+            <div class="col-md-2" id="logo-right">
+                <br>
+                <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                    style="width: auto; height: 30px">
+            </div>
+            <br>
+        </div>
+        <br><br>
+        
+        <div class="panel-body fs-sm-margin-top">
+            <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com
+                * são de preenchimento obrigatório.</div>
+        </div>
+
+        <div class="panel panel-success fs-xl-margin" id="panelDadosFuncionario" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                    <b>Dados do Funcionário</b>
+                </h3>
+            </div>
+
+            <div class="panel-body fs-sm-margin-top">
+
+                <div class="row">
+                    <div class="col-md-2 ">
+                        <div class="form-field" data-type="date" data-show-properties="" data-field-name="dataAbertura" style="">
+                            <div class="form-input">
+                                <div class="form-group"><label>Data</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="flaticon flaticon-calendar icon-sm" aria-hidden="true"></i></span>
+                                        <input id="date0" type="text" class="form-control" name="dataAbertura" mask="00/00/0000"
+                                            data-date="" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <label class="control-label" for="solicitanteNome">Nome do Solicitante</label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-addon">
+
+                                    <i class="flaticon flaticon-folder-person icon-sm" aria-hidden="true"></i></span>
+
+                                <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                                <input type="hidden" id="ativAtual" name="ativAtual" />
+
+                                <input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+
+                            <label class="control-label" for="solicitanteEmail">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-drafts icon-sm" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="centroCusto">Centro de Custo:<strong class="required text-danger"></strong></label>
+                        <div class="input-group" readonly="">
+                            <span class="input-group-addon">
+                                <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                            <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                            <input type="text" class="form-control zoom-tdi" id="centroCusto" name="centroCusto"
+                                onchange="validaCampo(this)" required="required" readonly="readonly"
+                                placeholder="Clique na lupa para selecionar">
+                            <div class="input-group-addon zoom-tdi"  id="bottom" onchange="habilitaBtn()" onclick="zoomCusto(this)" data-toggle="tooltip"
+                                data-placement="bottom" title="Pesquisar empresa" >
+                                <i class="flaticon flaticon-search icon-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-2">
+                     <!--   <div class="form-group">
+
+                            <label class="control-label" for="horario">Horário</label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-addon">
+
+                                    <i class="flaticon flaticon-folder-person icon-sm" aria-hidden="true"></i></span>
+
+                                <input type="text" class="form-control" id="horarioCheck" name="horarioCheck"
+                                    readonly="readonly" />
+                            </div>
+                        </div> -->
+                        
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="periodo"
+                            style="position: relative; left: 0px; top: 0px;">
+                            <div class="form-input">
+                                <div class="form-group"><label>Período<strong
+                                            class="required text-danger"></strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="flaticon flaticon-checkbox icon-sm"
+                                                aria-hidden="true"></i></span>
+                                        <select class="form-control input" name="periodo" id="periodo" analytics="true"
+                                            gooddataid="2" required="required">
+                                            <option value=""></option>
+                                            <option value="DIURNO">Diurno</option>
+                                            <option value="NOTURNO">Noturno</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel panel-danger fs-xl-margin" id="panelMaterialArmario" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                    <b>MATERIAL EM GERAL</b>
+                </h3>
+            </div>
+
+            <div class="panel-body fs-sm-margin-top">
+                <div class="row">   
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Materiais</th>
+                                <th>Conformidade</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input value="AGUA" id="material1" name="material1" readonly></td>
+                                <td><select class="form-control" id="conforme1" name="conforme1" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem1" id="qtdItem1"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="AR CONDICIONADO" id="material2" name="material2" readonly></td>
+                                <td><select class="form-control" id="conforme2" name="conforme2" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem2" id="qtdItem2" min="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="CABINE" id="material3" name="material3" readonly></td>
+                                <td><select class="form-control" id="conforme3" name="conforme3" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem3" id="qtdItem3"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="CHAVES" id="material4" name="material4" readonly></td>
+                                <td><select class="form-control" id="conforme4" name="conforme4" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem4" id="qtdItem4"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="CONES" id="material5" name="material5" readonly></td>
+                                <td><select class="form-control" id="conforme5" name="conforme5" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem5" id="qtdItem5"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="CORDAS" id="material6" name="material6" readonly></td>
+                                <td><select class="form-control" id="conforme6" name="conforme6" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem6" id="qtdItem6"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="ESTEPE" id="material7" name="material7" readonly></td>
+                                <td><select class="form-control" id="conforme7" name="conforme7" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem7" id="qtdItem7"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="EXTENSAO" id="material8" name="material8" readonly></td>
+                                <td><select class="form-control" id="conforme8" name="conforme8" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem8" id="qtdItem8"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="EXTINTOR DA VTR" id="material9" name="material9" readonly></td>
+                                <td><select class="form-control" id="conforme9" name="conforme9" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem9" id="qtdItem9"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="EXTINTOR DE CO2" id="material10" name="material10" readonly></td>
+                                <td><select class="form-control" id="conforme10" name="conforme10" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem10" id="qtdItem10"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="EXTINTOR DE PO QUIMICO" id="material11" name="material11" readonly></td>
+                                <td><select class="form-control" id="conforme11" name="conforme11" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem11" id="qtdItem11"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="FAROIS" id="material12" name="material12" readonly></td>
+                                <td><select class="form-control" id="conforme12" name="conforme12" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem12" id="qtdItem12"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="GIROFLEX" id="material13" name="material13" readonly></td>
+                                <td><select class="form-control" id="conforme13" name="conforme13" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem13" id="qtdItem13"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="LANTERNAS" id="material14" name="material14" readonly></td>
+                                <td><select class="form-control" id="conforme14" name="conforme14" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem14" id="qtdItem14"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="LATARIA EXTERNA" id="material15" name="material15" readonly></td>
+                                <td><select class="form-control" id="conforme15" name="conforme15" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem15" id="qtdItem15"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="MACACO" id="material16" name="material16" readonly></td>
+                                <td><select class="form-control" id="conforme16" name="conforme16" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem16" id="qtdItem16"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="MAPA DE GRADE" id="material17" name="material17" readonly></td>
+                                <td><select class="form-control" id="conforme17" name="conforme17" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem17" id="qtdItem17"></td>
+                            </tr>                                                           
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel panel-danger fs-xl-margin" id="panelEspecifico" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                    <b>MATERIAL ESPECÍFICO</b>
+                </h3>
+            </div>
+
+            <div class="panel-body fs-sm-margin-top">
+                <div class="row">   
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Materiais</th>
+                                <th>Conformidade</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input value="OLEO" id="material30" name="material30" readonly></td>
+                                <td><select class="form-control" id="conforme30" name="conforme30" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem30" id="qtdItem30"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="PAINEL DE INSTRUMENTOS" id="material31" name="material31" readonly></td>
+                                <td><select class="form-control" id="conforme31" name="conforme31" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem31" id="qtdItem31"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="PE DE CABRA" id="material32" name="material32" readonly></td>
+                                <td><select class="form-control" id="conforme32" name="conforme32" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem32" id="qtdItem32"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="PNEUS" id="material33" name="material33" readonly></td>
+                                <td><select class="form-control" id="conforme33" name="conforme33" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem33" id="qtdItem33"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="PRANCHETA" id="material34" name="material34" readonly></td>
+                                <td><select class="form-control" id="conforme34" name="conforme34" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem34" id="qtdItem34"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="RADIO FIXO 01 UNID" id="material35" name="material35" readonly></td>
+                                <td><select class="form-control" id="conforme35" name="conforme35" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem35" id="qtdItem35"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="RADIO MOVEL 05 UNID" id="material36" name="material36" readonly></td>
+                                <td><select class="form-control" id="conforme36" name="conforme36" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem36" id="qtdItem36"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="RE" id="material37" name="material37" readonly></td>
+                                <td><select class="form-control" id="conforme37" name="conforme37" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem37" id="qtdItem37"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="SETAS" id="material38" name="material38" readonly></td>
+                                <td><select class="form-control" id="conforme38" name="conforme38" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem38" id="qtdItem38"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="SIRENE" id="material39" name="material39" readonly></td>
+                                <td><select class="form-control" id="conforme39" name="conforme39" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem39" id="qtdItem39"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="TRIANGULO" id="material40" name="material40" readonly></td>
+                                <td><select class="form-control" id="conforme40" name="conforme40" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem40" id="qtdItem40"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="VIDROS" id="material41" name="material41" readonly></td>
+                                <td><select class="form-control" id="conforme41" name="conforme41" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem41" id="qtdItem41"></td>
+                            </tr>
+                            <tr>
+                                <td><input value="CABO TRASF ENERGIA" id="material42" name="material42" readonly></td>
+                                <td><select class="form-control" id="conforme42" name="conforme42" analytics="true" gooddataid="13">
+                                    <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                    <option value="SIM" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Sim</option>
+                                    <option value="NAO" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">Não</option>                                
+                                </select></td>
+                                <td><input type="number" min="0"  name="qtdItem42" id="qtdItem42"></td>
+                            </tr>     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>     
+
+        <div class="panel panel-danger fs-xl-margin" id="panelPlanoAcao" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                    <b>Plano de Ação
+                    </b>
+                </h3>
+            </div>
+
+            <div class="panel-body fs-sm-margin-top">
+               
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-field" data-type="textarea" data-show-properties=""
+                            data-field-name="planoAcao" style="">
+                            <div class="form-input">
+                                <div class="form-group"><label>Plano de Ação<strong class="required text-danger"></strong></label><textarea
+                                        class="form-control" rows="3" id="planoAcao" name="planoAcao"  placeholder="Detalhe o plano de ação no caso da não conformidade de um ou vários itens, lembrando de detalhar a execução e prazo, caso necessário."
+                                        data-size="big"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+    <script language="javascript">
+    	var indice = 0; // contador para gerar um valor para cada anexo
+	
+	    function showCamera() {
+	        indice++;
+	        JSInterface.showCamera("Nome do arquivo_" + indice);
+	                // alterei o css para gerar uma confirmação visual após o click
+	        $("#inputAnexo___" + indice).removeClass().addClass("btn btn-success"); 
+	    }
+	    function disablePullToRefresh(){
+            return true;
+        }
+	</script>
+</body>
+
+</html>

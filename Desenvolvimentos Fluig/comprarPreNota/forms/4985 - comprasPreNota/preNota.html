@@ -1,0 +1,131 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	      <script type="text/javascript" src="comprasPreNota.js"></script>
+	            <script type="text/javascript" src="FLUIGIP.js"></script>
+	      
+	
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<div class="fs-xl-margin-left fs-md-margin-right">
+			<div class="row text-center" data-type="header"  data-field-name="headerContent">
+				<h1></h1>
+			</div>
+			<form class="form-horizontal fs-sm-margin-top" name="form" role="form">
+				<div class="row" data-type="content"  data-field-name="contentNota">				
+					 <div class="panel panel-success fs-xl-margin-right">
+						<div class="panel-heading">
+							<p class="panel-title">			
+								<i class="flaticon flaticon-documents icon-md"></i>				   
+								<strong>Dados da nota</strong>
+						   </p>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<!-- <div class="form-group col-sm-4">
+									<label for="tipoNota">Tipo Nota<strong class="required text-danger">*</strong></label>
+									<input type="text" class="form-control fs-xs-margin-left" id="tipoNota" name="tipoNota">
+								</div>-->
+								  <div class="form-group col-sm-4 ">
+									 <label for="entrega">Tipo da nota<strong class="required text-danger"></strong></label>                        
+				                           <div class="input-group col-sm-12">                  
+				                              <select class="form-control" name="grupo" id="grupo" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+				                                 <option value="NORMAL" data-fluig-state-valid="0,4" data-fluig-write="0,4">Normal</option>
+				                                 <option value="DEVOLUCAO" data-fluig-state-valid="0,4" data-fluig-write="0,4">Devolução</option>		
+				                                 <option value="BENEFICIADO" data-fluig-state-valid="0,4" data-fluig-write="0,4">Beneficiado</option>
+				                                 <option value="COMPLEMENTO" data-fluig-state-valid="0,4" data-fluig-write="0,4">Complemento</option>
+				                              </select> 
+				                           </div>
+				                        </div>
+								
+								<div class="form-group col-sm-4 fs-sm-margin-left">
+									<label for="serieNota">Série<strong class="required text-danger">*</strong></label>                       
+									<input type="text" class="form-control fs-xs-margin-left" id="serieNota" name="serieNota">
+								</div>
+								<div class="form-group col-sm-4 fs-sm-margin-left">	
+									<label for="numeroNota">Número da nota<strong class="required text-danger">*</strong></label>
+									<input type="text" class="form-control fs-xs-margin-left" id="numeroNota" name="numeroNota">									
+								</div>
+								
+									 <div class="form-group col-sm-4 fs-sm-margin-left"> 
+				                           <label for="Fornecedor">Fornecedor<strong class="required text-danger"></strong></label>
+				                           <div class="input-group col-sm-12">                  
+				                              <input type="hidden" id="codFornecedor" name="codFornecedor" data-fluig-state-valid="0,4" data-fluig-write="0,4">     
+				                              <input type="text" class="form-control zoom-tdi" id="fornecedor" name="fornecedor" data-fluig-state-valid="0,4" data-fluig-write="0,4"  onchange="validaCampo(this)" required="required">                        
+				                              <div class="input-group-addon zoom-tdi" onclick="zoomFornecedor(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquise o fornecedor"><i class="flaticon flaticon-search icon-sm"></i></div> 
+				                           </div>
+				                        </div>
+				                        
+						                        <div class="form-group col-sm-4 fs-sm-margin-left"> 
+						                           <label for="loja">Fornecedor Loja <strong class="required text-danger"></strong></label>
+						                           <div class="input-group col-sm-12">                  
+						                              <input type="hidden" id="codLoja" name="codLoja" data-fluig-state-valid="0,4" data-fluig-write="0,4">     
+						                              <input type="text" class="form-control zoom-tdi" id="loja" name="loja" data-fluig-state-valid="0,4" data-fluig-write="0,4"  onchange="validaCampo(this)" required="required">                        
+						                              <div class="input-group-addon zoom-tdi" onclick="zoomFonecedor(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquise a loja do fornecedor"><i class="flaticon flaticon-search icon-sm"></i></div> 
+						                           </div>
+						                        </div>
+						                           <div class="form-group col-sm-4 fs-sm-margin-left"> 
+						                           <label for="documento">Especificar documento <strong class="required text-danger"></strong></label>
+						                           <div class="input-group col-sm-12">                  
+						                              <input type="hidden" id="codDoc" name="codDoc" data-fluig-state-valid="0,4" data-fluig-write="0,4">     
+						                              <input type="text" class="form-control zoom-tdi" id="documento" name="documento" data-fluig-state-valid="0,4" data-fluig-write="0,4"  onchange="validaCampo(this)" required="required">                        
+						                              <div class="input-group-addon zoom-tdi" onclick="zoomDocumento(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquise o tipo de documento"><i class="flaticon flaticon-search icon-sm"></i></div> 
+						                           </div>
+						                        </div>
+						                         <div class="form-group col-sm-4 fs-sm-margin-left"> 
+						                           <label for="documento">Uf.Origem <strong class="required text-danger"></strong></label>
+						                           <div class="input-group col-sm-12">                  
+						                              <input type="hidden" id="ufOrigem" name="ufOrigem" data-fluig-state-valid="0,4" data-fluig-write="0,4">     
+						                              <input type="text" class="form-control zoom-tdi" id="origem" name="origem" data-fluig-state-valid="0,4" data-fluig-write="0,4"  onchange="validaCampo(this)" required="required">                        
+						                              <div class="input-group-addon zoom-tdi" onclick="zoomOrigem(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquise a origem do produto"><i class="flaticon flaticon-search icon-sm"></i></div> 
+						                           </div>
+						                        </div>
+						                               <div class="form-group col-sm-4 fs-md-margin-left"> 
+							                           <div class="input-group col-sm-12">                  
+							                              <label for="entrega">Data de  Emissão</label>                        
+							                              <input type="text" name="estimativaEntrega" id="estimativaEntrega" class="form-control" data-fluig-state-valid="0,4" data-fluig-write="0,4" placeholder="dd/mm/aaaa">                                                                  
+							                           </div>
+							                        </div>
+							                        <div class="form-group col-sm-4 fs-md-margin-left ">
+									 <label for="formPro">Formúlario próprio<strong class="required text-danger"></strong></label>                        
+				                           <div class="input-group col-sm-12">                  
+				                              <select class="form-control" name="formPro" id="formPro" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+				                                 <option value="SIM" data-fluig-state-valid="0,4" data-fluig-write="0,4">Sim</option>
+				                                 <option value="NAO" data-fluig-state-valid="0,4" data-fluig-write="0,4">Não</option>		
+				                                 
+				                              </select> 
+				                           </div>
+				                        </div>
+								
+				                        
+							</div>
+							
+
+							<div class="form-group col-sm-12">
+
+							</div>
+						</div>						
+					</div> 
+
+
+			<!--  		<div id="produtosView"></div> -->
+
+
+
+				</div>
+			</form>
+							
+		</div>
+	</div>
+	<script type="text/javascript" src="js/scriptApp.js">
+	</script>
+</body>
+</html>
