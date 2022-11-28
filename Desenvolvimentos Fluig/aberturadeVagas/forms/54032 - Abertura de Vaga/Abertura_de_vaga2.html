@@ -1,0 +1,501 @@
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <script type="text/javascript" src="anexos.js" charset="utf-8"></script>
+    <script type="text/javascript" src="custom.js"></script>
+    <script type="text/javascript" src="camposZoom.js"></script>
+    <script type="text/javascript" src="inputs.js"></script>
+    <script type="text/javascript" src="scriptBuscarBancos.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="/js/scripttAtribuicaoProcesso.js"></script>
+    <script type="text/javascript" src="scriptGerenteResponsavel.js"></script>
+    
+    
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <div class="row text-center" data-type="header" data-field-name="headerRetirarMateriais">
+                <div class="col-md-2">
+                    <img src="imagens/Logo1.jpeg" style="width: auto; height: 100px">
+                </div>
+                <div class="col-md-8">
+
+                    <h2 class="text-center" id="tituloSolicitacaoFinalizada">
+                        Solicitação de Abertura de Vagas
+                    </h2>
+                </div>
+                <div class="col-md-2" id="logo-right">
+                    <img src="imagens/Logo2.jpeg" style="width: auto; height: 100px">
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitacao">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados da solicitação</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                               	
+                    <div class="row">
+                        <div class="col-md-1 ">
+                            <div class="form-group">
+                                <label class="control-label" for="solicitanteEmail">Data</label>
+                                <input id="datasolicitacao" type="text" class="form-control" name="datasolicitacao" readonly/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="solicitanteNome">Nome do Solicitante</label>
+                                <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                                <input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="headcount">Headcount<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="headCount" name="headCount" onchange="myFunction1()" >
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="vaga_nova" data-fluig-state-valid="0,4" data-fluig-write="0,4">Nova vaga</option>
+                                <option value="substituicao" data-fluig-state-valid="0,4" data-fluig-write="0,4">Substituição</option>
+                            </select>
+                        </div>                        
+                        <div class="col-md-2">
+                            <label for="Tcontratacao">Tipo de contratação<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="Tcontratacao" name="Tcontratacao" analytics="true" onchange="myFunction3()" gooddataid="13">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="PJ" data-fluig-state-valid="0,4" data-fluig-write="0,4">PJ</option>
+                                <option value="CLT" data-fluig-state-valid="0,4" data-fluig-write="0,4">CLT</option>
+                                <option value="RPA" data-fluig-state-valid="0,4" data-fluig-write="0,4">RPA</option>
+                                <option value="FOLGUISTA-FERISTA" data-fluig-state-valid="0,4" data-fluig-write="0,4">Folguista / Ferista </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="substituicaoNome">
+                                <label class="control-label" for="substituicaoNome" data-fluig-state-valid="0,4" data-fluig-write="0,4">Substituição de:</label>
+                                <input type="text" class="form-control" id="substituicaoNome" name="substituicaoNome" data-fluig-state-valid="0,4" data-fluig-write="0,4" placeholder="Profissional que será substituído"/>
+                            </div>
+                        </div>
+                        <div class="col-md-1" id="tipoFolguista">
+                            <label for="tipoFolguista">Folguista/Ferista<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="tipoFolguista" name="tipoFolguista" analytics="true" gooddataid="13">
+                                <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                <option value="PJFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">PJ</option>
+                                <option value="CLTFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">CLT</option>
+                                <option value="RPAFOLGUISTA-FERISTA" data-fluig-state-valid="0,4,5,7,236,12" data-fluig-write="0,4">RPA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Contrato</label>
+                                <label for="centroCusto">Centro de custo<strong class="required text-danger" data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codCentroCusto"
+                                        name="codCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    <input type="text" class="form-control zoom-tdi" id="descricaoCentroCusto"
+                                        name="descricaoCentroCusto" data-fluig-state-valid="0,4"
+                                        data-fluig-write="0,4" onchange="validaCampo(this)" required="required"
+                                        analytics="true" gooddataid="2">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)"
+                                        data-toggle="tooltip" data-placement="bottom" title="Pesquisar centro de custo">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Tcontrato">Tipo de contrato<strong class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codTcontrato" name="codTcontrato">
+								    <select class="form-control"  name="descricaoTcontrato" id="descricaoTcontrato" data-fluig-state-valid="0,4" data-fluig-write="0,4" analytics="true" gooddataid="2">
+                                    	<option value=" " data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                        <option value="AD" data-fluig-state-valid="0,4" data-fluig-write="0,4">ADMINISTRATIVO</option>
+                                        <option value="AE" data-fluig-state-valid="0,4" data-fluig-write="0,4">AEROPORTO</option>     
+                                        <option value="CA" data-fluig-state-valid="0,4" data-fluig-write="0,4">CAIXA DE ASSISTENCIA</option>
+                                        <option value="EM" data-fluig-state-valid="0,4" data-fluig-write="0,4">ECONOMIA MISTA</option>
+                                        <option value="EN" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENERGIA</option>      
+                                        <option value="ES" data-fluig-state-valid="0,4" data-fluig-write="0,4">ESCOLA</option>
+                                        <option value="ET" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENTRETENIMENTO</option>
+                                        <option value="EP" data-fluig-state-valid="0,4" data-fluig-write="0,4">ENTIDADES PRIVADAS</option>
+                                        <option value="FE" data-fluig-state-valid="0,4" data-fluig-write="0,4">FERROVIA</option>
+                                        <option value="GO" data-fluig-state-valid="0,4" data-fluig-write="0,4">GOVERNO</option>  
+                                        <option value="MN" data-fluig-state-valid="0,4" data-fluig-write="0,4">MINERACAO</option>      
+                                        <option value="OG" data-fluig-state-valid="0,4" data-fluig-write="0,4">OLEO E GAS</option>
+                                        <option value="PE" data-fluig-state-valid="0,4" data-fluig-write="0,4">PETROLIFERA</option>      
+                                        <option value="PO" data-fluig-state-valid="0,4" data-fluig-write="0,4">PORTO</option>
+                                        <option value="RO" data-fluig-state-valid="0,4" data-fluig-write="0,4">RODOVIA</option>      
+                                        <option value="RF" data-fluig-state-valid="0,4" data-fluig-write="0,4">REFINARIAS</option>
+                                        <option value="SP" data-fluig-state-valid="0,4" data-fluig-write="0,4">SHOPPING</option>
+                                        <option value="TN" data-fluig-state-valid="0,4" data-fluig-write="0,4">TURISMO NAUTICO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cargos">Cargos<strong class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codCargos" name="codCargos">
+                                    <!--<input type="text" class="form-control zoom-tdi" id="descricaoCargos" name="descricaoCargos" data-fluig-state-valid="0,12,16" data-fluig-write="0,12,16" onchange="validaCampo(this)" required="required" analytics="true" gooddataid="2">
+                                     <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar Cargos">
+                                        <i class="flaticon flaticon-search icon-sm"></i> 
+                                    </div>-->
+                                    <select class="form-control" name="cargos" dataset="vagas-buscar-cargos" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" analytics="true" gooddataid="4" >
+			                            <option value="Opção 1">Opção 1</option>
+			                            <option value="Opção 2">Opção 2</option>
+			                        </select>
+			                        
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group" id="localVaga">
+                                <label class="control-label" for="localVaga">Local da Vaga/Cidade</label>
+                                <input type="text" class="form-control" id="localVaga" name="localVaga" />
+                            </div>
+                        </div>
+                    	<div class="col-md-3">
+                            <label for="indicacao">Tem indicação<strong class="required text-danger"></strong></label>
+                            <select class="form-control" id="indicacao" name="indicacao" analytics="true"  gooddataid="13" onchange="myFunction2()">
+                                <option value=""></option>
+                                <option value="sim">SIM</option>
+                                <option value="nao">NAO</option>
+                            </select>
+                        </div>
+                    	<div class="col-md-3">
+                            <div class="form-group" id="indicacaoNome">
+                                <label class="control-label" for="indicacaoNome">Nome</label>
+                                <input type="text" class="form-control" id="indicacaoNome" name="indicacaoNome" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="indicacaoContato">
+                                <label class="control-label" for="indicacaoContato">Contato</label>
+                                <input type="text" class="form-control" id="indicacaoContato" name="indicacaoContato" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="dataDesejada">Data desejada para inicio<strong class="required text-danger"></strong></label>
+                                <input id="dataDesejada" type="Date" class="form-control" name="dataDesejada">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="dataDocumentacao">Data de retorno da documentação<strong class="required text-danger"></strong></label> 
+                            <input type="date" name="dataDocumentacao" id="dataDocumentacao" class="form-control">
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <label for="cargahora">Carga Horária Semanal/Escala<strong class="required text-danger"></strong></label> 
+                            <input type="text" name="cargahora" id="cargahora"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class=" col-md-3">
+                            <label for="salario">Salário<strong class="required text-danger"></strong></label>
+                            <input type="text" name="salario" id="salario" class="form-control" mask="R$99999,99">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="adicional">Adicional<strong class="required text-danger"></strong></label>
+                            <input type="text" name="adicional" id="adicional" class="form-control"mask="R$99999,99">
+                        </div>
+                        <div class="col-md-3" data-field-name="valeRefeicao">
+                            <label for="adicionais">Valor diario vale refeição<strong class="required text-danger"></strong></label>
+                            <input type="text" name="valeRefeicao" id="valeRefeicao" class="form-control" mask="R$99999,99">
+                        </div>
+
+                        <div class=" col-md-3" data-field-name="adicionais">
+                            <label for="valorTransporte">Valor diário vale transporte<strong class="required text-danger"></strong></label>
+                            <input type="text" name="valorTransporte" id="valorTransporte" class="form-control" mask="R$99999,99">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Requisitos obrigatorios<strong class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" id="cursos" name="cursos" rows="4" cols="16"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Experiência profissional<strong class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" id="experienciaPro" name="experienciaPro" rows="4" cols="16"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Atividades a serem desenvolvidas<strong class="required text-danger"></strong></label>
+                            <textarea type="text" class="form-control" id="atividade" name="atividade" rows="4"
+                                cols="33"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Observação</label>
+                            <textarea type="text" class="form-control" id="observacao" name="observacao" rows="4" cols="33"></textarea>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="panel panel-danger fs-xl-margin-top" id="panelDadosCandidato">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados dos candidatos</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table tablename="dependentes" id="tblDependente"
+                                    class="table table-bordered tabelaPaiFilho" nodeletebutton=true noaddbutton=true>
+                                    <thead class="fs-display-none">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="tdDeleteRow"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fs-v-align-middle fs-font-bold count" style="width: 1%;"></td>
+                                            <td>
+                                                <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Nome </label>
+                                                            <input type="text" class="form-control input-sm" id="nome"
+                                                                name="nome" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Telefone</label>
+                                                            <input type="text" class="form-control input-sm"
+                                                                id="telefoneTabela" name="telefoneTabela" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Email</label>
+                                                            <input type="text" class="form-control input-sm"
+                                                                id="Emailtabela" name="Emailtabela" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Observação</label>
+                                                            <textarea style="height: 36px;" type="text" name="columna_1" class="form-control" rows="4" cols="2"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle fs-text-center tdDeleteRow" style="width: 1%;">
+                                                <div>
+                                                    <i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer fs-color-danger"
+                                                        title="Remover Dependente"
+                                                        onclick="destroyRowDependente(this)"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+	                    <div class="col-md-12 btnAddNewRow" id="btnAddNewRowDependente">
+	                    	<button class="btn btn-sm btn-success" onClick="addNewRowDependente()">Novo Candidato</button>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosContratado">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados do contratado</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="solicitanteEmail">Data real de admissão<strong class="required text-danger"></strong></label>
+                                <input id="dataRealAdemissao" type="Date" class="form-control" name="dataRealAdemissao">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="nomeColaborado">Nome do colaborador<strong class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="nomeColaborado" name="nomeColaborado" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="emalColaborador">Email do colaborador<strong class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="emalColaborador" name="emalColaborador" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="dataInicio">Data de início desejada<strong class="required text-danger"></strong></label>
+                                <input type="Date" class="form-control" id="dataInicio" name="dataInicio" value="" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="cpf">CPF<strong class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="cpf" name="cpf" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="cpf">Número para contato<strong class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="numeroColaborado" name="numeroColaborado" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="pix">Pix<strong class="required text-danger"></strong></label>
+                                <input type="text" class="form-control" id="pix" name="pix" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="banco2">Banco<strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="banco" id="banco" required="required">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="col-md-2">
+                            <label for="tipoConta">Tipo de conta<strong class="required text-danger"></strong></label>
+                            <select class="form-control" name="tipoConta" id="tipoConta" required="required">
+                                <option value=""></option>
+                                <option value="cc">Conta corrente</option>
+                                <option value="cpg">Conta de pagamento</option>
+                                <option value="cp">Conta poupança</option>
+                                <option value="cs">Conta-salário</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label for="conta">N° conta<strong class="required text-danger"></strong></label>
+                            <input type="number" class="form-control" name="conta" id="conta" value="" placeholder=""
+                                data-size="big" data-only-numbers="true" maxlength="10" required="required">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="agencia">DV<strong class="required text-danger"></strong></label>
+                            <input type="number" class="form-control" name="agencia" id="agencia" value=""
+                                placeholder="" data-size="big" data-only-numbers="true" maxlength="5"
+                                required="required">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="angencia">Agência<strong class="required text-danger"></strong></label>
+                            <input type="number" class="form-control" name="angencia" id="angencia" value="" placeholder=""
+                                data-size="big" data-only-numbers="true" maxlength="10" required="required">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="agencia">DV<strong class="required text-danger"></strong></label>
+                            <input type="number" class="form-control" name="agenciaDV" id="agenciaDV" value=""
+                                placeholder="" data-size="big" data-only-numbers="true" maxlength="5"
+                                required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!-- Campos de controle -->
+            <input type="hidden" class="form-control" id="isGerente" name="isGerente" value="false">
+            <input type="hidden" class="form-control" id="matriculaUsuario" name="matriculaUsuario">
+            <input type="hidden" id="responsavelAtendimento" name="responsavelAtendimento">
+            <input type="hidden" id="aberturaAso" name="aberturaAso" value='Efetuar agendamento de ASO para Admissional'>
+            <!-- -->
+        </form>
+    </div>
+       <script type="text/javascript">
+   		$("#substituicaoNome").hide();
+        $("#indicacaoNome").hide();
+        $("#indicacaoContato").hide();
+        $("#tipoFolguista").hide();
+
+
+        function myFunction1() {
+        var x = document.getElementById("headCount").value;       
+        //document.getElementById("substituicaoNome").innerHTML = " " + x;    
+
+        if(x == "substituicao"){
+        $("#substituicaoNome").show();
+        }else if (x =="vaga_nova"){
+        $("#substituicaoNome").hide();
+        }else if (x ==""){
+        $("#substituicaoNome").hide();
+        }
+    };
+
+    function myFunction2() {
+        var x = document.getElementById("indicacao").value;
+       //document.getElementById("indicacaoNome").innerHTML = " " + x;
+       //document.getElementById("indicacaoContato").innerHTML = " " + x;
+  
+        if(x == "sim"){
+        $("#indicacaoNome").show();
+        $("#indicacaoContato").show();
+        }else if(x == "nao"){
+        $("#indicacaoNome").hide();
+        $("#indicacaoContato").hide();
+        }else if(x == ""){
+        $("#indicacaoNome").hide();
+        $("#indicacaoContato").hide();
+        }
+    };
+
+    function myFunction3() {
+        var x = document.getElementById("Tcontratacao").value;       
+        //document.getElementById("substituicaoNome").innerHTML = " " + x;    
+
+        if(x == "FOLGUISTA-FERISTA"){
+        $("#tipoFolguista").show();
+        }else if (x ==""){
+        $("#tipoFolguista").hide();
+        }else if (x =="PJ"){
+        $("#tipoFolguista").hide();
+        }else if (x =="CLT"){
+        $("#tipoFolguista").hide();
+        }else if (x =="RPA"){
+        $("#tipoFolguista").hide();
+        }
+    };
+	 	
+		
+   </script>
+</body>
+
+
+</html>

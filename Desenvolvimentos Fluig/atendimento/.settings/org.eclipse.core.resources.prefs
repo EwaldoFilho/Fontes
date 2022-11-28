@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//wcm/widget/atendimento/src/main/resources/application.info=utf8
+encoding//wcm/widget/atendimento/src/main/resources/atendimento.properties=utf8
+encoding//wcm/widget/atendimento/src/main/resources/atendimento_en_US.properties=utf8
+encoding//wcm/widget/atendimento/src/main/resources/atendimento_es.properties=utf8
+encoding//wcm/widget/atendimento/src/main/resources/atendimento_pt_BR.properties=utf8
+encoding//wcm/widget/atendimento/src/main/resources/edit.ftl=utf8
+encoding//wcm/widget/atendimento/src/main/resources/view.ftl=utf8
+encoding//wcm/widget/atendimento/src/main/webapp/WEB-INF/jboss-web.xml=utf8
+encoding//wcm/widget/atendimento/src/main/webapp/WEB-INF/web.xml=utf8
+encoding//wcm/widget/atendimento/src/main/webapp/resources/css/atendimento.css=utf8
+encoding//wcm/widget/atendimento/src/main/webapp/resources/images/icon.png=utf8
+encoding//wcm/widget/atendimento/src/main/webapp/resources/js/atendimento.js=utf8

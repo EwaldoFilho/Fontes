@@ -1,0 +1,1378 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+      <script src="/resources/js/jquery/jquery.js"></script>
+      <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+      <script src="/resources/js/mustache/mustache-min.js"></script>
+      <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+      <!-- CUSTOM -->
+      <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+      <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+      <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+      <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+      <script type="text/javascript" src="FLUIGIP.js"></script>
+      <script type="text/javascript" src="colaborador.js"></script>
+      <script type="text/javascript" src="compras.js"></script>
+      <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/4.css' type='text/css' rel='stylesheet' />
+      <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+      <style media="screen">
+         fieldset {
+         border: 1px solid #999;
+         padding: 10px;
+         margin: 15px;
+         width: 100%;
+         }
+      </style>
+   </head>
+   <body class="fluig-style-guide">
+      <h1 class="title-form-application" style="text-align:center;">Abertura de vagas </h1>
+      <div class="paragraph-is-required system-message-information alert alert-info" role="alert">
+         <span>Todos os campos com * são de preenchimento obrigatório.</span>
+      </div>
+      <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents"  style="padding-left: 10px; padding-right: 10px;">
+         <!--INICIO PANEL PANEL PRIMARY--->
+         <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+            <!--INICIO PANEL - HEADING --->
+            <div class="panel-heading" style="background-color:#36af72;">
+               <h3 class="panel-title">
+                  <i class="fluigicon fluigicon-user icon-md"></i>Informações da Vaga
+               </h3>
+            </div>
+            <!--FIM PANEL - HEADING --->
+            <!-- INICIO PANEL - BODY -->
+            <div class="panel-body">
+               <!-- inicio row nome e data -->
+               <div class="row">
+                  <div class="form-field" data-type="date" data-show-properties=""
+                     data-field-name="datasolicitacao">
+                     <div class="form-input col-md-3">
+                        <div class="form-group">
+                           <label> Data de solicitação</label><span
+                              text-danger"><strong>*</strong></span> <input
+                              id="datasolicitacao" type="text" class="form-control" name="datasolicitacao"
+                              data-date="">
+                        </div>
+                     </div>
+                     <div class="form-group col-md-9">
+                        <label for="nomeSolicitante"> Nome solicitante</label> <span
+                           text-danger"><strong>*</strong></span>
+                        <input type="text" name="nomeSolicitante" id="nomeSolicitante" class="form-control"
+                           >
+                        <!-- <input type="text" class="amu-control" id="nomeSolicitante" name="nomeSolicitante" > -->
+                     </div>
+                  </div>
+               </div>
+               <!-- fim row nome e data -->
+               <!-- ROW INICIO SETOR - CONTRATOS - CARGOS - OBSCARGA - CARGA -->
+               <div class="row">
+                  <div class="form-input col-md-4" data-type="textbox" data-show-properties=""data-field-name="setor">
+                   
+                     <div class="input-group col-sm-12">
+                        <div class="form-field" data-type="combo" data-show-properties="" data-field-name="setor">
+                            <div class="form-input">
+                               <div class="form-group">
+                                  <label>Selecione o estado</label>
+                                  <select id="estado_brasileiros" name="estado_brasileiros" class="form-control" id="estado_brasileiros" name="estado_brasileiros"  analytics="true" gooddataid="1">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                               </div>
+                            </div>
+                         </div> 
+                     </div>
+                  </div>
+                   <div class="form-input col-md-4" data-type="textbox" data-show-properties=""data-field-name="setor">
+                   
+                     <div class="input-group col-sm-12">
+                       <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Contrato">
+					      <div class="form-input">
+					         <div class="form-group">
+					            <label>contrato</label>
+					            <select class="form-control" name="Contrato" dataset="vagas_buscar_contratos" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" datasetorder="CUSTO" analytics="true" gooddataid="2">
+					               <option value="Opção 1">Opção 1</option>
+					               <option value="Opção 2">Opção 2</option>
+					            </select>
+					         </div>
+					      </div>
+					   </div>
+                     </div>
+                  </div>
+                  <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="cargo">
+                     <div class="form-input col-md-4">
+                        <div class="form-group">
+                                                  <div class="input-group col-sm-12">
+                                <div class="form-field" data-type="combo" data-show-properties="" data-field-name="cargos">
+						      <div class="form-input">
+						         <div class="form-group">
+						            <label>Cargo</label>
+						            <select class="form-control" name="cargos" dataset="vagas_buscar_cargos" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" analytics="true" gooddataid="3">
+						               <option value="Opção 1">Opção 1</option>
+						               <option value="Opção 2">Opção 2</option>
+						            </select>
+						         </div>
+						      </div>
+						   </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                 
+                  <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="cargo">
+                    <div class="form-input col-md-12">
+                       <div class="form-group">
+                                                 <div class="input-group col-sm-12">
+                               <div class="form-field" data-type="combo" data-show-properties="" data-field-name="obs">
+                             <div class="form-input">
+                                <div class="form-group">
+                                   <label>Observação</label>
+                                   <textarea rows="5" name="obs" id="obs" class="form-control"
+                                   ></textarea>
+                                </div>
+                             </div>
+                          </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                  <div class="form-field" data-type="textbox" data-show-properties=""
+                     data-field-name="info_adicionais">
+                     <div class="form-input">
+                        <div class="form-group">
+                           <div class="form-group col-md-6">
+                              <label for="cargahora"> Carga Horária Semanal/Escala</label> <span
+                                 text-danger"><strong>*</strong></span> <input type="text"
+                                 name="cargahora" id="cargahora" class="form-control" >
+                           </div>
+                           <div class="form-group col-md-6">
+                              <label for="obshora"> Observações da carga horária </label> <span
+                                 text-danger"><strong>*</strong></span> <input type="text"
+                                 name="obshora" id="obshora" class="form-control" >
+                           </div>
+                           <div class="form-group col-md-12">
+                              <label for="atividades">Atividades a serem desenvolvidas</label> <span
+                                 text-danger"><strong>*</strong></span>
+                              <textarea rows="5" name="atividades" id="atividades" class="form-control"
+                                 ></textarea>
+                           </div>
+                           <div class="row">
+                              <div class="form-field" data-type="select" data-show-properties=""
+                                 data-field-name="epi">
+                                 <div class="form-input col-md-6">
+                                    <div class="form-group">
+                                       <label for="epi"> Equipamento de proteção individual</label><span
+                                          text-danger"><strong></strong></span>
+                                       <select class="form-control" id="epi" name="epi" multiple analytics="true" gooddataid="4"
+                                          >
+                                          <option value="mascara">Botina com bico PVC</option>
+                                          <option value="mascara">Bota cano alto com porta faca;</option>
+                                          <option value="mascara">Bota de aproximação (conjunto hércules
+                                          </option>
+                                          <option value="mascara">Calça de aproximação (conjunto hércules)
+                                          </option>
+                                          <option value="mascara">Bota de aproximação (conjunto hércules
+                                          </option>
+                                          <option value="mascara">Blusa de aproximação (conjunto hércules)
+                                          </option>
+                                          <option value="mascara">Balaclava (conjunto hércules)</option>
+                                          <option value="mascara">Luva de aproximação (conjunto hércules)
+                                          </option>
+                                          <option value="mascara">Capacete de aproximação (conjunto
+                                             hércules)
+                                          </option>
+                                          <option value="mascara">Capacete de proteção com carneira e
+                                             jugular
+                                          </option>
+                                          <option value="mascara">Protetor auricular tipo plug</option>
+                                          <option value="mascara">Protetor auricular tipo concha</option>
+                                          <option value="mascara">Óculos de proteção</option>
+                                          <option value="mascara">Máscara pff2-n95</option>
+                                          <option value="mascara">Capa de chuva com refletivo</option>
+                                          <option value="mascara">Luva nitrílica</option>
+                                          <option value="mascara">Sapato de segurança</option>
+                                          <option value="mascara">Bota de galocha</option>
+                                          <option value="nao_aplica">Não se aplica</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="form-field" data-type="select" data-show-properties=""
+                                 data-field-name="uniforme">
+                                 <div class="form-input col-md-6">
+                                    <div class="form-group">
+                                       <label for="uniforme"> Uniforme</label><span
+                                          text-danger"><strong></strong></span>
+                                       <select class="form-control" id="uniforme" name="uniforme" multiple analytics="true" gooddataid=5"
+                                          >
+                                          <option value="mascara">Macacão</option>
+                                          <option value="mascara">Gandola Ripstop</option>
+                                          <option value="mascara">Calça Ripstop</option>
+                                          <option value="mascara">Japona Ripstop</option>
+                                          <option value="mascara">Cinta vermelha com fivela bombeiro
+                                          </option>
+                                          <option value="mascara">Shorts</option>
+                                          <option value="mascara">Boné</option>
+                                          <option value="mascara">Camisa em algodão branca</option>
+                                          <option value="mascara">Regata em algodão branca</option>
+                                          <option value="mascara">Jaleco</option>
+                                          <option value="mascara">Tênis edução física</option>
+                                          <option value="nao_aplica">Não se aplica</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <fieldset>
+                              <legend>Remuneração</legend>
+                              <div class="row">
+                                 <div class="form-group col-md-3" data-field-name="salario">
+                                    <label for="salario">Salário</label><span
+                                       text-danger"><strong>*</strong></span> <input
+                                       type="text" name="salario" id="salario" class="form-control"
+                                       mask="R$99999,99">
+                                 </div>
+                                 <div class="form-group col-md-4" data-field-name="adicionais">
+                                    <label for="adicionais">Adicionais</label><span
+                                       text-danger"><strong>*</strong></span> <input
+                                       type="text" name="adicionais" id="adicionais" class="form-control"
+                                       >
+                                 </div>
+                                  <div class="form-group col-md-3">
+                              <label for="valeRefeicao"> Valor do vale refeição </label> <span
+                                 text-danger"><strong></strong></span> <input type="text"
+                                 name="valeRefeicao" id="valeRefeicao" class="form-control" mask="R$99999,99">
+                           </div>
+                           <div class="form-group col-md-2">
+                              <label for="valeTransporte"> Valor vale transporte</label> <span
+                                 text-danger"><strong></strong></span> <input type="text"
+                                 name="valeTransporte" id="valeTransporte" class="form-control" mask="R$99999,99">
+                           </div>
+                              </div>
+                            
+                              <div class="row">
+                                 <div class="form-group col-md-12">
+                                    <label>Benefícios</label><span
+                                       text-danger"><strong>*</strong></span>
+                                    <select class="form-control" id="beneficios" name="beneficios" multiple analytics="true" gooddataid="6"
+                                       >
+                                       <option value="alimentacao">Plano de saúde</option>
+                                       <option value="alimentacao">Plano odontologico</option>
+                                       <option value="alimentacao">Alimentação</option>
+                                       <option value="cestaBasica">Cesta básica</option>
+                                       <option value="transporte">Transporte</option>
+                                       <option value="transporte">Todos</option>
+                                       <option value="outros">Outros</option>
+                                       <option value="nao_aplica">Não se aplica</option>
+                                    </select>
+                                 </div>
+                                
+                              </div>
+                           </fieldset>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <! -- FIM ROW SETOR -->
+            </div>
+            <!-- FIM PANEL - BODY-->
+            <!-- INICIO PAINEL HEADING REQUISITOS -->
+            <div class="panel-heading" style="background-color:#d70b2d;">
+               <h3 class="panel-title">
+                  <i class="flaticon flaticon-laptop icon-md"></i>Requisitos
+                  Obrigatorios
+               </h3>
+            </div>
+            <!-- FIM PAINEL HEADING REQUISITOS -->
+            <!-- COMECO PANEL BODY REQUISITOS -->
+            <div class="panel-body">
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for="cursos">Cursos</label><span
+                        text-danger"><strong>*</strong></span>
+                     <textarea rows="5" name="cursos" id="cursos" class="form-control"
+                        ></textarea>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for="experiencia">Experiencia Profissional</label><span
+                        text-danger"><strong>*</strong></span>
+                     <textarea rows="5" name="experiencia" id="experiencia" class="form-control"
+                        ></textarea>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md-6">
+                     <label>Sistemas</label><span text-danger"><strong>*</strong></span>
+                     <select class="form-control" id="sistemas" name="sistemas" multiple  analytics="true" gooddataid="7" >
+                        <option value="Intremed">Intramed+</option>
+                        <option value="clock-in">clock in</option>
+                        <option value="Protheus">Protheus</option>
+                        <option value="erp">ERP</option>
+                        <option value="vpn">VPN</option>
+                        <option value="login">Login</option>
+                        <option value="email">E-mail</option>
+                        <option value="todos">Todos</option>
+                        <option value="nao_aplica">Não se aplica</option>
+                     </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                     <label>Equipamentos</label><span class="required text-danger"><strong>*</strong></span>
+                     <select class="form-control" id="equipamentos" name="equipamentos" multiple  analytics="true" gooddataid="8"
+                        >
+                        <option value="notebook">Notebook</option>
+                        <option value="desktop">Desktop</option>
+                        <option value="celular">Celular</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="impressora">Impressora</option>
+                        <option value="todos">Todos</option>
+                        <option value="nao_aplica">Não se aplica</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for="outros">Outros</label>
+                     <textarea rows="5" name="outros" id="outros" class="form-control"></textarea>
+                  </div>
+               </div>
+            </div>
+            <!-- FIM PANEL BODYREQUISITOS -->
+            <!-- COMECO PANEL BODY DESEJANDOS -->
+            <div class="panel-heading" style="background-color:#36af72;">
+               <h3 class="panel-title">
+                  <i class="flaticon flaticon-taskcentral icon-md"></i>Requisitos
+                  Desejaveis
+               </h3>
+            </div>
+            <!-- FIM PANEL BODY DESEJANDOS -->
+            <!-- COMECO  PANEL BODY DESEJANDOS -->
+            <div class="panel-body">
+               <div class="row">
+                  <div class="form-group col-md-6">
+                     <label>Sexo</label>
+                     <select class="form-control" id="sexo" name="sexo" analytics="true" gooddataid="9">
+                        <option value=""></option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="indiferente">Indiferente</option>
+                     </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                     <label>Conhecimento de Informática</label>
+                     <select class="form-control" id="conhecimento_informatica"  analytics="true" gooddataid="10"
+                        name="conhecimento_informatica">
+                        <option value=""></option>
+                        <option value="basico">Básico</option>
+                        <option value="intermediario">Intermediário</option>
+                        <option value="avancado">Avançado</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for="informacoes">Informações Adicionais</label>
+                     <textarea rows="5" name="informacoes" id="informacoes" class="form-control"></textarea>
+                  </div>
+               </div>
+            </div>
+            <!-- FIM  PANEL BODY DESEJANDOS -->
+            <!-- INICIO PANEL INFORMAÇÕES ADD -->
+            <div class="panel-heading" style="background-color:#d70b2d;">
+               <h3 class="panel-title">
+                  <i class="flaticon flaticon-add-plus icon-md"></i>Informações
+                  Adicionais
+               </h3>
+            </div>
+            <!-- FIM PANEL INFORMAÇÃOES ADD -->
+            <!-- INICIO BODY INFO ADD -->
+            <div class="panel-body">
+               <div class="row">
+                  <div class="form-group col-md-8">
+                     <label for="dataret"> Data Retorno</label> <input type="text" name="dataret"
+                        id="dataret" class="form-control" placeholder="dd/mm/aaaa">
+                  </div>
+                  <div class="form-group col-md-4">
+                     <label for="tipocontratacao">Tipo de Contratações</label><span
+                        class="required text-danger"><strong>*</strong></span>
+                     <select class="form-control" id="tipocontratacao" name="tipocontratacao" analytics="true" gooddataid="11"
+                        >
+                        <option value=""></option>
+                        <option value="clt">CLT</option>
+                        <option value="pj">PJ</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for="nomesubstituicao">Em substituições de(nome do
+                     profissional que será substituído):</label> <input type="text"
+                        name="nomesubstituicao" id="nomesubstituicao" class="form-control">
+                  </div>
+               </div>
+             
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for="headcount">Headcount</label><span
+                        class="required text-danger"><strong>*</strong></span>
+                     <select class="form-control" id="headCount" name="headCount"      analytics="true" gooddataid="13">
+                        <option value=""></option>
+                        <option value="vaga_nova">Nova vaga</option>
+                        <option value="substituicao">Substituições</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md-12">
+                     <label for = "infadic">Informações Adicionais</label>
+                     <textarea rows="5" name="infadic" id="infadic" class="form-control"></textarea>
+                  </div>
+               </div>
+            </div>
+        </div>
+            <!-- FIM BODY INFO ADD -->
+            <!-- INICIO PANEL RECRUTAMENTO -->
+            <div class="panel panel-primary" id="recrutamento_selecao" name="recrutamento_selecao">
+            <div   class="panel-heading" style="background-color:#36af72;"  >
+               <h3 class="panel-title">
+                  <i class="flaticon flaticon-edit-square icon-md"></i>Recrutamento e seleção
+               </h3>
+            </div>
+            <!-- FIM PANEL RECRUTAMENTO -->
+            <!-- INICIO BOBY RECRUTAMENTO -->
+            <div class="panel-body">
+                <div class="row">
+                    <!--INICIO-->
+                    <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents"
+                        style="padding-left: 10px; padding-right: 10px;">
+                        <h2 class="title-form-application">Adicionar dados dos candidatos</h2>
+                        <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="carol">
+                            <div class="form-input">
+                                <div class="form-group">
+                                    <table tablename="tabledetailname1" class="table" noaddbutton="true">
+                                        <thead>
+                                            <tr class="tableHeadRow">
+                                                <th class="tableColumn">Nome</th>
+                                                <th class="tableColumn">Telefone </th>
+                                                <th class="tableColumn">Email </th>
+                                                <th class="tableColumn">Observação </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="tableBodyRow">
+                                                <td class="col-md-3">
+                                                    <div class="form-input">
+                                                        <input type="text" name="column1_1" class="form-control">
+                                                    </div>
+                                </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="form-input">
+                                        <input type="text" name="column2_1" class="form-control"  onkeypress="$(this).mask('(00) 0000-00000')"  >
+                                    </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="form-input">
+                                      <input type="text" name="column3_1" class="form-control" >
+                                        
+                                    </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="form-input">
+                                        <textarea style="height: 36px;" type="text" name="columna_1" class="form-control" rows="4"
+                                            cols="2"></textarea>
+                                    </div>
+                                </td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <!-- FIM BOBY RECRUTAMENTO -->
+            </div>
+            <!--FIM PANEL PANEL PRIMARY--->
+            <!-- COMECO SUBPROCESSOS -->
+            <div class="panel panel-primary" id="informacao_colaborador" name="informacao_colaborador">
+                      
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-person-tasks icon-md"></i>Informações do colaborador 
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-md-9">
+                        <label for="nomeFuncionario"> Nome do funcionario</label> <span><strong>*</strong></span> <input type="text"
+                            name="nomeFuncionario" id="nomeFuncionario" class="form-control"">
+                  </div>
+                  <div class=" form-group col-md-3">
+                        <label for="NumeroFuncionario"> Contato telefônico</label> <span><strong>*</strong></span>
+                        <input type="text" name="NumeroFuncionario" id="NumeroFuncionario" class="form-control" ">
+                  
+                  </div>
+                
+                   <div class="form-group col-md-2">
+                 <label for="datanas"> Data de nascimento</label> <input type="text" name="datanas"
+                        id="datanas" class="form-control" placeholder="dd/mm/aaaa">
+                  </div>
+                  <div class=" form-group col-md-4">
+                        <label for="estadoCivil"> Estado civil</label> <span><strong>*</strong></span>
+                         <select class="form-control" id="estadoCivil" name="estadoCivil">
+                                <option value=""></option>
+                                <option value="solteiro">Solteiro</option>
+                                 <option value="Casado">Casado</option>
+                                  <option value="Separado">Separado</option>
+                                    <option value="Divorciado">Divorciado</option>
+                                    <option value="uniao">União estável</option>
+                                      <option value="Viúvo">Viúvo</option>
+                                  
+                  			</select>
+                  </div>
+                    <div class=" form-group col-md-3">
+                        <label for="numeroPis"> Número pis</label> <span><strong>*</strong></span>
+                        <input type="text" name="numeroPis" id="numeroPis" class="form-control" ">
+                  
+                  </div>
+                  <div class=" form-group col-md-3">
+                        <label for="numeroCarteira"> Número ctps </label> <span><strong>*</strong></span>
+                        <input type="text" name="numeroCarteira" id="numeroCarteira" class="form-control" ">
+                  
+                  </div>
+                  </div>
+                  <div class=" row">
+                        <div class="form-group col-md-6">
+                            <label for="maeColaborador">Nome da mãe</label> <span><strong>*</strong></span> <input type="text"
+                                name="maeColaborador" id="maeColaborador" class="form-control">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="tipoSangue">Tipo sanguíneos</label> <span
+                                class="required text-danger"><strong>*</strong></span>
+                            <select class="form-control" id="tipoSangue" name="tipoSangue">
+                                <option value=""></option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+ ">B+ </option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O- ">O- </option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="Nao-informado">Não informado</option>
+                            </select>
+                        </div>
+                        
+                           <div class="form-group col-md-4">
+                     <label for="dataexpe"> Data de expedição</label> <input type="text" name="dataexpe"
+                        id="dataexpe" class="form-control" placeholder="dd/mm/aaaa">
+                  </div>
+                       
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-2">
+                     <label for="AdmiReal"> Data real</label> <input type="text" name="AdmiReal"
+                        id="AdmiReal" class="form-control" placeholder="dd/mm/aaaa"  analytics="true" gooddataid="12">
+                  </div>
+                        <div class="form-group col-md-2">
+                            <label for="rg">RG</label> <span text-danger"><strong>*</strong></span>
+                            <input type="text" name="rg" id="rg" class="form-control">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="cpf">CPF</label> <span text-danger"><strong>*</strong></span>
+                            <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="naturezaAso">Natureza do aso</label> <span text-danger"><strong>*</strong></span>
+                            <select class="form-control" id="naturezaAso" name="naturezaAso">
+                                <option value=""></option>
+                                <option value="admissional">admissional</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            <label for="email">Email</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="email" id="email" class="form-control" ">
+                  </div>
+                  <div class=" form-group col-md-3">
+                            <label for="perfil">Perfil de usuário </label> <span text-danger"><strong>*</strong></span>
+                            <select class="form-control" id="perfil" name="perfil" ">
+                  <option value=""></option>
+                  <option value=" medoffice">MedOffice</option>
+                                <option value="embaixador">Embaixador</option>
+                                <option value="postoservico">Postos de serviços</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-4">
+                            <label for="cep">Cep</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="cep" id="cep" class="form-control"  >
+                  			</div>
+                  			 <div class="form-group col-md-4">
+                            <label for="rua">Rua</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="rua" id="rua" class="form-control" ">
+                  			</div>
+                  			 <div class="form-group col-md-4">
+                            <label for="numerocasa">Número</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="numerocasa" id="numerocasa" class="form-control" ">
+                  			</div>
+                  			 <div class="form-group col-md-4">
+                            <label for="bairro">Bairro</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="bairro" id="bairro" class="form-control" ">
+                  			</div>
+                  			 <div class="form-group col-md-4">
+                            <label for="cidade">Cidade</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="cidade" id="cidade" class="form-control" ">
+                  			</div>
+                  			 <div class="form-group col-md-4">
+                            <label for="uf">Estado</label> <span text-danger"><strong>*</strong></span> <input type="text"
+                                name="uf" id="uf" class="form-control" ">
+                  			</div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="observacao">Informações Adicionais</label>
+                                <textarea rows="5" name="observacao" id="observacao" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!------------------------------------------------------------------------>
+                            <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                        <label>Escolha o tamanho dos uniformes e calçados</label>
+                        <div class="form-group">
+                    
+                            <table tablename="tabledetailname3" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Uniformes</th>
+                                        <th class="tableColumn">Calçados</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+												<select class="form-control" id="uniformes" name="column1_7" analytics="true" gooddataid="1">
+					                                <option value=""></option>
+					                                <option value="pp">PP</option>
+					                                <option value="p">P</option>
+					                                <option value="m">M</option>
+					                                <option value="g">G</option>
+					                                <option value="gg">GG</option>
+					                                <option value="xg">XG</option>
+					                                  <option value="xgg">XGG</option>
+					                                    <option value="eg">EG</option>
+					                                    <option value="egg">EGG</option>
+					                                   
+					                                <option value="36">36</option>
+					                                <option value="38">38</option>
+					                                <option value="40">40</option>
+					                                <option value="41">41</option>
+					                                <option value="42">42</option>
+					                                <option value="43">43</option>
+					                                <option value="44">44</option>
+					                                  <option value="48">48</option>
+					                                <option value="50">50</option>
+					                                <option value="52">52</option>
+					                                 <option value="54">54</option>
+					                                  <option value="56">56</option>
+					                                   
+					                            </select>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <select class="form-control" id="calcado" name="column1_8" analytics="true" gooddataid="1">
+					                                <option value=""></option>
+					                                  <option value="34">34</option>
+					                                  <option value="35">35</option>
+					                                <option value="36">36</option>
+					                                <option value="37">37</option>
+					                                <option value="38">38</option>
+					                                <option value="39">39</option>
+					                                <option value="40">40</option>
+					                                <option value="41">41</option>
+					                   				<option value="41/42">41/42</option>
+					                                
+					                                <option value="42">42</option>
+					                                <option value="43">43</option>
+					                                <option value="44">44</option>
+					                                <option value="46">46</option>
+					                                <option value="48">48</option>
+					                                <option value="50">50</option>
+					                                <option value="52">52</option>
+					                               
+					                            </select>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname3')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+                        <!------------------------------------------------------------------------>
+                        
+                    </div>
+                </div>
+            
+        
+</div>
+    <div class="panel panel-primary" id="informacoes_complementares" name="informacoes_complementares" >
+        <div class="panel-heading" style="background-color:#d70b2d;">
+            <h3 class="panel-title">
+                <i class="fluigicon fluigicon-user icon-md"></i>Informações Uniforme e EPI
+            </h3>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <div class="form-group col-sm-6 ">
+                    <label for="empresa">Empresa/Filial<strong class="required text-danger"></strong></label>
+                    <div class="input-group col-sm-12">
+                        <input type="hidden" id="codempresa" name="codempresa" data-fluig-state-valid="0,4"
+                            data-fluig-write="0,4" value="0101">
+                        <input type="text" class="form-control zoom-tdi" id="empresa" name="empresa"
+                            data-fluig-state-valid="0,4" data-fluig-write="0,4" onchange="validaCampo(this)"
+                            required="required">
+                        <div class="input-group-addon zoom-tdi" onclick="zoomEmpresa(this)" data-toggle="tooltip"
+                            data-placement="bottom" title="Pesquisar empresa"><i
+                                class="flaticon flaticon-search icon-sm"></i></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="input-group col-sm-12">
+                        <label for="entrega">Grupo<strong class="required text-danger"></strong></label>
+                        <select class="form-control" name="grupo" id="grupo" data-fluig-state-valid="0,4"
+                            data-fluig-write="0,4">
+                            <option value="OUTRO" data-fluig-state-valid="0,4" data-fluig-write="0,4">MedMais</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="centroCusto">Centro de custo<strong class="required text-danger"></strong></label>
+                    <div class="input-group col-sm-12">
+                        <input type="hidden" id="codCentroCusto" name="codCentroCusto" data-fluig-state-valid="0,4"
+                            data-fluig-write="0,4">
+                        <input type="text" class="form-control zoom-tdi" id="descricao1" name="descricao1"
+                            data-fluig-state-valid="0,4" data-fluig-write="0,4" onchange="validaCampo(this)"
+                            required="required">
+                        <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip"
+                            data-placement="bottom" title="Pesquisar centro de custo"><i
+                                class="flaticon flaticon-search icon-sm"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel-body">
+                <div class="form-group col-sm-12">
+                    <div class="panel-body">
+                        <div class="form-group col-sm-12">
+                            <div class="table-datatable">
+                                <div class="form-group col-sm-12">
+                                    <div class="row ">
+                                        <div class="col-sm-12 " id="grupoBotaoProdutos">
+                                            <button type="button" class="btn btn-primary" name="modalBuscarProduto"
+                                                id="modalBuscarProduto" data-toggle="tooltip" data-placement="bottom"
+                                                title="Buscar Epi">
+                                                <i class="flaticon flaticon-search icon-sm"></i>
+                                                Buscar Epi e uniforme
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tabela de produtos cadastrados no sistema e adicionados pelo usuário -->
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive fs-md-margin-top">
+                                        <h3 id="labelProdutos">Adicionar Epi</h3>
+                                        <table name="tb_novosProdutos" id="tb_novosProdutos"
+                                            class="table table-bordered table-striped  ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Descrição</th>
+                                                    <th>Observação</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <!-- tabela de produtos para visualização -->
+                                        <div id="produtosNovosView"></div>
+                                        <input type="hidden" id="listaNovosProdutos" name="listaNovosProdutos">
+                                    </div>
+                                </div>
+                                <!-- tabela de produtos cadastrados no sistema e adicionados pelo usuário -->
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive fs-md-margin-top">
+                                        <h3 id="labelProdutosAdicionais">Produtos adicionados</h3>
+                                        <table name="tb_produtos" id="tb_produtos"
+                                            class="table table-bordered table-striped  ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Código produto</th>
+                                                    <th>Descrição</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Observação</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <!-- tabela de produtos para visualização -->
+                                        <div id="produtosView"></div>
+                                        <input type="hidden" id="listaProdutos" name="listaProdutos">
+                                        <input type="hidden" id="codarmazem" value="01NZ01" name="codarmazem">
+                                        <input type="hidden" class="form-control" id="existeGerente" name="existeGerente" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      </div>       
+      <!-- campos hidden -->
+      <!-- FIM SUBPROCESSOS -->
+      </form>
+   </body>
+   <script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+   <script type="text/javascript">
+      console.log("entrei aqui");
+         $(document).ready(function() {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+                $("#ibge").val("");
+            }
+            
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#uf").val("...");
+                        $("#ibge").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                                $("#ibge").val(dados.ibge);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+/*---------------------------------------------------------------------------------------------------- */
+      
+        var produtos = [];
+        var produtosNovos = [];
+      
+        var produtosInput = JSON.parse("["+$("#listaProdutos").val()+"]");
+        var produtosNovosInput = JSON.parse("["+$("#listaNovosProdutos").val()+"]");
+      
+        var dataEntrega = FLUIGC.calendar('#estimativaEntrega');
+        var fornecedoresModal = null;//guarda fornecedores que serão exibidos na modal escolherProposta(idProposta)
+      
+        //dataEntrega.setMinDate(new Date());
+        
+        
+
+
+
+        
+        
+      $('#cpf').mask('000.000.000-00', {
+  onKeyPress : function(cpfj, e, field, options) {
+    const masks = ['000.000.000-000', '00.000.000/0000-00'];
+    const mask = (cpfcnpj.length > 14) ? masks[1] : masks[0];
+    $('#cpf').mask(mask, options);
+  }
+});
+        parent.$('#textActivity').hide();
+      $("#existeGerente").val(true);
+        $('#tb_produtos').hide(); 
+        $('#tb_novosProdutos').hide();         
+        $('#labelProdutos').hide(); 
+        $('#labelProdutosAdicionais').hide();
+      
+      
+        if (produtosNovosInput.length > 0) {
+           //cadastrar protheus
+           var produtosProtheus = FLUIGC.datatable('#produtosNovosView', {
+              dataRequest: produtosNovosInput,
+              renderContent: ['descricao', 'observacao'],
+              header: [
+                 {'title': 'Produto'},
+                 {'title': 'Observação'}
+              ],
+              tableStyle: 'table-bordered table-striped ',
+              search: {
+                 enabled: false
+              },
+              scroll: {               
+                 enabled: false
+              },
+              actions: {
+                 enabled: false
+              },
+              navButtons: {
+                 enabled: false
+              },
+              }, function(err, data) {               
+           });
+           
+        }
+      
+      
+        $("#tb_produtos").on("click", ".remover", function(e){
+           $(this).closest('tr').remove(); 
+              
+           if ($('#tb_produtos tr').length === 1) {
+              $('#tb_produtos').hide();
+              $('#labelProdutosAdicionais').hide();   
+           }
+        });
+       
+        $("#tb_novosProdutos").on("click", ".remover", function(e){
+           $(this).closest('tr').remove(); 
+              
+           if ($('#tb_novosProdutos tr').length === 1) {
+                 $("#existeProdutoNovo").val(false);
+                 $('#tb_novosProdutos').hide();
+                 $('#labelProdutos').hide();      
+           }
+        });
+       
+        //buscar protheus
+        if (produtosInput.length > 0) {
+           var tabelaNovosProdutos = FLUIGC.datatable('#produtosView', {
+              dataRequest: produtosInput,
+              renderContent: ['produto', 'cquantidade', 'cobs'],
+              header: [
+                 {'title': 'Produto'},
+                 {'title': 'Quantidade'},
+                 {'title': 'Observação'}
+              ],
+              tableStyle: 'table-bordered table-striped ',
+              search: {
+                 enabled: false
+              },
+              scroll: {               
+                 enabled: false
+              },
+              actions: {
+                 enabled: false
+              },
+              navButtons: {
+                 enabled: false
+              },
+              }, function(err, data) {               
+           });
+        }
+        
+      
+      
+        $("#modalAdicionarProduto").click(function () {
+           var modalAddProduto = FLUIGC.modal({
+              title: 'Adicionar produto',
+              content: '<form name="formModalAddProduto"">'+          
+                     '<div class="alert alert-danger hidden" id="avisoAddProduto" role="alert">'+
+                          '<span>Preencha os campos obrigatórios</span>'+
+                       '</div>'+  
+                        '<div class="row">'+
+                             '<div class="form-group col-sm-12">'+
+                                '<div class="input-group col-sm-12">'+               
+                                   '<label for="descricaoAdd" class="col-sm-12">Produto<strong class="required text-danger"></strong></label>'+
+                                   '<input type="text" class="form-control" name="descricaoAdd" id="descricaoAdd"  data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required">'+                  
+                                '</div>'+
+                             '</div>'+
+                             '<div class="form-group col-sm-12">'+
+                                '<div class="input-group col-sm-12">'+               
+                                   '<label for="observacao" class="col-sm-12">Observação<strong class="required text-danger"></strong></label>'+
+                                         '<textarea class="form-control" rows="5" name="observacao" id="observacao" data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required"></textarea>'+
+                                '</div>'+
+                             '</div>'+                           
+                          '</div>'+
+                       '</form>',
+              id: 'fluig-modal-add-produto',
+              size: 'full',
+              actions: [{
+                 'label': 'Adicionar',
+                 'bind' : "data-add-produto",
+              },{
+                 'label': 'Cancelar',
+                 'autoClose': true
+              }]
+           }, function() {
+              var table = document.getElementById("tb_novosProdutos");
+              var row = table.insertRow($('#tb_novosProdutos tr').length);                     
+      
+              $("#fluig-modal-add-produto").find("button[data-add-produto]").on("click", function() {     
+                 console.log(document.querySelector("#descricaoAdd").value);
+                 console.log(document.querySelector("#observacao").value);
+                 
+                 if(document.querySelector("#descricaoAdd").value=="" || document.querySelector("#descricaoAdd").value == null ||
+                    document.querySelector("#observacao").value=="" || document.querySelector("#observacao").value == null){                        
+                       $("#avisoAddProduto").removeClass("hidden");
+                    }else{
+                       var descricaoAdd = document.querySelector("#descricaoAdd").value;
+                       var observacao = document.querySelector("#observacao").value;
+      
+                       row.innerHTML = '<tr>'+
+                                         '<td>'+document.querySelector("#descricaoAdd").value+'</td>'+
+                                         '<td>'+document.querySelector("#observacao").value+'</td>'+                               
+                                         '<td class="text-center"><i class="flaticon flaticon-trash icon-md remover"></i></td>'+
+                                      '</tr>';
+                       produtosNovos.push('{'+'"descricao":"'+document.querySelector("#descricaoAdd").value+'", "observacao":"'+document.querySelector("#observacao").value+'"}');
+                       $('#tb_novosProdutos').show();                       
+                       $('#labelProdutos').show(); 
+                       modalAddProduto.remove();
+                    }
+                    $("#listaNovosProdutos").val(produtosNovos); 
+                    $("#existeProdutoNovo").val(true);
+                    console.log($("#existeProdutoNovo").val(true));                  
+              });
+           });        
+        });
+      
+        $("#modalBuscarProduto").click(function () {
+           var myModal = FLUIGC.modal({
+              title: 'Buscar produtos',
+              content: '<form name="formModal" onsubmit="return false;">'+
+                ' <div class="form-group col-sm-12">'+
+                    '<div class="alert alert-danger hidden" id="aviso" role="alert">'+
+                    'Preencha os campos obrigatórios'+
+                    '</div>'+
+                    '<div class="alert alert-danger hidden" id="avisoProdutoInvalido" role="alert">'+
+                       '<span>Informe um produto válido.</span>'+
+                    '</div>'+
+                       '<label for="produto" class="col-sm-12">Produto<strong class="required text-danger"></strong></label>'+
+                       '<div class="input-group col-sm-12">'+
+                          '<input type="hidden" id="codigoProdutoModal" name="codigoProdutoModal">'+
+                         ' <input type="text" class="form-control" name="produtoModal" id="produtoModal" data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required">'+
+                         ' <div class="input-group-addon zoom-tdi" onclick="zoomProdutoModal(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar produto"><i class="flaticon flaticon-search icon-sm"></i></div>'+
+                       '</div>'+
+                   '</div>'+
+                   '<div class="form-group col-sm-12">'+
+                       '<div class="input-group col-sm-12">'+               
+                          '<label for="quantidade" class="col-sm-12">Quantidade<strong class="required text-danger"></strong></label>'+
+                          '<input type="number" class="form-control" name="quantidadeModal" id="quantidadeModal"  data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required">'+                  
+                       '</div>'+
+                    '</div>'+
+                   '<div class="form-group col-sm-12">'+
+                       '<div class="input-group col-sm-12">'+            
+                          '<label for="observacao" class="col-sm-12">Observação<strong class="required text-danger"></strong></label>'+
+                             '<textarea class="form-control" rows="5" name="observacaoModal" id="observacaoModal" data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required" onkeydown="return maskCharacters(event)"></textarea>'+
+                       '</div>'+
+                    '</div>'+
+                 '</form>',
+              id: 'fluig-modal',
+              size: 'full',
+              actions: [{
+                 'label': 'Adicionar',
+                 'bind' : "data-search-modal",
+              },{
+                 'label': 'Cancelar',
+                 'autoClose': true
+              }]
+           }, function() {
+             function maskCharacters() {  
+             	  var regex = new RegExp('[^ 0-9a-zA-Zàèìòùáéíóúâêîôûãõ\b@,.]', 'g');            
+             	  $(this).val($(this).val().replace(regex, ''));
+             }
+             	
+             $("#observacaoModal").keyup(maskCharacters);
+           
+              $("#fluig-modal").find("button[data-search-modal]").on("click", function() {                  
+                 var table = document.getElementById("tb_produtos");
+                 var row = table.insertRow($('#tb_produtos tr').length);   
+                 
+                 if (document.querySelector("#codigoProdutoModal").value == "" || document.querySelector("#codigoProdutoModal").value == null) {
+                    $("#avisoProdutoInvalido").removeClass("hidden");                     
+                 } else if(document.querySelector("#produtoModal").value=="" || document.querySelector("#produtoModal").value == null ||
+                    document.querySelector("#quantidadeModal").value=="" || document.querySelector("#quantidadeModal").value == null ||
+                    document.querySelector("#observacaoModal").value=="" || document.querySelector("#observacaoModal").value == null){     
+                       $("#avisoProdutoInvalido").addClass("hidden");                      
+                       $("#aviso").removeClass("hidden");
+                    }else{
+                       row.innerHTML = '<tr>'+
+                                   '<td>'+document.querySelector("#codigoProdutoModal").value+'</td>'+
+                                   '<td>'+document.querySelector("#produtoModal").value+'</td>'+
+                                   '<td>'+document.querySelector("#quantidadeModal").value+'</td>'+
+                                   '<td>'+document.querySelector("#observacaoModal").value+'</td>'+                                    
+                                   '<td class="text-center"><i class="flaticon flaticon-trash icon-md remover"></i></td>'+
+                                '</tr>';
+                       produtos.push("{"+'"cidProduto":"'+document.querySelector("#codigoProdutoModal").value+'", "produto":"'+document.querySelector("#produtoModal").value+'", "cquantidade":"'+document.querySelector("#quantidadeModal").value+'","cobs":"'+document.querySelector("#observacaoModal").value+'"}');
+                       $('#tb_produtos').show();
+                       $('#labelProdutosAdicionais').show();                        
+                       myModal.remove();
+                    }
+                    $("#listaProdutos").val(produtos);
+              });
+           });        
+        });
+      
+        // $('#epi').select2({
+        // 	width: "100%",
+        //   placeholder: ''
+        // }).val('').trigger('change');
+        //
+        // $('#uniforme').select2({
+        // 	width: "100%",
+        //   placeholder: ''
+        // }).val('').trigger('change');
+        //
+        // $('#sistemas').select2({
+        // 	width: "100%",
+        //   placeholder: ''
+        // }).val('').trigger('change');
+        //
+        // $('#equipamentos').select2({
+        // 	width: "100%",
+        //   placeholder: ''
+        // }).val('').trigger('change');
+        //
+        // $('#headcount').select2({
+        // 	width: "100%",
+        // 	placeholder: ''
+        // }).val('').trigger('change');
+        
+        var dataSolicitacao = FLUIGC.calendar('#datasolicitacao', {});
+        var dataRetorno = FLUIGC.calendar('#dataret');
+        var dataAdmissao = FLUIGC.calendar('#AdmiReal');
+        var dataNascimento = FLUIGC.calendar('#datanas');
+        var dataExpedicao = FLUIGC.calendar('#dataexpe');
+        var dataFechamento = FLUIGC.calendar('#datafecha');
+        
+        var dataAtual = new Date();
+        var maxDataAdmissao = new Date(dataAtual.getFullYear(), dataAtual
+            .getMonth(), dataAtual.getDate() + 7);
+        var maxDataFechamento = new Date(dataAtual.getFullYear(), dataAtual
+            .getMonth(), dataAtual.getDate() + 5);
+        
+        //dataRetorno.setMinDate(dataAtual);
+        //dataSolicitacao.setMinDate(dataAtual);
+       // dataAdmissao.setMinDate(dataAtual);
+        //dataFechamento.setMinDate(dataAtual);
+        
+       // dataAdmissao.setMaxDate(new Date(maxDataAdmissao));
+        //dataFechamento.setMaxDate(new Date(maxDataFechamento));
+        
+        var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118;
+        
+        $(document).keydown(function (e) {
+            if (e.keyCode == ctrl)
+                keyDown = true;
+        }).keyup(function (e) {
+            if (e.keyCode == ctrl)
+                keyDown = false;
+        });
+        
+        $('[data-only-numbers]').on('keypress', function (e) {
+            if (!e) {
+                var e = window.event;
+            }
+        
+            if (e.keyCode > 0 && e.which == 0) {
+                return true;
+            }
+        
+            if (e.keyCode) {
+                code = e.keyCode;
+            } else if (e.which) {
+                code = e.which;
+            }
+        
+            if (code == 46) {
+                return true;
+            }
+        
+            var character = String.fromCharCode(code);
+        
+            if (character == '\b' || character == ' ' || character == '\t') {
+                return true;
+            }
+        
+            if (keyDown && (code == vKey || code == Vkey)) {
+                return (character);
+            } else {
+                return (/[0-9]$/.test(character));
+            }
+        }).on('focusout', function (e) {
+        
+            var $this = $(this);
+        
+            if ($this.val() == "") {
+                return true;
+            }
+        
+            $this.val($this.val().replace(/[^0-9\.]/g, ''));
+        }).on('paste', function (e) {
+        
+            var $this = $(this);
+        
+            setTimeout(function () {
+                $this.val($this.val().replace(/[^0-9\.]/g, ''));
+            }, 5);
+        });
+        
+        $('.create-form-components')
+            .on(
+                'keyup',
+                'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]',
+                function () {
+                    validationFieldsForm($(this), $(this).parents(
+                        '.form-field').data('type'));
+                });
+        
+        $('.create-form-components')
+            .on(
+                'change',
+                'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]',
+                function () {
+                    validationFieldsForm($(this), $(this).parents(
+                        '.form-field').data('type'));
+                });
+        
+        function validationFieldsForm(field, type) {
+            if (type === "checkbox" || type === "radio") {
+                if (!field.is(':checked')) {
+                    field.parents('.form-field').addClass('required');
+                } else {
+                    field.parents('.form-field').removeClass('required');
+                }
+            } else {
+                if (!field.val().trim()) {
+                    field.parents('.form-field').addClass('required');
+                } else {
+                    field.parents('.form-field').removeClass('required');
+                }
+            }
+        }
+        
+        var $zoomPreview = $(".zoom-preview");
+        if ($zoomPreview.length) {
+            $zoomPreview.parent().removeClass("input-group");
+            $zoomPreview.remove();
+        }
+        
+        var ratings = $(".rating");
+        if (ratings.length > 0)
+            ratingStars(ratings);
+        function ratingStars(stars) {
+            $.each(stars, function (i, obj) {
+                var field = $(this).closest(".form-group")
+                    .find(".rating-value");
+                var tgt = $(obj);
+                tgt.html("");
+                var rating = FLUIGC.stars(tgt, {
+                    value: field.val()
+                });
+                rating.on("click", function (o) {
+                    field.val($(this).index() + 1);
+                });
+            });
+        }
+        
+        $.each($("[data-date]"), function (i, o) {
+            var id = $(o).attr("id");
+            FLUIGC.calendar("#" + id);
+        });
+        
+        $(document).ready(function () {
+            $.each($("[data-date]"), function (i, o) {
+                var id = $(o).attr("id");
+                if ($("#" + id).attr("readonly")) {
+                    $("#" + id).data('DateTimePicker').disable();
+                }
+            });
+        });
+   </script>
+</html>
+

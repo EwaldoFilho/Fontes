@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fluig</title>
+        <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+        <div align="center">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div align="center">
+            <p class="DescrMsgForum">
+                <#if OBJECTDETAIL == 'training'>
+                    <b>Você foi matriculado no treinamento ${OBJECT}</b>
+                <#else>
+                    <b>Você foi matriculado na trilha ${OBJECT}</b>
+                </#if>
+            </p>
+        </div>
+        <br>
+        <div align="center" class="DescrMsgForum actions">
+            <#if OBJECTDETAIL == 'training'>
+                <a href="${OBJECTLINK}">Comece agora seu treinamento</a>
+            <#else>
+                <a href="${OBJECTLINK}">Comece agora sua trilha</a>
+            </#if>
+            <div style="clear: both; line-height: 1px">&nbsp;</div>
+        </div>
+        <div align="center">
+            <p class="DescrMsgForum">Se o link acima não abrir, copie e cole o seguinte endereço no seu navegador:</p>
+            <p class="DescrMsgForum">${OBJECTLINK}</p>
+            <br><br>
+            <p class="DescrMsgForum">Este e-mail é automático e não deve ser respondido.</p>
+        </div>
+    </body>
+</html>

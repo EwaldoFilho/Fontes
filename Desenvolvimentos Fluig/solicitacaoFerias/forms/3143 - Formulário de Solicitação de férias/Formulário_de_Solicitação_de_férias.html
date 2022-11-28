@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Form</title>
+
+            <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script src="/resources/js/jquery/jquery.js"></script>
+            <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+            <script src="/resources/js/mustache/mustache-min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+            <script type="text/javascript" src="zoomFerias.js"></script>
+            <script type="text/javascript" src="FLUIGIP.js"></script>
+            <script type="text/javascript" src="AMU.css"></script>
+
+            <!-- CUSTOM -->
+            <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+            <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+            <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+            <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/4.css' type='text/css' rel='stylesheet' />
+		</head>
+        <body class="fluig-style-guide">
+			
+			<form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents" style="padding-left: 10px; padding-right: 10px;"><h1 class="title-form-application">Formulário de Solicitação de férias</h1><div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * são de preenchimento obrigatório.</div>
+            <div class="form-field" data-show-properties="" data-field-name="centroCusto">
+                <div class="form-input">
+                    <label for="centroCusto">Contrato<strong class="required text-danger"></strong></label>
+                                <div class="input-group">
+                                    <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                                    <input type="text" class="form-control zoom-tdi" id="descricao" name="descricao"                                  
+                                         required="required" readonly analytics="true" gooddataid="4">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomCustoForn(this)" data-toggle="tooltip"
+                                        data-placement="bottom" title="Pesquisar Contrato">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                </div>
+            </div>
+            <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Ano">
+                <div class="form-input">
+                    <div class="form-group"><label>Ano:</label><span class="required text-danger"><strong>*</strong></span><select
+                            class="form-control" name="Ano" analytics="true" gooddataid="3" required="required">
+                            <option value="-">-</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Mes">
+                <div class="form-input">
+                    <div class="form-group"><label>Mês:</label><span class="required text-danger"><strong>*</strong></span><select
+                            class="form-control" name="Mes" required="required" analytics="true" gooddataid="2">
+                            <option value="-">-</option>
+                            <option value="Janeiro">Janeiro</option>
+                            <option value="Fevereiro">Fevereiro</option>
+                            <option value="Março">Março</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Maio">Maio</option>
+                            <option value="Junho">Junho</option>
+                            <option value="Julho">Julho</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Setembro">Setembro</option>
+                            <option value="Outubro">Outubro</option>
+                            <option value="Novembro">Novembro</option>
+                            <option value="Dezembro">Dezembro</option>
+                        </select></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="nomecolaborador">
+                <div class="form-input">
+                    <div class="form-group"><label>Colaborador:</label><span
+                            class="required text-danger"><strong>*</strong></span><input type="text" class="form-control"
+                            name="nomecolaborador" value="" placeholder="Nome do colaborador:" data-size="big" required="required">
+                    </div>
+                </div>
+            </div>
+            <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Cargo">
+                <div class="form-input">
+                    <div class="form-group"><label>Cargo:</label><span class="required text-danger"><strong>*</strong></span><select
+                            class="form-control" name="Cargo" required="required" analytics="true" gooddataid="4">
+                            <option value="-">-</option>
+                            <option value="Acupunturista">Acupunturista</option>
+                            <option value="Analista de Comunicação">Analista de Comunicação</option>
+                            <option value="Analista de Documentação">Analista de Documentação</option>
+                            <option value="Analista de Gestão de Pessoas">Analista de Gestão de Pessoas</option>
+                            <option value="Analista de Infraestrutura">Analista de Infraestrutura</option>
+                            <option value="Analista de Negócios Protheus">Analista de Negócios Protheus</option>
+                            <option value="Analista de Suporte Administrativo Operacional">Analista de Suporte Administrativo
+                                Operacional</option>
+                            <option value="Analista de T.I">Analista de T.I</option>
+                            <option value="Analista Financeiro">Analista Financeiro</option>
+                            <option value="Assessora Jurídica">Assessora Jurídica</option>
+                            <option value="Assistente Administrativo">Assistente Administrativo</option>
+                            <option value="Assistente Comercial">Assistente Comercial</option>
+                            <option value="Assistente Financeiro">Assistente Financeiro</option>
+                            <option value="Assistente Social">Assistente Social</option>
+                            <option value="Auxiliar de Enfermagem">Auxiliar de Enfermagem</option>
+                            <option value="Auxiliar de Serviços Gerais">Auxiliar de Serviços Gerais</option>
+                            <option value="Bombeiro Aeródromo  - Líder">Bombeiro Aeródromo - Líder</option>
+                            <option value="Bombeiro Aeródromo - BA2">Bombeiro Aeródromo - BA2</option>
+                            <option value="Bombeiro Aeródromo - Chefe">Bombeiro Aeródromo - Chefe</option>
+                            <option value="Bombeiro Aeródromo - Folguista">Bombeiro Aeródromo - Folguista</option>
+                            <option value="Bombeiro Aeródromo - Gerente">Bombeiro Aeródromo - Gerente</option>
+                            <option value="Bombeiro Aeródromo - Motorista">Bombeiro Aeródromo - Motorista</option>
+                            <option value="Bombeiro Aeródromo - Op.">Bombeiro Aeródromo - Op.</option>
+                            <option value="Bombeiro Civil - Folguista">Bombeiro Civil - Folguista</option>
+                            <option value="Bombeiro Civil - Motorista">Bombeiro Civil - Motorista</option>
+                            <option value="Bombeiro Civil - Supervisor">Bombeiro Civil - Supervisor</option>
+                            <option value="Bombeiro Civil">Bombeiro Civil</option>
+                            <option value="Coordenador(a) Administrativo">Coordenador(a) Administrativo</option>
+                            <option value="Coordenador(a) de T.I">Coordenador(a) de T.I</option>
+                            <option value="Coordenador(a) do Projeto Amor a Mais">Coordenador(a) do Projeto Amor a Mais</option>
+                            <option value="Copeira">Copeira</option>
+                            <option value="Dentista">Dentista</option>
+                            <option value="Desenvolvedor">Desenvolvedor</option>
+                            <option value="Diretor de Arte">Diretor de Arte</option>
+                            <option value="Diretor de Expansão e Safety Security">Diretor de Expansão e Safety Security</option>
+                            <option value="Diretor de Gente e Cultura">Diretor de Gente e Cultura</option>
+                            <option value="Diretor de Marketing e Comercial">Diretor de Marketing e Comercial</option>
+                            <option value="Enfermeiro(a) Auditor">Enfermeiro(a) Auditor</option>
+                            <option value="Enfermeiro(a) do Trabalho">Enfermeiro(a) do Trabalho</option>
+                            <option value="Enfermeiro(a) Folguista">Enfermeiro(a) Folguista</option>
+                            <option value="Enfermeiro(a)">Enfermeiro(a)</option>
+                            <option value="Engenheiro de Segurança no trabalho">Engenheiro de Segurança no trabalho</option>
+                            <option value="Especialista em Licitações">Especialista em Licitações</option>
+                            <option value="Executivo de Vendas">Executivo de Vendas</option>
+                            <option value="Farmacêutico">Farmacêutico</option>
+                            <option value="Fonoaudiólogo">Fonoaudiólogo</option>
+                            <option value="Gerente administrativo">Gerente administrativo</option>
+                            <option value="Gerente de Contas">Gerente de Contas</option>
+                            <option value="Gerente de Qualidade">Gerente de Qualidade</option>
+                            <option value="Gerente de Remuneração e Beneficio">Gerente de Remuneração e Beneficio</option>
+                            <option value="Gerente de Suporte Administrativo Operacional">Gerente de Suporte Administrativo
+                                Operacional</option>
+                            <option value="Gerente Gente e Cultura">Gerente Gente e Cultura</option>
+                            <option value="Gerente SCI">Gerente SCI</option>
+                            <option value="Jovem Aprendiz">Jovem Aprendiz</option>
+                            <option value="Médico(a) Clinico">Médico(a) Clinico</option>
+                            <option value="Medico(a) do Trabalho">Medico(a) do Trabalho</option>
+                            <option value="Médico(a) Emergencista Ocupacional">Médico(a) Emergencista Ocupacional</option>
+                            <option value="Médico(a) Emergencista">Médico(a) Emergencista</option>
+                            <option value="Medico(a) Examinador">Medico(a) Examinador</option>
+                            <option value="Médico(a) Ocupacional Especialista">Médico(a) Ocupacional Especialista</option>
+                            <option value="Médico(a)">Médico(a)</option>
+                            <option value="Motorista Socorrista">Motorista Socorrista</option>
+                            <option value="Nutricionista">Nutricionista</option>
+                            <option value="Pedagoga">Pedagoga</option>
+                            <option value="Psicologo">Psicologo</option>
+                            <option value="Recepcionista">Recepcionista</option>
+                            <option value="Supervisor Financeiro">Supervisor Financeiro</option>
+                            <option value="Técnico(a) em Enfermagem do Trabalho">Técnico(a) em Enfermagem do Trabalho</option>
+                            <option value="Técnico(a) em Enfermagem Folguista">Técnico(a) em Enfermagem Folguista</option>
+                            <option value="Técnico(a) em Enfermagem">Técnico(a) em Enfermagem</option>
+                            <option value="Técnico(a) em Farmácia">Técnico(a) em Farmácia</option>
+                            <option value="Tecnico(a) em Segurança do Trabalho">Tecnico(a) em Segurança do Trabalho</option>
+                            <option value="Traffic Manager">Traffic Manager</option>
+                            <option value="Vídeo Maker">Vídeo Maker</option>
+                        </select></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="date" data-show-properties="" data-field-name="gozoinicio">
+                <div class="form-input">
+                    <div class="form-group"><label>Periodo de gozo - Início:</label><span
+                            class="required text-danger"><strong>*</strong></span><input id="date5" type="text" class="form-control"
+                            name="gozoinicio" data-date="" required="required" analytics="true" gooddataid="5"></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="date" data-show-properties="" data-field-name="Gozofim">
+                <div class="form-input">
+                    <div class="form-group"><label>Período de gozo - Fim:</label><span
+                            class="required text-danger"><strong>*</strong></span><input id="date6" type="text" class="form-control"
+                            name="Gozofim" data-date="" required="required" analytics="true" gooddataid="6"></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="nomesubstituto">
+                <div class="form-input">
+                    <div class="form-group"><label>Substituto:</label><span
+                            class="required text-danger"><strong>*</strong></span><input type="text" class="form-control"
+                            name="nomesubstituto" value="" placeholder="Nome do substituto" data-size="big" analytics="true"
+                            gooddataid="7" required="required"></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="textarea" data-show-properties="" data-field-name="justificativa">
+                <div class="form-input">
+                    <div class="form-group"><label>Justificativa(s):</label><span
+                            class="required text-danger"><strong>*</strong></span><textarea class="form-control" rows="3"
+                            name="justificativa" placeholder="Justificativa. Se não houver, escreva: não há." data-size="big"
+                            analytics="true" gooddataid="8" required="required"></textarea></div>
+                </div>
+            </div>
+            </form>
+
+			<script type="text/javascript">
+				var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118; 
+				  
+				$(document).keydown(function (e) {
+					if (e.keyCode == ctrl) keyDown = true;
+				}).keyup(function (e) {
+					if (e.keyCode == ctrl) keyDown = false;
+				});
+				
+				$('[data-only-numbers]').on('keypress', function (e) {
+				    if (!e) {
+					    var e = window.event;
+					}
+					
+				    if (e.keyCode > 0 && e.which == 0) {
+				    	 return true;
+					}
+					
+				    if (e.keyCode) {
+				        code = e.keyCode;
+					} else if (e.which) {
+				    	code = e.which;
+					}
+
+					if(code == 46) {
+						return true;
+					}
+					
+				    var character = String.fromCharCode(code);
+				    if (character == '\b' || character == ' ' || character == '\t') {
+				    	 return true;
+					}
+				    if (keyDown && (code == vKey || code == Vkey)) {
+				    	return (character);
+					} else  {
+						return (/[0-9]$/.test(character));
+					}
+				}).on('focusout', function (e) {
+				    var $this = $(this);
+					if($this.val() == "") {
+						return true;
+					}
+				    $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				}).on('paste', function (e) {
+				    var $this = $(this);
+				    setTimeout(function () {
+				        $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				    }, 5);
+				 });				
+
+				
+
+				$('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				$('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				function validationFieldsForm(field, type){
+					if(type === "checkbox" || type === "radio"){
+						if(!field.is(':checked')){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}else{
+						if(!field.val().trim()){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}
+				}
+
+				var $zoomPreview = $(".zoom-preview");
+				if ($zoomPreview.length) {
+                    $zoomPreview.parent().removeClass("input-group");
+                    $zoomPreview.remove();
+                }
+
+				var ratings = $(".rating");
+				if (ratings.length > 0) ratingStars(ratings);
+				function ratingStars(stars) {
+					$.each(stars, function(i, obj) {
+                        var field = $(this).closest(".form-group").find(".rating-value");
+						var tgt = $(obj);
+						tgt.html("");
+						var rating = FLUIGC.stars(tgt, { value: field.val() });
+                        rating.on("click", function(o) {
+                            field.val($(this).index() + 1);
+                        });
+					});
+				}
+
+				$.each($("[data-date]"), function(i, o) {
+                    var id = $(o).attr("id");
+					FLUIGC.calendar("#" + id);
+				});
+
+				$(document).ready(function() {
+					$.each($("[data-date]"), function(i, o) {
+	                    var id = $(o).attr("id");
+	                    if($("#" + id).attr("readonly")) {
+	                    	$("#" + id).data('DateTimePicker').disable();
+	                    }
+					});
+				});
+			</script>
+		</body>
+	</html>

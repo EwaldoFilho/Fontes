@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+    <link type="text/css" rel="stylesheet" href="AMU.css" />
+
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="/webdesk/vcXMLRPC.js"></script>
+
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="compras.js"></script>
+    <script type="text/javascript" src="desligamento.js"></script>
+
+</head>
+
+<body class="fluig-style-guide">
+    <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents"
+        style="padding-left: 10px; padding-right: 10px;">
+        <h1 style="text-align: center" ;>Solicitação de Desligamento - Distrato </h1>
+        <!--INICIO PANEL - GERAL --->
+        <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-md"></i> Informações do Colaborador
+                </h3>
+            </div>
+            <!--FIM PANEL - HEADING --->
+            <!-- INICIO PANEL - Geral -->
+            <div class="panel-body">
+
+
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Nome do Solicitante:</label>
+                        <input type="text" class="form-control" id="nomeAtendente" name="nomeAtendente" readonly
+                            analytics="true" gooddataid="1">
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label for="empresa">Centro de Custo:<strong class="required text-danger"></strong></label>
+                        <div class="input-group">
+                            <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                            <input type="text" class="form-control zoom-tdi" id="centroCusto" name="centroCusto"
+                                onchange="validaCampo(this)" required="required">
+                            <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip"
+                                data-placement="bottom" title="Pesquisar empresa">
+                                <i class="flaticon flaticon-search icon-sm"></i>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="colab2">Colaborador:<strong class="required text-danger"></strong></label>
+                        <div class="input-group">
+                    <!--    <input type="hidden" id="tipocontrato" name="TPCONTRATO"> -->
+                            <input type="hidden" id="telefone" name="TELEFONE">
+                            <input type="hidden" id="cpf" name="CPF">
+                            <input type="hidden" id="email" name="EMAIL">   
+                            <input type="hidden" id="rg" name="RG">                         
+                            <input type="text" class="form-control zoom-tdi" id="colaborador2" name="colaborador2"
+                                onchange="validaCampo(this)" required="required">                            
+                            <div class="input-group-addon zoom-tdi" onclick="zoomColaboradores(this)"
+                                data-toggle="tooltip" data-placement="bottom" title="Pesquisar colaborador">
+                                <i class="flaticon flaticon-search icon-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label for="funcao"> Selecione o Cargo do Colaborador:</label><strong class="required text-danger"></strong>
+                        <input type="text" class="form-control" id="funcao" name="FUNCAO" readonly=true >
+                      <!--  <select class="form-control" name="cargos" dataset="vagas-buscar-cargos" datasetkey="DESCRICAO"
+                            datasetvalue="DESCRICAO" analytics="true" gooddataid="4">
+                            <option value="Opção 1">Opção 1</option>
+                            <option value="Opção 2">Opção 2</option>
+                        </select>-->
+                    </div>
+                    <div class=" form-group col-md-1">
+                        <label for="Homologacao">Contrato:</label><strong class="required text-danger"></strong>
+                        <input type="text" class="form-control" id="tipocontrato" name="TPCONTRATO" readonly=true analytics="true" gooddataid="8" > 
+                        
+                        <!--<select class="form-control" id="Homologacao" name="Homologacao" analytics="true" gooddataid="8">
+                            <option value=""></option>
+                            <option value="PessoaJuridica">PJ</option>
+                            <option value="ContratoCLT">CLT</option>
+                    
+                    
+                        </select> -->
+                    </div>
+
+
+
+                </div>
+ <div class="row">
+
+ <div class="form-group col-md-2">
+     <label for="Aviso">Tipo da Rescisão:</label><strong class="required text-danger"></strong>
+     <select class="form-control" id="Recisao" name="Recisao" analytics="true" gooddataid="8">
+         <option value=""></option>
+         <option>Pedido de Demissão</option>
+         <option>Término de Contrato</option>
+         <option>Demissão Sem Justa Causa</option>
+         <option> Demissão Por Justa Cauda</option>
+         <option>  Término de Contrato antecipado</option>
+
+     </select>
+ </div>
+
+
+                    
+                    <div class="form-group col-md-2">
+                        <label for="Aviso">Aviso Prévio:</label><strong class="required text-danger"></strong>
+                        <select class="form-control" id="Aviso" name="Aviso" analytics="true" gooddataid="8" onchange="myFunction()">
+                            <option value=""></option>
+                            <option>Trabalhado</option>
+                            <option>Descontado</option>
+                            <option>Indenizado</option>
+                            <option>Não se aplica</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2" id="dataAvisoDiv">
+                        <label> Data do Aviso:</label><strong class="required text-danger"></strong>
+                        <input id="dataaviso" type="text" class="form-control" name="dataaviso" data-date=""
+                            placeholder="dd/mm/aaaa" analytics="true" gooddataid="5">
+                    </div>
+                     <div class=" form-group col-md-2" id="diasTrabalhadosDiv">
+                        <label for="DiasTrabalahdos">Dias Trabalhados:</label> <strong class="required text-danger"></strong>
+                        <input type="text" name="DiasTrabalahdos" id="DiasTrabalahdos" class="form-control" >
+                        </div>
+                    <div class="form-group col-md-2">
+                        <label> Data do Desligamento:</label><strong class="required text-danger"></strong> <input
+                            id="datadesliga" type="text" class="form-control" name="datadesliga" data-date=""
+                            placeholder="dd/mm/aaaa" analytics="true" gooddataid="6">
+                    </div>
+
+                    <div class=" form-group col-md-4">
+                        <label for="Anual">Nota de Avaliação de Desempenho - Anual:</label> <strong class="required text-danger"></strong>
+                        <input type="number" name="Anual" id="Anual" class="form-control" >
+                        </div>
+                            
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="escrito">Número de Advertência por Escrito:</label> <strong class="required text-danger"></strong>
+                        <input type="number" name="escrito" id="escrito" class="form-control">
+                    </div>
+                    <div class=" form-group col-md-3">
+                        <label for="verbal">Número de advertência verbal:</label> <strong class="required text-danger"></strong>
+                        <input type="number" name="verbal" id="verbal" class="form-control">
+                    </div>
+                <div class=" form-group col-md-3">
+                    <label for="Experincia">Nota de Experiência - Per. Experiência:</label> <strong
+                        class="required text-danger"></strong>
+                    <input type="number" name="Expericia" id="Experincia" class="form-control">
+                </div>
+                <div class=" form-group col-md-3">
+                    <label for="desempenho">Nota de desempenho - Trimestre:</label> <strong class="required text-danger"></strong>
+                    <input type="number" name="desempenho" id="desempenho" class="form-control">
+                </div>
+               </div>
+                <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs">Motivo do Desligamento:</label>
+                            <textarea id="obs" name="obs" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" form-group col-md-3">
+                            <input type="checkbox" id="SistemaEXiste" name="SistemaEXiste" value="SistemaEXiste">
+
+                            <label for="contactChoice1">Existe Acesso aos sistemas</label>
+                        </div>
+                        <div class=" form-group col-md-3">
+                            <input type="checkbox" id="Epiexite" name="Epiexite" value="Epiexite">
+                            <label for="contactChoice2">Existe epi com o colaborador</label>
+                        </div>
+                        <div class=" form-group col-md-3">
+                            <input type="checkbox" id="EquipaExite" name="EquipaExite" value="EquipaExite">
+                            <label for="contactChoice3">Existe equipamentos com o colaborador</label>
+                        </div>
+                         <div class=" form-group col-md-3">
+                            <input type="checkbox" id="ExisteAso" name="ExisteAso" value="ExisteAso">
+                            <label for="contactChoice3">Existe Aso</label>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+
+
+
+
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-laptop icon-md"></i>Sistemas e Equipamentos
+
+                </h3>
+            </div>
+            <div class="panel-body">
+
+                <div class=" row">
+                    <div class="form-group col-md-6">
+                        <div class="form-field" data-type="checkbox" data-show-properties=""
+                            data-field-name="checkbox0">
+
+
+                            <div class="form-input">
+                                <div class="form-group">
+                                    <label>Sistemas:</label><strong class="required text-danger"></strong>
+                                    <div class="check-options">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="Intramed" id="Intramed "
+                                                    value="Intramed">Intramed +
+                                            </label>
+
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="clock" value="clock" id="clock">
+                                                Clock in
+                                            </label>
+
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="Protheus" value="Protheus"
+                                                    id="Protheus"> Protheus
+                                            </label>
+
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="vpn" value="vpn" id="vpn"> VPN
+                                            </label>
+
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="Licenca" value="Licenca" id="Licenca">
+                                                Login windows
+                                            </label>
+
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="email2" value="email2" id="email2">
+                                                Email
+                                            </label>
+
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="todos" value="todos" id="todos">
+                                                Todos
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Equipamentos:</label><strong class="required text-danger"></strong>
+                        <div class="check-options">
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="notbook" id="notbook " value="notbook">Notebook
+                                </label>
+
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="desktop" value="desktop" id="desktop">
+                                    Desktop
+                                </label>
+
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="celular" value="celular" id="celular">
+                                    Celular
+                                </label>
+
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="tablet" value="tablet" id="tablet"> Tablet
+                                </label>
+
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="impressoara" value="impressoara" id="impressoara">
+                                    Impressoara
+                                </label>
+
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="Todos2" value="Todos2" id="Todos2"> Todos
+                                </label>
+
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="Naoaplica" value="Naoaplica" id="Naoaplica">
+                                    Não se aplica
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------FIM ROW 1----------------------------------------------------------------------->
+         <!--   </div>
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-user-search icon-md"></i>Uniformes e Epi
+
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="panel-body">
+                        <div class="form-group col-sm-12">
+                            <div class="panel-body">
+                                <div class="form-group col-sm-12">
+                                    <div class="table-datatable">
+                                        <div class="form-group col-sm-12">
+                                            <div class="row ">
+                                                <div class="col-sm-12 " id="grupoBotaoProdutos">
+                                                    <button type="button" class="btn btn-primary"
+                                                        name="modalBuscarProduto" id="modalBuscarProduto"
+                                                        data-toggle="tooltip" data-placement="bottom"
+                                                        title="Buscar Epi">
+                                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                                        Buscar Epi e uniforme
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         tabela de produtos cadastrados no sistema e adicionados pelo usuário -->
+                                        <div class="row">
+                                            <div class="col-sm-12 table-responsive fs-md-margin-top">
+                                                <h3 id="labelProdutos">Adicionar Epi</h3>
+                                                <table name="tb_novosProdutos" id="tb_novosProdutos"
+                                                    class="table table-bordered table-striped  ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Descrição</th>
+                                                            <th>Observação</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                                <!-- tabela de produtos para visualização -->
+                                                <div id="produtosNovosView"></div>
+                                                <input type="hidden" id="listaNovosProdutos" name="listaNovosProdutos">
+                                            </div>
+                                        </div>
+                                        <!-- tabela de produtos cadastrados no sistema e adicionados pelo usuário -->
+                                        <div class="row">
+                                            <div class="col-sm-12 table-responsive fs-md-margin-top">
+                                                <h3 id="labelProdutosAdicionais">Produtos adicionados</h3>
+                                                <table name="tb_produtos" id="tb_produtos"
+                                                    class="table table-bordered table-striped  ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Código produto</th>
+                                                            <th>Descrição</th>
+                                                            <th>Quantidade</th>
+                                                            <th>Observação</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                                <!-- tabela de produtos para visualização -->
+                                                <div id="produtosView"></div>
+                                                <input type="hidden" id="listaProdutos" name="listaProdutos">
+                                                <input type="hidden" class="form-control" id="existeGerente"
+                                                    name="existeGerente">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+                <!--------------------------------------FIM ROW 1----------------------------------------------------------------------->
+
+
+
+
+
+            </div>
+
+
+        </div>
+        <!---------------------------------------------FIM PANIEL 1---------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="Gestor" name="Gestor">
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-md"></i> Informações do processo
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class=" form-group col-md-12">
+                        <label for="JustiGestor">Justificativa Gestor</label>
+                        <textarea id="JustiGestor" name="JustiGestor" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!------------------------------------------------------------------------------------------------------------->
+
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="aprovacaoCEO" name="aprovacaoCEO">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-md"></i> Informações do processo
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class=" form-group col-md-12">
+                        <label for="JustiCEO">Justificativa CEO</label>
+                        <textarea id="JustiCEO" name="JustiCEO" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="AprovacaoDiretor" name="AprovacaoDiretor">
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-md"></i> Informações do processo
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class=" form-group col-md-12">
+                        <label for="JustiDiretor">Justificativa Diretor</label>
+                        <textarea id="JustiDiretor" name="JustiDiretor" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!------------------------------------------------------------------------------------------------------------->
+
+        
+        <!---------------------------------------------------------------------------------------------------------------->
+        <input type="hidden" id="tipocontrato1" name="TPCONTRATO1" >       
+        <input type="hidden" id="nomeMae" name="nomeMae" value="">             
+        <input type="hidden" id="Acesso" name="Acesso1" value="Acesso">
+        <input type="hidden" id="obs" name="obs1" value="" >
+        <input type="hidden" id="campoData" name="campoData" value="">
+        <!---------------------------------------------------------------------------------------------------------------->
+
+
+    </form>
+</body>
+<script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+<script type="text/javascript">
+  
+/*---------------------------------------------------------------------------------------------------- */
+ 
+   $("#diasTrabalhadosDiv").hide();
+   $("#dataAvisoDiv").hide();
+ 
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = " " + x;
+}
+
+function myFunction() {
+  var x = document.getElementById("Aviso").value;
+  document.getElementById("DiasTrabalahdos").innerHTML = " " + x;
+  
+  if(x == "Descontado"){
+    $("#diasTrabalhadosDiv").hide();
+    $("#dataAvisoDiv").show();
+  }else if(x == "Não se aplica"){
+    $("#diasTrabalhadosDiv").hide();
+    $("#dataAvisoDiv").hide();
+  }else if(x == "Indenizado"){
+  	$("#diasTrabalhadosDiv").hide();
+  	$("#dataAvisoDiv").show();
+  }else if(x == "Trabalhado"){
+  	$("#diasTrabalhadosDiv").show();
+  	$("#dataAvisoDiv").hide();  
+  }
+  
+
+
+  
+}
+     var produtos = [];
+     var produtosNovos = [];
+   
+     var produtosInput = JSON.parse("["+$("#listaProdutos").val()+"]");
+     var produtosNovosInput = JSON.parse("["+$("#listaNovosProdutos").val()+"]");
+   
+     var dataEntrega = FLUIGC.calendar('#estimativaEntrega');
+     var fornecedoresModal = null;//guarda fornecedores que serão exibidos na modal escolherProposta(idProposta)
+   
+     //dataEntrega.setMinDate(new Date());
+     
+     
+
+
+
+     
+     
+   $('#cpf').mask('000.000.000-00', {
+onKeyPress : function(cpfj, e, field, options) {
+ const masks = ['000.000.000-000', '00.000.000/0000-00'];
+ const mask = (cpfcnpj.length > 14) ? masks[1] : masks[0];
+ $('#cpf').mask(mask, options);
+}
+});
+     parent.$('#textActivity').hide();
+   $("#existeGerente").val(true);
+     $('#tb_produtos').hide(); 
+     $('#tb_novosProdutos').hide();         
+     $('#labelProdutos').hide(); 
+     $('#labelProdutosAdicionais').hide();
+   
+   
+     if (produtosNovosInput.length > 0) {
+        //cadastrar protheus
+        var produtosProtheus = FLUIGC.datatable('#produtosNovosView', {
+           dataRequest: produtosNovosInput,
+           renderContent: ['descricao', 'observacao'],
+           header: [
+              {'title': 'Produto'},
+              {'title': 'Observação'}
+           ],
+           tableStyle: 'table-bordered table-striped ',
+           search: {
+              enabled: false
+           },
+           scroll: {               
+              enabled: false
+           },
+           actions: {
+              enabled: false
+           },
+           navButtons: {
+              enabled: false
+           },
+           }, function(err, data) {               
+        });
+        
+     }
+         
+     //buscar protheus
+                 
+     $("#modalBuscarProduto").click(function () {
+        var myModal = FLUIGC.modal({
+           title: 'Buscar produtos',
+           content: '<form name="formModal" onsubmit="return false;">'+
+             ' <div class="form-group col-sm-12">'+
+                 '<div class="alert alert-danger hidden" id="aviso" role="alert">'+
+                 'Preencha os campos obrigatórios'+
+                 '</div>'+
+                 '<div class="alert alert-danger hidden" id="avisoProdutoInvalido" role="alert">'+
+                    '<span>Informe um produto válido.</span>'+
+                 '</div>'+
+                    '<label for="produto" class="col-sm-12">Produto<strong class="required text-danger"></strong></label>'+
+                    '<div class="input-group col-sm-12">'+
+                       '<input type="hidden" id="codigoProdutoModal" name="codigoProdutoModal">'+
+                      ' <input type="text" class="form-control" name="produtoModal" id="produtoModal" data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required">'+
+                      ' <div class="input-group-addon zoom-tdi" onclick="zoomProdutoModal(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar produto"><i class="flaticon flaticon-search icon-sm"></i></div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="form-group col-sm-12">'+
+                    '<div class="input-group col-sm-12">'+               
+                       '<label for="quantidade" class="col-sm-12">Quantidade<strong class="required text-danger"></strong></label>'+
+                       '<input type="number" class="form-control" name="quantidadeModal" id="quantidadeModal"  data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required">'+                  
+                    '</div>'+
+                 '</div>'+
+                '<div class="form-group col-sm-12">'+
+                    '<div class="input-group col-sm-12">'+            
+                       '<label for="observacao" class="col-sm-12">Observação<strong class="required text-danger"></strong></label>'+
+                          '<textarea class="form-control" rows="5" name="observacaoModal" id="observacaoModal" data-fluig-state-valid="0,4" data-fluig-write="0,4" required="required" onkeydown="return maskCharacters(event)"></textarea>'+
+                    '</div>'+
+                 '</div>'+
+              '</form>',
+           id: 'fluig-modal',
+           size: 'full',
+           actions: [{
+              'label': 'Adicionar',
+              'bind' : "data-search-modal",
+           },{
+              'label': 'Cancelar',
+              'autoClose': true
+           }]
+        }, function() {
+          function maskCharacters() {  
+                var regex = new RegExp('[^ 0-9a-zA-Zàèìòùáéíóúâêîôûãõ\b@,.]', 'g');            
+                $(this).val($(this).val().replace(regex, ''));
+          }
+              
+          $("#observacaoModal").keyup(maskCharacters);
+        
+           $("#fluig-modal").find("button[data-search-modal]").on("click", function() {                  
+              var table = document.getElementById("tb_produtos");
+              var row = table.insertRow($('#tb_produtos tr').length);   
+              
+              if (document.querySelector("#codigoProdutoModal").value == "" || document.querySelector("#codigoProdutoModal").value == null) {
+                 $("#avisoProdutoInvalido").removeClass("hidden");                     
+              } else if(document.querySelector("#produtoModal").value=="" || document.querySelector("#produtoModal").value == null ||
+                 document.querySelector("#quantidadeModal").value=="" || document.querySelector("#quantidadeModal").value == null ||
+                 document.querySelector("#observacaoModal").value=="" || document.querySelector("#observacaoModal").value == null){     
+                    $("#avisoProdutoInvalido").addClass("hidden");                      
+                    $("#aviso").removeClass("hidden");
+                 }else{
+                    row.innerHTML = '<tr>'+
+                                '<td>'+document.querySelector("#codigoProdutoModal").value+'</td>'+
+                                '<td>'+document.querySelector("#produtoModal").value+'</td>'+
+                                '<td>'+document.querySelector("#quantidadeModal").value+'</td>'+
+                                '<td>'+document.querySelector("#observacaoModal").value+'</td>'+                                    
+                                '<td class="text-center"><i class="flaticon flaticon-trash icon-md remover"></i></td>'+
+                             '</tr>';
+                    produtos.push("{"+'"cidProduto":"'+document.querySelector("#codigoProdutoModal").value+'", "produto":"'+document.querySelector("#produtoModal").value+'", "cquantidade":"'+document.querySelector("#quantidadeModal").value+'","cobs":"'+document.querySelector("#observacaoModal").value+'"}');
+                    $('#tb_produtos').show();
+                    $('#labelProdutosAdicionais').show();                        
+                    myModal.remove();
+                 }
+                 $("#listaProdutos").val(produtos);
+           });
+        });        
+     });
+
+   
+     // $('#epi').select2({
+     // 	width: "100%",
+     //   placeholder: ''
+     // }).val('').trigger('change');
+     //
+     // $('#uniforme').select2({
+     // 	width: "100%",
+     //   placeholder: ''
+     // }).val('').trigger('change');
+     //
+     // $('#sistemas').select2({
+     // 	width: "100%",
+     //   placeholder: ''
+     // }).val('').trigger('change');
+     //
+     // $('#equipamentos').select2({
+     // 	width: "100%",
+     //   placeholder: ''
+     // }).val('').trigger('change');
+     //
+     // $('#headcount').select2({
+     // 	width: "100%",
+     // 	placeholder: ''
+     // }).val('').trigger('change');
+     
+     var dataSolicitacao = FLUIGC.calendar('#datasolicitacao', {});
+     var dataRetorno = FLUIGC.calendar('#dataret');
+     var dataAdmissao = FLUIGC.calendar('#dataadmi');
+     var dataNascimento = FLUIGC.calendar('#datanas');
+     var dataExpedicao = FLUIGC.calendar('#dataexpe');
+     var dataFechamento = FLUIGC.calendar('#datafecha');
+     var dataFechamento = FLUIGC.calendar('#Dispensa3');
+     var dataFechamento = FLUIGC.calendar('#Dispensa6');
+    
+    
+     
+     var dataAtual = new Date();
+     var maxDataAdmissao = new Date(dataAtual.getFullYear(), dataAtual
+         .getMonth(), dataAtual.getDate() + 7);
+     var maxDataFechamento = new Date(dataAtual.getFullYear(), dataAtual
+         .getMonth(), dataAtual.getDate() + 5);
+     
+     //dataRetorno.setMinDate(dataAtual);
+     //dataSolicitacao.setMinDate(dataAtual);
+    // dataAdmissao.setMinDate(dataAtual);
+     //dataFechamento.setMinDate(dataAtual);
+     
+    // dataAdmissao.setMaxDate(new Date(maxDataAdmissao));
+     //dataFechamento.setMaxDate(new Date(maxDataFechamento));
+     
+     var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118;
+     
+     $(document).keydown(function (e) {
+         if (e.keyCode == ctrl)
+             keyDown = true;
+     }).keyup(function (e) {
+         if (e.keyCode == ctrl)
+             keyDown = false;
+     });
+     
+     $('[data-only-numbers]').on('keypress', function (e) {
+         if (!e) {
+             var e = window.event;
+         }
+     
+         if (e.keyCode > 0 && e.which == 0) {
+             return true;
+         }
+     
+         if (e.keyCode) {
+             code = e.keyCode;
+         } else if (e.which) {
+             code = e.which;
+         }
+     
+         if (code == 46) {
+             return true;
+         }
+     
+         var character = String.fromCharCode(code);
+     
+         if (character == '\b' || character == ' ' || character == '\t') {
+             return true;
+         }
+     
+         if (keyDown && (code == vKey || code == Vkey)) {
+             return (character);
+         } else {
+             return (/[0-9]$/.test(character));
+         }
+     }).on('focusout', function (e) {
+     
+         var $this = $(this);
+     
+         if ($this.val() == "") {
+             return true;
+         }
+     
+         $this.val($this.val().replace(/[^0-9\.]/g, ''));
+     }).on('paste', function (e) {
+     
+         var $this = $(this);
+     
+         setTimeout(function () {
+             $this.val($this.val().replace(/[^0-9\.]/g, ''));
+         }, 5);
+     });
+     
+     $('.create-form-components')
+         .on(
+             'keyup',
+             'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]',
+             function () {
+                 validationFieldsForm($(this), $(this).parents(
+                     '.form-field').data('type'));
+             });
+     
+     $('.create-form-components')
+         .on(
+             'change',
+             'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]',
+             function () {
+                 validationFieldsForm($(this), $(this).parents(
+                     '.form-field').data('type'));
+             });
+     
+     function validationFieldsForm(field, type) {
+         if (type === "checkbox" || type === "radio") {
+             if (!field.is(':checked')) {
+                 field.parents('.form-field').addClass('required');
+             } else {
+                 field.parents('.form-field').removeClass('required');
+             }
+         } else {
+             if (!field.val().trim()) {
+                 field.parents('.form-field').addClass('required');
+             } else {
+                 field.parents('.form-field').removeClass('required');
+             }
+         }
+     }
+     
+     var $zoomPreview = $(".zoom-preview");
+     if ($zoomPreview.length) {
+         $zoomPreview.parent().removeClass("input-group");
+         $zoomPreview.remove();
+     }
+     
+     var ratings = $(".rating");
+     if (ratings.length > 0)
+         ratingStars(ratings);
+     function ratingStars(stars) {
+         $.each(stars, function (i, obj) {
+             var field = $(this).closest(".form-group")
+                 .find(".rating-value");
+             var tgt = $(obj);
+             tgt.html("");
+             var rating = FLUIGC.stars(tgt, {
+                 value: field.val()
+             });
+             rating.on("click", function (o) {
+                 field.val($(this).index() + 1);
+             });
+         });
+     }
+     
+     $.each($("[data-date]"), function (i, o) {
+         var id = $(o).attr("id");
+         FLUIGC.calendar("#" + id);
+     });
+     
+     
+     
+</script>
+
+
+</html>

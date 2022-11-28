@@ -1,0 +1,26 @@
+.ms-left {
+    margin-left: 10px!important;
+}
+
+@media (max-width: 600px){
+    #logo-right {
+        display: none;
+    }
+    #modalBuscarProduto{
+        display: block!important;
+        width: 100%!important;
+        margin-top: 13px!important;
+    }
+    #modalAdicionarProduto{
+        display: block!important;
+        width: 100%!important;
+    }
+    #tituloProdutos{
+        text-align: center;
+    }
+    
+    .ms-left {
+        margin-left: 0px!important;
+        width: -webkit-fill-available!important;
+    }
+}

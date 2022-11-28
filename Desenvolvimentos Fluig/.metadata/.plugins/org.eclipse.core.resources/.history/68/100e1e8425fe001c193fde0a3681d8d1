@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+    <script src="/resources/js/jquery/jquery.js"></script>
+    <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="/resources/js/mustache/mustache-min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+    <!-- CUSTOM -->
+    <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+    <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+    <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+    <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/4.css' type='text/css' rel='stylesheet' />
+    <link type="text/css" rel="stylesheet" href="precificacao.css"/>
+    <script type="text/javascript" src="tableFunctions.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="zoomPrecificacao.js"></script>    
+</head>
+
+<body class="fluig-style-guide">
+    <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents"
+        style="padding-left: 10px; padding-right: 10px;">
+        <!--INICIO PANEL - GERAL --->
+        <h1 style="text-align: center;">Solicitação de precificação</h1>
+        <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-edit-square icon-md"></i> Resumo da precificação
+                </h3>
+            </div>
+            <!--FIM PANEL - HEADING --->
+            <!-- INICIO PANEL - Geral -->
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="nomeCliente"> Cliente</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="nomeCliente" id="nomeCliente" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="numeroOportunidade"> Número da oportunidade</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="numeroOportunidade" id="numeroOportunidade" class="form-control">
+                    </div>
+                    <div class="form-input col-md-3">
+                        <div class="form-group">
+                            <label for="tipoDisputa"> Tipo de disputa</label> <span
+                                text-danger"> <strong></strong></span>
+                     
+                            <select name="tipoDisputa" class="form-control col-md-3" id="tipoDisputa" name="tipoDisputa"
+                                analytics="true" gooddataid="1">
+                                <option value="">-</option>
+                                <option value="aberta" name="aberta">Licitação aberta com possibilidade de lance</option>
+                                <option value="fechado" name="fechado">Licitação fechada sem possibilidade de lance</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-input col-md-2">
+                    <div class="form-group">
+                        <label for="tipoDisputa"> Critério de julgamento</label> <span
+                            text-danger"> <strong></strong></span>
+                 
+                        <select name="criterio" class="form-control col-md-3" id="criterio" 
+                            analytics="true" gooddataid="1">
+                            <option value="">-</option>
+                            <option value="menorPrecoGlobal" name="menorPrecoGlobal">Menor preço global</option>
+                            <option value="menorPrecoItem" name="menorPrecoItem">Menor preço por item</option>
+                            <option value="menorPrecoLote" name="menorPrecoLote">Menor preço por lote</option>
+                        </select>
+
+                    </div>
+                </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------------->
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="objeto"> Objeto de disputa</label> <span text-danger><strong>*</strong></span>
+                        <textarea class="form-control" rows="3" id="objeto" name="objeto"></textarea>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------------->
+               <div class="row">
+	                <div class="form-group col-md-3">
+	                    <label for="objeto"> Código UASG/ID/OC</label> <span text-danger><strong></strong></span>
+	                    <input type="text" class="form-control" rows="3" id="codigoUasg" name="codigoUasg">
+	                </div>
+	                <div class="form-group col-md-6">
+			                <label for="site"> Site da disputa</label> <span text-danger><strong></strong></span>
+			                <input type="text" class="form-control" rows="3" id="site" name="site">
+	                </div>
+	                <div class="form-group col-md-3">
+		                <label for="pessoaContato"> Pessoa para contato</label> <span text-danger><strong></strong></span>
+		                <input type="text" class="form-control" rows="3" id="pessoaContato" name="pessoaContato">
+	                </div>
+               </div>
+                <!------------------------------------------------------------------------------------------------------------->
+                <div class="row">
+ 	                <div class="form-group col-md-2">
+ 	                    <label for="telefone"> Telefone</label> <span text-danger><strong></strong></span>
+ 	                    <input type="text" class="form-control" rows="3" id="telefone" name="telefone"  data-size="big" mask="(00) 90000-0000" maxlength="15" data-only-numbers="true">
+ 	                </div>
+ 	               
+ 	                <div class="form-group col-md-2">
+ 		                <label for="prazoCadastro"> Prazo para cadastro de proposta</label> <span text-danger><strong>*</strong></span>
+ 		                <input type="text" class="form-control" rows="3" id="prazoCadastro" name="prazoCadastro">
+ 	                </div>
+                     <div class="form-group col-md-4">
+                        <label for="email">Email</label> <span text-danger><strong></strong></span>
+                        <input type="text" class="form-control" rows="3" id="email" name="email">
+                    </div>
+ 	               <div class="form-group col-md-4">
+		                <label for="visitaTec"> Visita técnica</label> <span text-danger><strong></strong></span>
+		                <select name="visitaTec" class="form-control col-md-3" id="visitaTec" 
+                            analytics="true" gooddataid="1">
+                            <option value="">-</option>
+                            <option value="OBRIGATORIA" name="OBRIGATORIA">Obrigatória</option>
+                            <option value="FACULTATIVA " name="FACULTATIVA">Facultativa</option>
+                            <option value="NAOAPLICAVEL" name="NAOAPLICAVEL">Não aplicável</option>
+                        </select>
+	                </div>
+                </div>
+                 <!------------------------------------------------------------------------------------------------------------->
+
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="inicioPropostas"> Início das propostas</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="inicioPropostas" id="inicioPropostas" class="form-control" value="" placeholder="00/00/0000 00:00:00" data-size="big" mask="00/00/0000 00:00:00" maxlength="19" data-only-numbers="true">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="aberturtaPropostas"> Abertura das propostas</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="aberturtaPropostas" id="aberturtaPropostas" class="form-control" value="" placeholder="00/00/0000 00:00:00" data-size="big" mask="00/00/0000 00:00:00" maxlength="19" data-only-numbers="true">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="dataDisputa"> Data da disputa</label> <span text-danger><strong></strong></span>
+                        <input type="text" name="dataDisputa" id="dataDisputa" class="form-control" mask="00/00/0000 00:00:00" placeholder="00/00/0000 00:00:00">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="prazoEsclarecimento"> Prazo de esclarecimento</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="prazoEsclarecimento" id="prazoEsclarecimento" class="form-control" value="" placeholder="00/00/0000 00:00:00" data-size="big" mask="00/00/0000 00:00:00" maxlength="19" data-only-numbers="true">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="prazoRecurso"> Prazo de Impugnação</label> <span text-danger><strong></strong></span>
+                        <input type="text" name="prazoRecurso" id="prazoRecurso" class="form-control" mask="00/00/0000 00:00:00" placeholder="00/00/0000 00:00:00">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="vigenciaContrato"> Vigência do contrato</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="vigenciaContrato" id="vigenciaContrato" class="form-control" >
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="valiadeProposta"> Validade da proposta</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="valiadeProposta" id="valiadeProposta" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------------------------------->
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-assignment-turned-in icon-md"></i> Informações para disputa
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="intervaloLances"> Intervalo entre lances</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="intervaloLances" id="intervaloLances" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="tempoDisputa"> Tempo de disputa</label> <span text-danger><strong></strong></span>
+                        <input type="text" name="tempoDisputa" id="tempoDisputa" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="preferencia"> Preferência ME/EPP</label> <span text-danger><strong></strong></span>
+                        <select name="preferencia" class="form-control col-md-3" id="preferencia" 
+                            analytics="true" gooddataid="1">
+                            <option value="">-</option>
+                            <option value="DESEMPATE5" name="DESEMPATE5">Desempate 5% </option>
+                            <option value="DESEMPATE10 " name="DESEMPATE10">Desempate 10% </option>
+                            <option value="EXCLUSIVIDADE" name="EXCLUSIVIDADE">Exclusividade</option>
+                            <option value="PREFERENCIAL" name="PREFERENCIAL">Preferêncial</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="valorContratacaoEstima"> Valor estimado da contratação</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="valorContratacaoEstima" id="valorContratacaoEstima" class="form-control" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                    </div>
+                </div>
+                <div class="row">
+                <!--
+                    <div class="form-group col-md-6">
+                        <label for="prazoEnvioEletro">Prazo para envio da proposta eletrônica</label> <span
+                            text-danger><strong></strong></span>
+                        <input type="text" name="prazoEnvioEletro" id="prazoEnvioEletro" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="prazoEnvioFisi"> Prazo para envio da proposta física</label> <span text-danger><strong></strong></span>
+                        <input type="text" name="prazoEnvioFisi" id="prazoEnvioFisi" class="form-control">
+                    </div> -->
+                    <div class="form-group col-md-6">
+                        <label for="prazoEletroHabi"> Prazo para envio da habilitação eletrônica</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="prazoEletroHabi" id="prazoEletroHabi" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prazoFisiHabi"> Prazo para envio da habilitação Física</label> <span text-danger><strong></strong></span>
+                        <input type="text" name="prazoFisiHabi" id="prazoFisiHabi" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                <div class="form-group col-md-3">
+                    <label for="percentual">Percentual de garantia contratual</label> <span
+                        text-danger><strong></strong></span>
+                    <input type="text" name="percentual" id="percentual" class="form-control"  mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="previsao">Previsão para entrega de precificação</label> <span
+                        text-danger><strong>*</strong></span>
+                    <input type="text" name="previsao" id="previsao" class="form-control"   placeholder="00/00/0000 00:00" data-size="big" mask="00/00/0000 00:00" maxlength="17" data-only-numbers="true">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="modoDisputa"> Modo de disputa</label> <span text-danger><strong></strong></span>
+                    <select name="modoDisputa" class="form-control col-md-3" id="modoDisputa" 
+                        analytics="true" gooddataid="1">
+                        <option value="">-</option>
+                        <option value="ModoAbeto" name="ModoAbeto">Aberta</option>
+                        <option value="abertaFechada " name="abertaFechada">Aberta e fechada </option>
+                        <option value="randomico " name="randomico">Randômico </option>
+
+                        <option value="modonaoAPlica" name="modonaoAPlica">Não se aplica</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dados_recursos_humanos" name="dados_recursos_humanos">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-document-group icon-md"></i> Recursos humanos / Juridico
+                </h3>
+
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+              <!--      <select name="estado_hum_ju" class="form-control col-md-4" id="estado_hum_ju" name="estado_hum_ju"
+                        analytics="true" gooddataid="1">
+                        <option value="">-</option>
+                        <option value="feito" name="hum_f">Feito</option>
+                        <option value="pendente" name="hum_p">Pendente</option>
+                    </select>
+					-->
+                    <div class="form-input">
+                        <div class="form-group">
+
+                            <table id="tabledetailname1" name="tabledetailname1" tablename="tabledetailname1" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Profissional</th>
+                                        <th class="tableColumn">Qualificação</th>
+                                        <th class="tableColumn">Benefícios</th>
+                                        <th class="tableColumn">Carga Horária</th>
+                                        <th class="tableColumn">Local da Prestação de Serviço</th>
+                                        <th class="tableColumn">Resumo da CCT</th>
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="profissional" id="profissional"
+                                                    class="form-control" rows="4" cols="4" onkeyup="validarInputsTabela('profissional___1', 'qualificacao___1','beneficio__1','descri__1', 'localservico___1', 'descri__1','existeRh')"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="qualificacao" id="qualificacao"
+                                                    class="form-control" rows="4" label="Qualifiação 
+                                        cols=" 4" onkeyup="validarInputsTabela('profissional___1', 'qualificacao___1','beneficio__1','descri__1', 'descri___1','localservico__1', 'existeRh')"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="beneficio" id="beneficio"
+                                                    class="form-control" rows="4" label="Benefícios"
+                                                    cols="4" onkeyup="validarInputsTabela('profissional___1', 'qualificacao___1','beneficio__1','descri__1', 'beneficio___1', 'localservico__1','existeRh')"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="resumo" id="resumo"
+                                                    class="form-control" rows="4" label="resumo"
+                                                    cols="4" onkeyup="validarInputsTabela('profissional___1', 'qualificacao___1','beneficio__1','resumo__1', 'beneficio___1', 'localservico__1','existeRh')"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="teste" id="ValorBeneficios"
+                                                    class="form-control" rows="4" label="ValorBenefícios" "
+                                                    cols="4" onkeyup="validarInputsTabela('profissional___1', 'qualificacao___1','beneficio__1','ValorBeneficios__1', 'beneficio___1', 'localservico__1','existeRh')"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="localservico" id="localservico"
+                                                    class="form-control" rows="4" label="ValorBenefícios" "
+                                                    cols="4" onkeyup="validarInputsTabela('profissional___1', 'qualificacao___1','beneficio__1','ValorBeneficios__1', 'beneficio___1', 'localservico__1','existeRh')"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existeRh" id="existeRh">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname1')">Novo Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dados_financeiro" name="dados_financeiro">
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-poll icon-md"></i> Aliquotas de ISS
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                    
+                        <div class="form-group">
+                            <table tablename="tabledetailname2" class="table" noaddbutton="true" id="tabledetailname2" >
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Estado</th>
+                                        <th class="tableColumn">Cidade</th>
+                                        <th class="tableColumn">Código</th>
+                                        <th class="tableColumn">Alíquota de iss</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                            
+                                            <select id="cidade" name="cidade" class="form-control" id="cidade" analytics="true" gooddataid="1"  onchange="validarInputsTabela('cidade___1', 'codigo___1', 'alicota__1','estado__1','descri__1','descri__1', 'existefinanceiro')">
+                                    <option value=""></option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                            </div>
+                                        </td>
+                                           <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="estado" class="form-control" label="estado" id="estado" onkeyup="validarInputsTabela('cidade___1', 'codigo___1', 'alicota__1','estado__1','descri__1','descri__1', 'existefinanceiro')" >
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="codigo" class="form-control" label="codigo" id="codico" onkeyup="validarInputsTabela('cidade___1', 'codigo___1', 'alicota__1','estado_1','descri__1','descri__1', 'existefinanceiro')" >
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text"  maxlength="22" data-only-numbers="true"  name="alicota" class="form-control" mask="#00.000.000.000.000,00" maxlength="22"  id="alicota" label="aliquota" onkeyup="validarInputsTabela('cidade___1', 'codigo___1', 'alicota___1','estado__1','descri__1', 'descri__1','existefinanceiro')" >
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existefinanceiro" id="existefinanceiro">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname2')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dados_uniformes_epi" name="dados_uniformes_epi">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-accessibility icon-md"></i> Uniformes e epis
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                       <!-- <select id="estado_unifor" name="estado_unifor" class="form-control col-md-4"
+                            name="estado_unifor" analytics="true" gooddataid="2">
+                            <option value="">-</option>
+                            <option value="feito" name="unifor_f">Feito</option>
+                            <option value="pendente" name="unifor_p">Pendente</option>
+                        </select> -->
+                        <div class="form-group">
+                            <div class="form-group">
+                                <table tablename="tabledetailname3" class="table" noaddbutton="true">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Descrição do item</th>
+                                            <th class="tableColumn">Valor unitário</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input name="decricaoitem" label="decricaoitem"
+                                                        class="form-control" rows="4" cols="4" onkeyup="validarInputsTabela('decricaoitem___1', 'unitarioEpi___1', 'descri__1','descri__1','descri__1','descri__1','existeUniformes')"></textarea>
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="unitarioEpi" class="form-control"  onkeyup="validarInputsTabela('decricaoitem___1', 'unitarioEpi___1', 'descri__1','descri__1','descri__1','descri__1','existeUniformes')"
+                                                        label="unitarioEpi" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="existeUniformes" id="existeUniformes">
+                                <button type="button" class="btn btn-primary"
+                                    onclick="wdkAddChild('tabledetailname3')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!------------------------------------------------------------------------------------------------------------->
+            <div class="panel panel-primary" id="dados_avaliacoes" name="dados_avaliacoes">
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-edit-square icon-md"></i> Avaliações
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-field" data-type="tabledetail" data-show-properties=""
+                        data-field-name="tabledetail0" style="">
+
+                        <div class="form-input">
+                        <!--    <select id="estado_avaliacoes" name="estado_avaliacoes" class="form-control col-md-6"
+                                name="estado_avaliacoes" analytics="true" gooddataid="2">
+                                <option value="">-</option>
+                                <option value="feito" name="avaliacoes_f">Feito</option>
+                                <option value="pendente" name="avaliacoes_p">Pendente</option>
+                            </select> -->
+                            <select class="form-control col-md-6" name="area_tec1" analytics="true" gooddataid="2" id="area_tec1">
+                                <option value="">-</option>
+                                <option value="sim" name="area_tec">encaminhar para area tecnica </option>
+
+                            </select>
+                            <div class="form-group">
+                                <table tablename="tabledetailname4" class="table" noaddbutton="true">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Item</th>
+                                            <th class="tableColumn">Valor unitário</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="itemAva" class="form-control" label="item"   onkeyup="validarInputsTabela('valorUni___1',  'itemAva___1', 'descri__1','descri__1','descri__1','descri__1','existeAVA')"> 
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="valorUni" class="form-control"
+                                                        label="valorUni" onkeyup="validarInputsTabela('valorUni___1',  'itemAva___1','descri__1','descri__1','descri__1', 'descri__1','existeAVA')" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="existeAVA" id="existeAVA">
+                                <button type="button" class="btn btn-primary"
+                                    onclick="wdkAddChild('tabledetailname4')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dadosSuprimentos" name="dadosSuprimentos">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-fork icon-md"></i> Suprimentos - despesas gerais
+                </h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+               
+                        
+                        <div class="form-group">
+                            <table tablename="tabledetailname5" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Item</th>
+                                        <th class="tableColumn">Quantidade</th>
+                                        <th class="tableColumn">Valor unitário </th>
+                                        <th class="tableColumn">Valor total</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="itemSuprimentoDespesas" class="form-control" label="item" onkeyup="validarInputsTabela('itemSuprimentoDespesas___1',  'quantidadeSuprimento___1','valorUnitarioSuprimento__1','valorTotalSuprimento__1','descri__1', 'descri__1','existeSuprimentos')">
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="quantidadeSuprimento" class="form-control" label="item" onkeyup="validarInputsTabela('itemSuprimentoDespesas___1',  'quantidadeSuprimento___1','valorUnitarioSuprimento__1','valorTotalSuprimento__1','descri__1', 'descri__1','existeSuprimentos')">
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="valorUnitarioSuprimento" class="form-control" label="item" onkeyup="validarInputsTabela('itemSuprimentoDespesas___1',  'quantidadeSuprimento___1','valorUnitarioSuprimento__1','valorTotalSuprimento__1','descri__1', 'descri__1','existeSuprimentos')">
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="valorTotalSuprimento" class="form-control" onkeyup="validarInputsTabela('itemSuprimentoDespesas___1',  'quantidadeSuprimento___1','valorUnitarioSuprimento__1','valorTotalSuprimento__1','descri__1', 'descri__1','existeSuprimentos')"
+                                                    label="valor_unitario" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existeSuprimentos" id="existeSuprimentos">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname5')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dadosExames" name="dadosExames">
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-handshake icon-md"></i> Exames complementares
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                      <!--  <select id="estado_juridico" name="estado_juridico" class="form-control col-md-4"
+                            name="estado_juridico" analytics="true" gooddataid="2">
+                            <option value="">-</option>
+                            <option value="feito" name="juri_f">Feito</option>
+                            <option value="pendente" name="juri_p">Pendente</option>
+                        </select>-->
+                        <div class="form-group">
+                            <table tablename="tabledetailname12" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Item </th>
+                                        <th class="tableColumn">Valor unitario</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                    
+                                       <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="ITEMEZAME"  onkeyup="validarInputsTabela('ITEMEZAME___1',  'UNIDADEEXAME___1','descri__1', 'descri__1', 'descri__1','descri__1','existeExame')"
+                                                    class="form-control" rows="4" cols="4" label="argumento"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input  type="text" name="UNIDADEEXAME"  onkeyup="validarInputsTabela('ITEMEZAME___1',  'UNIDADEEXAME___1','descri__1', 'descri__1', 'descri__1','descri__1','existeExame')"
+                                                    class="form-control" rows="4" cols="4" label="item"/>
+                                            </div>
+                                        </td>
+
+                                     
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existeExame" id="existeExame">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname12')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dadosLocacao" name="dadosLocacao">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-shopping-basket icon-md"></i> Suprimentos - locações
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                    <!--    <select id="estado_lotacao" name="estado_lotacao" class="form-control col-md-4"
+                            name="estado_lotacao" analytics="true" gooddataid="2">
+                            <option value="">-</option>
+                            <option value="feito" name="lotacao_f">Feito</option>
+                            <option value="pendente" name="lotaca_p">Pendente</option>
+                        </select> -->
+                        <div class="form-group">
+                            <table tablename="tabledetailname7" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Item</th>
+                                        <th class="tableColumn">Especificação</th>
+                                        <th class="tableColumn">Quantidade</th>
+                                        <th class="tableColumn">Valor unitario</th>
+                                        <th class="tableColumn">Valor total</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="itemsupriLoca"  onkeyup="validarInputsTabela('itemsupriloca___1', 'especificaSupriloca___1', 'quantisurpriloca___1','valoSupriLoca__1','ValoTotalSurpLOca__1','descri__1', 'existeLocacao')"
+                                                    class="form-control" rows="4" cols="12" label="item"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="especificaSupriLoca"  onkeyup="validarInputsTabela('itemsupriloca___1', 'especificaSupriloca___1', 'quantisurpriloca___1','valoSupriLoca__1','ValoTotalSurpLOca__1','descri__1', 'existeLocacao')"
+                                                    class="form-control" rows="4" cols="12"
+                                                    label="especificação"></textarea>
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="quantisurpriLoca" class="form-control"  onkeyup="validarInputsTabela('itemsupriloca___1', 'especificaSupriloca___1', 'quantisurpriloca___1','valoSupriLoca__1','ValoTotalSurpLOca__1', 'descri__1','existeLocacao')"
+                                                    label="quantidade">
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="valoSupriLoca" class="form-control" onkeyup="validarInputsTabela('itemsupriloca___1', 'especificaSupriloca___1', 'quantisurpriloca___1','valoSupriLoca__1','ValoTotalSurpLOca__1','descri__1', 'existeLocacao')"
+                                                    label="valor_unitario" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                            </div>
+                                        </td>
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="ValoTotalSurpLOca" class="form-control"  onkeyup="validarInputsTabela('itemsupriloca___1', 'especificaSupriloca___1', 'quantisurpriloca___1','valoSupriLoca__1','ValoTotalSurpLOca__1','descri__1', 'existeLocacao')"
+                                                    label="valor_total" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="EXISTELocacao" id="EXISTELocacao">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname7')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dadosTreinamento" name="dadosTreinamento">
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-mortarboard icon-md"></i> Treinamento
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                 <!--   <select id="estado_treinamento" name="estado_treinamento" class="form-control col-md-4"
+                        analytics="true" gooddataid="2">
+                        <option value="">-</option>
+                        <option value="feito" name="treina_p">Feito</option>
+                        <option value="pendente" name="treina_p">Pendente</option>
+                    </select> -->
+                    <select class="form-control col-md-6" name="treina_area1" analytics="true" gooddataid="2" id="treina_area1">
+                        <option value="">-</option>
+                        <option value="sim" name="treina_area">encaminhar para area tecnica </option>
+
+                    </select>
+                    <div class="form-input">
+
+                        <div class="form-group">
+                            <table tablename="tabledetailname8" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Descrição do item</th>
+                                        <th class="tableColumn">Valor Unitario</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="DEScriTreina"  onkeyup="validarInputsTabela('DEScriTreina___1',  'valorTreina___1','descri__1','descri__1','descri__1','descri__1', 'existeTreinamento')"
+                                                    class="form-control" rows="4" cols="4" label="item"></textarea>
+                                            </div>
+                                        </td>
+
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <input type="text" name="valorTreina" class="form-control"  onkeyup="validarInputsTabela('DEScriTreina___1',  'valorTreina___1','descri__1','descri__1','descri__1', 'descri__1','existeTreinamento')"
+                                                    label="valor_unitario" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existeTreinamento" id="existeTreinamento">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname8')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------->
+        <div class="panel panel-primary" id="dadosImpugnacao" name="dadosImpugnacao">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-handshake icon-md"></i> Juridico - Impugnação
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                      <!--  <select id="estado_juridico" name="estado_juridico" class="form-control col-md-4"
+                            name="estado_juridico" analytics="true" gooddataid="2">
+                            <option value="">-</option>
+                            <option value="feito" name="juri_f">Feito</option>
+                            <option value="pendente" name="juri_p">Pendente</option>
+                        </select>-->
+                        <div class="form-group">
+                            <table tablename="tabledetailname9" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Item do edital / anexo </th>
+                                        <th class="tableColumn">Argumentao</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="itemJuri"  onkeyup="validarInputsTabela('itemJuri___1',  'arguJuri___1','descri__1', 'descri__1', 'descri__1','descri__1','existeJuri')"
+                                                    class="form-control" rows="4" cols="4" label="item"></textarea>
+                                            </div>
+                                        </td>
+
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="arguJuri"  onkeyup="validarInputsTabela('itemJuri___1',  'arguJuri___1','descri__1', 'descri__1', 'descri__1','descri__1','existeJuri')"
+                                                    class="form-control" rows="4" cols="4" label="argumento"></textarea>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existeJuri" id="existeJuri">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname9')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+         <!---------------------------------------------------------------------------------------------------------------->
+         <div class="panel panel-primary" id="dadosCotacao" name="dadosCotacao">
+            <div class="panel-heading" style="background-color:#d70b2d;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-monitoring-task icon-md"></i> Cotação de seguro
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                    style="">
+                    <div class="form-input">
+                      <!--  <select id="estado_juridico" name="estado_juridico" class="form-control col-md-4"
+                            name="estado_juridico" analytics="true" gooddataid="2">
+                            <option value="">-</option>
+                            <option value="feito" name="juri_f">Feito</option>
+                            <option value="pendente" name="juri_p">Pendente</option>
+                        </select>-->
+                        <div class="form-group">
+                            <table tablename="tabledetailname10" class="table" noaddbutton="true">
+                                <thead>
+                                    <tr class="tableHeadRow">
+                                        <th class="tableColumn">Tipo de seguro </th>
+                                        <th class="tableColumn"> Cobertura</th>
+                                        <th class="tableColumn"> Valor</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tableBodyRow">
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                               
+                                                    <select id="tipoCotacao" name="tipoCotacao" class="form-control col-md-4" onkeyup="validarInputsTabela('tipoCotacao___1',  'cobertura___1','valorCota__1','descri__1','descri__1', 'descri__1','existeCotacao')"
+                                                    class="form-control" rows="4" cols="4" label="item"
+                                                        analytics="true" gooddataid="2">
+                                                        <option value=""></option>
+                                                        <option value="SVEICULO" name="SVEICULO">Seguro Veicular</option>
+                                                        <option value="SVIDA" name="SVIDA">Seguro de vida</option>
+                                                        <option value=" SEGUROGARANTIA" name="SEGUROGARANTIA">Seguro de garantia</option>
+                                                        <option value="SRAEROPORTO" name="SRAEROPORTO">Seguro de responsabilidade profissional</option>
+                                                        <option value="SRVEICULAR" name="SRVEICULAR">Seguro de responsabilidade veicular</option>
+                                                        <option value="SRPROFISSIONAL" name="SRPROFISSIONAL">Seguro de responsabilidade profissional</option>
+                                                        <option value="SRGERAL" name="SRGERAL">Seguro de responsilidade geral</option>
+                                                    </select>
+                                            </div>
+                                        </td>
+
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                <textarea style="height: 36px;" type="text" name="cobertura"  onkeyup="validarInputsTabela('tipoCotacao___1',  'cobertura___1','valorCota__1','descri__1','descri__1', 'descri__1','existeCotacao')"
+                                                    class="form-control" rows="4" cols="4" label="item"></textarea>
+                                            </div>
+                                        </td>
+
+                                        <td class="fs-v-align-middle">
+                                            <div class="form-input">
+                                                
+
+                                                    <input type="text" name="valorCota" class="form-control"  onkeyup="validarInputsTabela('tipoCotacao___1',  'cobertura___1','valorCota__1','descri__1','descri__1', 'descri__1','existeCotacao')"
+                                                    label="valorCota" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="existeCotacao" id="existeCotacao">
+                            <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname10')">Novo
+                                Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+            <!---------------------------------------------------------------------------------------------------------------->
+            <div class="panel panel-primary" id="dadosDocumentos" name="dadosDocumentos">
+                <div class="panel-heading" style="background-color:#36af72;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-inbox icon-md"></i> Documentos
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0" style="">
+                        <div class="form-input">
+                            <!--  <select id="estado_juridico" name="estado_juridico" class="form-control col-md-4"
+                                            name="estado_juridico" analytics="true" gooddataid="2">
+                                            <option value="">-</option>
+                                            <option value="feito" name="juri_f">Feito</option>
+                                            <option value="pendente" name="juri_p">Pendente</option>
+                                        </select>-->
+                            <div class="form-group">
+                                <table tablename="tabledetailname11" class="table" noaddbutton="true">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Tipo de documento </th>
+                                            <th class="tableColumn"> Informações adicionais</th>
+                                            <th class="tableColumn"> Valor</th>
+            
+            
+            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                            <td class="fs-v-align-middle">
+                                                <div class="input-group" >
+                                                    <input type="text" class="amu-control input-sm" id="tipodocumento" name="tipodocumento" onkeyup="validarInputsTabela('tipodocumento___1',  'informacoesadd___1','valorDocumentos__1','descri__1','descri__1', 'descri__1','existedocumento')"
+                                                    class="form-control" rows="4" cols="4" label="item" analytics="true"
+                                                    gooddataid="2" />
+                                                    <div class="input-group-addon" style="cursor:pointer;" onclick="zoomTipoDocumento(this)">
+                                                    <span class="fluigicon fluigicon-zoom-in fluigicon-sm"> </span>
+                                                </div>    
+                                                 <!--   <select id="tipodocumento" name="tipodocumento" class="form-control col-md-4"
+                                                        onkeyup="validarInputsTabela('tipodocumento___1',  'informacoesadd___1','valorDocumentos__1','descri__1','descri__1', 'descri__1','existedocumento')"
+                                                        class="form-control" rows="4" cols="4" label="item" analytics="true"
+                                                        gooddataid="2">
+                                                        <option id=""></option>
+                                                        <option id="IPVA" name="IPVA">IPVA</option>
+                                                        <option id="FILIAS" name="FILIAS">Filiais</option>
+                                                        <option id="CONSELHOS" name="CONSELHOS">Conselhos</option>
+                                                        <option id="LICENCAS" name="LICENCAS">Licenças</option>
+                                                        <option id="OUTRO" name="OUTRO">Outros</option>
+            
+                                                    </select> -->
+                                                
+                                            </td>
+            
+            
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <textarea style="height: 36px;" type="text" id="informacoesadd"
+                                                        name="informacoesadd"
+                                                        onkeyup="validarInputsTabela('tipodocumento___1',  'informacoesadd___1','valorDocumentos__1','descri__1','descri__1', 'descri__1','existedocumento')"
+                                                        class="form-control" rows="4" cols="4" label="item"></textarea>
+                                                </div>
+                                            </td>
+            
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="valorDocumentos" id="valorDocumentos" class="form-control"
+                                                    onkeyup="validarInputsTabela('tipodocumento___1',  'informacoesadd___1','valorDocumentos__1','descri__1','descri__1', 'descri__1','existedocumento')" label="valorCota"
+                                                        mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                                </div>
+                                            </td>
+            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="existedocumento" id="existedocumento">
+                                <input type="hidden" name="qtddadosDocumentos" id="qtddadosDocumentos">
+                                <button type="button" class="btn btn-primary" onclick="adicionartabledetailname11('')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+              <!---------------------------------------------------------------------------------------------------------------->
+                <!---------------------------------------------------------------------------------------------------------------->
+            <div class="panel panel-primary" id="dadosTecnologia" name="dadosTecnologia">
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-laptop icon-md"></i> Sistemas informatizados
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                        style="">
+                        <div class="form-input">
+                          <!--  <select id="estado_juridico" name="estado_juridico" class="form-control col-md-4"
+                                name="estado_juridico" analytics="true" gooddataid="2">
+                                <option value="">-</option>
+                                <option value="feito" name="juri_f">Feito</option>
+                                <option value="pendente" name="juri_p">Pendente</option>
+                            </select>-->
+                            <div class="form-group">
+                                <table tablename="tabledetailname13" class="table" noaddbutton="true">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Descrição do item</th>
+                                          
+                                            <th class="tableColumn"> Valor</th>
+    
+    
+    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                     
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <textarea style="height: 36px;" type="text" name="DescricaoTI"  onkeyup="validarInputsTabela('DescricaoTI___1',  'ValorTI___1','descri__1','descri__1','descri__1', 'descri__1','existeTI')"
+                                                        class="form-control" rows="4" cols="4" label="item"></textarea>
+                                                </div>
+                                            </td>
+    
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    
+    
+                                                        <input type="text" name="ValorTI" class="form-control"  onkeyup="validarInputsTabela('DescricaoTI___1',  'ValorTI___1','descri__1','descri__1','descri__1', 'descri__1','existeTI')"
+                                                        label="valorCota" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                                </div>
+                                            </td>
+    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="existeTI" id="existeTI">
+                                <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname13')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+              <!---------------------------------------------------------------------------------------------------------------->
+               <div class="panel panel-primary" id="dadosAREATECNICA" name="dadosAREATECNICA">
+                <div class="panel-heading" style="background-color:#36af72;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-query-correlative icon-md"></i> Programas de SMS
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0"
+                        style="">
+                        <div class="form-input">
+                          <!--  <select id="estado_juridico" name="estado_juridico" class="form-control col-md-4"
+                                name="estado_juridico" analytics="true" gooddataid="2">
+                                <option value="">-</option>
+                                <option value="feito" name="juri_f">Feito</option>
+                                <option value="pendente" name="juri_p">Pendente</option>
+                            </select>-->
+                            <div class="form-group">
+                                <table tablename="tabledetailname14" class="table" noaddbutton="true">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Descrição do item</th>
+                                          
+                                            <th class="tableColumn"> Valor</th>
+    
+    
+    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                     
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <textarea style="height: 36px;" type="text" name="DescricaoSMS"  onkeyup="validarInputsTabela('DescricaoSMS___1',  'ValorSMS___1','descri__1','descri__1','descri__1', 'descri__1','existesms')"
+                                                        class="form-control" rows="4" cols="4" label="item"></textarea>
+                                                </div>
+                                            </td>
+    
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    
+    
+                                                        <input type="text" name="ValorSMS" class="form-control"  onkeyup="validarInputsTabela('DescricaoSMS___1',  'ValorSMS___1','descri__1','descri__1','descri__1', 'descri__1','existesms')"
+                                                        label="valorCota" mask="#00.000.000.000.000,00" maxlength="22" data-only-numbers="true">
+                                                </div>
+                                            </td>
+    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="existesms" id="existesms">
+                                <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname14')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <!---------------------------------------------------------------------------------------------------------------->
+        </div>
+    </form>
+</body>
+<script type="text/javascript">
+	//função para validar inputs presente nas tabelas
+	function validarInputsTabela(desc1, desc2, desc3, desc4, desc5,desc6, inputValdidaCampos){
+        console.log("sdfjkhsdk");
+		document.getElementById(inputValdidaCampos).value = false;
+		if(document.getElementById(desc1).value != "" || document.getElementById(desc2).value != "" || document.getElementById(desc3).value != ""){
+			document.getElementById(inputValdidaCampos).value = true;
+		}
+	}
+	
+    function valida_form() {
+        if (document.getElementById("nomeCliente").value.length < 3) {
+
+            document.getElementById("nomeCliente").focus();
+            return false
+        }
+    }
+    $('.date_time').mask('00/00/0000 00:00:00');
+    var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118;
+
+    $(document).keydown(function (e) {
+        if (e.keyCode == ctrl) keyDown = true;
+    }).keyup(function (e) {
+        if (e.keyCode == ctrl) keyDown = false;
+    });
+
+    $('[data-only-numbers]').on('keypress', function (e) {
+        if (!e) {
+            var e = window.event;
+        }
+
+        if (e.keyCode > 0 && e.which == 0) {
+            return true;
+        }
+
+        if (e.keyCode) {
+            code = e.keyCode;
+        } else if (e.which) {
+            code = e.which;
+        }
+
+        if (code == 46) {
+            return true;
+        }
+
+        var character = String.fromCharCode(code);
+        if (character == '\b' || character == ' ' || character == '\t') {
+            return true;
+        }
+        if (keyDown && (code == vKey || code == Vkey)) {
+            return (character);
+        } else {
+            return (/[0-9]$/.test(character));
+        }
+    }).on('focusout', function (e) {
+        var $this = $(this);
+        if ($this.val() == "") {
+            return true;
+        }
+        $this.val($this.val().replace(/[^0-9\.]/g, ''));
+    }).on('paste', function (e) {
+        var $this = $(this);
+        setTimeout(function () {
+            $this.val($this.val().replace(/[^0-9\.]/g, ''));
+        }, 5);
+    });
+
+
+
+    $('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function () {
+        validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+    });
+
+    $('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function () {
+        validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+    });
+
+    function validationFieldsForm(field, type) {
+        if (type === "checkbox" || type === "radio") {
+            if (!field.is(':checked')) {
+                field.parents('.form-field').addClass('required');
+            } else {
+                field.parents('.form-field').removeClass('required');
+            }
+        } else {
+            if (!field.val().trim()) {
+                field.parents('.form-field').addClass('required');
+            } else {
+                field.parents('.form-field').removeClass('required');
+            }
+        }
+    }
+
+    var $zoomPreview = $(".zoom-preview");
+    if ($zoomPreview.length) {
+        $zoomPreview.parent().removeClass("input-group");
+        $zoomPreview.remove();
+    }
+
+    var ratings = $(".rating");
+    if (ratings.length > 0) ratingStars(ratings);
+    function ratingStars(stars) {
+        $.each(stars, function (i, obj) {
+            var field = $(this).closest(".form-group").find(".rating-value");
+            var tgt = $(obj);
+            tgt.html("");
+            var rating = FLUIGC.stars(tgt, { value: field.val() });
+            rating.on("click", function (o) {
+                field.val($(this).index() + 1);
+            });
+        });
+    }
+
+    $.each($("[data-date]"), function (i, o) {
+        var id = $(o).attr("id");
+        FLUIGC.calendar("#" + id);
+    });
+
+    $(document).ready(function () {
+        $.each($("[data-date]"), function (i, o) {
+            var id = $(o).attr("id");
+            if ($("#" + id).attr("readonly")) {
+                $("#" + id).data('DateTimePicker').disable();
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
+l

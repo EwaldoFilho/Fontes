@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Form</title>
+
+            <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script src="/resources/js/jquery/jquery.js"></script>
+            <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+            <script src="/resources/js/mustache/mustache-min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+            <!-- CUSTOM -->
+            <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+            <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+            <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+            <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/5.css' type='text/css' rel='stylesheet' />
+		</head>
+        <body class="fluig-style-guide">
+			
+			<form class="totvs-form grid vertical create-form-components ui-sortable t5" name="createFormComponents" style="padding-left: 10px; padding-right: 10px;"><img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png" alt="Logo" id="logo" style="max-height: 50px; max-width: 250px;" class=""><h1 class="title-form-application">Fale com o RH</h1><div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * são de preenchimento obrigatório.</div>
+			<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="textbox6" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Informe o CPF</label><span class="required text-danger"><strong>*</strong></span><input type="text" class="form-control" name="textbox6" value="" placeholder="" data-size="small" mask="000.000.000-00" maxlength="14" data-only-numbers="true" required="required" style="width: 25%;"></div></div></div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="cbAssuntoRH"><div class="form-input"><div class="form-group"><label>Informe o assunto</label><span class="required text-danger"><strong>*</strong></span><select class="form-control" name="cbAssuntoRH" analytics="true" gooddataid="2" required="required"><option value="- Admissão">- Admissão</option><option value="- Beneficio – Alimentação/Refeição">- Beneficio – Alimentação/Refeição</option><option value="- Beneficio – Transporte">- Beneficio – Transporte</option><option value="- Beneficio – Plano de Saúde/Odontológico">- Beneficio – Plano de Saúde/Odontológico</option><option value="- Atestados">- Atestados</option><option value="- Contracheque">- Contracheque</option><option value="- Folha de Ponto">- Folha de Ponto</option><option value="- Escalas">- Escalas</option><option value="- Universidade Corporativa">- Universidade Corporativa</option><option value="- Duplo vinculo">- Duplo vinculo</option><option value="- Dependentes">- Dependentes</option><option value="- Férias">- Férias</option><option value="- Rescisão">- Rescisão</option><option value="- Recrutamento e Seleção">- Recrutamento e Seleção</option><option value="- Folha de Pagamento">- Folha de Pagamento</option><option value="- Licenças">- Licenças</option><option value="- Faturamento PJ">- Faturamento PJ</option><option value="- Contrato de Prestação de Serviço">- Contrato de Prestação de Serviço</option><option value="- Avaliação de Desempenho">- Avaliação de Desempenho</option><option value="- Dúvidas em geral">- Dúvidas em geral</option></select></div></div></div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="contratp" style="position: relative; left: 0px; top: 0px;">
+		
+		
+		<div class="form-input"><div class="form-group">
+		<label>Informe o local de trabalho</label><span class="required text-danger"><strong>*</strong></span>
+		<select class="form-control" name="contratp" dataset="vagas_buscar_contratos" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" required="required" analytics="true" gooddataid="7">
+			<option value="Opção 1">Opção 1</option>
+			<option value="Opção 2">Opção 2</option>
+		</select>
+	</div></div>
+	</div><div class="form-field" data-type="textarea" data-show-properties="" data-field-name="txDescricaoRH"><div class="form-input"><div class="form-group"><label>Descrição</label><span class="required text-danger"><strong>*</strong></span><textarea class="form-control" rows="3" name="txDescricaoRH" placeholder="Preencher com detalhes a questão relacionada ao assunto informado." data-size="big" required="required" analytics="true" gooddataid="5"></textarea></div></div></div><div class="form-field" data-type="textarea" data-show-properties="" data-field-name="TxTrativaRh" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Tratativa</label><textarea class="form-control" rows="3" name="TxTrativaRh" placeholder="" data-size="big" analytics="true" gooddataid="6"></textarea></div></div></div><div class="form-field" data-type="ratingstar" data-show-properties="" data-field-name="ratingstar5"><div class="form-input"><div class="form-group"><label>Avaliar atendimento</label><div class="rating fluig-ratingstars"><i class="fa icon-sm fluigicon fluigicon-star-empty"></i><i class="fa icon-sm fluigicon fluigicon-star-empty"></i><i class="fa icon-sm fluigicon fluigicon-star-empty"></i><i class="fa icon-sm fluigicon fluigicon-star-empty"></i><i class="fa icon-sm fluigicon fluigicon-star-empty"></i></div><input type="hidden" name="ratingstar5" class="rating-value"></div></div></div></form>
+		
+
+			<script type="text/javascript">
+				var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118; 
+				  
+				$(document).keydown(function (e) {
+					if (e.keyCode == ctrl) keyDown = true;
+				}).keyup(function (e) {
+					if (e.keyCode == ctrl) keyDown = false;
+				});
+				
+				$('[data-only-numbers]').on('keypress', function (e) {
+				    if (!e) {
+					    var e = window.event;
+					}
+					
+				    if (e.keyCode > 0 && e.which == 0) {
+				    	 return true;
+					}
+					
+				    if (e.keyCode) {
+				        code = e.keyCode;
+					} else if (e.which) {
+				    	code = e.which;
+					}
+
+					if(code == 46) {
+						return true;
+					}
+					
+				    var character = String.fromCharCode(code);
+				    if (character == '\b' || character == ' ' || character == '\t') {
+				    	 return true;
+					}
+				    if (keyDown && (code == vKey || code == Vkey)) {
+				    	return (character);
+					} else  {
+						return (/[0-9]$/.test(character));
+					}
+				}).on('focusout', function (e) {
+				    var $this = $(this);
+					if($this.val() == "") {
+						return true;
+					}
+				    $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				}).on('paste', function (e) {
+				    var $this = $(this);
+				    setTimeout(function () {
+				        $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				    }, 5);
+				 });				
+
+				
+
+				$('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				$('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				function validationFieldsForm(field, type){
+					if(type === "checkbox" || type === "radio"){
+						if(!field.is(':checked')){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}else{
+						if(!field.val().trim()){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}
+				}
+
+				var $zoomPreview = $(".zoom-preview");
+				if ($zoomPreview.length) {
+                    $zoomPreview.parent().removeClass("input-group");
+                    $zoomPreview.remove();
+                }
+
+				var ratings = $(".rating");
+				if (ratings.length > 0) ratingStars(ratings);
+				function ratingStars(stars) {
+					$.each(stars, function(i, obj) {
+                        var field = $(this).closest(".form-group").find(".rating-value");
+						var tgt = $(obj);
+						tgt.html("");
+						var rating = FLUIGC.stars(tgt, { value: field.val() });
+                        rating.on("click", function(o) {
+                            field.val($(this).index() + 1);
+                        });
+					});
+				}
+
+				$.each($("[data-date]"), function(i, o) {
+                    var id = $(o).attr("id");
+					FLUIGC.calendar("#" + id);
+				});
+
+				$(document).ready(function() {
+					$.each($("[data-date]"), function(i, o) {
+	                    var id = $(o).attr("id");
+	                    if($("#" + id).attr("readonly")) {
+	                    	$("#" + id).data('DateTimePicker').disable();
+	                    }
+					});
+				});
+			</script>
+		</body>
+	</html>

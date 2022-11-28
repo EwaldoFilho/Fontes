@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;events&apos;&#x0D;&#x0A;- Original project: &apos;solicitacaodeAcessoSistema&apos;&#x0D;&#x0A;- Destination element: &apos;events&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     enableFields.js&#x0D;&#x0A;     validateForm.js" description="Copy files" element1="forms/58100 - Solicitação de Acesso aos Sistemas 2.0/events/enableFields.js" element2="forms/58100 - Solicitação de Acesso aos Sistemas 2.0/events/validateForm.js" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1661172874103" target="/solAssinatura/forms/SOLASSINATURA/events" units="0" version="1.0"/>
+</session>

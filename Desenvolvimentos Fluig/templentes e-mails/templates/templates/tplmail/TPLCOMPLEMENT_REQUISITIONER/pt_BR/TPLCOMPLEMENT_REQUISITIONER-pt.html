@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>fluig</title>
+	<link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+	<div align="left">
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+				<tr>
+					<td>
+						<img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<br/>
+	
+	<p class="DescrMsgForum">Olá, ${RECEIVER!''}</p>
+	
+	<br />
+	
+	<div align="left">
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+				<tr>
+					<td>
+						<p class="DescrMsgForum">Uma solicitação que você iniciou recebeu um novo complemento.</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="${WDK_TaskIconImage!''}" align="absmiddle" border="0">
+						<a href="${WDK_TaskLink!''}" class="${WDK_ClassLink!''}">
+							<b>Solicitação</b>: ${WDK_TaskNumber!''} - ${WDK_ProcessDescription!''} - ${WDK_TaskDescription!''}
+							</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="DescrMsgForum actions">
+							<a class="action" href="${LINK!''}">Ir para Notificações</a>
+							<div style="clear: both; line-height: 1px">&nbsp;</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

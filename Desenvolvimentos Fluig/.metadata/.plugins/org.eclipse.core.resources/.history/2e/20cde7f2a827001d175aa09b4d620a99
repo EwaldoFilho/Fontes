@@ -1,0 +1,53 @@
+function beforeTaskSave(colleagueId,nextSequenceId,userList){
+
+var state = getValue("WKNumState");
+   var completTask = getValue("WKCompletTask");
+
+log.info(">>>>> Envio de email customizado beforeTaskSave: state " + state);
+log.info(">>>>> Envio de email customizado beforeTaskSave: completTask " + completTask);
+   //if (completTask.equals("true")) {
+
+       if (state == 4 || state == 0 ) {
+           try {
+               var param = new java.util.HashMap();
+               var dest = new java.util.ArrayList();
+               var etapa_do_processo = Nome_Etapa;
+               var nome = hAPI.getCardValue('colaborador');
+               var cpf = hAPI.getCardValue('cpf');               
+               var server = "http://portal.medmais.com:8007/";
+
+               dest.add(hAPI.getCardValue("emailClinica"));
+
+               param.put("SERVER_URL", server);
+               param.put("TENANT_ID", getValue("WKCompany"));
+               param.put("NOME", nome);
+               param.put("CPF", cpf);              
+               
+               
+               
+               var anexos = new java.util.ArrayList();
+               var docs = hAPI.listAttachments();
+               for (var i = 0; i < docs.size(); i++) {
+                   var doc = docs.get(i);
+                   var anexo = new java.util.HashMap();
+                   
+                   var url = fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId());
+                   
+                   //anexo.put("link", server + "/portal/p/1/ecmnavigation?app_ecm_navigation_doc=" + doc.getDocumentId());
+                   anexo.put("link", url);
+                   anexo.put("description", doc.getDocumentDescription());
+                   log.error(">>>>> Envio de email de customizado: " + url);
+                   anexos.add(anexo);
+               }
+
+               param.put("anexos", anexos);
+
+               if (dest.size() > 0)
+                   notifier.notify(colleagueId, "EMAIL_HOMOLOGACAO", param, dest, "text/html");    
+
+           } catch (e) {
+               log.error(">>>>> Erro Envio de email de customizado: " + e);
+           }
+       }
+
+}

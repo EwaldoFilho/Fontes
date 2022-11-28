@@ -1,0 +1,7 @@
+<div id="MyWidget_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide"
+	data-params="MyWidget.instance()">
+	<iframe title="bi-acomp-telemedicina_4 - C.Center - Vol1" width="100%" height="700"
+		src="https://app.powerbi.com/view?r=eyJrIjoiYTIxMTEyM2YtOWM3Ny00YTAxLThmNWYtN2U5NTcwOTIyYmMwIiwidCI6ImRlMTNjOTNlLTdlYjItNDAzMi1hNDcxLTJkYzE2NDRlMmU2NSJ9"
+		frameborder="0" allowFullScreen="true"></iframe>
+</div>
+

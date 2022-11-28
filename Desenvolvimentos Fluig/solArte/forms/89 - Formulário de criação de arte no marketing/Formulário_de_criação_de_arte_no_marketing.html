@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Form</title>
+
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+    <script src="/resources/js/jquery/jquery.js"></script>
+    <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="/resources/js/mustache/mustache-min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+    <!-- CUSTOM -->
+    <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+    <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+    <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+    <!-- <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/1.css' type='text/css' rel='stylesheet' />-->
+
+
+
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <script type="text/javascript" src="zoom.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+
+
+</head>
+
+<body class="fluig-style-guide">
+
+    <form name="form" role="form">
+        <div class="row text-center" data-type="header" data-field-name="headerRetirarMateriais">
+            <br>
+            <div class="col-md-2">
+                <br>
+                <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                    style="width: auto; height: 30px">
+            </div>
+            <div class="col-md-8">
+
+                <h2 class="text-center" id="tituloSolicitacaoFinalizada">
+                    Solicitação de Criação de Arte
+                </h2>
+            </div>
+            <div class="col-md-2" id="logo-right">
+                <br>
+                <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                    style="width: auto; height: 30px">
+            </div>
+            <br>
+        </div>
+        <br><br>
+       
+        <div class="panel-body fs-sm-margin-top">
+            <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com
+                * são de preenchimento obrigatório.</div>
+        </div>
+     
+
+        <div class="panel panel-success fs-xl-margin" id="panelDadosSolicitante" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-person icon-lg"></i>
+                    <b>Dados do solicitante</b>
+                </h3>
+            </div>
+
+            <div class="panel-body fs-sm-margin-top">
+
+                <div class="row">
+                    <div class="col-md-2 ">
+                        <div class="form-field" data-type="date" data-show-properties="" data-field-name="dataAbertura" style="">
+                            <div class="form-input">
+                                <div class="form-group"><label>Data</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="flaticon flaticon-calendar icon-sm" aria-hidden="true"></i></span>
+                                        <input id="date0" type="text" class="form-control" name="dataAbertura" mask="00/00/0000"
+                                            data-date="" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <label class="control-label" for="solicitanteNome">Nome do Solicitante</label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-addon">
+
+                                    <i class="flaticon flaticon-folder-person icon-sm" aria-hidden="true"></i></span>
+
+                                <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                                <input type="hidden" id="ativAtual" name="ativAtual" />
+
+                                <input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+
+                            <label class="control-label" for="solicitanteEmail">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-drafts icon-sm" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="centroCusto">Centro de Custo:<strong class="required text-danger"></strong></label>
+                        <div class="input-group" readonly="">
+                            <span class="input-group-addon">
+                                <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                            <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                            <input type="text" class="form-control zoom-tdi" id="centroCusto" name="centroCusto"
+                                onchange="validaCampo(this)" required="required" readonly="readonly"
+                                placeholder="Clique na lupa para selecionar">
+                            <div class="input-group-addon zoom-tdi"  id="bottom" onchange="habilitaBtn()" onclick="zoomCusto(this)" data-toggle="tooltip"
+                                data-placement="bottom" title="Pesquisar empresa" >
+                                <i class="flaticon flaticon-search icon-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel panel-danger fs-xl-margin" id="panelDadosSolicitacao" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                    <b>Dados da solicitação</b>
+                </h3>
+            </div>
+
+            <div class="panel-body fs-sm-margin-top">
+
+                <div class="row">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        <div class="form-field" data-type="textbox" data-show-properties=""
+                            data-field-name="classificacao" style="position: relative; left: 0px; top: 0px;">
+                            <div class="form-input">
+                                <div class="form-group"><label>Classificação<strong
+                                            class="required text-danger"></strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="flaticon flaticon-checkbox icon-sm"
+                                                aria-hidden="true"></i></span>
+                                        <select class="form-control input" name="classificacao" id="classificacao"
+                                            analytics="true" gooddataid="2" required="required">
+                                            <option value=""></option>
+                                            <option value="Regular">Regular</option>
+                                            <option value="Urgente">Urgente</option>
+                                            <option value="Confidencial">Confidencial</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-1">
+                        <div class="form-field" data-type="textbox" data-show-properties=""
+                            data-field-name="formato" style="position: relative; left: 0px; top: 0px;">
+                            <div class="form-input">
+                                <div class="form-group"><label>Selecione o Formato<strong
+                                            class="required text-danger"></strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="flaticon flaticon-taskcentral icon-sm"
+                                                aria-hidden="true"></i></span>
+                                        <select class="form-control input" name="formato" id="formato"
+                                            analytics="true" gooddataid="2" required="required">
+                                            <option value=""></option>
+                                            <option value="emailMarketing">Email Marketing</option>
+                                            <option value="a4">A4</option>
+                                            <option value="redesSociais">Redes Sociais</option>
+                                            <option value="cartao">Cartão Impresso</option>
+                                            <option value="banner">Banner</option>
+                                            <option value="tamanhoPer">Tamanho Personalizado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-1">
+                
+                        <div class="form-field" data-type="radio" data-show-properties="" data-field-name="Tipo"
+                            style="position: relative; left: 0px; top: 0px;">
+                            <div class="form-input">
+                                <div class="form-group"><label>A Arte será impressa?<strong
+                                            class="required text-danger"></strong></label>
+                                    <div class="radio-options">
+                                        <div class="radio"><label><input type="radio" id="Tipo0" name="Tipo" value="Sim" analytics="true"
+                                                    gooddataid="4">Sim</label>
+                                            <label><input type="radio" id="Tipo1" name="Tipo" value="Nao" analytics="true"
+                                                    gooddataid="5">Não</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+				<br>
+                <div class="row">
+
+                    <div class="col-md-2">
+
+                        <div class="form-field" data-type="checkbox" data-show-properties=""
+                            data-field-name="comunicado" style="position: relative; left: 0px; top: 0px;">
+                            <div class="form-input">
+                                <div class="form-group"><label>Informe onde será comunicado:<strong class="required text-danger"></strong></label>
+                                    <div class="check-options">
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado0"
+                                                    value="intramedmais" analytics="true"
+                                                    gooddataid="4">IntraMed+</label></div>
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado1"
+                                                    value="email" analytics="true" gooddataid="5">E-mail</label></div>
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado2"
+                                                        value="whatsapp" analytics="true" gooddataid="5">WhatsApp</label></div>
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado3"
+                                                        value="qdAvisos" analytics="true" gooddataid="5">Quadro de Avisos</label></div> 
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado4"
+                                                        value="site" analytics="true" gooddataid="5">Site</label></div>   
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado5"
+                                                        value="planoFundo" analytics="true" gooddataid="5">Plano de Fundo da Área de Trabalho</label></div>  
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado6"
+                                                        value="redesSociais" analytics="true" gooddataid="5">Redes Sociais</label></div> 
+                                        <div class="checkbox"><label><input type="checkbox" name="comunicado7"
+                                                            value="todos" analytics="true" gooddataid="5">Todos</label></div>          
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+				<br>
+                <div class="row">
+	                <div class="col-md-3">
+	                        <div class="form-group" autocomplete="off">
+	
+	                            <label class="control-label" for="inputAnexo">Inclua Anexo(s)</label>
+	                            <div class="input-group">
+	                                <span class="input-group-addon">
+	                                    <i class="flaticon flaticon-add-image icon-sm" aria-hidden="true"></i></span>
+	                                <input type="button" class="btn btn-primary" name="inputAnexo" id="inputAnexo" value="Inserir Anexo" onclick="showCamera();"/>
+	                            </div>
+	                        </div>
+	                   </div>
+                </div>
+              	<br>
+                <div class="row">
+                
+                
+                    <div class="col-md-12">
+                        <div class="form-field" data-type="textarea" data-show-properties="" data-field-name="objetivo" style="">
+                            <div class="form-input">
+                                <div class="form-group"><label>Objetivo/Descrição:<strong
+                                            class="required text-danger"></strong></label><textarea class="form-control" rows="3"
+                                        name="objetivo"
+                                        placeholder="De o maior número de detalhes possíveis sobre sua solicitação para melhor acertividade e agilidade do atendimento!"
+                                        data-size="big"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+           
+            </div>
+
+        </div>
+
+    </form>
+    <script language="javascript">
+    	var indice = 0; // contador para gerar um valor para cada anexo
+	
+	    function showCamera() {
+	        indice++;
+	        JSInterface.showCamera("Nome do arquivo_" + indice);
+	                // alterei o css para gerar uma confirmação visual após o click
+	        $("#inputAnexo___" + indice).removeClass().addClass("btn btn-success"); 
+	    }
+	</script>
+</body>
+
+</html>

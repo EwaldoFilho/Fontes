@@ -1,0 +1,56 @@
+
+
+//Função para adicionar itens em uma tabela pai x filho.
+function adicionarRateioCusto(CTT_CUSTO,CTT_DESC01) {
+    var id = wdkAddChild("rateioCusto");
+    var qtd = $("#baseRateio").val();
+    var atividade = getWKNumState();
+
+    $("#codCentroCustoForn___" + id).val(CTT_CUSTO);
+    $("#descricaoForn___" + id).val(CTT_DESC01);
+    $("#valor___" + id).mask('000.000.000.000.000,00', {reverse: true});
+    qtd++
+    $("#baseRateio").val(qtd);
+    $("#codCentroCustoForn___" + id).prop('readonly', true);
+    
+   
+}
+
+
+
+function somaValor(){
+
+    var soma = 0;     
+    var qtd = $("#baseRateio").val();
+    
+    $(":input[id^='valor___']").each(function (index, value) {
+           soma = soma + parseFloat($(this).val().replaceAll('.', '').replace(',', '.'));          
+                }
+    );   
+    
+      $("#valorTotal").val(soma.toFixed(2));
+      $("#valorTotal").mask("#.##0,00", {reverse: true});
+      
+ 	 	
+ }
+
+
+function calcular(){
+	
+	var soma = $("#valorTotal").val();  
+	var valor = 0;
+    var qtd = $("#baseRateio").val();
+    var porcento = 0;
+    
+    $(":input[id^='valor___']").each(function (index, value) {
+        soma = soma + parseFloat($(this).val());   
+       
+    }
+);
+    porcento = (valor / soma) * 100; 
+     
+    $(":input[id^='percentual___']").val(porcento);
+
+}
+
+

@@ -1,0 +1,8 @@
+function initiate() {
+    var data = new Date();
+    var task = getWKNumState();
+
+    if (task == "0" || task == "4") {
+    	$("#itensTabelaRateio").val([]);
+    }
+}

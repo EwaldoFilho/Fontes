@@ -1,0 +1,62 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Fluig</title>
+    <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+						<img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+					</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <p class="DescrMsgForum">Hello, ${RECEIVER!''}</p>
+    <br />
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgForum">The task below wasn't completed or it was declined.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+					    <p class="DescrMsgDocto">Request:</p>
+						<a href="${WDK_RequestLink!''}" class="${WDK_ClassLink!''}">
+						<p class="DescrMsgDocto"> ${WDK_Request!''} - ${WDK_RequestDescription!''}</p>
+						</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgDocto"><b>Description:</b>${WDK_TaskDescription!''}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgDocto"><b>Task list:</b> ${WDK_AdHocProcess!''}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+						<div class="DescrMsgForum actions">
+							<a class="action" href="${LINK!''}">Go to Notifications</a>
+							<div style="clear: both; line-height: 1px">&nbsp;</div>
+						</div>
+                    </td>
+                </tr>
+				
+			</tbody>
+        </table>
+    </div>
+    <br />
+</body>
+</html>

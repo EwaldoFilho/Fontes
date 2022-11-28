@@ -1,0 +1,123 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+   <script src="/webdesk/vcXMLRPC.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+      <div class="fs-xl-margin-left fs-md-margin-right">
+         <div class="row text-center" data-type="header"  data-field-name="headerRetirarMateriais">
+            <div class="col-md-2">
+               <img src="imagens/logo.png" style="width: auto; height: 100px">
+             </div>
+             <div class="col-md-8">
+               <h2 class="text-center" id="tituloAtendimento">Solicitação de Cadastro</h2>
+             </div>
+            <div class="col-md-2"  id="logo-right">
+               <img src="imagens/logo.png" style="width: auto; height: 100px">
+             </div>
+         </div>
+
+			<form class="form-horizontal fs-sm-margin-top" name="form" role="form">
+				<div class="row" data-type="content"  data-field-name="contentCadastro" id="panelCadastro">				
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<p class="panel-title">
+                        <i class="flaticon flaticon-file-internet icon-lg"></i>							   
+							   <strong>Dados cadastrais</strong>
+						   </p>
+						</div>
+						<div class="panel-body">
+                     <div class="row">
+                        <div class="form-group col-sm-6 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="dataAbertura">Data de abertura<strong class="required text-danger"></strong></label>
+                              <input type="text" class="form-control" id="dataAbertura" name="dataAbertura" analytics="true" gooddataid="1">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="nomeSolicitante">Nome do solicitante<strong class="required text-danger">*</strong></label>
+                              <input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" analytics="true" gooddataid="2">
+                            </div>
+                        </div>
+						   </div>
+
+
+                     <div class="row">
+                        <div class="form-field" data-type="tb_produtos" data-show-properties="" data-field-name="tb_produtos">
+                           <div class="form-group col-sm-12 ms-left">
+                              <div class="input-group col-sm-12">
+                                 <h2>Produtos</h2>
+                                 <table tablename="tb_produtos" class="table" noaddbutton="true" id="tb_produtos" >
+                                    <thead>
+                                       <tr class="tableHeadRow">
+                                          <th class="tableColumn">Descrição</th>
+                                          <th class="tableColumn">Observação</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="tableBodyRow">
+                                          <td class="fs-v-align-middle">
+                                             <div class="form-input">
+                                                <input type="text" class="form-control" id="descricao" name="descricao" analytics="true" gooddataid="3">
+                                             </div>
+                                          </td>
+                                          <td class="fs-v-align-middle">
+                                             <div class="form-input">
+                                                <textarea class="form-control" rows="3" id="observacao" name="observacao" placeholder="" data-size="big" required="required"  analytics="true" gooddataid="4"></textarea>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+
+                              </div>
+                           </div>
+                        </div>
+						   </div>
+
+                     <div class="row">
+                        <div class="form-group col-sm-10 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-2 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <button type="button" class="btn btn-success" id="btnAdicionar" onclick="wdkAddChild('tb_produtos')">
+                                 Adicionar novo produto
+                              </button>
+                            </div>
+                        </div>
+						   </div>
+
+                     <div class="row">
+                        <div class="form-group col-sm-12 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="justificativa">Justificativa<strong class="required text-danger">*</strong></label>
+                              <textarea class="form-control" rows="3" id="justificativa" name="justificativa" placeholder="" data-size="big" required="required"  analytics="true" gooddataid="5"></textarea>
+                            </div>
+                        </div>
+						   </div>
+
+					</div>
+				</div>
+         </div>
+  
+         <input type="hidden" class="form-control" id="estado" name="estado" >
+
+			</form>		
+		</div>
+	</div>
+	<script type="text/javascript" src="js/scriptApp.js"></script>
+	<script type="text/javascript" src="js/scriptTabelaProdutos.js"></script>
+</body>
+</html>

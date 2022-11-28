@@ -1,0 +1,7 @@
+<div id="MyWidget_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide"
+	data-params="MyWidget.instance()">
+	<iframe title="bi-acomp-telemedicina_2" width="100%" height="800"
+		src="https://app.powerbi.com/view?r=eyJrIjoiYzVlZDk3NjctY2Q2Ni00ZTllLTliZjEtNTI5NTQ4YTVlYWQwIiwidCI6ImRlMTNjOTNlLTdlYjItNDAzMi1hNDcxLTJkYzE2NDRlMmU2NSJ9&pageName=ReportSectiondb03364a2ac5a4bc5370"
+		frameborder="0" allowFullScreen="true"></iframe>
+</div>
+

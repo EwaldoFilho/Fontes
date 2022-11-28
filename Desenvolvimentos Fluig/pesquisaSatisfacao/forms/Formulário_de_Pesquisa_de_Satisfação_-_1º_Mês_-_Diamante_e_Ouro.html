@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+    <link type="text/css" rel="stylesheet" href="pesquisa.css" />
+    
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    
+    <script src="/webdesk/vcXMLRPC.js"></script>    
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="mkt.js"></script>
+    <script type="text/javascript" src="delete.js"></script>
+    <script type="text/javascript" src="tablefunction.js"></script>
+
+</head>
+
+<body class="fluig-style-guide">
+    <div class="fs-xl-margin-left fs-md-margin-right">
+        <div class="row text-center" data-type="header" data-field-name="headerCompras">
+            <div class="col-md-2">
+                <img src="imagens/logo1.jpeg" style="width: auto; height: 100px">
+            </div>
+            <div class="col-md-8">
+                <h2 class="text-center" id="tituloSolicitacao">Pesquisa de Satisfação - Avaliação de Contrato</h2>
+
+            </div>
+            <div class="col-md-2" id="logo-right">
+                <img src="imagens/logo2.jpeg" style="width: auto; height: 100px">
+            </div>
+        </div>
+
+        <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents">
+
+            <!--INICIO PANEL - GERAL --->
+            <div class="panel panel-primary" id="comeco1" name="comeco1">
+                <div class="panel-heading" style="background-color:#36af72;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> Informações iniciais da pesquisa
+                    </h3>
+                </div>
+                <!--FIM PANEL - HEADING --->
+                <!-- INICIO PANEL - Geral -->
+                <div class="panel-body">
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label> Data da Pesquisa:</label><span class="required text-danger"><strong></strong></span>
+                            <input id="dataaviso" type="text" class="form-control zoom-tdi" data-fluig-state-valid="0" data-fluig-write="0" name="dataaviso" data-date=""
+                                placeholder="dd/mm/aaaa" analytics="true" gooddataid="5" mask="00/00/0000">
+                        </div>
+                    
+                        <div class="form-group col-md-6">
+                            <label for="empresa">Contrato:<strong class="required text-danger"></strong></label>
+                            <div class="input-group">
+                                <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                                <input type="text" class="form-control zoom-tdi" 
+	                                data-fluig-state-valid="100" data-fluig-write="0" 
+	                                id="centroCusto" name="centroCusto"
+	                                required="required" readonly="readonly">
+                                <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip"
+                                    data-placement="bottom" title="Pesquisar empresa">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <!---FIM-->
+                    <div class="row">
+
+                        <div class=" form-group col-md-6">
+                            <label for="fiscal">Fiscal do Contrato:</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <input type="text" name="fiscal" id="fiscal" class="form-control" data-fluig-state-valid="0" data-fluig-write="0">
+                        </div>
+                        
+                        <div class=" form-group col-md-6">
+                            <label for="pesquisaTipo">Tipo de Pesquisa:</label> <span
+                                class="required text-danger"><strong></strong></span>
+                                <select class="form-control" id="pesquisaTipo" name="pesquisaTipo" analytics="true"
+                                gooddataid="1" data-fluig-state-valid="0" data-fluig-write="0" >
+                                <option value=""></option>
+                                <option value="implantacao">Implantação de Contrato</option>
+                                <option value="manutencao">Manutenção de Contrato</option>                                
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Informe o responsável pela pesquisa:</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="resposavel" name="resposavel" analytics="true"
+                                gooddataid="1" data-fluig-state-valid="0" data-fluig-write="0" >
+                                <option value=""></option>
+                                <option value="Monica">Monica Cortes</option>
+                                <option value="Ingrid ">Ingrid </option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Infome o gestor do contrato:</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="gerente" name="gerente" data-fluig-state-valid="0" data-fluig-write="0" analytics="true" gooddataid="1">
+                                <option value=""></option>
+                                <option value="AnaPaula">Ana Paula</option>
+                                <option value="Gabriela ">Gabriela Brandão </option>
+                                <option value="Jean">Jean</option>
+                                <option value="Fernanda">Fernanda</option>
+                                <option value="Jeniffer">Jeniffer</option>
+                                <option value="Jessica">Jessica</option>
+                                <option value="Poliana">Poliana</option>
+                                <option value="Karollinne">Karollinne</option>
+                                <option value="Lucimaia">Lucimaia</option>
+                                <option value="Thallis">Thallis</option>
+                                <option value="Walysson">Walysson</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> DRIVER EQUIPE MED+ ADMINISTRATIVO
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Sobre o acesso, disponibilidade e resolutividade - Qual nota você
+                                daria ao nosso Gestor(a) de Contrato?</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota1" name="Nota1" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs1" name="obs1" class="form-control" data-fluig-state-valid="0" data-fluig-write="0" ></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel"> Em uma escala de 0 a 10 – É fácil falar com nossa equipe
+                                administrativa?</label> <span class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota2" name="Nota2" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs2" name="obs2" class="form-control" data-fluig-state-valid="0" data-fluig-write="0" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading" style="background-color:#36af72;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> DRIVER EQUIPE MED+ LOCAL
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Em uma escala de 0 a 10 - Qual seu nível de satisfação com o
+                                embaixador(a)?</label> <span class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota3" name="Nota3" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs3" name="obs3" class="form-control" data-fluig-state-valid="0" data-fluig-write="0"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel"> É fácil falar com nossa equipe?</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota4" name="Nota4" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs4" name="obs4" class="form-control" data-fluig-state-valid="0" data-fluig-write="0" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> DRIVER DESEMPENHO
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Em uma escala de 0 a 10 - Qual seu nível de satisfação quanto ao
+                                desempenho da equipe?</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota5" name="Nota5" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs5" name="obs5" class="form-control" data-fluig-state-valid="0" data-fluig-write="0" ></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-heading" style="background-color:#36af72;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> DRIVER APRESENTAÇÃO DA EQUIPE
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Em uma escala de 0 a 10 - Qual seu nível de satisfação com a
+                                apresentação pessoal da equipe, uniformes, EPI’s etc.</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota6" name="Nota6" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs6" name="obs6" class="form-control" data-fluig-state-valid="0" data-fluig-write="0" ></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> DRIVER INSTALAÇÃO FÍSICA/EQUIPAMENTOS
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Em uma escala de 0 a 10 - Qual seu nível de satisfação com a
+                                instalação física do local?</label> <span
+                                class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota7" name="Nota7" analytics="true" data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="N/A">N/A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs7" name="obs7" class="form-control"data-fluig-state-valid="0" data-fluig-write="0" gooddataid="1"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="panel panel-primary" id="comeco2" name="comeco2">
+                <div class="panel-heading" style="background-color:#36af72;" id="Drive" name="Drive">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i> DRIVER NPS (Caso a nota for maior que 9 poderá finalizar o processo)
+                    </h3>
+                </div>
+                <div class="panel-body" id="notaRecomenda " id="notaRecomenda">
+
+                    <div class="row">
+                        <div class=" form-group col-md-12">
+                            <label for="resposavel">Com uma nota de 0 a 10, você recomendaria o grupo Med+ para alguma
+                                instituição?</label> <span class="required text-danger"><strong></strong></span>
+                            <select class="form-control" id="Nota8" name="Nota8" data-fluig-state-valid="0" data-fluig-write="0" analytics="true" gooddataid="1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2 ">2 </option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="N/A">N/A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class=" form-group col-md-12">
+                            <label for="obs1">Observação</label>
+                            <textarea id="obs8" name="obs8" class="form-control" data-fluig-state-valid="0" data-fluig-write="0" ></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+                <div class="panel-heading" style="background-color:#d70b2d;">
+                    <h1 class="panel-title" style="text-align: center;">
+                        <i class="flaticon flaticon-book-open icon-md"></i> Plano de Ação
+                    </h1>
+                </div>
+                <!--FIM PANEL - HEADING --->
+                <!-- INICIO PANEL - Geral -->
+                <div class="panel panel-primary" id="comeco2" name="comeco2">
+                    
+                
+                    <!--------------------------->
+                
+                    <div class="panel-heading" style="background-color:#36af72;" id="panelRnc">
+                        <h3 class="panel-title">
+                            1. Plano de ação (Liste as ações propostas para a tratativa do problema) :
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                
+                        <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail0">
+                            <div class="form-input" data-fluig-state-valid="0,12" data-fluig-write="0,12>
+                
+                
+                                            <div class=" form-group">
+                                <table tablename="tabledetailname5" class="table" noaddbutton="true" id="tabledetailname5"
+                                    customFnDelete="delet_tb_plano(this)">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Ação </th>
+                                            <th class="tableColumn">Responsável</th>
+                                            <th class="tableColumn">Prazo </th>
+                                            <th class="tableColumn">Status</th>
+                
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <textarea name="planoAcao" class="form-control" label="item"
+                                                        onkeyup="validarInputsTabela('planoAcao___1',  'responsavelAcao___1','prazoAcao__1','statusAcao__1')"
+                                                        data-fluig-state-valid="0,12" data-fluig-write="0,12"></textarea>
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="responsavelAcao" class="form-control" label="item"
+                                                        onkeyup="validarInputsTabela('planoAcao___1',  'responsavelAcao___1','prazoAcao__1','statusAcao__1')"
+                                                        data-fluig-state-valid="0,12" data-fluig-write="0,12">
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="prazoAcao" class="form-control" label="item"
+                                                        placeholder="dd/mm/aaaa" mask="00/00/0000" data-only-numbers="true"
+                                                        onkeyup="validarInputsTabela('planoAcao___1',  'responsavelAcao___1','prazoAcao__1','statusAcao__1')"
+                                                        data-fluig-state-valid="0,12" data-fluig-write="0,12">
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="statusAcao" class="form-control"
+                                                        onkeyup="validarInputsTabela('planoAcao___1',  'responsavelAcao___1','prazoAcao__1','statusAcao__1')"
+                                                        data-fluig-state-valid="0,12" data-fluig-write="0,12" label="item"
+                                                        maxlength="22">
+                                                </div>
+                                            </td>
+                
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary" onclick="wdkAddChild('tabledetailname5')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <!--------------------------->
+
+
+                <div class="panel-heading" class="panel-heading" style="background-color:#d70b2d;">
+                    <h3 class="panel-title">
+                        2. Responsável pela verificação da eficácia / fechamento:
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-field" data-type="tabledetail" data-show-properties=""
+                        data-field-name="tabledetail0" data-fluig-state-valid="0,21" data-fluig-write="0,21">
+
+                        <div class="form-input">
+
+                            <div class="form-group">
+                                <table tablename="tabledetailname4" class="table" noaddbutton="true" id="tabledetailname4" customFnDelete="delet_tb_eficacia(this)">
+                                    <thead>
+                                        <tr class="tableHeadRow">
+                                            <th class="tableColumn">Ações foram Eficazes?</th>
+                                            <th class="tableColumn" >Nome:</th>
+                                            <th class="tableColumn">Data:</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tableBodyRow">
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <textarea name="acaoEficaz" class="form-control"
+                                                        label="item"
+                                                        onkeyup="validarInputsTabela('acaoEficaz___1',  'responsavelEficacia___1', 'dataEficacia__1')" data-fluig-state-valid="0,21" data-fluig-write="0,21"></textarea>
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="responsavelEficacia" class="form-control"
+                                                        label="item"
+                                                        onkeyup="validarInputsTabela('acaoEficaz___1',  'responsavelEficacia___1','dataEficacia__1')" data-fluig-state-valid="0,21" data-fluig-write="0,21" >
+                                                </div>
+                                            </td>
+                                            <td class="fs-v-align-middle">
+                                                <div class="form-input">
+                                                    <input type="text" name="dataEficacia"
+                                                        class="form-control" label="item" placeholder="dd/mm/aaaa" mask="00/00/0000" data-only-numbers="true"
+                                                        onkeyup="validarInputsTabela('acaoEficaz___1',  'responsavelEficacia___1','dataEficacia__1')" data-fluig-state-valid="0,21" data-fluig-write="0,21">
+                                                </div>
+                                            </td>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="existeAVA" id="existeAVA" data-fluig-state-valid="0,21" data-fluig-write="0,21">
+                                <button type="button" class="btn btn-primary"
+                                    onclick="wdkAddChild('tabledetailname4')">Novo
+                                    Registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!--------------------------->
+
+
+            </div>
+            <input type="hidden" id="qtdPlanoAcao" name="qtdPlanoAcao" value="0">
+            <input type="hidden" id="qtdEficacia" name="qtdEficacia" value="0">              
+            <input type="hidden" class="form-control" id="processo" name="processo" >
+            <input type="hidden" class="form-control" id="matriculaUsuario" name="matriculaUsuario" >
+
+
+        </form>
+</body>
+
+</html>

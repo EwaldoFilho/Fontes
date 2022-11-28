@@ -1,0 +1,17 @@
+application.type=layout
+application.code=fluigpowerbi
+application.title=Fluig Power BI
+application.description=Fluig Power BI
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=MEDMAIS-36
+developer.name=ewaldo.filho
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=fluigpowerbi
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotMenu=menu
+slot.SlotUsePolicy=usepolicy

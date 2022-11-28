@@ -1,0 +1,66 @@
+﻿<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Fluig</title>
+	<link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<div align="center">
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tbody>
+            <tr>
+                <td>
+                    <img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+                </td>
+            </tr>
+		</tbody>
+	</table>
+</div>
+<br />
+<div align="center">
+    <#if ASSESSMENT_SCHEDULE_START_DATE_INFO??>
+        <p class="DescrMsgForum">
+            <b>¡Tiene una evaluación programada para el día ${ASSESSMENT_SCHEDULE_START_DATE_INFO} a las ${ASSESSMENT_SCHEDULE_START_HOUR_INFO} horas!</b>
+        </p>
+        <#else><p class="DescrMsgForum"><b>¡Tiene una evaluación programada!</p>
+    </#if> <#if ASSESSMENT_SCHEDULE_END_DATE_INFO??>
+        <p class="DescrMsgForum">Tiene hasta el día ${ASSESSMENT_SCHEDULE_END_DATE_INFO} a las ${ASSESSMENT_SCHEDULE_END_HOUR_INFO} para realizar la evaluación.</p>
+    </#if>
+</div>
+<div align="center">
+	<table cellspacing="0" cellpadding="0" border="0" align="center">
+        <tbody align="center">
+            <tr>
+                <td>
+                    <p class="DescrMsgForum">Evaluación:<b> ${ASSESSMENT_NAME}</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="DescrMsgForum">Duración:<b> ${MAX_TIME_EXECUTE} minutos</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="DescrMsgForum">Puntaje mínimo:<b> ${REQUIRED_SCORE}</b></p>
+                </td>
+            </tr>
+		</tbody>
+	</table>
+</div>
+<br></br>
+<div align="center" class="DescrMsgForum actions">
+    <a href="${LINK!''}">Realizar evaluación</a>
+    <div style="clear: both; line-height: 1px">&nbsp;</div>
+</div>
+
+<div align="center">
+    <p class="DescrMsgForum">Si el link de arriba no se abre, copie y pegue la siguiente dirección en su navegador:</p>
+    <p class="DescrMsgForum">${LINK}</p>
+    <br></br>
+    <p class="DescrMsgForum">Este es un e-mail automático, por favor no responda.
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+   <script src="/webdesk/vcXMLRPC.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+      <div class="fs-xl-margin-left fs-md-margin-right">
+         <div class="row text-center" data-type="header"  data-field-name="headerRetirarMateriais">
+            <div class="col-md-2">
+               <img src="imagens/logo.png" style="width: auto; height: 100px">
+             </div>
+             <div class="col-md-8">
+               <h2 class="text-center" id="tituloAtendimento">Solicitação de Combustível</h2>
+             </div>
+            <div class="col-md-2"  id="logo-right">
+               <img src="imagens/logo.png" style="width: auto; height: 100px">
+             </div>
+         </div>
+
+			<form class="form-horizontal fs-sm-margin-top" name="form" role="form">
+				<div class="row" data-type="content"  data-field-name="contentRetirarMateriais" id="panelDadosSolicitante">				
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<p class="panel-title">
+                        <i class="flaticon flaticon-person icon-lg"></i>							   
+							   <strong>Dados do solicitante</strong>
+						   </p>
+						</div>
+						<div class="panel-body">
+                     <div class="row">
+                        <div class="form-group col-sm-6 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="dataAbertura">Data de abertura<strong class="required text-danger"></strong></label>
+                              <input type="text" class="form-control" id="dataAbertura" name="dataAbertura" analytics="true" gooddataid="1">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="nomeSolicitante">Nome do solicitante<strong class="required text-danger">*</strong></label>
+                              <input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" analytics="true" gooddataid="2">
+                            </div>
+                        </div>
+						   </div>
+
+                     <div class="row">
+                        <div class="form-group col-sm-6 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="centroCusto">Centro de custo<strong class="required text-danger">*</strong></label>
+                              <select class="form-control" name="centroCusto" id="centroCusto" dataset="vagas_buscar_contratos" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" analytics="true" gooddataid="3">
+                                 <option value=""></option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="valorRecarga">Valor da recarga<strong class="required text-danger">*</strong></label>
+                              <input type="text" class="form-control" id="valorRecarga" name="valorRecarga" mask="#00.000.000.000.000,00" maxlength="22" analytics="true" gooddataid="4">
+                            </div>
+                        </div>
+						   </div>
+
+                     <div class="row">
+                        <div class="form-group col-sm-12 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="justificativaRecarga">Justificativa<strong class="required text-danger">*</strong></label>
+                              <textarea class="form-control" rows="3" id="justificativaRecarga" name="justificativaRecarga" placeholder="" data-size="big" required="required"></textarea>
+                            </div>
+                        </div>
+						   </div>
+					</div>
+				</div>
+         </div>
+         <!-- Dados bancários -->
+         <div class="row" data-type="content"  data-field-name="contentRetirarMateriais"  id="panelDadosBancarios">				
+            <div class="panel panel-info">
+               <div class="panel-heading">
+                  <p class="panel-title">
+                     <i class="flaticon flaticon-account-balance icon-lg"></i>							   
+                     <strong>Forma de pagamento</strong>
+                  </p>
+               </div>
+               <div class="panel-body">
+                  <!-- FORMA DE PAGAMENTO -->
+                  <div class="row">
+                     <div class="form-group col-sm-6 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="formaPagamento">Selecione a forma pagamento<strong class="required text-danger">*</strong></label>
+                           <select class="form-control" name="formaPagamento" id="formaPagamento" required="required">
+                              <option value=""></option>
+                              <option value="deposito">Depósito bancário</option>
+                              <option value="alelo">Recarga alelo</option>
+                              <option value="pix">PIX</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- DADOS PIX -->
+                  <div class="row" id="formaPagamentoPix">
+                     <div class="form-group col-sm-6 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="chavePix">Selecione o tipo da chave<strong class="required text-danger">*</strong></label>
+                           <select class="form-control" name="chavePix" id="chavePix" required="required">
+                              <option value=""></option>
+                              <option value="cpf">CPF</option>
+                              <option value="cnpj">CNPJ</option>
+                              <option value="email">E-mail</option>
+                              <option value="telefone">Telefone</option>
+                              <option value="chaveAleatoria">Chave aleatória</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="form-group col-sm-6 ms-left"> 
+                        <div class="input-group col-sm-12" id="pixCpf">                  
+                           <label for="cpf">CPF<strong class="required text-danger">*</strong></label>
+                           <input type="text" class="form-control" name="cpf" id="cpf" value="" placeholder="" data-size="big" data-only-numbers="true" mask="000.000.000-00" required="required">
+                        </div>
+                        <!-- cnpj -->
+                        <div class="input-group col-sm-12" id="pixCnpj">                  
+                           <label for="cnpj">CNPJ<strong class="required text-danger">*</strong></label>
+                           <input type="text" class="form-control" name="cnpj" id="cnpj" value="" placeholder="" data-size="big" data-only-numbers="true" mask="00.000.000/0000-00" required="required">
+                        </div>
+                        <!-- Email -->
+                        <div class="input-group col-sm-12" id="pixEmail">                  
+                           <label for="email">E-mail<strong class="required text-danger">*</strong></label>
+                           <input type="email" class="form-control" name="email" id="email" value="" placeholder="" data-size="big" data-only-numbers="true" required="required">
+                        </div>
+                        <!-- Telefone -->
+                        <div class="input-group col-sm-12" id="pixTelefone">                  
+                           <label for="telefone">Telefone<strong class="required text-danger">*</strong></label>
+                           <input type="text" class="form-control" name="telefone" id="telefone" value="" placeholder="" data-size="big" data-only-numbers="true" mask="(00) 00000-0000" required="required">
+                        </div>
+                        <!-- chave aleatória -->
+                        <div class="input-group col-sm-12" id="pixChaveAleatoria">                  
+                           <label for="chaveAleatoria">Chave aleatória<strong class="required text-danger">*</strong></label>
+                           <input type="text" class="form-control" name="chaveAleatoria" id="chaveAleatoria" value="" placeholder="" data-size="big" data-only-numbers="true"  required="required">
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- DADOS BANCARIO -->
+                  <div class="row" id="formaDadosBanco">
+                     <div class="form-group col-sm-6 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="banco2">Banco<strong class="required text-danger">*</strong></label>
+                           <select class="form-control" name="banco" id="banco" required="required">
+                              <option value=""></option>
+                           </select>
+                           </div>
+                     </div>
+                     <div class="form-group col-sm-6 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="tipoConta">Tipo de conta<strong class="required text-danger">*</strong></label>
+                           <select class="form-control" name="tipoConta" id="tipoConta" required="required">
+                              <option value=""></option>
+                              <option value="cc">Conta corrente</option>
+                              <option value="cpg">Conta de pagamento</option>
+                              <option value="cp">Conta poupança</option>
+                              <option value="cs">Conta-salário</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  <div class="row" id="formaPagamentoBanco">
+                     <div class="form-group col-sm-4 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="agencia">Agência<strong class="required text-danger">*</strong></label>
+                           <input type="number" class="form-control" name="agencia" id="agencia" value="" placeholder="" data-size="big" data-only-numbers="true" maxlength="5" required="required">
+                        </div>
+                     </div>
+                     <div class="form-group col-sm-2 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="agencia">DV<strong class="required text-danger">*</strong></label>
+                           <input type="number" class="form-control" name="agenciaDV" id="agenciaDV" value="" placeholder="" data-size="big" data-only-numbers="true" maxlength="5" required="required">
+                        </div>
+                     </div>
+                     <div class="form-group col-sm-4 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="conta">N° conta<strong class="required text-danger">*</strong></label>
+                           <input type="number" class="form-control" name="conta" id="conta" value="" placeholder="" data-size="big" data-only-numbers="true" maxlength="10" required="required">
+                        </div>
+                     </div>
+                     <div class="form-group col-sm-2 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="conta">DV<strong class="required text-danger">*</strong></label>
+                           <input type="number" class="form-control" name="contaDV" id="contaDV" value="" placeholder="" data-size="big" data-only-numbers="true" maxlength="10" required="required">
+                        </div>
+                     </div>                     
+                  </div>  
+
+               </div>
+            </div>
+         </div>
+
+         <!-- avaliacao CEO -->
+         <div class="row" data-type="content"  data-field-name="contentRetirarMateriais" id="panelAprovacaoCEO">				
+            <div class="panel panel-danger">
+               <div class="panel-heading">
+                  <p class="panel-title">
+                     <i class="flaticon flaticon-cash-transfer icon-lg"></i>							   
+                     <strong>Aprovação de pagamento</strong>
+                  </p>
+               </div>
+               <div class="panel-body">
+                  <div class="row">
+                     <div class="form-group col-sm-6 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="isAprovado">Aprova solicitação de pagamento?<strong class="required text-danger">*</strong></label>
+                           <select class="form-control" name="isAprovado" id="isAprovado" required="required">
+                              <option value=""></option>
+                              <option value="true">Aprovado</option>
+                              <option value="false">Reprovar</option>
+                           </select>
+                         </div>
+                     </div>
+                  </div>
+
+                  <div class="row" id="justCEO">
+                     <div class="form-group col-sm-12 ms-left"> 
+                        <div class="input-group col-sm-12">                  
+                           <label for="justificativaCEO">Justificativa<strong class="required text-danger">*</strong></label>
+                           <textarea class="form-control" rows="3" id="justificativaCEO" name="justificativaCEO" placeholder="" data-size="big" required="required"></textarea>
+                         </div>
+                     </div>
+                  </div>                  
+
+               </div>
+            </div>
+         </div>
+
+         <input type="hidden" class="form-control" id="estado" name="estado" >
+         <input type="hidden" class="form-control" id="matriculaUsuario" name="matriculaUsuario" >
+         <input type="hidden" class="form-control" id="gerenteContratoId" name="gerenteContratoId" >
+         <input type="hidden" class="form-control" id="gerenteContratoNome" name="gerenteContratoNome" >
+         <input type="hidden" class="form-control" name="isGerente" id="isGerente" >
+         <input type="hidden" class="form-control" name="countAprovacao" id="countAprovacao" >
+
+			</form>		
+		</div>
+	</div>
+	<script type="text/javascript" src="js/scriptBuscarBancos.js"></script>
+	<script type="text/javascript" src="js/scriptApp.js"></script>
+	<script type="text/javascript" src="js/scriptInputsControl.js"></script>
+</body>
+</html>

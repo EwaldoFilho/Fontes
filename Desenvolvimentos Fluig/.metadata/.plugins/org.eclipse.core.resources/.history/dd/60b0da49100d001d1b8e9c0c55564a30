@@ -1,0 +1,341 @@
+<html>
+   <head>
+      <link type="text/css" rel="stylesheet" href="AMU.css" />
+      <link type="text/css" rel="stylesheet" href="style.css" />
+      <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript"  src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript"  src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+      
+      <script src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="FLUIGIP.js"></script>
+      <script type="text/javascript" src="compras.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+
+   </head>
+   <body>      
+      <div class="fluig-style-guide">
+         <div class="fs-huge-margin-top fs-xl-margin-left fs-md-margin-right">
+            <div class="row text-center" data-type="header"  data-field-name="headerCompras">
+               <div class="col-md-2">
+                  <img src="imagens/logo.png" style="width: auto; height: 100px">
+               </div>
+               <div class="col-md-8">
+                  <h2 class="text-center" id="tituloSolicitacao">Solicitação de compra avulsa</h2>
+                  <h2 class="text-center" id="tituloCadastroProtheus">Solicitação de inclusão de produto no Protheus</h2>
+                  <h2 class="text-center" id="tituloApGerente">Aprovação de solicitação</h2>
+                  <h2 class="text-center" id="tituloCotacao">Análise de cotação - Compra avulsa</h2>
+                  <h2 class="text-center" id="tituloContratacaoServiço">Em processo de compra</h2>
+                  <h2 class="text-center" id="tituloAssinaturaContrato">Assinatura contrato</h2>
+                  <h2 class="text-center" id="tituloValidarContrato">Validação do contrato</h2>
+                  <h2 class="text-center" id="tituloValidarServico">Retirada de insumo</h2>
+                  <h2 class="text-center" id="tituloSolicitacaoFinalizada">Solicitação finalizada</h2>
+               </div>
+               <div class="col-md-2"  id="logo-right">
+                  <img src="imagens/logo.png" style="width: auto; height: 100px">
+               </div>
+            </div>
+            
+            <form class="form-horizontal fs-sm-margin-top" name="form" role="form">               
+               <div class="panel panel-success" id="panelDadoSolicitante" name="panelDadoSolicitante">
+                  <div class="panel-heading">
+                      <p class="panel-title">
+                         <i class="flaticon flaticon-person icon-lg"></i>
+                         <strong class="fs-xs-margin-left">Dados do solicitante</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                     <div class="row">
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="nameUser">Nome do usuário<strong class="required text-danger"></strong></label>
+                              <input type="text" class="form-control zoom-tdi" id="nameUser" name="nameUser" style="width: 100%!important;" analytics="true" gooddataid="1">
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <label for="empresa">Empresa/Filial<strong class="required text-danger"></strong></label>
+                           <div class="input-group col-sm-12">
+                              <input type="hidden" id="codFilial" name="codFilial" data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491" value="0101">
+                              <input type="hidden" id="codArmazem" name="codArmazem" data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491" value="01MZ01">
+                              <input type="text" class="form-control zoom-tdi" id="empresa" name="empresa" data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491" onchange="validaCampo(this)" required="required" readonly>
+                              <div class="input-group-addon zoom-tdi" onclick="zoomEmpresa(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar empresa">
+                                 <i class="flaticon flaticon-search icon-sm"></i>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left">
+                           <label for="centroCusto">Centro de custo<strong class="required text-danger"></strong></label>
+                           <div class="input-group col-sm-12">                  
+                              <input type="hidden" id="codCentroCusto" name="codCentroCusto" data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491">     
+                              <input type="text" class="form-control zoom-tdi" id="descricao" name="descricao" data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491"  onchange="validaCampo(this)" required="required" readonly>                        
+                              <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar centro de custo">
+                                 <i class="flaticon flaticon-search icon-sm"></i>
+                              </div> 
+                           </div>
+                        </div>                       
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-4 ms-left" id="setorDiv" name="setorDiv"> 
+                           <div class="input-group col-sm-12">                  
+                              <label for="setor">Setor</label>
+                              <input type="text" class="form-control zoom-tdi" id="setor" name="setor" style="width: 100%!important;" analytics="true" gooddataid="1" value="Suprimentos">
+                           </div>
+                        </div>                   
+                     </div>                     
+                    
+                  </div> 
+               </div>   
+               
+               <!-- formulário dados da solicitação-->
+               <div class="panel panel-danger"  id="panelDadoSolicitacao" name="panelDadoSolicitacao">
+                  <div class="panel-heading">
+                      <p class="panel-title">                      
+                         <i class="flaticon flaticon-content-paste icon-lg"></i>
+                         <strong class="fs-xs-margin-left">Dados da solicitação</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group col-sm-12">
+                        <div class="table-datatable">
+                           <div class="form-group col-sm-12">
+                              <div class="row fs-xs-margin-left">
+                                 <div class="col-sm-6 text-left">
+                                    <h2 name="tituloProdutos" id="tituloProdutos">Produtos</h2>
+                                 </div> 
+                                 <div class="col-sm-6 text-right" id="grupoBotaoProdutos">
+                                    <!-- <button type="button" class="btn btn-success" name="modalAdicionarProduto" id="modalAdicionarProduto" data-toggle="tooltip" data-placement="bottom" title="Adicionar novo produto" >
+                                       <i class="flaticon flaticon-add-box icon-sm"></i>
+                                       Solicitar cadastro de produto
+                                    </button>  -->
+                                    <button type="button" class="btn btn-info" name="modalBuscarProduto" id="modalBuscarProduto" data-toggle="tooltip" data-placement="bottom" title="Buscar produto">
+                                       <i class="flaticon flaticon-search icon-sm"></i>
+                                       Buscar produto
+                                    </button>
+                                 </div>                                        
+                              </div>
+                           </div>
+ 
+                           <!-- tabela de produtos cadastrados no sistema e adicionados pelo usuário -->
+                           <div class="row">
+                              <div class="col-sm-12 table-responsive fs-md-margin-top">
+                              <h3 id="labelProdutosAdicionais">Produtos adicionados</h3>
+                                 <table name="tb_produtos" id="tb_produtos" class="table table-bordered table-striped  ">
+                                    <thead>
+                                          <tr>
+                                             <th>Código produto</th>
+                                             <th>Descrição</th>
+                                             <th>Quantidade</th>
+                                             <th>Valor do orçamento</th>
+                                             <th>Especificação técnica</th>
+                                             <th>Observação</th>                                         
+                                             <th></th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>                                                                          
+                                    </tbody>
+                                 </table>
+                                 <!-- tabela de produtos para visualização -->
+                                 <div id="produtosView"></div>
+                                 <input type="hidden" id="listaProdutos" name="listaProdutos">                              
+                              </div>  
+                           </div>                           
+                        </div>
+                     </div>         
+                     <div name="produtoTab" id="produtoTab">
+                        <div class="form-group col-sm-12">                        
+                           <div class="input-group col-sm-12">                   
+                              <label for="justificativa" class="col-sm-12">Justificativa</label>                              
+                              <textarea class="form-control" rows="5" name="justificativa" id="justificativa" data-fluig-state-valid="0,4" data-fluig-write="0,4"></textarea>                              
+                           </div>
+                        </div> 
+                     </div>                    
+                  </div>
+               </div>
+               
+               <!-- Panel controle orcamentario -->
+            <div class="row" data-type="content"  data-field-name="contentOrcamento">			
+               <div class="panel panel-danger" id="panelOrcamento">
+                  <div class="panel-heading">
+                     <p class="panel-title">                      
+                        <i class="flaticon flaticon-content-paste icon-lg"></i>
+                        <strong class="fs-xs-margin-left">Controle orçamentário</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                  	<!-- ORÇAMENTO FEITO PELO EMBAIXADOR -->
+                     <div class="row col-md-12 fs-huge-margin-top" data-type="table"  data-field-name="tableOrcamento">
+                        <h2>Controle orçamentário realizado pelo embaixador </h2>
+                        <div class="col-sm-12 table-responsive fs-md-margin-top">                           
+                           <table name="tb_orcamento" id="tb_orcamento" class="table table-bordered table-striped  ">
+                              <thead>
+                                    <tr>
+                                       <th>Descrição</th>
+                                       <th>Quantidade</th>
+                                       <th>Valor do orçamento</th>
+                                       <th>Especificação técnica</th>
+                                    </tr>
+                              </thead>
+                              <tbody>                                                                          
+                              </tbody>
+                           </table>
+                        </div>
+                    </div>
+
+                    <!-- APRESENTACAO VALOR TOTAL ORÇAMENTO -->
+                    <div class="row ms-valores-cotacao">
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                             
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2>Orçamento total</h2>
+                              <span class="font-span" id="totalOrcamento"></span>              
+                           </div>
+                        </div>                     
+                      </div>  
+                  </div>
+               </div>
+            </div>
+
+            <!-- Panel cotacoes -->
+            <div class="row" data-type="content"  data-field-name="contentCotacoes">			
+               <div class="panel panel-success" id="panelCotacoes">
+                  <div class="panel-heading">
+                     <p class="panel-title">                      
+                        <i class="flaticon flaticon-content-paste icon-lg"></i>
+                        <strong class="fs-xs-margin-left">Análise de cotação</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                    <!-- analise de cotação equipe de compras -->
+                     <div class="row col-md-12 fs-huge-margin-top" data-type="table"  data-field-name="tableCotacoes">
+                        <h2>Cotação relizada equipe de compras </h2>
+                        <div class="col-sm-12 table-responsive fs-md-margin-top">                           
+                           <table name="tb_cotacoes" id="tb_cotacoes" class="table table-bordered table-striped  ">
+                              <thead>
+                                    <tr>
+                                       <th>Descrição</th>
+                                       <th>Quantidade</th>
+                                       <th>Fornecedores</th>
+                                       <th></th>
+                                    </tr>
+                              </thead>
+                              <tbody>                                                                          
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- Cotacoes a serem enviadas no taskScript130 -->
+                        <input type="hidden" name="cotacoesInput" id="cotacoesInput">                        
+                     </div>
+
+                     <div class="row col-md-12 fs-huge-margin-top" id="erroCotacao">
+                     	<span> Existem cotações que não foram realizadas. Favor entrar em contato com o setor de insumos.</span>
+                     </div>
+
+                      <!-- --- INICIO - APRESENTAÇÃO DE VALORES COTAÇÃO ----- -->
+
+                     <div class="row ms-valores-cotacao">
+                        <div class="form-group col-sm-3 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2 id="labelValorMercadoria">Valor da mercadoria</h2>
+                              <span class="font-span" id="valorMercadoria"></span>  
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-3 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2 id="labelDespesasFrete">Despesas</h2>
+                              <span class="font-span" id="valorDespesas"></span>
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-3 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2 id="labelDespesasFrete">Frete</h2>
+                              <span class="font-span" id="valorFrete"></span>
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-3 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2 id="labelTotalDesconto">Descontos</h2>   
+                              <span class="font-span" id="valorDescontos"></span>                
+                           </div>
+                        </div>
+                                               
+                     </div>
+                     
+                     <div class="row ms-valores-cotacao">
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2>Total líquido da cotação</h2>
+                              <span class="font-span" id="valorTotalCompra"></span>              
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- <div class="row ms-valores-cotacao">
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                           </div>
+                        </div>
+                        <div class="form-group col-sm-4 ms-left"> 
+                           <div class="input-group col-sm-12">                  
+                              <h2 id="labelTotalCompra">Valor total da compra</h2>
+                              <span class="font-span" id="valorTotalCompra"></span>              
+                           </div> 
+                        </div>
+                     </div>                     -->
+                      <!-- --- FIM - APRESENTAÇÃO DE VALORES COTAÇÃO ----- -->
+                  </div>
+               </div>
+            </div>
+               
+               <!-- formulario de validacao de servico -->
+               <div class="panel panel-success" id="panelValidarServico">
+                  <div class="panel-heading">
+                     <p class="panel-title">                      
+                        <i class="flaticon  flaticon-document-check  icon-lg"></i>
+                        <strong class="fs-xs-margin-left">Recebimento de compra</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                     <div id="montarInputServico"></div>
+                     <input type="hidden" id="countValidaInputServico" name="countValidaInputServico">
+                  </div>
+               </div>
+
+               <!-- campos hidden -->
+               <input type="hidden" class="form-control" id="processo" name="processo" >
+               <input type="hidden" class="form-control" id="estado" name="estado" >
+               <input type="hidden" class="form-control" id="existeProdutoNovo" name="existeProdutoNovo" >
+               <input type="hidden" class="form-control" id="existeGerente" name="existeGerente" >
+            </form>
+         </div>         
+      </div> 
+      
+      <script type="text/javascript" src="scriptApp.js"></script>
+      <script type="text/javascript" src="modalBuscarProduto.js"></script>
+      <script type="text/javascript" src="editarProduto.js"></script>
+      <script type="text/javascript" src="scriptCotacao.js"></script> 	
+	  <script type="text/javascript" src="validarServico.js"></script>
+      <script type="text/javascript" src="validaItens.js"></script>    
+	  <script type="text/javascript" src="scriptOrcamentoEmbaixador.js"></script>       
+   </body>
+</html>

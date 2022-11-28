@@ -1,0 +1,45 @@
+	var quantidade
+
+//Função para adicionar itens em uma tabela pai x filho.
+function adicionarRateioCusto(CTT_CUSTO,CTT_DESC01) {
+    var id = wdkAddChild("rateioCusto");
+    var qtd = $("#baseRateio").val();
+    var atividade = getWKNumState();
+
+    $("#codCentroCustoForn___" + id).val(CTT_CUSTO);
+    $("#descricaoForn___" + id).val(CTT_DESC01);
+
+    qtd++
+    $("#baseRateio").val(qtd);
+    
+    quantidade = qtd
+   
+}
+
+
+function somaValor(){
+
+    var soma = 0;
+    var porcento = 0;
+    $(":input[id^='valor___']").each(function (index, value) {
+           soma = soma + parseFloat($(this).val());
+           
+                });
+    $(":input[id^='valor___']").each(function (index, value) {
+        porcento = quantidade / parseFloat($(this).val());
+        
+             });
+ $("#valorTotal").val(soma.toFixed(2));
+ $("#percentual___" + id).val(porcento);
+ 
+ 	
+
+}
+
+/*function rateio ( valorTotal, baseRateio){
+	var rat = 0;
+	
+	
+	$("#percentual").val(rat);
+} */
+

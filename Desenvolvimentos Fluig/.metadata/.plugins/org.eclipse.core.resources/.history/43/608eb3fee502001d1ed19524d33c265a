@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//wcm/widget/V2Intramed/src/main/resources/V2Intramed.properties=utf8
+encoding//wcm/widget/V2Intramed/src/main/resources/V2Intramed_en_US.properties=utf8
+encoding//wcm/widget/V2Intramed/src/main/resources/V2Intramed_es.properties=utf8
+encoding//wcm/widget/V2Intramed/src/main/resources/V2Intramed_pt_BR.properties=utf8
+encoding//wcm/widget/V2Intramed/src/main/resources/application.info=utf8
+encoding//wcm/widget/V2Intramed/src/main/resources/edit.ftl=utf8
+encoding//wcm/widget/V2Intramed/src/main/resources/view.ftl=utf8
+encoding//wcm/widget/V2Intramed/src/main/webapp/WEB-INF/jboss-web.xml=utf8

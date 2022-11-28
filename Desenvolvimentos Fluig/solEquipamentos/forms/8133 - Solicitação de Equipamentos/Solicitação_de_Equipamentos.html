@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Form</title>
+
+            <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script src="/resources/js/jquery/jquery.js"></script>
+            <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+            <script src="/resources/js/mustache/mustache-min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+            <!-- CUSTOM -->
+            <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+            <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+            <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+            <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/4.css' type='text/css' rel='stylesheet' />
+		</head>
+        <body class="fluig-style-guide">
+			
+			<form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents" style="padding-left: 10px; padding-right: 10px;"><img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png" alt="Logo" id="logo" style="max-height: 50px; max-width: 250px;"><h1 class="title-form-application">Solicitação de Equipamentos</h1>
+			<div class="form-field" data-type="date" data-show-properties="" data-field-name="DataAbertura" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Data abertura</label><input id="date5" type="text" class="form-control" name="DataAbertura" data-date=""></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="NomeFuncionario" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Nome do colaborador</label><input type="text" class="form-control" name="NomeFuncionario" value="" placeholder="" data-size="big"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="EmailFuncio" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Email do colaborador</label><input type="text" class="form-control" name="EmailFuncio" value="" placeholder="" data-size="big"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="NumeroColabora" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Contato do Funcionario</label><input type="text" class="form-control" name="NumeroColabora" value="" placeholder="" data-size="big" mask="(00) 90000-0000" maxlength="15" data-only-numbers="true"></div></div></div><div class="form-field" data-type="textbox" data-show-properties="" data-field-name="Cpf" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>CPF</label><input type="text" class="form-control" name="Cpf" value="" placeholder="" data-size="big" mask="000.000.000-00" maxlength="14" data-only-numbers="true"></div></div></div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="contrato" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Contrato</label><select class="form-control" name="contrato" analytics="true" gooddataid="9" dataset="vagas_buscar_contratos" datasetkey="DESCRICAO" datasetvalue="DESCRICAO" datasetorder="DESCRICAO"><option value="Opção 1">Opção 1</option><option value="Opção 2">Opção 2</option></select></div></div></div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="perfil" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Perfil do usúario</label><select class="form-control" name="perfil"><option value="MedOfice">MedOfice</option><option value="Embaixador">Embaixador</option><option value="Postos de serviços">Postos de serviços</option></select></div></div></div><div class="form-field" data-type="combo" data-show-properties="" data-field-name="Modulo" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Escolha o modulo </label><select class="form-control" name="Modulo" analytics="true" gooddataid="10"><option value="-">-</option><option value="Liberação de equipamentos">Liberação de equipamentos</option><option value="Retirada de equipamento">Retirada de equipamento</option></select></div></div></div><div class="form-field" data-type="checkbox" data-show-properties="" data-field-name="Equipamentos" style="position: relative; left: 0px; top: 0px;"><div class="form-input"><div class="form-group"><label>Equipamentos</label><div class="check-options"><div class="checkbox"><label><input type="checkbox" name="Equipamentos0" value="Notebook" analytics="true" gooddataid="10">Notebook</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos1" value="desktop" analytics="true" gooddataid="11">desktop</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos2" value="Celular" analytics="true" gooddataid="12">Celular</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos3" value="Tablet" analytics="true" gooddataid="13">Tablet</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos4" value="Impressora" analytics="true" gooddataid="14">Impressora</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos5" value="Todos" analytics="true" gooddataid="15">Todos</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos6" value="Chip de celular" analytics="true" gooddataid="16">Chip de celular</label></div><div class="checkbox"><label><input type="checkbox" name="Equipamentos7" value="Não se aplica" analytics="true" gooddataid="17">Não se aplica</label></div></div></div></div></div><div class="form-field" data-type="textarea" data-show-properties="" data-field-name="observacao" style=""><div class="form-input"><div class="form-group"><label>Observação</label><textarea class="form-control" rows="3" name="observacao" placeholder="" data-size="big"></textarea></div></div></div></form>
+		
+
+			<script type="text/javascript">
+				var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118; 
+				  
+				$(document).keydown(function (e) {
+					if (e.keyCode == ctrl) keyDown = true;
+				}).keyup(function (e) {
+					if (e.keyCode == ctrl) keyDown = false;
+				});
+				
+				$('[data-only-numbers]').on('keypress', function (e) {
+				    if (!e) {
+					    var e = window.event;
+					}
+					
+				    if (e.keyCode > 0 && e.which == 0) {
+				    	 return true;
+					}
+					
+				    if (e.keyCode) {
+				        code = e.keyCode;
+					} else if (e.which) {
+				    	code = e.which;
+					}
+
+					if(code == 46) {
+						return true;
+					}
+					
+				    var character = String.fromCharCode(code);
+				    if (character == '\b' || character == ' ' || character == '\t') {
+				    	 return true;
+					}
+				    if (keyDown && (code == vKey || code == Vkey)) {
+				    	return (character);
+					} else  {
+						return (/[0-9]$/.test(character));
+					}
+				}).on('focusout', function (e) {
+				    var $this = $(this);
+					if($this.val() == "") {
+						return true;
+					}
+				    $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				}).on('paste', function (e) {
+				    var $this = $(this);
+				    setTimeout(function () {
+				        $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				    }, 5);
+				 });				
+
+				
+
+				$('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				$('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				function validationFieldsForm(field, type){
+					if(type === "checkbox" || type === "radio"){
+						if(!field.is(':checked')){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}else{
+						if(!field.val().trim()){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}
+				}
+
+				var $zoomPreview = $(".zoom-preview");
+				if ($zoomPreview.length) {
+                    $zoomPreview.parent().removeClass("input-group");
+                    $zoomPreview.remove();
+                }
+
+				var ratings = $(".rating");
+				if (ratings.length > 0) ratingStars(ratings);
+				function ratingStars(stars) {
+					$.each(stars, function(i, obj) {
+                        var field = $(this).closest(".form-group").find(".rating-value");
+						var tgt = $(obj);
+						tgt.html("");
+						var rating = FLUIGC.stars(tgt, { value: field.val() });
+                        rating.on("click", function(o) {
+                            field.val($(this).index() + 1);
+                        });
+					});
+				}
+
+				$.each($("[data-date]"), function(i, o) {
+                    var id = $(o).attr("id");
+					FLUIGC.calendar("#" + id);
+				});
+
+				$(document).ready(function() {
+					$.each($("[data-date]"), function(i, o) {
+	                    var id = $(o).attr("id");
+	                    if($("#" + id).attr("readonly")) {
+	                    	$("#" + id).data('DateTimePicker').disable();
+	                    }
+					});
+				});
+			</script>
+		</body>
+	</html>

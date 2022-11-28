@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Fluig</title>
+	<link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+
+	<style type="text/css">
+		.button {
+			background-color: #2d7b00;
+			color: white;
+			font-size: 14px;
+			font-family:  Tahoma, Arial, Helvetica, sans-serif;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<div align="center">
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tbody>
+		<tr>
+			<td>
+				<img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<br />
+<div align="center">
+	<p class="DescrMsgForum">
+		<b>Hello, ${RECEIVER!''}</b>
+	</p>
+	<p class="DescrMsgForum">A user has been created for you at Fluig!</p>
+</div>
+<div align="center">
+	<table cellspacing="0" cellpadding="0" border="0" align="center">
+		<tbody align="center">
+		<tr>
+			<td>
+				<p class="DescrMsgForum">Login:<b> $ {USER_LOGIN}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p class="DescrMsgForum">Password:<b> $ {USER_PASS}</b></p>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<br></br>
+<div align="center" class="DescrMsgForum actions">
+	<a class="action" href="${LINK!''}">Go to Fluig</a>
+	<div style="...">&#160;</div>
+</div>
+
+<div align="center">
+	<p class="DescrMsgForum">This is an automatic e-mail and it should not be answered.</p>
+</div>
+</body>
+</html>

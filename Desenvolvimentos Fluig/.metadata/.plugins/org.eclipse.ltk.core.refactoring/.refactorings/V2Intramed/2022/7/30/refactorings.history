@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;js&apos;&#x0D;&#x0A;- Original project: &apos;v2Intramed&apos;&#x0D;&#x0A;- Destination element: &apos;js&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     enc-base64-min.js&#x0D;&#x0A;     hmac-sha1.js&#x0D;&#x0A;     oauth-1.0a.js" description="Copy files" element1="wcm/widget/Elogio_ouvidoria/src/main/webapp/resources/js/enc-base64-min.js" element2="wcm/widget/Elogio_ouvidoria/src/main/webapp/resources/js/hmac-sha1.js" element3="wcm/widget/Elogio_ouvidoria/src/main/webapp/resources/js/oauth-1.0a.js" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1658323750359" target="/ouvidoriaV2/wcm/widget/ouvidoriav2/src/main/webapp/resources/js" units="0" version="1.0"/>
+</session>

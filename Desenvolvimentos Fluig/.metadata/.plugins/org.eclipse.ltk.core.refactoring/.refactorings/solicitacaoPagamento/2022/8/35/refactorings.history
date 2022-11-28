@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;enableFields.js&apos; to &apos;events&apos;&#x0D;&#x0A;- Original project: &apos;solicitacaoPagamento&apos;&#x0D;&#x0A;- Destination element: &apos;events&apos;&#x0D;&#x0A;- Original element: &apos;enableFields.js&apos;" description="Copy file" element1="forms/59673 - Solicitação de Pagamento 2/events/enableFields.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1661435559024" target="/compraAvulsa/forms/10548 - solicitarCompraAvulsa/events" units="0" version="1.0"/>
+</session>

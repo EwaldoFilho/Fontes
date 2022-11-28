@@ -1,0 +1,1 @@
+function enableFields(form) {		var activity = getValue('WKNumState');if (activity == 2) {form.setEnabled('texto', false);}if (activity == 20) {form.setEnabled('texto', false);}if (activity == 4) {form.setEnabled('texto', false);}if (activity == 6) {form.setEnabled('texto', false);}}

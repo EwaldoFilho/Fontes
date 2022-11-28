@@ -1,0 +1,103 @@
+function zoomCusto(obj) {
+var type = $(obj).prev("input").attr("name");
+var filters = "";
+var searchby = "FILTRO";
+
+tdizoom.open(
+"DsCustoForn", //Nome do Dataset
+"CUSTO,Custo,DESCRICAO,Descrição", //Campos a serem exibidos
+"CUSTO,DESCRICAO", //Campos de retorno
+"Centro de Custo", //Titulo
+filters, //Filtros
+type, //Type (deve ser sempre o atributo name do campo)
+null, //likefield
+null, //likevalue
+searchby //Campo/Constraint que será buscado o conteudo digitado (Seachby)
+);
+
+
+
+}
+
+function zoomColaboradores(obj) {
+	var type = $(obj).prev("input").attr("name");
+	var codCentroCusto = $("#codCentroCusto").val();
+
+	// var tipoContrato = $("#tipoContrato").val("TPCONTRATO");
+	var filters = "COD," + codCentroCusto;
+	var searchby = "FILTRO";
+
+	tdizoom.open(
+	"FUNC-VAGAS-BUCAS", //Nome do Dataset
+	"NOME_COMPLETO,Nome,COD,COD,CATEGORIA,CATEGORIA,TPCONTRATO,TPCONTRATO,DDD,DDD,NUM_CEL,NUM_CEL,EMAIL,EMAIL,CPF,CPF,FUNCAO,FUNCAO,RG,RG", //Campos a serem exibidos
+	"NOME_COMPLETO,TPCONTRATO,DDD,NUM_CEL,EMAIL,CPF,FUNCAO,RG", //Campos de retorno
+	"Colaboradores", //Titulo
+	filters, //Filtros
+	type, //Type (deve ser sempre o atributo name do campo)
+	null, //likefield
+	null, //likevalue
+	searchby //Campo/Constraint que será buscado o conteudo digitado (Seachby)
+	);
+	
+}
+
+function setSelectedZoomItem(selectedItem){
+    var name = selectedItem.type.split("___")[0];
+    var indice = selectedItem.type.split("___");
+    // "CODIGO,DESCRICAO",
+    if(name == "centroCusto"){
+    $("#codCentroCusto").val(selectedItem.CUSTO);
+    $("#centroCusto").val(selectedItem.DESCRICAO);
+    }else{
+    $("#codCentroCusto").val(null);
+    $("#centroCusto").val(null);;
+    }
+    }
+	
+
+if(name == "produto"){
+	$("#produto").val(selectedItem.DESCRICAO);
+	$("#produtoCodigo").val(selectedItem.CODIGO);
+	}else if(name == "nome"){
+	$("#nome").val(selectedItem.NOME);
+	}else if(name == "colaborador2"){
+	$("#colaborador2").val(selectedItem.NOME_COMPLETO);
+	$("#tipocontrato").val(selectedItem.TPCONTRATO);
+	$("#tipocontrato1").text(selectedItem.TPCONTRATO);
+	$("#telefone").val(selectedItem.DDD + selectedItem.NUM_CEL);
+	$("#cpf").val(selectedItem.CPF);
+	$("#email").val(selectedItem.EMAIL);
+	$("#funcao").val(selectedItem.FUNCAO);
+	$("#rg").val(selectedItem.RG);
+	}else if(name == "centroCusto"){
+	$("#codCentroCusto").val(selectedItem.CUSTO);
+	$("#centroCusto").val(selectedItem.DESCRICAO);
+	}else if(name == "empresa"){
+	$("#empresa").val(selectedItem.DESCRICAOFILIAL);
+	$("#codFilial").val(selectedItem.FILIAL);
+	}else if(name == "tipoAtendimento"){
+	adicionarItemTipoAtendimento(selectedItem.codigo,selectedItem.Descr)
+	}else if(name == "gastos"){
+	adicionarItemGastos(selectedItem.codGasto,selectedItem.descrGasto,selectedItem.unidade)
+	}else if(name == "filial"){
+	$("#filial").val(selectedItem.CUSTO);
+	$("#codFilial").val(selectedItem.FILIAL);
+	}else if(name == "produtoModal"){
+	$("#codigoProdutoModal").val(selectedItem.CODIGO);
+	$("#produtoModal").val(selectedItem.DESCRICAO);
+	}
+	
+
+
+
+	function removedZoomItem(selectedItem){
+	if(selectedItem == "produto"){
+	$("#produto").val("");
+	$("#produtoCodigo").val("");
+	}else if(selectedItem == "nameUser"){
+	$("#nameUser").val("")
+	}else if(selectedItem == "Custo"){
+	$("#Custo").val("")
+	}
+}
+	

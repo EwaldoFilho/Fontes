@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;Fluig_producao&apos;&#x0D;&#x0A;- Original project: &apos;gamificacao&apos;&#x0D;&#x0A;- Destination element: &apos;Fluig_producao&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     afterSocialLike.js&#x0D;&#x0A;     beforeSocialUnlike.js&#x0D;&#x0A;     beforeSocialLike.js" description="Copy files" element1="events/Local/afterSocialLike.js" element2="events/Local/beforeSocialUnlike.js" element3="events/Local/beforeSocialLike.js" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1660762571547" target="/gamificacao/events/Fluig_producao" units="0" version="1.0"/>
+</session>

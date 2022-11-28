@@ -1,0 +1,30 @@
+application.type=widget
+application.code=ouvidoriav2
+application.title=Ouvidoria MedMais
+application.description=Ouvidoria MedMais
+application.category=SYSTEM
+application.renderer=freemarker
+
+application.resource.css.1=/resources/css/ouvidoriav2.css
+application.resource.js.2=/resources/js/ouvidoriav2.js
+application.resource.js.3=/resources/js/hmac-sha1.js
+application.resource.js.4=/resources/js/oauth-1.0a.js
+application.resource.js.5=/resources/js/fileuploader.js
+application.uiwidget=true
+application.mobileapp=true
+application.version=${build.version}-${build.revision}
+application.tenant.code=0101001
+
+developer.code=MEDMAIS-36
+developer.name=ewaldo.filho
+developer.url=http://www.fluig.com
+
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+
+
+
+view.file=view.ftl
+edit.file=edit.ftl
+
+locale.file.base.name=ouvidoriav2

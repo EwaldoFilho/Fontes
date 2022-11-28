@@ -1,0 +1,693 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>ecm_kgq_apa</processId>
+    </processDefinitionPK>
+    <processDescription>Atividade do Plano de Ação</processDescription>
+    <instruction>Elaboração das atividades cadastradas no plano de ação.</instruction>
+    <active>true</active>
+    <publicProcess>true</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Kit Gestão da Qualidade</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;kgq_apa_gestor&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>true</uniqueCardVersion>
+    <complementsLevel>0</complementsLevel>
+    <notifyRequisitionerComplements>false</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <notifyAuthorityComplements>false</notifyAuthorityComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>ecm_kgq_apa</processId>
+      <version>28</version>
+    </processDefinitionVersionPK>
+    <versionDescription>Nova Versão.</versionDescription>
+    <formId>3668</formId>
+    <editionMode>false</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <processDiagram>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; style=&quot;stroke-dasharray:none; shape-rendering:auto; font-family:&apos;Arial&apos;; text-rendering:auto; fill-opacity:1; color-interpolation:auto; color-rendering:auto; font-size:12; fill:black; stroke:black; image-rendering:auto; stroke-miterlimit:10; stroke-linecap:square; stroke-linejoin:miter; font-style:normal; stroke-width:1; stroke-dashoffset:0; font-weight:normal; stroke-opacity:1;&quot; contentScriptType=&quot;text/ecmascript&quot; preserveAspectRatio=&quot;xMidYMid meet&quot; zoomAndPan=&quot;magnify&quot; version=&quot;1.0&quot; contentStyleType=&quot;text/css&quot; xml:xlink=&quot;http://www.w3.org/1999/xlink&quot; width=&quot;700&quot; height=&quot;291&quot;&gt;&lt;rect x=&quot;0&quot; y=&quot;4&quot; width=&quot;700&quot; height=&quot;146&quot; ry=&quot;0&quot; rx=&quot;0&quot; style=&quot;stroke:#000000; fill:#B3CDFF&quot; /&gt;&lt;g componentSequence=&quot;1&quot;&gt;&lt;text x=&quot;-77&quot; y=&quot;7&quot; transform=&quot;rotate(270)&quot; text-anchor=&quot;middle&quot; style=&quot;font-weight:bold;font-size:10px;stroke:none; fill:#434343&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;-77&quot;&gt;Executor da Atividade&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;rect x=&quot;0&quot; y=&quot;149&quot; width=&quot;700&quot; height=&quot;142&quot; ry=&quot;0&quot; rx=&quot;0&quot; style=&quot;stroke:#000000; fill:#FFFF80&quot; /&gt;&lt;g componentSequence=&quot;2&quot;&gt;&lt;text x=&quot;-220&quot; y=&quot;7&quot; transform=&quot;rotate(270)&quot; text-anchor=&quot;middle&quot; style=&quot;font-weight:bold;font-size:10px;stroke:none; fill:#434343&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;-220&quot;&gt;Gestor&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g sequence=&quot;1&quot;&gt;&lt;ellipse cx=&quot;77&quot; cy=&quot;87&quot; rx=&quot;17&quot; ry=&quot;17&quot; stroke-width=&quot;1&quot; style=&quot;fill:url(#linearGradient66FF6696FF96B6FFB6_1329116789);&quot; stroke=&quot;336633&quot; /&gt;&lt;/g&gt;&lt;g sequence=&quot;2&quot;&gt;&lt;rect x=&quot;280&quot; y=&quot;50&quot; width=&quot;106&quot; height=&quot;70&quot; ry=&quot;5&quot; rx=&quot;5&quot; style=&quot;fill:url(#linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9_1107247586);&quot; stroke=&quot;191970&quot; /&gt;&lt;/g&gt;&lt;g componentSequence=&quot;2&quot;&gt;&lt;text x=&quot;333&quot; y=&quot;65&quot; text-anchor=&quot;middle&quot; style=&quot;font-weight:bold;font-size:10px;stroke:none; fill:#333399&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;333&quot;&gt;2-Executar&lt;/tspan&gt;&lt;tspan dy=&quot;14&quot; x=&quot;333&quot;&gt;atividade&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g sequence=&quot;7&quot;&gt;&lt;ellipse cx=&quot;497&quot; cy=&quot;87&quot; rx=&quot;17&quot; ry=&quot;17&quot; stroke-width=&quot;3&quot; style=&quot;fill:url(#linearGradientFF6666FF9696FFB6B6_1170267397);&quot; stroke=&quot;993333&quot; /&gt;&lt;/g&gt;&lt;g sequence=&quot;12&quot;&gt;&lt;rect x=&quot;280&quot; y=&quot;210&quot; width=&quot;106&quot; height=&quot;70&quot; ry=&quot;5&quot; rx=&quot;5&quot; style=&quot;fill:url(#linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9_12733401);&quot; stroke=&quot;191970&quot; /&gt;&lt;/g&gt;&lt;g componentSequence=&quot;12&quot;&gt;&lt;text x=&quot;333&quot; y=&quot;225&quot; text-anchor=&quot;middle&quot; style=&quot;font-weight:bold;font-size:10px;stroke:none; fill:#333399&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;333&quot;&gt;12-Definir Novo&lt;/tspan&gt;&lt;tspan dy=&quot;14&quot; x=&quot;333&quot;&gt;Prazo&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;rect x=&quot;160&quot; y=&quot;10&quot; width=&quot;105&quot; height=&quot;55&quot; ry=&quot;5&quot; rx=&quot;5&quot; style=&quot;stroke:none; fill:#FFFFE0&quot; /&gt;&lt;g componentSequence=&quot;1&quot;&gt;&lt;text x=&quot;170&quot; y=&quot;33&quot; text-anchor=&quot;left&quot; style=&quot;font-weight:bold;font-size:10px;stroke:none; fill:#000000&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;170&quot;&gt;Tomar&lt;/tspan&gt;&lt;tspan dy=&quot;14&quot; x=&quot;170&quot;&gt;conhecimento&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;path style=&quot;fill:none; stroke-width:1; stroke:#000000;&quot; d=&quot;M180.0 10.0 L160.0 10.0 L160.0 65.0 L180.0 65.0&quot; /&gt;&lt;rect x=&quot;570&quot; y=&quot;37&quot; width=&quot;105&quot; height=&quot;83&quot; ry=&quot;5&quot; rx=&quot;5&quot; style=&quot;stroke:none; fill:#FFFFE0&quot; /&gt;&lt;g componentSequence=&quot;2&quot;&gt;&lt;text x=&quot;580&quot; y=&quot;60&quot; text-anchor=&quot;left&quot; style=&quot;font-weight:bold;font-size:10px;stroke:none; fill:#000000&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;580&quot;&gt;Fim. O&lt;/tspan&gt;&lt;tspan dy=&quot;14&quot; x=&quot;580&quot;&gt;Responsável&lt;/tspan&gt;&lt;tspan dy=&quot;14&quot; x=&quot;580&quot;&gt;pelo Plano&lt;/tspan&gt;&lt;tspan dy=&quot;14&quot; x=&quot;580&quot;&gt;recebe email&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;path style=&quot;fill:none; stroke-width:1; stroke:#000000;&quot; d=&quot;M590.0 37.0 L570.0 37.0 L570.0 120.0 L590.0 120.0&quot; /&gt;&lt;g componentSequence=&quot;1&quot;&gt;&lt;text x=&quot;197&quot; y=&quot;86&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;197&quot;&gt;para 2-Executar atividade&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g componentSequence=&quot;13&quot;&gt;&lt;text x=&quot;343&quot; y=&quot;165&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;343&quot;&gt;para 12-Definir Novo Prazo&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g componentSequence=&quot;15&quot;&gt;&lt;text x=&quot;343&quot; y=&quot;165&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;343&quot;&gt;para 2-Executar atividade&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g componentSequence=&quot;17&quot;&gt;&lt;text x=&quot;443&quot; y=&quot;86&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;443&quot;&gt;para Fim&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g componentSequence=&quot;18&quot;&gt;&lt;text x=&quot;388&quot; y=&quot;163&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot;&gt;&lt;tspan dy=&quot;14&quot; x=&quot;388&quot;&gt;para 12-Definir Novo Prazo&lt;/tspan&gt;&lt;/text&gt;&lt;/g&gt;&lt;g componentSequence=&quot;2&quot;&gt;&lt;text x=&quot;552&quot; y=&quot;84&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot; /&gt;&lt;/g&gt;&lt;g componentSequence=&quot;11&quot;&gt;&lt;text x=&quot;137&quot; y=&quot;69&quot; style=&quot;font-size:10px;font-weight:none;stroke:none; fill:#333399&quot; text-anchor=&quot;left&quot; /&gt;&lt;/g&gt;&lt;path style=&quot;fill:none; stroke:#000000;stroke-width:1&quot; d=&quot;M94.0 87.0 L279.0 85.0&quot; /&gt;&lt;polygon style=&quot;fill:#000000; stroke:#000000;&quot; points=&quot; 269 80 279 85 269 90 271 85&quot; /&gt;&lt;path style=&quot;fill:none; stroke:#000000;stroke-dasharray:2&quot; d=&quot;M159.0 57.0 L93.0 81.0&quot; /&gt;&lt;path style=&quot;fill:none; stroke:#000000;stroke-width:1&quot; d=&quot;M333.0 120.0 L333.0 209.0&quot; /&gt;&lt;polygon style=&quot;fill:#000000; stroke:#000000;&quot; points=&quot; 338 199 333 209 328 199 333 201&quot; /&gt;&lt;path style=&quot;fill:none; stroke:#000000;stroke-width:1&quot; d=&quot;M386.0 85.0 L480.0 87.0&quot; /&gt;&lt;polygon style=&quot;fill:#000000; stroke:#000000;&quot; points=&quot; 470 82 480 87 470 92 472 87&quot; /&gt;&lt;path style=&quot;fill:none; stroke:#009600;stroke-width:1&quot; d=&quot;M358.0 120.0 L383.0 155.0 L353.0 209.0&quot; /&gt;&lt;polygon style=&quot;fill:#009600; stroke:#009600;&quot; points=&quot; 362 203 353 209 353 198 357 202&quot; /&gt;&lt;path style=&quot;fill:none; stroke:#000000;stroke-width:1&quot; d=&quot;M333.0 209.0 L333.0 120.0&quot; /&gt;&lt;polygon style=&quot;fill:#000000; stroke:#000000;&quot; points=&quot; 328 130 333 120 338 130 333 128&quot; /&gt;&lt;path style=&quot;fill:none; stroke:#000000;stroke-dasharray:2&quot; d=&quot;M569.0 82.0 L514.0 86.0&quot; /&gt;&lt;defs&gt;&lt;linearGradient xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#linearGradient66FF6696FF96B6FFB6&quot; id=&quot;linearGradient66FF6696FF96B6FFB6_1329116789&quot; x1=&quot;0&quot; y1=&quot;70.0&quot; x2=&quot;0&quot; y2=&quot;105.0&quot; gradientUnits=&quot;userSpaceOnUse&quot; xlink:type=&quot;simple&quot; xlink:actuate=&quot;onLoad&quot; xlink:show=&quot;other&quot; /&gt;&lt;linearGradient id=&quot;linearGradient66FF6696FF96B6FFB6&quot;&gt;&lt;stop style=&quot;stop-color:#66FF66;stop-opacity:1;&quot; offset=&quot;0.0&quot; id=&quot;stop66FF66&quot; /&gt;&lt;stop style=&quot;stop-color:#96FF96;stop-opacity:1;&quot; offset=&quot;0.5&quot; id=&quot;stop96FF96&quot; /&gt;&lt;stop style=&quot;stop-color:#B6FFB6;stop-opacity:1;&quot; offset=&quot;1.0&quot; id=&quot;stopB6FFB6&quot; /&gt;&lt;/linearGradient&gt;&lt;linearGradient xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9&quot; id=&quot;linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9_1107247586&quot; x1=&quot;0&quot; y1=&quot;50.0&quot; x2=&quot;0&quot; y2=&quot;156.0&quot; gradientUnits=&quot;userSpaceOnUse&quot; xlink:type=&quot;simple&quot; xlink:actuate=&quot;onLoad&quot; xlink:show=&quot;other&quot; /&gt;&lt;linearGradient id=&quot;linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9&quot;&gt;&lt;stop style=&quot;stop-color:#F8FBFE;stop-opacity:1;&quot; offset=&quot;0.0&quot; id=&quot;stopF8FBFE&quot; /&gt;&lt;stop style=&quot;stop-color:#EDF5FC;stop-opacity:1;&quot; offset=&quot;0.25&quot; id=&quot;stopEDF5FC&quot; /&gt;&lt;stop style=&quot;stop-color:#DEEDFA;stop-opacity:1;&quot; offset=&quot;0.5&quot; id=&quot;stopDEEDFA&quot; /&gt;&lt;stop style=&quot;stop-color:#D4E7F8;stop-opacity:1;&quot; offset=&quot;0.75&quot; id=&quot;stopD4E7F8&quot; /&gt;&lt;stop style=&quot;stop-color:#E2E5E9;stop-opacity:1;&quot; offset=&quot;1.0&quot; id=&quot;stopE2E5E9&quot; /&gt;&lt;/linearGradient&gt;&lt;linearGradient xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#linearGradientFF6666FF9696FFB6B6&quot; id=&quot;linearGradientFF6666FF9696FFB6B6_1170267397&quot; x1=&quot;0&quot; y1=&quot;70.0&quot; x2=&quot;0&quot; y2=&quot;105.0&quot; gradientUnits=&quot;userSpaceOnUse&quot; xlink:type=&quot;simple&quot; xlink:actuate=&quot;onLoad&quot; xlink:show=&quot;other&quot; /&gt;&lt;linearGradient id=&quot;linearGradientFF6666FF9696FFB6B6&quot;&gt;&lt;stop style=&quot;stop-color:#FF6666;stop-opacity:1;&quot; offset=&quot;0.0&quot; id=&quot;stopFF6666&quot; /&gt;&lt;stop style=&quot;stop-color:#FF9696;stop-opacity:1;&quot; offset=&quot;0.5&quot; id=&quot;stopFF9696&quot; /&gt;&lt;stop style=&quot;stop-color:#FFB6B6;stop-opacity:1;&quot; offset=&quot;1.0&quot; id=&quot;stopFFB6B6&quot; /&gt;&lt;/linearGradient&gt;&lt;linearGradient xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9&quot; id=&quot;linearGradientF8FBFEEDF5FCDEEDFAD4E7F8E2E5E9_12733401&quot; x1=&quot;0&quot; y1=&quot;210.0&quot; x2=&quot;0&quot; y2=&quot;316.0&quot; gradientUnits=&quot;userSpaceOnUse&quot; xlink:type=&quot;simple&quot; xlink:actuate=&quot;onLoad&quot; xlink:show=&quot;other&quot; /&gt;&lt;/defs&gt;&lt;/svg&gt;</processDiagram>
+    <bpmnVersion>1</bpmnVersion>
+    <inheritFormSecurity>true</inheritFormSecurity>
+    <openInstances>0</openInstances>
+    <processStates/>
+    <favorito>false</favorito>
+    <mobileReady>false</mobileReady>
+    <rowId>0</rowId>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Tomar Conhecimento</stateName>
+      <stateDescription>Tomar Conhecimento</stateDescription>
+      <instruction>Iniciar o preenchimento do formulário do subprocesso de &quot;Atividades do Plano de Ação&quot; após tomar conhecimento pelo responsável do processo de &quot;Plano de Ação&quot;. Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do &quot;Plano de Ação&quot;.</instruction>
+      <deadlineTime>60</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <subProcess>false</subProcess>
+      <transferAttachments>false</transferAttachments>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>60</positionX>
+      <positionY>70</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <counterSign>false</counterSign>
+      <digitalSignature>false</digitalSignature>
+      <noticeExpirationAuthorityTime>60</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <sequence>2</sequence>
+      </processStatePK>
+      <stateName>2-Executar atividade</stateName>
+      <stateDescription>2-Executar atividade</stateDescription>
+      <instruction>Realizar a execução das atividades cadastradas já preenchidas anteriormente no processo do &quot;Plano de Ação&quot;.&#x0D;
+&#x0D;
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do &quot;Plano de Ação&quot;.</instruction>
+      <deadlineTime>158400</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;hiddenMatResponsavel&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <subProcess>false</subProcess>
+      <transferAttachments>false</transferAttachments>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>280</positionX>
+      <positionY>50</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <counterSign>false</counterSign>
+      <digitalSignature>false</digitalSignature>
+      <noticeExpirationAuthorityTime>57600</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <signalId>0</signalId>
+      <executionType>0</executionType>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <sequence>7</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <subProcess>false</subProcess>
+      <transferAttachments>false</transferAttachments>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>480</positionX>
+      <positionY>70</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>6</stateType>
+      <bpmnType>60</bpmnType>
+      <counterSign>false</counterSign>
+      <digitalSignature>false</digitalSignature>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <sequence>12</sequence>
+      </processStatePK>
+      <stateName>12-Definir Novo Prazo</stateName>
+      <stateDescription>12-Definir Novo Prazo</stateDescription>
+      <instruction>Informar um Novo Prazo para a Execução da Atividade ou não preencher o Campo do Novo Prazo e Devolver para o Executor.</instruction>
+      <deadlineTime>86400</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matLiderdoResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>60</allowanceAuthorityTime>
+      <frequenceAuthorityTime>14400</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <subProcess>false</subProcess>
+      <transferAttachments>false</transferAttachments>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>280</positionX>
+      <positionY>210</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <counterSign>false</counterSign>
+      <digitalSignature>false</digitalSignature>
+      <noticeExpirationAuthorityTime>28800</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <signalId>0</signalId>
+      <executionType>0</executionType>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>1</linkSequence>
+      </processLinkPK>
+      <actionLabel>Executar atividade gerada</actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <name>para 2-Executar atividade</name>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>13</linkSequence>
+      </processLinkPK>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>12</finalStateSequence>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <name>para 12-Definir Novo Prazo</name>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>15</linkSequence>
+      </processLinkPK>
+      <actionLabel>Solicitar Novo Prazo</actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>12</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <name>para 2-Executar atividade</name>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <name>para Fim</name>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>12</finalStateSequence>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <name>para 12-Definir Novo Prazo</name>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>afterCancelProcess</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function afterCancelProcess(colleagueId,processId){
+	log.info(&quot;================= AFTER CANCEL PROCESS ====================&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;cancelado&quot;);
+	log.info(&quot;Cancelando atividade do plano de acao....&quot;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>afterProcessCreate</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){
+	log.info(&quot;afterProcessCreate (APA)&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;ativo&quot;);
+	hAPI.setCardValue(&quot;cdAtividadePA&quot;, processId);
+	
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>afterProcessFinish</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){
+	log.info(&quot;================= AFTER PROCESS FINISH ====================&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;finalizado&quot;);
+	log.info(&quot;Finalizando atividade do plano de acao....&quot;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>afterStateEntry</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateEntry(sequenceId){
+	
+	var nrAtividadeAtual = getValue(&quot;WKNumState&quot;);
+    //var THREAD_SEQUENCE = 0;
+    //var ULTIMO_SEGUNDO = 86399;
+    
+    log.info (&quot;afterStateEntry (APA)&quot;);
+    log.info (&quot;sequenceId &quot; + sequenceId.toString());
+    log.info (&quot;nrAtividadeAtual &quot; + nrAtividadeAtual.toString());
+
+    //Quando vem do fluxo Plano de Ação a atividade é = 1
+    if (nrAtividadeAtual == 0 || nrAtividadeAtual == 1) {
+        var dataPrazoForm = hAPI.getCardValue(&quot;nmPrazoDeConclusao&quot;); //prazo gerado pelo Plano
+        log.info(&quot;prazo do plano  &quot; + dataPrazoForm);
+        log.info(dataPrazoForm == null);
+        log.info(dataPrazoForm != &apos;&apos;);
+        if(dataPrazoForm != &apos;&apos;) { alteraPrazo(dataPrazoForm);}        
+    }
+    
+    //Quando o Gestor altera o prazo a atividade é 12
+    if (nrAtividadeAtual == 12) {
+    	//novo prazo informado pelo gestor. 
+        var dtPrazoAPA    = hAPI.getCardValue(&quot;dtPrazoAPA&quot;); 
+        log.info(&quot;prazo do gestor &quot; + dtPrazoAPA);
+
+        if (dtPrazoAPA != undefined &amp;&amp; dtPrazoAPA != null &amp;&amp; dtPrazoAPA != &apos;&apos;) {
+        	//No formulario o campo é tipo date e o formato é AAAA-MM-DD
+        	dtPrazoAPA = dtPrazoAPA.substring(8,10) + &quot;/&quot; + dtPrazoAPA.substring(5,7) + &quot;/&quot; + dtPrazoAPA.substring(0,4); 
+        	log.info(&quot;dtPrazoAPA: &quot; + dtPrazoAPA);
+        	
+        	alteraPrazo(dtPrazoAPA);
+        }
+    }
+    
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>afterTaskComplete</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskComplete(colleagueId,nextSequenceId,userList){
+	
+	var nrAtividadeAtual = getValue(&quot;WKNumState&quot;);
+	var matUsuario       = getValue(&quot;WKUser&quot;);
+    var nrSolic          = getValue(&quot;WKNumProces&quot;);
+
+    log.info (&quot;afterTaskComplete(APA)&quot;);
+    log.info (&quot;colleagueId     : &quot; + colleagueId);
+    log.info (&quot;nextSequenceId  : &quot; + nextSequenceId.toString());
+    log.info (&quot;userList        : &quot; + userList);
+    log.info (&quot;nrAtividadeAtual: &quot; + nrAtividadeAtual);
+    
+	if(nrAtividadeAtual == 2) { //2-Executar Atividade
+		hAPI.setTaskComments(matUsuario, nrSolic, 0, hAPI.getCardValue(&quot;dsAtividade&quot;));
+		//Enviar email para o Responsável do Plano de Ação
+	}
+    
+	if(nrAtividadeAtual == 12) { //12-Definir Novo Prazo
+		hAPI.setTaskComments(matUsuario, nrSolic, 0, hAPI.getCardValue(&quot;nmComentarioPrazo&quot;));
+	}
+	
+}
+
+
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>alteraPrazo</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function alteraPrazo(dataPrazoForm) {
+    var THREAD_SEQUENCE = 0;
+    var ULTIMO_SEGUNDO = 86399;
+
+	var arrayData = dataPrazoForm.split(&quot;/&quot;, 3);
+    
+    var dataPrazo = java.util.Calendar.getInstance();
+   
+    dataPrazo.set(java.util.Calendar.DAY_OF_MONTH, new java.lang.Integer(arrayData[0]));
+    dataPrazo.set(java.util.Calendar.MONTH, new java.lang.Integer(arrayData[1]) -1);
+    dataPrazo.set(java.util.Calendar.YEAR, new java.lang.Integer(arrayData[2]));
+    
+    log.info (&quot;=========================== alteraPrazo(&quot; + dataPrazoForm + &quot;) =============================&quot;);
+    log.info(&quot;dataPrazoForm: &quot; + dataPrazoForm);
+    log.info(&quot;dataNovoPrazo: &quot; + dataPrazo.getTime());
+    
+    var codigoSolicitacao = getValue(&quot;WKNumProces&quot;);
+    var responsavel   = hAPI.getCardValue(&quot;hiddenMatResponsavel&quot;);
+    
+    log.info(&quot;codigoSolicitacao   : &quot; + codigoSolicitacao);
+    log.info(&quot;THREAD_SEQUENCE     : &quot; + THREAD_SEQUENCE);
+    log.info(&quot;responsavel         : &quot; + responsavel);
+    log.info(&quot;ULTIMO_SEGUNDO      : &quot; + ULTIMO_SEGUNDO);
+    
+    try {
+    	hAPI.setDueDate(codigoSolicitacao, THREAD_SEQUENCE, responsavel, dataPrazo.getTime(), ULTIMO_SEGUNDO);
+    } catch (e) {
+        log.info (&quot;================== alteraPrazo() deu erro ===&gt; &quot; + e);
+    }
+	
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>beforeCancelProcess</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){
+	log.info(&quot;================= BEFORE CANCEL PROCESS ====================&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;CANCELADO&quot;);
+	log.info(&quot;CANCELADO atividade do plano de acao....&quot;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>beforeSendData</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeSendData(customFields,customFacts){
+	   
+    log.info(&quot;################## beforeSendData ##################&quot;);
+    log.info(&quot;############## Atividades Plano de Ação ##############&quot;);  
+    
+    //Atividades Plano de Ação 
+    customFields[0] = hAPI.getCardValue(&quot;nrFicha&quot;);//Numero da Ocorrência
+    customFields[1] = hAPI.getCardValue(&quot;cdOcorrencia&quot;);//Numero do registro de ocorrência
+    customFields[2] = hAPI.getCardValue(&quot;cdPlanoAcao&quot;);//Numero do Plano de Ação
+    customFields[3] = hAPI.getCardValue(&quot;nmResponsavelPA&quot;);//Responsavel pelo Plano de Ação
+    customFields[4] = hAPI.getCardValue(&quot;nmOquCom&quot;);//O que? Como?
+    customFields[5] = hAPI.getCardValue(&quot;nmResponsavel&quot;);//Responsavel
+    customFields[6] = hAPI.getCardValue(&quot;nmLiderdoResp&quot;);//Líder Responsável 
+    customFields[7] = hAPI.getCardValue(&quot;nmPrazoDeConclusao&quot;);//Prazo de Conclusão
+    customFields[8] = hAPI.getCardValue(&quot;dsAtividade&quot;);//Descrição da Atividade
+    customFields[9] = hAPI.getCardValue(&quot;dtPrazoAPA&quot;);//Novo Prazo - Gestor
+    customFields[10] = hAPI.getCardValue(&quot;nmComentarioPrazo&quot;);//Comentário Novo Prazo
+    
+
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <eventId>needEffectiveness</eventId>
+      </workflowProcessEventPK>
+      <eventDescription>function needEffectiveness(){
+	var checked = hAPI.getCardValue(&quot;fgVerifEficacia&quot;)==&quot;on&quot;;
+	log.info(&quot;================ PRECISA ANALISE DE EFICACIA?  &quot; + checked + &quot; ==================&quot;);
+	return checked;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+      <stateName>Gestor</stateName>
+      <positionX>0</positionX>
+      <positionY>149</positionY>
+      <color>FFFF80</color>
+      <height>142</height>
+      <width>700</width>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+    </SwimLane>
+    <SwimLane>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+      <stateName>Executor da Atividade</stateName>
+      <positionX>0</positionX>
+      <positionY>4</positionY>
+      <color>B3CDFF</color>
+      <height>146</height>
+      <width>700</width>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <componGrafSequence>1</componGrafSequence>
+      </processComponGrafPK>
+      <componType>1</componType>
+      <stateName>Tomar conhecimento</stateName>
+      <positionX>160</positionX>
+      <positionY>10</positionY>
+    </ProcessComponGraf>
+    <ProcessComponGraf>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <componGrafSequence>2</componGrafSequence>
+      </processComponGrafPK>
+      <componType>1</componType>
+      <stateName>Fim. O Responsável pelo Plano recebe email</stateName>
+      <positionX>570</positionX>
+      <positionY>37</positionY>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>2</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+    </ProcessLinkAssoc>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>11</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>1</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>28</version>
+        <linkSequence>18</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>383</positionX>
+      <positionY>155</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <fieldId>cdOcorrencia</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codOcorrencia</fieldDescription>
+      <slotId>5</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <fieldId>cdPlanoAcao</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codPlano</fieldDescription>
+      <slotId>3</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <fieldId>nmLiderdoResp</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Gestor do Responsável</fieldDescription>
+      <slotId>4</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <fieldId>nrFicha</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>nrFicha</fieldDescription>
+      <slotId>1</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <fieldId>status</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>status</fieldDescription>
+      <slotId>2</slotId>
+    </ProcessFormField>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

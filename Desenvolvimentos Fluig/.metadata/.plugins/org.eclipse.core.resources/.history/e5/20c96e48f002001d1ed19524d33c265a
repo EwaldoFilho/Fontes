@@ -1,0 +1,35 @@
+<div id="MyWidget_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide"
+	data-params="MyWidget.instance()">
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading" style="background:#D70b2d" >	
+		<h3 class="panel-title " style="backgroun-color:D70b2d">Preencha com atenção seus dados.</h3>  
+		</div>
+		<form role="form" id="elogio">
+		<div class="form-group">
+			<label for="nome">Nome</label>
+				<input type="text" class="form-control" id="nome" name="nome"
+					placeholder="Digite seu nome"> 
+			</div>
+			<div class="form-group">
+			<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" name="email"
+					placeholder="Digite seu email">  
+			</div>
+					<div class="form-group">
+				
+				<textarea  class="form-control" rows="3" id="texto" name="texto" placeholder="Digite seu texto"  required="required"  onfocus="this.value='';" ></textarea >
+				<input type="file"  name="my_files[]" multiple/></input>
+
+			</div>
+			<button type="button" class="btn btn-danger"  style="margin-top:25px; width: 100%; height:100%; background-color:#d70b2d"
+				onclick="enviar()">Enviar</button>
+		</form>
+
+
+
+
+	</div>
+</div>
+</div>

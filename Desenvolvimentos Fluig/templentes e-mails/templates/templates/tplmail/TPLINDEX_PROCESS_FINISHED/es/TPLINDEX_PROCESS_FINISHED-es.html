@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2" />
+    <title>Fluig</title>
+    <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+						<img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+					</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <p class="DescrMsgForum">¡Hola, ${RECEIVER!''}!</p>
+    <br />
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgForum">El proceso de indexación solicitado por <b>${WDK_RequesterUser!''}</b> fue finalizado el día ${WDK_RequestDate!''} a las ${WDK_RequestTime!''} y nuevas búsquedas ya utilizan como resultado esta nueva indexación.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgDocto"><b>Fueron indexados ${WDK_DocsIndexed!''} documentos./p>
+                    </td>
+                </tr>
+			</tbody>
+        </table>
+    </div>
+</body>
+</html>

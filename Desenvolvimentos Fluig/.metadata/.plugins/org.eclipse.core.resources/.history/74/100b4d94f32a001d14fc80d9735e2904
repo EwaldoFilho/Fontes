@@ -1,0 +1,28 @@
+function beforeTaskSave(colleagueId,nextSequenceId,userList){
+
+var state = getValue("WKNumState");
+   var completTask = getValue("WKCompletTask");
+   var rem = "manutencao";
+
+log.info(">>>>> Envio de email customizado beforeTaskSave: state " + state);
+log.info(">>>>> Envio de email customizado beforeTaskSave: completTask " + completTask);
+   // if (completTask.equals("true")) {
+
+       if (state == 4 || state == 0 ) {
+    	   try{
+    		   var subject = "Solicitação de Contratação - Fluig"; 
+    			var emailSup = hAPI.getCardValue("emailClinica"); 
+    			var mensagem = ""; 
+    			var obj = new com.fluig.foundation.mail.service.EMailServiceBean();
+
+    			var num_atividade = getValue('WKNumState'); 
+    			
+
+    			mensagem += ""; // Imagem de cabeçalho >do e-mail
+    			mensagem += "teste";
+    			obj.simpleEmail(1,subject, "suporte.ti@medmais.com", emailSup, mensagem, "text/html"); 
+    	    } catch(e){
+    	       log.error("Erro ao enviar email: " + e);
+    	   }
+       }
+}

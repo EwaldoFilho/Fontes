@@ -1,0 +1,108 @@
+<html>
+<head>
+	<title>Consulta Movimentação de Pessoas</title>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	
+  <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="css/buttons.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+<body>
+	<div class="fluig-style-guide" id="relatorio">
+		<form name="form" role="form">
+			<input type="hidden" id="campoDescritor" name="campoDescritor" />
+			<input type="hidden" name="userID" id="userID">
+			
+			<div class="panel panel-monocromatico">
+			   <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+			        <h3 class="panel-title">Filtros</h3>
+			    </div>
+			    <div class="panel-body fs-lg-padding">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="form-group">
+								
+								<label for="filial">Filial<span style="color: red">*</span></label>
+								<input type="hidden" id="codFilial" name="codFilial"/>
+								<input type="number" name="filial" id="filial" class="form-control" min="1" value="" oninput="validity.valid||(value='');">
+							</div>
+						</div>
+
+					
+						<div class="col-md-10">
+							<div class="form-group">
+								<label class="control-label " for="descricaoFilial">Descrição Filial</label> 
+								<input type="text" name="descricaoFilial" id="descricaoFilial" class="form-control" readonly>
+							</div>
+						</div>
+					</div> 
+					<div class="row">
+					<iframe id="workflowView-cardViewer" class="workflow-card-view-frame" src="https://192.168.200.63:8081/webdesk/streamcontrol/44448/0/0/?WDCompanyId=1&amp;WDNrDocto=0&amp;WDNrVersao=0&amp;WDParentDocumentId=44448&amp;WKNumProces=0&amp;processID=pedidoCompra&amp;WKNumState=0&amp;WKManagerMode=false&amp;WKDef=pedidoCompra&amp;WKVersDef=" style="display: inline;"></iframe>
+					</div>
+					
+				<!--	<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label required_false " for="solicitacaoInicial">Solicitações a partir de:<span style="color: red">*</span></label> 
+								<input type="number" name="solicitacaoInicial" id="solicitacaoInicial" class="form-control">
+							</div>
+						</div> 
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label required_false " for="solicitacaoFinal">Até:<span style="color: red">*</span></label> 
+								<input type="number" name="solicitacaoFinal" id="solicitacaoFinal" class="form-control">
+							</div>
+						</div> 
+						
+					</div>-->
+
+			        <button class="btn btn-success" id="gerar" title="Gerar Relatório">
+			            <span class="text">Gerar Relatório</span>
+			            <img class="fs-display-none" src="images/ajax-loader.gif" width="16" height="16" />
+			        </button>
+			        
+			    </div>
+			</div>
+		
+			<div class="panel panel-monocromatico">
+			   <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+			        <h3 class="panel-title">Dados do Relatório</h3>
+			    </div>
+			    <div class="panel-body fs-lg-padding">
+					<div class="table-responsive">
+					
+						<table id="tabela" class="table table-sm table-striped table-bordered" style="width:100%">
+				            <thead>
+				            	
+				                <tr>
+				                	<th></th>
+									<th>Solicitação</th>
+				                    <th>Solicitante</th>
+				                    <th>Filial</th>
+				                    <th>Data da Solicitação</th>
+				                    <th>Status</th>
+				                </tr>
+				            </thead>
+				        </table>
+					</div>
+			    </div>
+			</div>
+		</form>
+	</div>
+
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+    <script src="js/vfs_fonts.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

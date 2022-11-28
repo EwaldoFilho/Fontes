@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;events&apos;&#x0D;&#x0A;- Original project: &apos;recargaCombustivel&apos;&#x0D;&#x0A;- Destination element: &apos;events&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     scriptBuscarBancos.js&#x0D;&#x0A;     scriptInputsControl.js" description="Copy files" element1="forms/9636 - Solicitação de Recarga de Cartão de  Combustível/scriptBuscarBancos.js" element2="forms/9636 - Solicitação de Recarga de Cartão de  Combustível/scriptInputsControl.js" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1661861668493" target="/solReembolso/forms/3460 - Formulário de Solicitação de reembolso/events" units="0" version="1.0"/>
+</session>

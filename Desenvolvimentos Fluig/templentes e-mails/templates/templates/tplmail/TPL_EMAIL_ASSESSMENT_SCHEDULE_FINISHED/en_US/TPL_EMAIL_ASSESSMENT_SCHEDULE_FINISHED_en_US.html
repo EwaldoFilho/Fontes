@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Fluig</title>
+	<link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<div align="center">
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tbody>
+            <tr>
+                <td>
+                    <img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+                </td>
+            </tr>
+		</tbody>
+	</table>
+</div>
+<br />
+<div align="center">
+    <p class="DescrMsgForum">
+        You finished the <b>${ASSESSMENT_NAME}</b> evaluation!
+    </p>
+    <#if TOTAL_POINTS??>
+        <p class="DescrMsgForum">
+            Your score was: <b>${TOTAL_POINTS}</b> points from <b>${MAX_TOTAL_POINTS}</b> available <b>(${FINAL_SCORE}%)</b>
+        </p>
+    </#if>
+    <#if SHOW_APPROVAL_STATUS??>
+        <p class="DescrMsgForum">
+            E você foi <b>${APPROVAL_STATUS}</b>!
+        </p>
+    </#if>
+</div>
+<br></br>
+<div align="center">
+    <p class="DescrMsgForum">This is an automatic e-mail and it should not be answered.</p>
+</div>
+</body>
+</html>

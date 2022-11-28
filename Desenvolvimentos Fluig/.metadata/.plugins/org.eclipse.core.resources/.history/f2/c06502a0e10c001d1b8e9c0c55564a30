@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <div class="row text-center" data-type="header" data-field-name="ouvidoria">
+                <div class="col-md-2">
+                    <img src="imagens/Logo1.jpeg" style="width: auto; height: 100px">
+                </div>
+                <div class="col-md-8">
+
+                    <h2 class="text-center" id="tituloSolicitacaoFinalizada">
+                        Ouvidoria
+                    </h2>
+                </div>
+                <div class="col-md-2" id="logo-right">
+                    <img src="imagens/Logo2.jpeg" style="width: auto; height: 100px">
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitacao">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados da Ouvidoria</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+
+                    <div class="row">
+                        <div class="col-md-3 ">
+                            <div class="form-group">
+                                <label class="control-label" for="tipoOuvidoria">Tipo de Relato</label>
+                                <input id="tipoOuvidoria" type="text" class="form-control" name="tipoOuvidoria"
+                                    readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="dataemissao">Data</label>
+                                <input type="text" class="form-control" id="dataemissao" name="dataemissao" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="hora">Hora</label>
+                                <input type="text" class="form-control" id="hora" name="hora" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="local">Local</label>
+                                <input type="text" class="form-control" id="local" name="local" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="tipoEnvolvido">A ocorrência envolveu</label>
+                                <input type="text" class="form-control" id="tipoEnvolvido" name="tipoEnvolvido"
+                                    readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="pessoalEnvolvido">PESSOAL ENVOLVIDO</label>
+                                <input type="text" class="form-control" id="pessoalEnvolvido" name="pessoalEnvolvido"
+                                    readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="situacao">Situação</label>
+                                <input type="text" class="form-control" id="situacao" name="situacao" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="relator">Relator</label>
+                                <input type="text" class="form-control" id="relator" name="relator" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-danger fs-xl-margin-top" id="panelTratativa">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados da Apuração</b>
+                    </h3>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="apuracao">Apuração</label>
+                                <input type="text" class="form-control" id="apuracao" name="apuracao"
+                                    style="overflow:auto; margin: 0px 2.09375px 0px 0px; height: 376px; width: 1097px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="relatorioApuracao">Relatório de apuração</label>
+                                <input type="text" class="form-control" id="relatorioApuracao" name="relatorioApuracao"
+                                    style="overflow:auto; margin: 0px 2.09375px 0px 0px; height: 376px; width: 1097px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="validacao">Validação</label>
+                                <input type="text" class="form-control" id="validacao" name="validacao"
+                                    style="overflow:auto; margin: 0px 2.09375px 0px 0px; height: 376px; width: 1097px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="despachoFinal">Despacho Final</label>
+                                <input type="text" class="form-control" id="despachoFinal" name="despachoFinal"
+                                    style="overflow:auto; margin: 0px 2.09375px 0px 0px; height: 376px; width: 1097px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Campos de controle -->
+
+            <!-- -->
+        </form>
+    </div>
+
+</body>
+
+
+</html>

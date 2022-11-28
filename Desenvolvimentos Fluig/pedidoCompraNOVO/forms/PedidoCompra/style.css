@@ -1,0 +1,45 @@
+.ms-left {
+    margin-left: 10px!important;
+}
+
+/* classe responsavel pelo poscionamento dos valores da cotação */
+.ms-valores-cotacao {
+    text-align: right;
+    margin-right: 2% !important;
+}
+
+.tb_novosProdutos {
+    display: inline-flex;
+}
+
+.tb_produtos {
+    display: inline-flex;
+}
+
+.font-span {
+    font-weight: bold;
+    font-size: large;
+}
+
+@media (max-width: 600px){
+    #logo-right {
+        display: none;
+    }
+    #modalBuscarProduto{
+        display: block!important;
+        width: 100%!important;
+        margin-top: 13px!important;
+    }
+    #modalAdicionarProduto{
+        display: block!important;
+        width: 100%!important;
+    }
+    #tituloProdutos{
+        text-align: center;
+    }
+    
+    .ms-left {
+        margin-left: 0px!important;
+        width: -webkit-fill-available!important;
+    }
+}

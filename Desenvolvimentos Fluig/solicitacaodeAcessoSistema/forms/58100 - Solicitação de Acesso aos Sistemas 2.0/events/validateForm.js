@@ -1,0 +1,65 @@
+function validateForm(form){
+	var activity = getValue('WKNumState');
+	var state    = getValue("WKNumState");
+	
+	if (form.getValue("centroCusto") == null || form.getValue("centroCusto") == "") {
+		throw "Informe o centro de custo.";
+	}
+	
+	if (form.getValue("NomeColaborador") == null || form.getValue("NomeColaborador") == "") {
+		throw "Informe o nome do colaborador.";
+	}
+	
+	if (form.getValue("cpf") == null || form.getValue("cpf") == "") {
+		throw "Informe o CPF do colaborador";
+	}
+	
+	if (form.getValue("email") == null || form.getValue("email") == "") {
+		throw "Informe o e-mail do colaborador.";
+	}
+	
+	if (form.getValue("descricaoTcontrato") == null || form.getValue("descricaoTcontrato") == "") {
+		throw "Informe o tipo de contrato do colaborador.";
+	}
+	
+	if (form.getValue("Modulo") == null || form.getValue("Modulo") == "") {
+		throw "Informe o modulo do colaborador.";
+	}
+	
+	if (form.getValue("DataDesligamento") == null || form.getValue("DataDesligamento") == "") {
+		throw "Informe a data.";
+	}
+	
+	if (form.getValue("Perfil") == null || form.getValue("Perfil") == "") {
+		throw "Informe o perfil do colaborador.";
+	}
+	
+	
+	//if (form.getValue("sistemas0") == "" && form.getValue("sistemas1") == "" && form.getValue("sistemas2") == "" && form.getValue("sistemas4") == "" && form.getValue("sistemas5") == "" && form.getValue("sistemas6") == "" && form.getValue("sistemas7") == "" && form.getValue("sistemas8") == "" && form.getValue("sistemas9") == "") {
+	//	throw "Informe o sistema.";
+	//}
+	
+	
+	if (state == 0 || state == 4) {
+		var dataAtual = new Date();
+		var dataEstimativa = form.getValue("estimativaEntrega");
+
+		if (dataEstimativa != null && dataEstimativa != "") {
+			var dataEstimativaFormatada = new Date(dataEstimativa.substring(6,10), dataEstimativa.substring(3,5), dataEstimativa.substring(0,2));			
+			
+			if (dataEstimativaFormatada <= dataAtual ) {
+				throw "Informe uma data superior a sete dias.";
+			}
+		}
+	
+		if ((form.getValue("solicitanteEmail") == null || form.getValue("solicitanteEmail") ==  "") && ( getValue('WKNumProces') == null ||
+				(getValue('WKNumProces') > 0 && getValue('WKCompletTask') == 'true') )) {
+			throw "Informe o email.";
+		}
+
+
+        
+        
+		
+	}
+}

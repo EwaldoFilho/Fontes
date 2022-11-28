@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AMU.css&apos; to &apos;4266 - Solicitação de Desenvolvimento e Customização de software&apos;&#x0D;&#x0A;- Original project: &apos;armazemProducao&apos;&#x0D;&#x0A;- Destination element: &apos;4266 - Solicitação de Desenvolvimento e Customização de software&apos;&#x0D;&#x0A;- Original element: &apos;AMU.css&apos;" description="Copy file" element1="forms/2814 - Compras/AMU.css" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1659035337676" target="/solicitacaoDesenvolvimento/forms/4266 - Solicitação de Desenvolvimento e Customização de software" units="0" version="1.0"/>
+</session>

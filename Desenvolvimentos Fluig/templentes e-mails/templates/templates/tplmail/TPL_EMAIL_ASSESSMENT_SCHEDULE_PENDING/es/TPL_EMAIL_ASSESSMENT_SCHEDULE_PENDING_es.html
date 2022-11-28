@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Fluig</title>
+	<link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<div align="center">
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tbody>
+            <tr>
+                <td>
+                    <img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+                </td>
+            </tr>
+		</tbody>
+	</table>
+</div>
+<br />
+<div align="center">
+    <p class="DescrMsgForum">
+        Finalizó la evaluación <b>${ASSESSMENT_NAME}</b>!
+    </p>
+    <p class="DescrMsgForum">
+        Sus respuestas serán corregidas y pronto recibirá el resultado.
+    </p>
+</div>
+
+<br></br>
+<br></br>
+
+<div align="center">
+    <p class="DescrMsgForum">
+        Este es un e-mail automático, por favor no responda.
+
+    </p>
+</div>
+</body>
+</html>

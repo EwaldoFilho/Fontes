@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Fluig</title>
+    <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+						<img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+					</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <p class="DescrMsgForum">Hello, ${RECEIVER!''}</p>
+    <br />
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgForum">Deadline for a request in a process managed by you was met.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<img src="${WDK_TaskIconImage!''}" align="absmiddle" border="0">
+                    	<a href="${WDK_TaskLink!''}" class="${WDK_ClassLink!''}">
+                    		<b>Request:</b> ${WDK_TaskNumber!''} - ${WDK_ProcessDescription!''} - ${WDK_TaskDescription!''}
+                    	</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgDocto"><b>Request deadline:</b> ${WDK_TaskDeadLine!''}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgDocto"><b>Responsible:</b> ${WDK_TaskUser!''}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+						<div class="DescrMsgForum actions">
+							<a class="action" href="${LINK!''}">Go to Notifications</a>
+							<div style="clear: both; line-height: 1px">&nbsp;</div>
+						</div>
+                    </td>
+                </tr>
+				
+			</tbody>
+        </table>
+    </div>
+</body>
+</html>

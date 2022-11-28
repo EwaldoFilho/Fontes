@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Form</title>
+
+            <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+            <script src="/resources/js/jquery/jquery.js"></script>
+            <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+            <script src="/resources/js/mustache/mustache-min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+            <!-- CUSTOM -->
+            <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+            <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+            <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+            <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+            <link type="text/css" rel="stylesheet" href="/css/style.css" />
+            <script type="text/javascript" src="FLUIGIP.js"></script>
+            <script type="text/javascript" src="zoomDesenv.js"></script>
+            
+
+            <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/4.css' type='text/css' rel='stylesheet' />
+		</head>
+        <body class="fluig-style-guide">
+            <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents"
+                style="padding-left: 10px; padding-right: 10px;">
+                <h1 style="text-align: center" ;>Solicitação de Desenvolvimento e Customização de Software </h1>
+                <!--INICIO PANEL - GERAL --->
+                <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+                    <div class="panel-heading" style="background-color:#36af72;">
+                        <h3 class="panel-title">
+                            <i class="flaticon flaticon-speaker-notes icon-md"></i>Solicitante
+                        </h3>
+                    </div>
+                    <!--FIM PANEL - HEADING --->
+                    <!-- INICIO PANEL - Geral -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label class="control-label">Nome do solicitante:</label>
+                                <input type="text" class="form-control" id="nomeAtendente" name="nomeAtendente" readonly>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="dtAbertura">Data</label>
+                                    <input id="dtAbertura" type="text" class="form-control" name="dtAbertura" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4 ms-left">
+                                <label for="centroCusto">Centro de custo<strong class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" id="codCentroCusto" name="codCentroCusto" data-fluig-state-valid="0,4,119,491"
+                                        data-fluig-write="0,4,119,491">
+                                    <input type="text" class="form-control zoom-tdi" id="descricao" name="descricao"
+                                        data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491" onchange="validaCampo(this)"
+                                        required="required" readonly>
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip"
+                                        data-placement="bottom" title="Pesquisar centro de custo">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+                </div>
+        
+                <!-- INICIO PANEL - Dados da Solicitação - HEADING -->
+                <div class="panel panel-primary" id="dados_solicitacao" name="dados_solicitacao">
+                    <div class="panel-heading" style="background-color:#ff0202;">
+                        <h3 class="panel-title">
+                            <i class="flaticon flaticon-speaker-notes icon-md"></i> Dados da Solicitação
+                        </h3>
+                    </div>
+                    <!-- FIM PANEL - Dados da Solicitação HEADING -->
+                    <!-- INICIO PANEL - Dados da Solicitação -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="combo5">Informe o Sistema</label> <span text-danger><strong>*</strong></span>
+                                <select id="combo5" name="combo5" class="form-control col-md-4" 
+                                    data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" analytics="true" gooddataid="2">
+                                    <option value="">-</option>
+                                    <option value="Fluig">Fluig</option>
+                                    <option value="Protheus">Protheus</option>
+                                    <option value="Unicorp">Unicorp</option>
+                                    <option value="Analytics">Analytics</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="combo6">Informe o Módulo</label> <span text-danger><strong>*</strong></span>
+                                <select id="combo6" name="combo6" class="form-control col-md-4"  data-fluig-state-valid="0,4,13,22"
+                                    data-fluig-write="0,4,13,22" analytics="true" gooddataid="2">
+                                    <option value="">-</option>
+                                    <option value="Estoque">Estoque</option>
+                                    <option value="Faturamento">Faturamento</option>
+                                    <option value="Suprimento">Suprimento</option>
+                                    <option value="Contratos">Contratos</option>
+                                    <option value="Folha de pagamento">Folha de pagamento</option>
+                                    <option value="Ponto eletrônico">Ponto eletrônico</option>
+                                    <option value="Meu RH">Meu RH</option>
+                                    <option value="Serviços">Serviços</option>
+                                    <option value="Compras">Compras</option>
+                                    <option value="Ativo fixo">Ativo fixo</option>
+                                    <option value="Pagamentos">Pagamentos</option>
+                                    <option value="Contábil">Contábil</option>
+                                    <option value="Orçamento">Orçamento</option>
+                                    <option value="Intramed+">Intramed+</option>
+                                    <option value="Rede Social">Rede Social</option>
+                                    <option value="Processos">Processos</option>
+                                    <option value="Documentos">Documentos</option>
+                                    <option value="AMU">AMU</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="combo4">Tipo de Solicitação</label> <span text-danger><strong>*</strong></span>
+                                <select id="combo4" name="combo4" class="form-control col-md-4"  data-fluig-state-valid="0,4,13,22"
+                                    data-fluig-write="0,4,13,22" analytics="true" gooddataid="2">
+                                    <option value="">-</option>
+                                    <option value="Corretiva">Corretiva</option>
+                                    <option value="Melhoria de funcionalidade">Melhoria de funcionalidade</option>
+                                    <option value="Nova de funcionalidade">Nova de funcionalidade</option>
+                                    <option value="Manutenção">Manutenção</option>
+                                    <option value="Atualização">Atualização</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <div class="form-group"><label>Data sugerida</label><span
+                                    class="required text-danger"><strong>*</strong></span><input id="date4" type="text" class="form-control"
+                                    name="date4" data-date="" analytics="true" gooddataid="1" required="required">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="obs">Observação</label> 
+                                <textarea data-size="big" type="text" name="obs" id="obs" class="form-control" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"> </textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="obs1">Descreva a Solicitação Detalhada</label> 
+                                <textarea data-size="big" type="text" name="obs1" id="obs1" class="form-control" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"> </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </form>
+        
+    </body>
+        
+			<script type="text/javascript">
+				var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118; 
+				  
+				$(document).keydown(function (e) {
+					if (e.keyCode == ctrl) keyDown = true;
+				}).keyup(function (e) {
+					if (e.keyCode == ctrl) keyDown = false;
+				});
+				
+				$('[data-only-numbers]').on('keypress', function (e) {
+				    if (!e) {
+					    var e = window.event;
+					}
+					
+				    if (e.keyCode > 0 && e.which == 0) {
+				    	 return true;
+					}
+					
+				    if (e.keyCode) {
+				        code = e.keyCode;
+					} else if (e.which) {
+				    	code = e.which;
+					}
+
+					if(code == 46) {
+						return true;
+					}
+					
+				    var character = String.fromCharCode(code);
+				    if (character == '\b' || character == ' ' || character == '\t') {
+				    	 return true;
+					}
+				    if (keyDown && (code == vKey || code == Vkey)) {
+				    	return (character);
+					} else  {
+						return (/[0-9]$/.test(character));
+					}
+				}).on('focusout', function (e) {
+				    var $this = $(this);
+					if($this.val() == "") {
+						return true;
+					}
+				    $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				}).on('paste', function (e) {
+				    var $this = $(this);
+				    setTimeout(function () {
+				        $this.val($this.val().replace(/[^0-9\.]/g, ''));
+				    }, 5);
+				 });				
+
+				
+
+				$('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				$('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function(){
+					validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+				});
+
+				function validationFieldsForm(field, type){
+					if(type === "checkbox" || type === "radio"){
+						if(!field.is(':checked')){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}else{
+						if(!field.val().trim()){
+							field.parents('.form-field').addClass('required');
+						}else{
+							field.parents('.form-field').removeClass('required');
+						}
+					}
+				}
+
+				var $zoomPreview = $(".zoom-preview");
+				if ($zoomPreview.length) {
+                    $zoomPreview.parent().removeClass("input-group");
+                    $zoomPreview.remove();
+                }
+
+				var ratings = $(".rating");
+				if (ratings.length > 0) ratingStars(ratings);
+				function ratingStars(stars) {
+					$.each(stars, function(i, obj) {
+                        var field = $(this).closest(".form-group").find(".rating-value");
+						var tgt = $(obj);
+						tgt.html("");
+						var rating = FLUIGC.stars(tgt, { value: field.val() });
+                        rating.on("click", function(o) {
+                            field.val($(this).index() + 1);
+                        });
+					});
+				}
+
+				$.each($("[data-date]"), function(i, o) {
+                    var id = $(o).attr("id");
+					FLUIGC.calendar("#" + id);
+				});
+
+				$(document).ready(function() {
+					$.each($("[data-date]"), function(i, o) {
+	                    var id = $(o).attr("id");
+	                    if($("#" + id).attr("readonly")) {
+	                    	$("#" + id).data('DateTimePicker').disable();
+	                    }
+					});
+				});
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,158 @@
+<html>
+   <head>
+      <link type="text/css" rel="stylesheet" href="style.css" />
+      <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript"  src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript"  src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+      <script src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="FLUIGIP.js"></script>
+      <script type="text/javascript" src="camposZoom.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+
+   </head>
+   <body>      
+      <div class="fluig-style-guide">
+         <div class="fs-xl-margin-left fs-md-margin-right">
+            <div class="row text-center" data-type="header"  data-field-name="headerRetirarMateriais">
+               <div class="col-md-2">
+                  <img src="imagens/logo.png" style="width: auto; height: 100px">
+                </div>
+                <div class="col-md-8">
+                  <h2 class="text-center" id="tituloSolicitacao">Solicitação de cotação avulsa</h2>
+                  <h2 class="text-center" id="tituloTriagem">Triagem cotação avulsa</h2>
+                  <h2 class="text-center" id="tituloAtendimento">Atendimento</h2>
+                  <h2 class="text-center" id="tituloValidar">Visualizar cotação</h2>
+                  <h2 class="text-center" id="tituloSolicitacaoFinalizada">Solicitação finalizada</h2>
+                </div>
+               <div class="col-md-2"  id="logo-right">
+                  <img src="imagens/logo.png" style="width: auto; height: 100px">
+                </div>
+            </div>
+            <form class="form-horizontal fs-sm-margin-top" name="form" role="form">
+               <div class="row" data-type="content"  data-field-name="contentRetirarMateriais">
+                  <!-- Dados solicitante		 -->
+                  <div class="panel panel-success" name="panelDadosSolicitante" id="panelDadosSolicitante">
+                     <div class="panel-heading">
+                        <p class="panel-title">							   
+                            <i class="flaticon flaticon-person icon-lg"></i>
+                                  <strong class="fs-xs-margin-left">Dados do solicitante</strong>
+                        </p>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                           <div class="form-group col-sm-6 ms-left"> 
+                              <div class="input-group col-sm-12">                  
+                                 <label for="nameUser">Nome do usuário<strong class="required text-danger"></strong></label>
+                                 <input type="text" class="form-control" id="nameUser" name="nameUser" style="width: 100%!important;" analytics="true" gooddataid="1">
+                              </div>
+                           </div>
+                           <div class="form-group col-sm-6 ms-left"> 
+                              <label for="centroCusto">Centro de custo<strong class="required text-danger"></strong></label>
+                              <div class="input-group col-sm-12">                  
+	                             <input type="hidden" class="form-control zoom-tdi" id="codCentroCusto" name="codCentroCusto">
+                                 <input type="text" class="form-control zoom-tdi" id="descricaoCentroCusto" name="descricaoCentroCusto" data-fluig-state-valid="0,12,16" data-fluig-write="0,12,16"  onchange="validaCampo(this)" required="required" analytics="true" gooddataid="2">                        
+                                 <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar centro de custo"><i class="flaticon flaticon-search icon-sm"></i></div> 
+                              </div>
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Dados solicitacao -->
+                  <div class="panel panel-danger"  name="panelDadosSolicitacao" id="panelDadosSolicitacao">
+                     <div class="panel-heading">
+                        <p class="panel-title">	
+                           <i class="flaticon flaticon-content-paste icon-lg"></i>						   
+                            <strong>Dados da solicitação</strong>
+                        </p>
+                     </div>
+                     <div class="panel-body">
+                        <div class="form-group col-sm-12">
+                           <div class="table-datatable">
+                               <div class="row fs-xs-margin-left">
+                                 <div class="col-sm-6 text-left">
+                                    <h2 name="tituloProdutos" id="tituloProdutos">Produtos</h2>
+                                 </div> 
+                                 <div class="col-sm-6 text-right" id="grupoBotaoProdutos">
+                                    <!-- <button type="button" class="btn btn-success" name="modalAdicionarProduto" id="modalAdicionarProduto" data-toggle="tooltip" data-placement="bottom" title="Adicionar novo produto" >
+                                      <i class="flaticon flaticon-add-box icon-sm"></i>
+                                      Solicitar cadastro de produto
+                                    </button>  -->
+                                    <button type="button" class="btn btn-info" name="modalBuscarProduto" id="modalBuscarProduto" data-toggle="tooltip" data-placement="bottom" title="Buscar produto">
+                                      <i class="flaticon flaticon-search icon-sm"></i>
+                                      Buscar produto
+                                    </button>
+                                 </div>                                        
+                               </div>
+                           </div>
+                           <div class="row">
+                              <table name="tb_produtos" id="tb_produtos" class="table table-bordered table-striped  ">
+                                 <thead>
+                                      <tr>    
+                                      	<th>Código produto</th>                                          
+                                        <th>Descrição</th>
+                                        <th>Quantidade</th>                                          
+                                        <th>Observação</th>                                         
+                                        <th></th>
+                                      </tr>
+                                 </thead>
+                                 <tbody>                                                                          
+                                 </tbody>
+                              </table>
+                              
+                              <!-- tabela de produtos para visualização -->
+                              <div id="produtosView"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Realizar atendimento		 -->
+                  <div class="panel panel-danger" name="panelAtendimento" id="panelAtendimento">
+                     <div class="panel-heading">
+                        <p class="panel-title">							   
+                           <i class="flaticon flaticon-person icon-lg"></i>
+                           <strong class="fs-xs-margin-left">Realizar cotação</strong>
+                        </p>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                        	<div id="montarInputCotacao"></div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Validar atendimento		 -->
+                  <div class="panel panel-danger" name="panelValidarAtendimento" id="panelValidarAtendimento">
+                     <div class="panel-heading">
+                        <p class="panel-title">							   
+                           <i class="flaticon flaticon-add-shop icon-lg"></i>
+                           <strong class="fs-xs-margin-left">Visualizar cotação</strong>
+                        </p>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                           <div id="montarAprovacaoCotacao"></div>
+                        </div>
+                     </div>
+                  </div>                  
+
+               </div>
+               
+               <!-- campos para armazenar dados -->
+               <input type="hidden" id="existeCotacao" name="existeCotacao" value="true">
+               <input type="hidden" id="countValidaInputProdutos" name="countValidaInputProdutos">
+               <input type="hidden" id="listaProdutos" name="listaProdutos">
+               <input type="hidden" id="processo1" name="processo1" >
+               <input type="hidden" id="estado1" name="estado1" >
+            </form>
+                        
+         </div>
+      </div>
+      <script type="text/javascript" src="js/scriptApp.js"></script>
+   </body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+ 
+    <script type="text/javascript" src="scriptBuscarBancos.js"></script>
+    <script type="text/javascript" src="BuscaCep.js"></script>
+    <script type="text/javascript" src="mascara.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body class="fluig-style-guide">
+    <form class="totvs-form grid vertical create-form-components ui-sortable t4" name="createFormComponents"
+        style="padding-left: 10px; padding-right: 10px;">
+        <h1 style="text-align: center" ;>Cadastro de fornecedores </h1>
+        <!--INICIO PANEL - GERAL --->
+        <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+            <div class="panel-heading" style="background-color:#36af72;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-md"></i> Informações de cadastro
+                </h3>
+            </div>
+            <!--FIM PANEL - HEADING --->
+            <!-- INICIO PANEL - Geral -->
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Nome do solicitante:</label>
+                        <input type="text" class="form-control" id="nomeAtendente" name="nomeAtendente" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="A2_TIPO">Tipo de Fornecedor </label> <span text-danger><strong>*</strong></span>
+                        <select id="A2_TIPO" name="A2_TIPO" class="form-control col-md-4" name="estado_unifor"
+                            analytics="true" gooddataid="2" onchange="setMaxLength()">
+                            <option value="">-</option>
+                            <option value="J" name="Juridica">Juridica</option>
+                            <option value="F" name="Fisica">Fisica</option>
+                            <option value="X" name="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cnpj"> CNPJ / CPF</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="cpfcnpj" id="cpfcnpj" class="form-control"
+                            onkeypress='mascaraCnpj(this,cpfCnpj)' onblur='clearTimeout()'>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="nomefornecedor"> Nome razão social do fornecedor </label> <span
+                            text-danger><strong>*</strong></span>
+                        <input type="text" name="nomefornecedor" id="nomefornecedor" class="form-control">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="nomeFantasia"> Nome fantasia</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="nomeFantasia" id="nomeFantasia" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="incricaoestadual"> Incrição estadual </label> <span
+                            text-danger><strong>*</strong></span>
+                        <input type="text" name="incricaoestadual" id="incricaoestadual" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="telefone"> Número para contato </label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="telefone" id="telefone" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="email"> Email </label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="email" id="email" class="form-control">
+                    </div>
+
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="cep"> CEP </label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="cep" id="cep" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="rua"> Endereço</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="rua" id="rua" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="bairro"> Bairro</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="bairro" id="bairro" class="form-control" readonly>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="cidade"> Cidade</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="cidade" id="cidade" class="form-control" value="" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="uf"> Estado</label> <span text-danger><strong>*</strong></span>
+                        <input type="text" name="uf" id="uf" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="endereco"> Numero/Bloco/Torre</label> <span
+                            text-danger><strong>*</strong></span>
+                        <input type="text" name="endereco" id="endereco" class="form-control">
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+        </div>
+
+        <!-- INICIO PANEL - Dados Bancários - HEADING -->
+        <div class="panel panel-primary" id="dados_Inicial" name="dados_Inicial">
+            <div class="panel-heading" style="background-color:#ff0202;">
+                <h3 class="panel-title">
+                    <i class="flaticon flaticon-speaker-notes icon-md"></i> Dados Bancários
+                </h3>
+            </div>
+            <!-- FIM PANEL - Dados Bancários HEADING -->
+            <!-- INICIO PANEL - Dados Bancários -->
+            <div class="panel-body">
+                <div class="row" id="formaDadosBanco">
+                    <div class="form-group col-sm-6 ">
+
+                        <label for="banco2">Banco</label>
+                        <select class="form-control" name="banco" id="banco" required="required">
+                            <option value=""></option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-sm-6 ">
+
+                        <label for="tipoConta">Tipo de conta</label>
+                        <select class="form-control" name="tipoConta" id="tipoConta" required="required">
+                            <option value=""></option>
+                            <option value="cc">Conta corrente</option>
+                            <option value="cpg">Conta de pagamento</option>
+                            <option value="cp">Conta poupança</option>
+                            <option value="cs">Conta-salário</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="row" id="formaPagamentoBanco">
+                    <div class="form-group col-sm-6 ms-left">
+                        <div class="input-group col-sm-12">
+                            <label for="agencia">Agência</label>
+                            <input type="number" class="form-control" name="agencia" id="agencia" value=""
+                                placeholder="" data-size="big" data-only-numbers="true" maxlength="5"
+                                required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6 ms-left">
+                        <div class="input-group col-sm-12">
+                            <label for="conta">N° conta</label>
+                            <input type="number" class="form-control" name="conta" id="conta" value="" placeholder=""
+                                data-size="big" data-only-numbers="true" maxlength="10" required="required">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="obs">Observação</label> <span text-danger"><strong></strong></span> <textarea
+                            type="text" name="obs" id="obs" class="form-control"> </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </form>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script type="text/javascript">
+
+
+    $('#telefone').mask('(00) 00000-0000').on('keyup', function (event) {
+        event.preventDefault();
+        var v = this.value;
+        console.log(v.length);
+        if (v.length == 3) this.value = v + ') 9';
+    });
+
+    var x = document.getElementsByClassName("cpfcnpj");
+    for (i = 0; i < x.length; i++) { x[i].addEventListener('focus', function (e) { document.getElementById(e.target.id).select(); }); }
+    for (var i = 0; i < x.length; i++) { x[i].addEventListener('keyup', myFunction, false); }
+    function myFunction(e) {
+        x = '';
+        if (e.keyCode == 8 || e.keyCode == 46) {
+            return false;
+        }
+        if (e.keyCode >= 48 || e.keyCode <= 57) {
+
+            var id = e.target.id;
+            document.getElementById(id).setAttribute('maxlength', 18);
+            var str = e.target.value.replace(/\D/g, '');
+            //var str = str.replace(/^0+/, ''); 
+            var len = str.length; // 
+            if (len == 11) {
+                x = str.substr(0, 3) + '.' + str.substr(3, 3) + '.' + str.substr(6, 3) + '-' + str.substr(9, 2);; // 510.791.784-49
+            } else if (len > 11 && len < 15) {
+                x = str.substr(0, 2) + '.' + str.substr(2, 3) + '.' + str.substr(5, 3) + '/' + str.substr(8, 4) + '-' + str.substr(12, 2);  // 04.498.492/0001-67
+            } else {
+                x = str;
+            }
+            document.getElementById(id).value = x;
+        }
+    }
+
+</script>
+<script type="text/javascript" src="scriptApp.js"></script>
+</body>
+
+</html>

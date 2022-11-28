@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fluig</title>
+        <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+        <div align="center">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                <tr>
+                    <td>
+                        <img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div align="center">
+            <p class="DescrMsgForum">
+                <b>You were enrolled in the class ${OBJECT}</b>
+            </p>
+        </div>
+        <br>
+        <div align="center" class="DescrMsgForum actions">
+            <a href="${OBJECTLINK}">Start now your class</a>
+            <div style="clear: both; line-height: 1px">&nbsp;</div>
+        </div>
+        <div align="center">
+            <p class="DescrMsgForum">If the link above does not open, copy and paste the following address in the browser:</p>
+            <p class="DescrMsgForum">${OBJECTLINK}</p>
+            <br><br>
+            <p class="DescrMsgForum">This is an automated e-mail, please do not reply.</p>
+        </div>
+    </body>
+</html>

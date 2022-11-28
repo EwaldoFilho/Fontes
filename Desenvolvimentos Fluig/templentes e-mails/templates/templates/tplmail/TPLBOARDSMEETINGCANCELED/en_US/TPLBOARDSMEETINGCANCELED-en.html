@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Fluig Boards</title>
+    <link href="global.css" type="text/css" rel="stylesheet" />
+    <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div class="mailBoards">
+		<div class="boardsHeader" align="center">
+			<img src="${SERVER_URL!''}/globalmailsender/resources/boards_logo_white.png">
+		</div>	
+
+		<div class="boardsContent">
+			
+			<div class="boardsContentBody">
+				Hello <b>${RECEIVER!""}</b>,<br><br>
+				
+				<b>${SENDERS!""}</b> canceled and removed from calendar the meeting <b>${OBJECT!""}</b>.
+			</div>
+		</div>
+
+		<div class="boardsFooter" align="center">
+			<img src="${SERVER_URL!''}/globalmailsender/resources/boards_logo_black.png">
+		</div>
+	</div>
+</body>
+</html>

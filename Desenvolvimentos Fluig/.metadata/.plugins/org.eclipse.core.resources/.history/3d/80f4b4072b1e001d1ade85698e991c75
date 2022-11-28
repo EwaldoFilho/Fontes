@@ -1,0 +1,287 @@
+< !DOCTYPE html>
+    <html>
+
+    <head>
+
+        <title>Form</title>
+
+        <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+        <script src="/resources/js/jquery/jquery.js"></script>
+        <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+        <script src="/resources/js/mustache/mustache-min.js"></script>
+        <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+        <!-- CUSTOM -->
+        <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+        <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+        <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+        <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+        <!-- <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/1.css' type='text/css' rel='stylesheet' />-->
+
+
+
+        <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+        <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+        <link type="text/css" rel="stylesheet" href="/css/style.css" />
+        <script type="text/javascript" src="zoom.js"></script>
+        <script type="text/javascript" src="inputs.js"></script>
+        <script type="text/javascript" src="scriptBuscarBancos.js"></script>
+        <script type="text/javascript" src="FLUIGIP.js"></script>
+        <script type="text/javascript" src="/js/scripttAtribuicaoProcesso.js"></script>
+        <script type="text/javascript" src="scriptGerenteResponsavel.js"></script>
+
+
+    </head>
+
+    <body class="fluig-style-guide">
+
+        <form name="form" role="form">
+
+            <div class="row text-center" data-type="header" data-field-name="headerformcartao">
+                <br>
+                <div class="col-md-2">
+                    <br>
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                        style="width: auto; height: 30px">
+                </div>
+                <div class="col-md-8">
+
+                    <h2 class="text-center" id="tituloSolicitacaoFinalizada">
+                        Solicitação de uso do Cartão de Crédito
+                    </h2>
+                </div>
+                <div class="col-md-2" id="logo-right">
+                    <br>
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                        style="width: auto; height: 30px">
+                </div>
+                <br>
+            </div>
+            <br><br>
+            <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos
+                com
+                * são de preenchimento obrigatório.</div>
+
+
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitante"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i>
+                        <b>Dados do solicitante</b>
+                    </h3>
+                </div>
+
+                <div class="panel-body fs-sm-margin-top">
+
+                    <div class="row">
+                        <div class="col-md-2 ">
+                            <div class="form-field" data-type="date" data-show-properties=""
+                                data-field-name="dataAbertura" style="">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Data</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="flaticon flaticon-calendar icon-sm"
+                                                    aria-hidden="true"></i></span>
+                                            <input id="date0" type="text" class="form-control" name="dataAbertura"
+                                                mask="00/00/0000" data-date="" readonly="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label class="control-label" for="solicitanteNome">Nome do Solicitante</label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-addon">
+
+                                        <i class="flaticon flaticon-folder-person icon-sm"
+                                            aria-hidden="true"></i></span>
+
+                                    <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                                    <input type="hidden" id="ativAtual" name="ativAtual" />
+
+                                    <input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome"
+                                        readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+
+                                <label class="control-label" for="solicitanteEmail">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-drafts icon-sm" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" id="solicitanteEmail"
+                                        name="solicitanteEmail" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="centroCusto">Centro de Custo:<strong
+                                    class="required text-danger"></strong></label>
+                            <div class="input-group" readonly="">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                                <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                                <input type="text" class="form-control zoom-tdi" id="centroCusto" name="centroCusto"
+                                    onchange="validaCampo(this)" required="required" readonly="readonly"
+                                    placeholder="Clique na lupa para selecionar">
+                                <div class="input-group-addon zoom-tdi" id="bottom" onchange="habilitaBtn()"
+                                    onclick="zoomCusto(this)" data-toggle="tooltip" data-placement="bottom"
+                                    title="Pesquisar empresa">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-danger fs-xl-margin-top" id="panelDadosSolicitacao"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-md"></i>
+                        <b>Dados da solicitação</b>
+                    </h3>
+                </div>
+
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group" autocomplete="off">
+
+                                <label class="control-label" for="telContato">Telefone para Contato<strong
+                                        class="required text-danger"></strong></label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-settings-phone icon-sm"
+                                            aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" id="telContato" name="telContato" value=""
+                                        placeholder="(00) 00000-0000" mask="(00) 00000-0000"
+                                        onkeypress="return onlynumber();" autocomplete="off" data-size="big" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-field" data-type="textbox" data-show-properties=""
+                                data-field-name="classificacao" style="position: relative; left: 0px; top: 0px;">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Classificação<strong
+                                                class="required text-danger"></strong></label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="flaticon flaticon-checkbox icon-sm"
+                                                    aria-hidden="true"></i></span>
+                                            <select class="form-control input" name="classificacao" id="classificacao"
+                                                analytics="true" gooddataid="2" required="required">
+                                                <option value=""></option>
+                                                <option value="Regular">Regular</option>
+                                                <option value="Urgente">Urgente</option>
+                                                <option value="Confidencial">Confidencial</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" autocomplete="off">
+
+                                <label class="control-label" for="valPretendido">Valor Pretendido</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-money icon-sm"
+                                            aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" id="valPretendido" name="valPretendido"
+                                        value="" placeholder="R$ 0000,00" onkeypress="return onlynumber();"
+                                        autocomplete="off" data-size="big" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3" id="dtUso">
+                         <div class="form-field" data-type="date" data-show-properties=""
+                            <label for="dtUso">Data Pretendida para Uso<strong
+                                    class="required text-danger"></strong></label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-calendar icon-sm" aria-hidden="true"></i></span>
+                                <input type="date" placeholder="dd/mm/aaaa" name="dtUso" id="dtUso" class="form-control"
+                                    data-date="">
+                            </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-field" data-type="textarea" data-show-properties=""
+                                data-field-name="Informa_Add" style="">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Justificativa de uso:<strong
+                                                class="required text-danger"></strong></label><textarea
+                                            class="form-control" rows="3" name="Informa_Add"
+                                            placeholder="De o maior número de detalhes possíveis sobre sua solicitação para melhor acertividade e agilidade do atendimento!"
+                                            data-size="big"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </form>
+
+        <script language="javascript">
+            var indice = 0; // contador para gerar um valor para cada anexo
+
+            function showCamera() {
+                indice++;
+                JSInterface.showCamera("Nome do arquivo_" + indice);
+                // alterei o css para gerar uma confirmação visual após o click
+                $("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+            }
+            $(document).ready(function () {
+                $('.date').mask('11/11/1111');
+                $('.time').mask('00:00:00');
+                $('.date_time').mask('00/00/0000 00:00:00');
+                $('.cep').mask('00000-000');
+                $('.phone').mask('0000-0000');
+                $('.phone_with_ddd').mask('(00) 0000-0000');
+                $('.phone_us').mask('(000) 000-0000');
+                $('.mixed').mask('AAA 000-S0S');
+                $('.cpf').mask('000.000.000-00', { reverse: true });
+                $("#valPretendido").mask('000.000.000.000.000,00', { reverse: true });
+            });
+
+        </script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Fluig</title>
+    <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+						<img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+					</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <p class="DescrMsgForum">Hello, ${RECEIVER!''}</p>
+    <br />
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgForum">A document that I follow was updated by <b>${SENDERS_LINKS!''}</b>:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<p class="DescrMsgForum"><b>Subject:</b> ${WDK_DocumentSubject!''} - ${WDK_SubjectName!''}</p>
+                    </td>
+                </tr>
+                <tr>
+                	<td>
+						<img src="${WDK_DocumentIconImage!''}" align="absmiddle" border="0">
+						<a href="${WDK_DocumentViewLink!''}" class="TitPublicPortal"><strong>${WDK_DocumentDescription!''}</strong></a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p class="DescrMsgDocto">${WDK_DocumentUpdatedDate!''} - ${WDK_DocumentAuthor!''} (Nr ${WDK_DocumentNumber!''})</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p class="DescrMsgDocto">${WDK_DocumentComments!''}</p>
+					</td>
+				</tr>
+                <tr>
+                    <td>
+						<div class="DescrMsgForum actions">
+							<a class="action" href="${LINK!''}">Go to Notifications</a>
+							<div style="clear: both; line-height: 1px">&nbsp;</div>
+						</div>
+                    </td>
+                </tr>
+				
+			</tbody>
+        </table>
+    </div>
+    <p class="DescrMsgDocto">Description of the version/revision: ${WDK_DocumentVersionDesc!''}</p>
+    <br />
+</body>
+</html>

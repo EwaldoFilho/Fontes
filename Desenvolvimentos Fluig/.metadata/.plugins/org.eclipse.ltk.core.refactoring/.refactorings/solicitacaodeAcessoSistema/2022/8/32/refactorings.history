@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;zoom.js&apos; to &apos;59673 - Solicitação de Pagamento 2&apos;&#x0D;&#x0A;- Original project: &apos;solicitacaodeAcessoSistema&apos;&#x0D;&#x0A;- Destination element: &apos;59673 - Solicitação de Pagamento 2&apos;&#x0D;&#x0A;- Original element: &apos;zoom.js&apos;" description="Copy file" element1="forms/58100 - Solicitação de Acesso aos Sistemas 2.0/zoom.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1659706928796" target="/solicitacaoPagamento/forms/59673 - Solicitação de Pagamento 2" units="0" version="1.0"/>
+</session>

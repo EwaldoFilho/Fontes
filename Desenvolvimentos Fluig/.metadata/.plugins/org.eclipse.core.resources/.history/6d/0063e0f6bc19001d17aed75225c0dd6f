@@ -1,0 +1,40 @@
+function zoomCusto(obj) {
+	var type = $(obj).prev("input").attr("name");
+	var filters = "";
+	var searchby = "FILTRO";
+	var activity = getValue('WKNumState')
+	
+	if (activity != 0 && activity != 8) {
+		
+	}else {
+	tdizoom.open(
+	"DsCustoForn", //Nome do Dataset
+	"CTT_CUSTO,Custo,CTT_DESC01,Descrição", //Campos a serem exibidos
+	"CTT_CUSTO,CTT_DESC01", //Campos de retorno
+	"Centro de Custo", //Titulo
+	filters, //Filtros
+	type, //Type (deve ser sempre o atributo name do campo)
+	null, //likefield
+	null, //likevalue
+	searchby //Campo/Constraint que será buscado o conteudo digitado (Seachby)
+	);
+	}
+
+}
+
+function setSelectedZoomItem(selectedItem){
+    var name = selectedItem.type.split("___")[0];
+    var indice = selectedItem.type.split("___");
+    // "CODIGO,DESCRICAO",
+    if(name == "centroCusto"){
+    $("#codCentroCusto").val(selectedItem.CTT_CUSTO);
+    $("#centroCusto").val(selectedItem.CTT_DESC01);
+    }else{
+    $("#codCentroCusto").val(null);
+    $("#centroCusto").val(null);;
+    }
+    }
+	
+
+
+

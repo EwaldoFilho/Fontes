@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;splash.js&apos; to &apos;5040 - Solicitação Documental&apos;&#x0D;&#x0A;- Original project: &apos;pedidoCompraNOVO&apos;&#x0D;&#x0A;- Destination element: &apos;5040 - Solicitação Documental&apos;&#x0D;&#x0A;- Original element: &apos;splash.js&apos;" description="Copy file" element1="forms/PedidoCompra/splash.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1661780082604" target="/solDocumento/forms/5040 - Solicitação Documental" units="0" version="1.0"/>
+</session>

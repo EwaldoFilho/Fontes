@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+    <script src="/resources/js/jquery/jquery.js"></script>
+    <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="/resources/js/mustache/mustache-min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+    <!-- CUSTOM -->
+    <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+    <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+    <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+   <!-- <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/1.css' type='text/css' rel='stylesheet' />-->
+
+
+
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />    
+    <script type="text/javascript" src="zoom.js"></script>
+    <script type="text/javascript" src="inputs.js"></script>
+    <script type="text/javascript" src="scriptBuscarBancos.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="/js/scripttAtribuicaoProcesso.js"></script>
+    <script type="text/javascript" src="scriptGerenteResponsavel.js"></script>
+    
+
+
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+
+            <div class="row text-center" data-type="header" data-field-name="headerRetirarMateriais">
+                <br>
+                <div class="col-md-2">
+                    <br>
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                        style="width: auto; height: 30px">
+                </div>
+                <div class="col-md-8">
+
+                    <h2 class="text-center" id="tituloSolicitacaoFinalizada">
+                        Solicitação de Acesso aos Sistemas
+                    </h2>
+                </div>
+                <div class="col-md-2" id="logo-right">
+                    <br>
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/logo_image.png"
+                        style="width: auto; height: 30px">
+                </div>
+                <br>
+            </div>
+            <br><br>
+            
+            <div class="panel-body fs-sm-margin-top">
+                <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com *
+                    são de preenchimento obrigatório.</div>
+            </div>
+
+            <div class="panel panel-success fs-xl-margin" id="panelDadosSolicitante">
+                
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                        <b>Dados do solicitante</b>
+                    </h3>
+                </div>
+
+                <div class="panel-body fs-sm-margin-top">
+
+                    <div class="row">
+
+                        <div class="col-md-2 ">
+                            <div class="form-field" data-type="date" data-show-properties=""
+                                data-field-name="dataAbertura" style="">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Data</label><input id="date0" type="text" 
+                                            class="form-control" name="dataAbertura" mask="00/00/0000" data-date="" readonly=""></div>
+                                </div>
+                            </div>
+                        </div>
+
+              
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="solicitanteNome">Nome do Solicitante</label>
+                                <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                                <input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly="readonly"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="solicitanteEmail">Email</label>
+
+                                <input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly="readonly"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="centroCusto">Centro de Custo:<strong class="required text-danger"></strong></label>
+                            <div class="input-group" readonly="">
+                                <input type="hidden" id="codCentroCusto" name="codCentroCusto" >
+                                <input type="text" class="form-control zoom-tdi" id="centroCusto" name="centroCusto"
+                                    onchange="validaCampo(this)" required="required" readonly="readonly" placeholder="Clique na lupa para selecionar">
+                                <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip" data-placement="bottom"
+                                    title="Pesquisar empresa">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>  
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-danger fs-xl-margin" id="panelDadosSolicitacao">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="flaticon flaticon-speaker-notes icon-lg"></i>
+                        <b>Dados da solicitação</b>
+                    </h3>
+                </div>
+
+                <div class="panel-body fs-sm-margin-top">
+
+                    <div class="row">
+
+                       <!-- <div class="col-md-3">
+                            <label for="centroCusto">Centro de Custo:<strong class="required text-danger"></strong></label>
+                            <div class="input-group">
+                                <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                                <input type="text" class="form-control zoom-tdi" id="centroCusto" name="centroCusto"
+                                    onchange="validaCampo(this)" required="required">
+                                <div class="input-group-addon zoom-tdi" onclick="zoomCusto1(this)" data-toggle="tooltip" data-placement="bottom"
+                                    title="Pesquisar empresa">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-md-3">
+                            <div class="form-field" data-type="textbox" data-show-properties=""
+                                data-field-name="NomeColaborador" style="">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Nome do Colaborador<strong class="required text-danger"></strong></label><input type="text"
+                                            class="form-control" name="NomeColaborador" value="" placeholder=""
+                                            data-size="big">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="cpf"
+                                style="position: relative; left: 0px; top: 0px;">
+                                <div class="form-input">
+                                    <div class="form-group"><label>CPF<strong class="required text-danger"></strong></label><input type="text" class="form-control"
+                                            name="cpf" value="" placeholder="000.000.000-00" mask="000.000.000-00" data-size="big"></div>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="col-md-3">
+                            <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="email"
+                                style="">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Email<strong class="required text-danger"></strong></label><input type="text" class="form-control"
+                                            name="email" value="" placeholder="usuario@email.com" data-size="big"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cargos">Cargo<strong class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codCargos" name="codCargos">
+                                    <!--<input type="text" class="form-control zoom-tdi" id="descricaoCargos" name="descricaoCargos" data-fluig-state-valid="0,12,16" data-fluig-write="0,12,16" onchange="validaCampo(this)" required="required" analytics="true" gooddataid="2">
+                                                <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle="tooltip" data-placement="bottom" title="Pesquisar Cargos">
+                                                    <i class="flaticon flaticon-search icon-sm"></i> 
+                                                </div>-->
+                                    <select class="form-control" name="cargos" dataset="vagas-buscar-cargos"
+                                        datasetkey="DESCRICAO" datasetvalue="DESCRICAO" analytics="true" gooddataid="4">
+                                        <option value="-"></option>
+                                        <option value="Opção 1">Opção 1</option>
+                                        <option value="Opção 2">Opção 2</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>               
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Tcontrato">Tipo de Contrato<strong
+                                        class="required text-danger"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codTcontrato"
+                                        name="codTcontrato">
+                                    <select class="form-control" name="descricaoTcontrato" id="descricaoTcontrato"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" analytics="true"
+                                        gooddataid="2">
+                                        <option value="" data-fluig-state-valid="0,4" data-fluig-write="0,4"></option>
+                                        <option value="CLT" data-fluig-state-valid="0,4" data-fluig-write="0,4">CLT</option>
+                                        <option value="PJ" data-fluig-state-valid="0,4" data-fluig-write="0,4">PJ</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group col-md-2">
+                        <label for="Modulo">Escolha o Módulo:</label><strong class="required text-danger"></strong>
+                        <select class="form-control" id="Modulo" name="Modulo" analytics="true" gooddataid="10" onchange="myFunction()">
+                            <option value=""></option>
+                            <option>Acesso ao sistema</option>
+                            <option>Bloqueio de acesso</option>     
+                        </select>
+                    </div>
+                    
+                     <div class="form-group col-md-3" id="dataDesligamentoDiv">
+                        <label for="DataDesligamento">Data de Entrada / Desligamento:</label> <strong class="required text-danger"></strong>
+                        <input type="text" placeholder="dd/mm/aaaa" name="DataDesligamento" id="DataDesligamento" class="form-control" data-date="">
+                        </div>
+
+                        
+
+                        <div class="col-md-3" col-xs-12>
+                            <div class="form-field" data-type="combo" data-show-properties="" data-field-name="Perfil"
+                                style="position: relative; left: 0px; top: 0px;">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Perfil do Usuário<strong class="required text-danger"></strong></label><select class="form-control"
+                                            name="Perfil" analytics="true" gooddataid="3">
+                                            <option value=""></option>
+                                            <option value="MedOffice">MedOffice</option>
+                                            <option value="Embaixador">Embaixador</option>
+                                            <option value="Posto de serviço">Posto de serviço</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+
+                            <div class="form-field" data-type="checkbox" data-show-properties=""
+                                data-field-name="Sistemas" style="position: relative; left: 0px; top: 0px;">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Sistemas<strong class="required text-danger"></strong></label>
+                                        <div class="check-options">
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas0"
+                                                        value="Intramed+" analytics="true"
+                                                        gooddataid="4">Intramed+</label></div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas1"
+                                                        value="Clock In" analytics="true" gooddataid="5">Clock In</label></div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas2"
+                                                        value="Protheus" analytics="true"
+                                                        gooddataid="6">Protheus</label></div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas4"
+                                                        value="VPN" analytics="true" gooddataid="8">VPN</label></div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas5"
+                                                        value="Login" analytics="true" gooddataid="9">Usuário Windows</label>
+                                            </div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas6"
+                                                        value="Meu RH" analytics="true" gooddataid="10">Meu RH</label>
+                                            </div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas9"
+                                                value="DocuSign" analytics="true" gooddataid="11">DocuSign</label>
+                                            </div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas7"
+                                                        value="E-mail" analytics="true" gooddataid="11">E-mail</label>
+                                            </div>
+                                            <div class="checkbox"><label><input type="checkbox" name="Sistemas8"
+                                                        value="Todos" analytics="true" gooddataid="12">Todos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row">
+
+                        <div class="form-group col-md-2">
+                            <label for="Aviso">Copiar outro usuário:</label><strong class="required text-danger"></strong>
+                            <select class="form-control" id="Aviso" name="Aviso" analytics="true" gooddataid="10" onchange="myFunction()">
+                                
+                                <option>Não</option>
+                                <option>Sim</option>
+                        
+    
+                            </select>
+                        </div>
+                        
+                         <div class=" form-group col-md-3" id="diasTrabalhadosDiv">
+                            <label for="DiasTrabalhados">Nome do usuario a ser copiado:</label> 
+                            <input type="text" name="DiasTrabalhados" id="DiasTrabalhados" class="form-control">
+                            </div>
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-9">
+                            <div class="form-field" data-type="textarea" data-show-properties=""
+                                data-field-name="Informa_Add" style="">
+                                <div class="form-input">
+                                    <div class="form-group"><label>Informações adicionais</label><textarea
+                                            class="form-control" rows="3" name="Informa_Add" placeholder=""
+                                            data-size="big"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    
+                    	
+                    
+                            
+                
+                    
+                    
+                </div>
+
+            </div>
+            
+            
+        
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+    
+    
+    
+    
+    
+        var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118;
+
+        $(document).keydown(function (e) {
+            if (e.keyCode == ctrl) keyDown = true;
+        }).keyup(function (e) {
+            if (e.keyCode == ctrl) keyDown = false;
+        });
+
+        $('[data-only-numbers]').on('keypress', function (e) {
+            if (!e) {
+                var e = window.event;
+            }
+
+            if (e.keyCode > 0 && e.which == 0) {
+                return true;
+            }
+
+            if (e.keyCode) {
+                code = e.keyCode;
+            } else if (e.which) {
+                code = e.which;
+            }
+
+            if (code == 46) {
+                return true;
+            }
+
+            var character = String.fromCharCode(code);
+            if (character == '\b' || character == ' ' || character == '\t') {
+                return true;
+            }
+            if (keyDown && (code == vKey || code == Vkey)) {
+                return (character);
+            } else {
+                return (/[0-9]$/.test(character));
+            }
+        }).on('focusout', function (e) {
+            var $this = $(this);
+            if ($this.val() == "") {
+                return true;
+            }
+            $this.val($this.val().replace(/[^0-9\.]/g, ''));
+        }).on('paste', function (e) {
+            var $this = $(this);
+            setTimeout(function () {
+                $this.val($this.val().replace(/[^0-9\.]/g, ''));
+            }, 5);
+        });
+
+
+
+        $('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function () {
+            validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+        });
+
+        $('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function () {
+            validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+        });
+
+        function validationFieldsForm(field, type) {
+            if (type === "checkbox" || type === "radio") {
+                if (!field.is(':checked')) {
+                    field.parents('.form-field').addClass('required');
+                } else {
+                    field.parents('.form-field').removeClass('required');
+                }
+            } else {
+                if (!field.val().trim()) {
+                    field.parents('.form-field').addClass('required');
+                } else {
+                    field.parents('.form-field').removeClass('required');
+                }
+            }
+        }
+
+        var $zoomPreview = $(".zoom-preview");
+        if ($zoomPreview.length) {
+            $zoomPreview.parent().removeClass("input-group");
+            $zoomPreview.remove();
+        }
+
+        var ratings = $(".rating");
+        if (ratings.length > 0) ratingStars(ratings);
+        function ratingStars(stars) {
+            $.each(stars, function (i, obj) {
+                var field = $(this).closest(".form-group").find(".rating-value");
+                var tgt = $(obj);
+                tgt.html("");
+                var rating = FLUIGC.stars(tgt, { value: field.val() });
+                rating.on("click", function (o) {
+                    field.val($(this).index() + 1);
+                });
+            });
+        }
+
+        $.each($("[data-date]"), function (i, o) {
+            var id = $(o).attr("id");
+            FLUIGC.calendar("#" + id);
+        });
+
+        $(document).ready(function () {
+            $.each($("[data-date]"), function (i, o) {
+                var id = $(o).attr("id");
+                if ($("#" + id).attr("readonly")) {
+                    $("#" + id).data('DateTimePicker').disable();
+                }
+            });
+        });
+
+         //Função para habilitar campo 
+         document.getElementById("substituicaoNome").disabled = true;
+        document.getElementById("indicacaoNome").disabled = true;
+        document.getElementById("indicacaoContato").disabled = true;
+
+
+        function verifica(value) {
+            var optionSelect = document.getElementById("headCount").value;
+
+            if (optionSelect == "substituicao") {
+                document.getElementById("substituicaoNome").disabled = false;
+            } else {
+                document.getElementById("substituicaoNome").disabled = true;
+            }
+        };
+
+        function verificaIndicacao(value) {
+            var optionSelect = document.getElementById("indicacao").value;
+
+            if (optionSelect == "sim") {
+                document.getElementById("indicacaoNome").disabled = false;
+                document.getElementById("indicacaoContato").disabled = false;
+            } else {
+                document.getElementById("indicacaoNome").disabled = true;
+                document.getElementById("indicacaoContato").disabled = true;
+            }
+        };
+        
+        
+
+    </script>
+</body>
+
+
+
+</html>

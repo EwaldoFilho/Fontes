@@ -1,0 +1,1200 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="AMU.css"/>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+		<div class="SignatureScreen bg-cerise-gradient" style="padding: 1%;width: 676.3438px;height: 426.3438px;border: 1px solid #58595B;border-radius: 10px;display:none;">
+			<center>
+				<canvas id="SignatureCanvas" width="600" height="300" style="border: 2px solid;border-radius: 10px;background-color: rgb(88, 89, 91);touch-action: none;margin-bottom: 45px;"></canvas><br>
+		    	<button type="button" class="btn btn-success SignatureButtonConfirm" onclick="SignatureButtonConfirm()" style="margin-bottom: 90px;" title="Confirmar"><i class="flaticon flaticon-done icon-xl"></i></button>
+				<button type="button" class="btn btn-warning SignatureButtonDraw" onclick="SignatureButtonDraw()" style="margin-bottom: 90px;" title="Caneta"><i class="flaticon flaticon-tint icon-xl"></i></button>
+				<button type="button" class="btn btn-primary SignatureButtonErase" onclick="SignatureButtonErase()" style="margin-bottom: 90px;" title="Borracha"><i class="fluigicon fluigicon-eraser icon-xl"></i></button>
+				<button type="button" class="btn btn-primary SignatureButtonClear" onclick="SignatureButtonClear()" style="margin-bottom: 90px;" title="Limpar a Tela"><i class="flaticon flaticon-redo icon-xl"></i></button>
+				<button type="button" class="btn btn-info SignatureButtonBack" onclick="SignatureButtonBack()"style="margin-bottom: 90px;" title="Voltar"><i class="flaticon flaticon-unmake icon-xl"></i></button>
+			</center>
+		</div>
+	</center>
+	<div class="MainFormAMU">
+		<table class="table table-bordered" style="width: 100% !important;">
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<center>
+    					<div class="col-md-3"><img src="imagens/Logo1.jpeg" style="width: auto; height: 100px"></div>
+			    		<div class="col-md-6"><h2 style="padding-top: 15px;">Registro de Atendimento de Urgência</h2></div>
+			    		<div class="col-md-3"><img src="imagens/Logo2.jpeg" style="width: auto; height: 100px"></div>	
+					</center>	
+				</td>
+			</tr>
+		</table>
+		<div class="nextButtons" style="width: 100% !important;margin-bottom: 17px;">
+			<center>
+				<div class="divPanelsAMU pageTitle1 actual" id="abaIdentificacao">Identificação</div>
+				<div class="divPanelsAMU pageTitle2" id="abaAtendimento">Atendimento</div>
+				<div class="divPanelsAMU pageTitle3" id="abaDiagnostico">Diagnóstico e Tratamento</div>
+				<div class="divPanelsAMU pageTitle3" id="abaPosologia">Prescrição médica</div>
+			</center>
+			<!-- <button type="button" class="button button-outline-primary text-uppercase btPrev" style="display:none;" onclick="previousStep()">&lt;&lt; Anterior</button>
+			<button type="button" class="button button-outline-primary text-uppercase wcm-panel-right btNext" onclick="nextStep()">Próximo &gt;&gt;</button> -->
+		</div>
+
+		<table class="table table-bordered" style="width: 100% !important;" id="recusaAtendimento">
+			<tr>
+			    <td colspan="100%" style="width: 100%;">
+			        <label class="control-label">Atendimento Recusado?<strong class="required text-danger"></strong></label>
+			        <select class="amu-control" id="recusado" name="recusado" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  onchange="mostrarTermoRecusa()">
+			         	<option value="">Selecione</option>
+			         	<option value="SIM">Sim</option>
+			         	<option value="NAO">Não</option>
+			         </select>
+			    </td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered" style="width: 100% !important;" id="identificacao">
+			<tr>
+				<td colspan="25%" style="width: 25%;">
+	    			<label class="control-label">Nome Atendente: <strong class="required text-danger"></strong></label>
+	    			<input type="text" class="amu-control" id="nomeAtendente" name="nomeAtendente" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+				</td>
+				<td colspan="25%" style="width: 25%;">
+	    			<label class="control-label">Horário Inicial:<strong class="required text-danger"></strong></label>
+	    			<input type="text" class="amu-control" id="horarioInicialCadastro" name="horarioInicialCadastro" 
+						data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" onkeyup="formatarHora(this)" maxlength="5">
+				</td>
+				<td colspan="25%" style="width: 25%;">
+	    			<label class="control-label">Horário Final:<strong class="required text-danger"></strong></label>
+	    			<input type="text" class="amu-control" id="horarioFinalCadastro" name="horarioFinalCadastro" 
+						data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" onkeyup="formatarHora(this)" maxlength="5" >
+				</td>
+				<td colspan="25%" style="width: 25%;">
+	    			<label class="control-label">Tomador:<strong class="required text-danger"></strong></label>
+					<div class="input-group">
+				        <input type="text" class="amu-control zoom-tdi" id="tomador" name="tomador" 
+				         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+				        <div class="input-group-addon" style="cursor:pointer;" onclick="zoomTomador(this)" >
+				            <span class="fluigicon fluigicon-zoom-in fluigicon-sm" > </span>
+				        </div>
+				    </div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="50%" style="width: 50%;">
+					<h5 class="required">Quando este atendimento aconteceu havia outro paciente no posto médico sendo atendido, ou foi externamente simultâneo?
+					</h5>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="AtendimentoPacienteSim" name="AtendimentoPaciente" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" value="SIM"> 
+					    <label for="AtendimentoPacienteSim">Sim</label>
+					</div>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="AtendimentoPacienteNao" name="AtendimentoPaciente" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" value="NAO">
+					    <label for="AtendimentoPacienteNao">Não</label>
+					</div>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="AtendimentoOutroNaoAplicavel" name="AtendimentoPaciente" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" value="NAOAP">
+					    <label for="AtendimentoOutroNaoAplicavel">Não Aplicável</label>
+					</div>
+				</td>
+				<td colspan="50%" style="width: 50%;">
+					<label class="required"></label>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="PacienteLugar1" name="PacienteLugar" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="PacienteLugar1">Paciente veio ao posto médico acompanhado do representante da companhia: <input type="text" class="amu-control" id="PacienteLugar1Comp" name="PacienteLugar1Comp" 
+	    			data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"></label>
+					</div>
+					<br>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="PacienteLugar2" name="PacienteLugar" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="PacienteLugar2">Paciente veio ao posto Médico por meios próprios.</label>
+					</div>
+					<br>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="PacienteLugar3" name="PacienteLugar" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="PacienteLugar3">A equipe se deslocou para: </label>
+					    <input type="text" class="amu-control" id="PacienteLugar3Desloc" name="PacienteLugar3Desloc" 
+					    data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="display:inline-block !important;width: 60%;">
+					</div>
+					<br>
+					<div class="custom-radio custom-radio-primary">
+					    <input type="radio" id="PacienteLugar4" name="PacienteLugar" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="PacienteLugar4">Acidente de trabalho.</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;" class="bg-green-gradient">
+					<center>
+						<label class="control-label fs-text-xl">O(A) paciente AUTORIZA a coleta e o tratamento de dados pessoais, respaldado pela Lei Geral de Proteção de Dados Pessoais – LGPD.</label>
+						<br>
+						<label class="control-label">Não</label>
+						<div class="switch switch-yellow-gradient switch-xl">
+							<input class="switch-input" type="checkbox" id="aceitaColeta" name="aceitaColeta" onchange="aceitaColetaValidation()"/>
+							<label class="switch-button" for="aceitaColeta">Toggle</label>
+						</div>
+						<label class="control-label">Sim</label>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td class="dadosPessoais" colspan="100%" style="width: 100%;">
+					<label class="control-label">Nome:</label>
+	    			<input type="text" class="amu-control" id="nome" name="nome" 
+	    			data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+	    			onchange="setNameInTerm()" data-fluig-conditional-valid="aceitaColetaValidation()">
+				</td>
+			</tr>
+			<tr>
+				<td class="dadosPessoais" colspan="100%" style="width: 100%;">
+					<label class="control-label">E-mail:</label>
+	    			<input type="text" class="amu-control" id="email" name="email" 
+	    			data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"
+	    			data-fluig-conditional-valid="aceitaColetaValidation()">
+				</td>
+			</tr>
+			<tr>
+				<td class="dadosPessoais" colspan="25%" style="width: 25%;">
+	    			<!--	Ocorreu erro ao salvar como masculino e o mesmo posicionar somente no feminino.
+	    		<label class="control-label required">Sexo:</label>
+	    			<div class="custom-radio custom-radio-primary" style="margin-top: 10px;">
+					    <input type="radio" id="Sexo1" name="Sexo" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="Sexo1" style="margin-right: 35px;">Feminino</label>
+					    <input type="radio" id="Sexo2" name="Sexo" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="Sexo2">Masculino</label> -->
+					    <label class="control-label required">Sexo:</label>
+							<select class="amu-control" name="sexo" style="margin-top: 10px;" >
+			         		<option value="">Selecione</option>
+			         		<option id="Sexo1">Feminino</option>
+			         		<option id="Sexo2">Masculino</option>
+			         </select>					    
+					</div>
+				</td>
+				<td class="dadosPessoais" colspan="25%" style="width: 25%;">
+	    			<input type="hidden" id="nacionalidadeCodigo" name="nacionalidadeCodigo">
+	    			<label class="control-label">Nacionalidade:</label>
+				    <div class="input-group">
+				        <input type="text" class="amu-control zoom-tdi" id="nacionalidade" name="nacionalidade" 
+				         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+				         data-fluig-conditional-valid="aceitaColetaValidation()">
+				        <div class="input-group-addon" style="cursor:pointer;" onclick="zoomnacionalidade(this)" >
+				            <span class="fluigicon fluigicon-zoom-in fluigicon-sm" > </span>
+				        </div>
+				    </div>
+				</td>
+				<td class="dadosPessoais" colspan="25%" style="width: 25%;">
+	    			<label class="control-label">Data de Nascimento:</label>
+	    			<input type="text" class="amu-control" id="dataNascimento" name="dataNascimento"  
+	    			data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+	    			data-fluig-conditional-valid="aceitaColetaValidation()"
+	    			onchange="preencheIdade();" mask="00/00/0000">
+	    			
+	    			<input type="hidden" class="amu-control" id="idade" name="idade">
+				</td>
+				<td class="dadosPessoais" colspan="25%" style="width: 25%;">
+	    			<label class="control-label">CPF:</label>
+	    			<input type="text" class="amu-control" id="cpf" name="cpf" data-mask-for-cpf
+	    			data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+	    			data-fluig-conditional-valid="$('#DocIdentificacao').val() == '' && aceitaColetaValidation()" >
+				</td>
+			</tr>
+			<tr>
+			    <td class="dadosPessoais" colspan="50%" style="width: 50%;">
+			        <label class="control-label">Documento de Identificação:</label>
+			        <input type="text" class="amu-control" id="DocIdentificacao" name="DocIdentificacao" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+			         data-fluig-conditional-valid="$('#cpf').val() == '' && aceitaColetaValidation()">
+			    </td>
+			    <td class="dadosPessoais" colspan="50%" style="width: 50%;">
+			        <label class="control-label">Aeroporto de Origem:</label>
+				    <div class="input-group">
+				        <input type="text" class="amu-control zoom-tdi" id="AeroportoOrigem" name="AeroportoOrigem" 
+				         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+				         data-fluig-conditional-valid="aceitaColetaValidation()">
+				        <div class="input-group-addon" style="cursor:pointer;" onclick="zoomAeroportoOrigem(this)" >
+				            <span class="fluigicon fluigicon-zoom-in fluigicon-sm" > </span>
+				        </div>
+				    </div>
+			    </td>
+			</tr>
+			<tr>
+				<td class="dadosPessoais" colspan="100%" style="width: 100%;">
+					<label class="control-label">Endereço:</label>
+	    			<input type="text" class="amu-control" id="endereco" name="endereco" 
+	    			data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+	    			data-fluig-conditional-valid="aceitaColetaValidation()">
+				</td>
+			</tr>
+			<tr>
+			    <td class="dadosPessoais" colspan="34%" style="width: 34%;">
+			        <label class="control-label">Cidade:</label>
+			        <input type="text" class="amu-control" id="cidade" name="cidade" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+			         data-fluig-conditional-valid="aceitaColetaValidation()">
+			    </td>
+			    <td class="dadosPessoais" colspan="33%" style="width: 33%;">
+			        <label class="control-label"> CEP:</label>
+			        <input type="text" class="amu-control" id="cep" name="cep"  mask="00000-000"
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" 
+			         data-fluig-conditional-valid="aceitaColetaValidation()">
+			    </td>
+			    <td class="dadosPessoais" colspan="33%" style="width: 33%;">
+			        <label class="control-label">Telefone:</label>
+			        <input type="text" class="amu-control" id="telefone" name="telefone" 
+			         data-fluig-state-valid="0,4,13,22"  data-fluig-write="0,4,13,22" 
+			         data-fluig-conditional-valid="aceitaColetaValidation()" mask="(99)99999-9999">
+			    </td>
+			</tr>
+			<tr>
+			    <td colspan="50%" style="width: 50%;">
+			        <label class="control-label required">Tipo de Paciente:</label>
+			        <div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="outrosDados1" name="outrosDados1" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="outrosDados1">CONCESSIONÁRIA </label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="outrosDados2" name="outrosDados2" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="outrosDados2">TRIPULANTE </label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="outrosDados3" name="outrosDados3" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="outrosDados3">FUNCIONÁRIO </label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="outrosDados4" name="outrosDados4" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="outrosDados4">VISITANTE </label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="outrosDados5" name="outrosDados5" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="outrosDados5">PASSAGEIRO </label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="outrosDados6" name="outrosDados6" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					    <label for="outrosDados6">VIAÇÃO PARTICULAR</label>
+					</div>
+			    </td>
+				<td colspan="50%" style="width: 50%;">
+					<label class="control-label">Selecione o localização do atendimento<strong class="required text-danger"></strong></label>
+			        <select class="amu-control" id="localizacaoAtendimento" name="localizacaoAtendimento"  data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+			         	<option value="">Selecione</option>
+			         	<option value="AR">Ar</option>
+			         	<option value="TERRA">Terra</option>
+			         	<option value="OUTROS">Outros</option>
+			         </select>
+					 <br><br>
+					 <label class="control-label">Informe o local do atendimento</strong></label>
+					 <select class="amu-control" id="localAtendimento" name="localAtendimento" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+			         </select>
+					 <input class="amu-control" type="text" id="outrosLocais" name="outrosLocais" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+					<!-- <label class="control-label">Local do Atendimento:</label>
+					<input type="text" class="amu-control" id="localAtendimento" name="localAtendimento" 
+					data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+					<br>
+					<div class="custom-radio custom-radio-primary custom-radio-lg">
+						<input type="radio" id="ladoAr" name="ladoArTerra" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+						<label for="ladoAr">Lado Ar</label>
+					</div>
+					<div class="custom-radio custom-radio-primary custom-radio-lg">
+						<input type="radio" id="ladoTerra" name="ladoArTerra" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+						<label for="ladoTerra">Lado Terra</label>
+					</div> -->
+				</td>
+		    </tr>
+			<tr>
+			    <td colspan="50%" style="width: 50%;">
+			        <label class="control-label">Companhia Aérea:</label>
+				    <div class="input-group">
+				        <input type="text" class="amu-control zoom-tdi" id="CompanhiaAerea" name="CompanhiaAerea" 
+				         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  data-fluig-conditional-valid="$('#outrosDados5:checked').val() == 'on'">
+				        <div class="input-group-addon" style="cursor:pointer;" onclick="zoomCompanhiaAerea(this)" >
+				            <span class="fluigicon fluigicon-zoom-in fluigicon-sm" > </span>
+				        </div>
+				    </div>
+			    </td>
+			    <td colspan="50%" style="width: 50%;">
+			        <label class="control-label">VOO Nº:</label>
+			        <input type="text" class="amu-control" id="vooN" name="vooN"  maxlength="4" mask="0000"
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#outrosDados5:checked').val() == 'on'">
+			    </td>
+			</tr>
+		    <tr>
+				<td colspan="50%" style="width: 50%;">
+			        <label class="control-label">Outras Empresas (especificar local):</label>
+			        <input type="text" class="amu-control zoom-tdi" id="empresa" name="empresa" 
+				    data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+			    </td>
+				<td colspan="50%" style="width: 50%;">
+			        <label class="control-label">Responsável pelas Informações do Paciente:</label>
+			        <input type="text" class="amu-control" id="RespDados" name="RespDados" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+			    </td>
+			</tr>
+			<tr>
+			<!--	<td colspan="100%" style="width: 100%">
+					<center>
+						<center>
+				    		<button type="button" class="btn btn-primary assinarButton" onclick="SignatureButton('5')">Assinar</button>
+							<button type="button" class="btn btn-primary" onclick="DownloadSignature('5')">Baixar</button>
+						</center>
+						<img id="signatureImage5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVChTYxgFgxIwMAAAAZoAAXcn7CgAAAAASUVORK5CYII=" style="width: 260px;height: 129px;">
+						<input type="hidden" id="signatureImageData5" name="signatureImageData5">
+						<input style="resize: none;margin-bottom: 5px;" type="hidden" class="amu-control" id="assinaturaPaciente" name="assinaturaPaciente"
+			        	data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+			        	<input style="resize: none;margin-bottom: 5px;" type="text" class="amu-control" id="assinaturaPac" name="assinaturaPac">
+			        	<label class="control-label" id="assinturaPaciente">Assinatura do paciente</label>
+						<label class="control-label" id="assinturaResponsavel" style="display:none">Assinatura do responsável</label>
+					</center>
+				</td>      -->      
+            </tr>	
+		</table>
+
+		<table class="table table-bordered" style="width: 100% !important; display: none;" id="Atendimento">
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<label class="control-label">Classificação de Risco<strong class="required text-danger"></strong></label>
+			        <select class="amu-control" id="classRisco" name="classRisco" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+			         	<option value="">Selecione</option>
+			         	<option value="VERMELHO">Vermelho (Emergência)</option>
+			         	<option value="LARANJA">Laranja (Muito Urgente)</option>
+						<option value="AMARELO">Amarelo (Urgente)</option>
+						<option value="VERDE">Verde (Pouco Urgente)</option>
+						<option value="AZUL">Azul (Não Urgente)</option>
+			         </select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<h3>Sinais Vitais</h3>
+					<hr>
+				    <label>PA (Pressão Arterial): <strong class="required text-danger"></strong></label>
+				    <input type="text" class="amu-control" id="exame_fisico1" name="exame_fisico1" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 50px;display: table-row;">
+				    <label>mmhg </label>
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <label>FC (Frequência Cardíaca): </label>
+				    <input type="text" class="amu-control" id="exame_fisico2" name="exame_fisico2" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 50px;display: table-row;">
+				    <label>bpm</label>
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <label>FR (Frequência Respiratória): </label>
+				    <input type="text" class="amu-control" id="exame_fisico3" name="exame_fisico3" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 50px;display: table-row;">
+				    <label>rpm</label>
+				    <br>
+					<br>
+				    <label>SPO (Saturação): <strong class="required text-danger"></strong></label>
+				    <input type="text" class="amu-control" id="exame_fisico4" name="exame_fisico4" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 50px;display: table-row;">
+				    <label>%</label>
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <label>Tax (Temperatura): <strong class="required text-danger"></strong></label>
+				    <input type="text" class="amu-control" id="exame_fisico5" name="exame_fisico5" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 50px;display: table-row;">
+				    <label>ºC</label>
+				     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <label>HGT: (Glicemia Capilar): </label>
+				    <input type="text" class="amu-control" id="exame_fisico6" name="exame_fisico6" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 50px;display: table-row;">
+				    <label>mg/dl</label>
+				</td>
+			</tr>
+			<tr>
+			    <td colspan="100%" style="width: 100%;">
+			        <div class="row">
+					    <div class="col-md-12" id="botaoAdicionar">
+					    	<label class="control-label">Tipos de Procedimento:</label>
+					        <button type="button" class="wcm-panel-bt-custom wcm-panel-right" onclick="zoomTipoAtendimento()">Selecionar</button>
+					    </div>
+					</div>
+					</br>
+					<div class="row" style="padding-left: 20px;padding-right: 20px;">
+					    <div class="col-md-12" style="border-top: 1px solid #D1D3D4;border-left: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;
+					    Descrição</label>
+					    </div>
+					    <div class="col-md-10 hide" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;&nbsp;Descrição</label>
+					    </div>
+					</div> 
+					<div class="row" style="padding-left: 20px;padding-right: 20px;">
+					    <div class="table-responsive">
+					        <table class="table table-bordered" id="itensTipoAtendimento" tablename="itensTipoAtendimento" noaddbutton="true" nodeletebutton="false">
+					            <thead>
+					                <tr class="fs-display-none">
+					                	<th class="hide">Codigo Produto</th>
+					                    <th>Descrição</th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr detail="true" detailname="VIEW_ITEM" class="fw-table-tr itensTabelaTipoAtendimento">
+					                    <td id="tdFields" class="fw-table-td fs-full-width">
+					                        <div class="row">
+					                            <div class=" col-md-2 hide">
+					                                <input type="text" class="amu-control input-sm" id="codigo" name="codigo" />                               		
+					                            </div>
+					                            <div class=" col-md-10 ">	
+					                                <input type="text" class="amu-control input-sm" id="descr" name="descr"   />                               		
+					                            </div>
+					                        </div> 
+					                    </td>    
+					                </tr> 
+					            </tbody> 
+					        </table> 
+					    </div> 
+					</div>
+			    </td>
+			</tr>		
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<h5>EXAMES/TERAPIAS:
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" id="exames_terapias1" name="exames_terapias1" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+				    <label for="exames_terapias1">ECG</label>
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <input type="checkbox" id="exames_terapias2" name="exames_terapias2" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+				    <label for="exames_terapias2">HGT</label> 
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <input type="checkbox" id="exames_terapias3" name="exames_terapias3" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+				    <label for="exames_terapias3">O2</label> 
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <input type="checkbox" id="exames_terapias4" name="exames_terapias4" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+				    <label for="exames_terapias4">NBZ</label> 
+					</h5>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<!-- <label>Anotação do Técnico de Enfermagem:<strong class="required text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="anotacao_enfermagem" name="anotacao_enfermagem" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+				    <br> -->
+				    <!-- <label>Evolução de Enfermagem:<strong class="required text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="evolucao_enfermagem" name="evolucao_enfermagem" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea> -->
+			    </td>
+		    </tr>
+			<!-- <tr>
+				<td colspan="100%" style="width: 100%;">
+					<center><h1>Administração de Medicamentos</h1></center>
+				</td>
+			</tr>
+			<tr>
+			    <td colspan="25%" style="width: 25%;">
+			        <center><h4>HORA</h4></center>
+			    </td>
+			    <td colspan="34%" style="width: 34%;">
+			        <center><h4>MEDICAÇÃO</h4></center>
+			    </td>
+			    <td colspan="33%" style="width: 33%;">
+			        <center><h4>RESPONSÁVEL</h4></center>
+			    </td>
+			</tr>
+			<tr>
+			    <td colspan="25% style="width: 25%;">
+			        <input type="text" class="amu-control" id="table11" name="table11" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+			    </td>
+			    <td colspan="34% style="width: 34%;">
+			        <input type="text" class="amu-control" id="table12" name="table12" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+			    </td>
+			    <td colspan="33% style="width: 33%;">
+			        <input type="text" class="amu-control" id="table13" name="table13" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+			    </td>
+			</tr>
+			<tr>
+                <td colspan="25% style="width: 25%;">
+                    <input type="text" class="amu-control" id="table21" name="table21" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="34% style="width: 34%;">
+                    <input type="text" class="amu-control" id="table22" name="table22" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="33% style="width: 33%;">
+                    <input type="text" class="amu-control" id="table23" name="table23" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="25% style="width: 25%;">
+                    <input type="text" class="amu-control" id="table31" name="table31" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="34% style="width: 34%;">
+                    <input type="text" class="amu-control" id="table32" name="table32" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="33% style="width: 33%;">
+                    <input type="text" class="amu-control" id="table33" name="table33" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="25% style="width: 25%;">
+                    <input type="text" class="amu-control" id="table41" name="table41" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="34% style="width: 34%;">
+                    <input type="text" class="amu-control" id="table42" name="table42" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="33% style="width: 33%;">
+                    <input type="text" class="amu-control" id="table43" name="table43" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="25% style="width: 25%;">
+                    <input type="text" class="amu-control" id="table51" name="table51" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="34% style="width: 34%;">
+                    <input type="text" class="amu-control" id="table52" name="table52" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="33% style="width: 33%;">
+                    <input type="text" class="amu-control" id="table53" name="table53" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="25% style="width: 25%;">
+                    <input type="text" class="amu-control" id="table61" name="table61" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="34% style="width: 34%;">
+                    <input type="text" class="amu-control" id="table62" name="table62" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+                <td colspan="33% style="width: 33%;">
+                    <input type="text" class="amu-control" id="table63" name="table63" 
+                     data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+                </td>
+            </tr> -->
+			<tr>
+			    <td colspan="100%" style="width: 100%;">
+			        <!-- <div class="row">
+					    <div class="col-md-12" id="botaoAdicionar">
+					    	<label class="control-label"><h2>Materiais/Medicamentos Utilizados&nbsp;&nbsp;&nbsp;&nbsp;</h2></label>
+					        <button type="button" class="wcm-panel-bt-custom wcm-panel-right" onclick="zoomGastos()">Selecionar</button>
+					    </div>
+					</div> -->
+					</br>
+					<div class="row" style="padding-left: 20px;padding-right: 20px;">
+					<!--
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-left: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;Código</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;&nbsp;Descrição</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Quantidade</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Unidade</label>
+					    </div>
+						<div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Lote</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Hora</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Responsável</label>
+					    </div> -->
+					</div>
+					<!-- Retirar display none -->
+					<div class="row" style="padding-left: 20px;padding-right: 20px;" style="display: none;">
+					     <div class="table-responsive">
+					        <table class="table table-bordered" id="itensGastos" tablename="itensGastos" noaddbutton="true" nodeletebutton="false">
+					            <thead>
+					                <tr class="fs-display-none">
+					                    <th></th>
+					                    <th></th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr detail="true" detailname="VIEW_ITEM" class="fw-table-tr itensTabelaGastos">
+					                    <td id="tdFields" class="fw-table-td fs-full-width">
+					                        <div class="row">
+					                            <div class=" col-md-2 " style="display:none">
+					                            	<label for="codGasto"> Código produto </label>
+					                                <input type="text" class="amu-control input-sm" id="codGasto" name="codGasto" />                               		
+					                            </div>
+					                            <div class=" col-md-2 ">
+					                            	<label for="descrGasto"> Descrição </label>	
+					                                <input type="text" class="amu-control input-sm" id="descrGasto" name="descrGasto"   />                               		
+					                            </div>
+					                            <div class=" col-md-2 ">	
+					                            	<label for="quantidade"> Quantidade </label>	
+					                                <input type="number" class="amu-control input-sm" id="quantidade" name="quantidade"  
+					                                data-fluig-write="0,4,13,22"/>                               		
+					                            </div>
+					                            <div class=" col-md-2" style="display:none">	
+					                            	<label for="unidade"> Unidade </label>	
+					                                <input type="text" class="amu-control input-sm" id="unidade" name="unidade"   />                               		
+					                            </div>
+												<div class=" col-md-4 ">
+													<label for="lote"> Lote </label>	
+													<div class="input-group">														
+														<input type="text" class="amu-control zoom-tdi" id="lote" name="lote"  
+					                               		data-fluig-write="0,4,13,22"/> 
+														<div class="input-group-addon" style="cursor:pointer;" onclick="zoomLote(this)" >
+															<span class="fluigicon fluigicon-zoom-in fluigicon-sm" > </span>
+														</div>
+													</div>                              		
+					                            </div>
+					                            <div class=" col-md-2 ">
+					                            	<label for="respGasto"> Responsável </label>	
+					                                <input type="text" class="amu-control input-sm" id="respGasto" name="respGasto"  data-fluig-write="0,4,13,22"/>                               		
+					                            </div>
+					                            <div class=" col-md-2 ">
+					                            	<label for="horaGasto"> Horário </label>	
+					                                <input type="text" class="amu-control input-sm" id="horaGasto" name="horaGasto" data-fluig-write="0,4,13,22" onkeyup="formatarHora(this)" maxlength="5" />                               		
+					                            </div>
+					                        </div> 
+					                    </td>    
+					                </tr> 
+					            </tbody> 
+					        </table> 
+					    </div> 
+					</div>
+			    </td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>Liberação do Paciente:</label>
+				    <select class="amu-control input-lg" id="libPassiente" name="libPassiente" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  
+			         onchange="validateLiberacaoPassiente()" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+			         	<option value="">Selecione</option>
+			         	<option value="remocaoTerceiros">Remoção por terceiros</option>
+			         	<option value="remocaoTransferencia">Remoção/Transferência</option>
+			         	<option value="liberadoEquipe">Liberado pela equipe</option>
+			         	<option value="liberadoPedido">Liberado a pedido</option>
+			         </select>
+				</td>
+			</tr>
+			<tr id="removidoParaLine" style="display:none;">
+			    <td colspan="40%" style="width: 40%">
+			        <label class="control-label">Removido para: </label>
+			        <input type="text" class="amu-control" id="removidoPara" name="removidoPara" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#libPassiente').val() == 'REMOVIDO'">
+			    </td>
+			    <td colspan="20%" style="width: 20%;">
+				    <center>
+				    	<button type="button" class="btn btn-primary assinarButton" onclick="SignatureButton('4')">Assinar</button>
+				    	<button type="button" class="btn btn-primary" onclick="DownloadSignature('4')">Baixar</button>
+				    </center>
+				    <center>
+					    <img id="signatureImage4" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVChTYxgFgxIwMAAAAZoAAXcn7CgAAAAASUVORK5CYII=" style="width: 260px;height: 129px;">
+				        <input style="resize: none;margin-bottom: 5px;" type="text" class="amu-control" id="Assinatura" name="Assinatura"
+				        data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+				        <input type="hidden" id="signatureImageData4" name="signatureImageData4">
+			        	<label class="control-label">Assinatura</label>
+			        </center>
+			    </td>
+			   <!--  <td colspan="70%" style="width: 70%">
+			        <label class="control-label">Assinatura:</label>
+			        <input type="text" class="amu-control" id="Assinatura" name="Assinatura" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  data-fluig-conditional-valid="$('#libPassiente').val() == 'REMOVIDO'">
+			    </td> -->
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>Recusa remoção<strong class="required text-danger"></strong></label>
+				    <select class="amu-control input-lg" id="recusaRemocao" name="recusaRemocao" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  
+			         onchange="validarRecusaRemocao()">
+			         	<option value="">Selecione</option>
+			         	<option value="SIM">Sim</option>
+			         	<option value="NAO">Não</option>
+			         </select>
+				</td>
+			</tr>
+			<tr id="recusaRemocaoAssintaura" style="display: none;">
+			    <td colspan="100%" style="width: 100%;">
+				    <center>
+				    	<button type="button" class="btn btn-primary assinarButton" onclick="SignatureButton('6')">Assinar</button>
+				    	<button type="button" class="btn btn-primary" onclick="DownloadSignature('6')">Baixar</button>
+				    </center>
+				    <center>
+					    <img id="signatureImage6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVChTYxgFgxIwMAAAAZoAAXcn7CgAAAAASUVORK5CYII=" style="width: 260px;height: 129px;">
+				        <input style="resize: none;margin-bottom: 5px;" type="text" class="amu-control" id="AssinaturaRecusaRemocao" name="AssinaturaRecusaRemocao"
+				        data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+				        <input type="hidden" id="signatureImageData6" name="signatureImageData6">
+			        	<label class="control-label">Assinatura</label>
+			        </center>
+			    </td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%">
+					<h5>
+						DECLARAÇÃO: Declaro estar ciente de que não estou enquadrado na condição de Passageiro e Tripulante do Aeroporto Internacional
+						<input type="text" class="amu-control" id="declaracao1" name="declaracao1" style="width: 230px;display: inline-block;" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22">
+						 , de acordo com a Resolução nº° 382, de 14 de junho de 2016, devendo ressarcir ao cliente
+						 <input type="text" class="amu-control" id="declaracao2" name="declaracao2" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   style="width: 270px;display: inline-block;">
+						  a importância referente aos serviços prestados.
+					</h5>
+					<br>
+					<center>
+						<h5>
+							
+							Cidade:
+							<input type="text" class="amu-control" id="declaracao3" name="declaracao3" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   style="width: 270px;display: inline-block;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" class="amu-control" id="declaracao4" name="declaracao4" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   style="width: 50px;display: inline-block;" maxlength="2">
+							/<input type="text" class="amu-control" id="declaracao5" name="declaracao5" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   style="width: 50px;display: inline-block;" maxlength="2">
+							/<input type="text" class="amu-control" id="declaracao6" name="declaracao6" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   style="width: 60px;display: inline-block;" maxlength="4">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							Hora:
+							<input type="text" class="amu-control" id="declaracao7" name="declaracao7" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   style="width: 90px;display: inline-block;" onkeyup="formatarHora(this)" maxlength="5" >
+						</h5>
+						
+					</center>
+					<br><br>
+					<center>
+						<h5>
+							<input type="text" class="amu-control" id="declaracao8" name="declaracao8" style="width: 630px;display: inline-block;">
+							<br>
+							Nome do Paciente
+						</h5>
+					</center>
+					<br>
+					<center>
+						<img id="signatureImage2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVChTYxgFgxIwMAAAAZoAAXcn7CgAAAAASUVORK5CYII=" style="width: 260px;height: 129px;">
+						<input type="hidden" id="signatureImageData2" name="signatureImageData2">
+						<center>
+				    		<button type="button" class="btn btn-primary assinarButton" onclick="SignatureButton('2')">Assinar</button>
+							<button type="button" class="btn btn-primary" onclick="DownloadSignature('2')">Baixar</button>
+						</center>
+					</center>
+					<br><br>
+					<center>
+						<h5>
+							<input type="text" class="amu-control" id="enfermeiroResponsavel" name="enfermeiroResponsavel" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 630px;display: inline-block;">
+							<br>
+							Responsável enfermagem<strong class="required text-danger"></strong>
+							<br><br>
+							<input type="text" class="amu-control" id="corenEnfermeiro" name="corenEnfermeiro" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 300px;display: inline-block;">
+							<br>
+							Coren<strong class="required text-danger"></strong>
+						</h5>
+					</center>
+					<br>
+				</td>            
+            </tr>
+	    </table>
+
+		<table class="table table-bordered" style="width: 100% !important; display: none !important;" id="diagnostico">
+			<tr>
+			    <td style="width: 25%;" colspan="25%">
+			        <label class="control-label">Data:</label>
+			        <input type="text" class="amu-control" id="dataAmu" name="dataAmu" >
+			    </td>
+			    <td style="width: 25%;" colspan="25%">
+			        <label class="control-label">Hora Chegada:</label>
+			        <input type="text" class="amu-control" id="horaChegada" name="horaChegada" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" onkeyup="formatarHora(this)" maxlength="5">
+			    </td>
+			    <td style="width: 25%;" colspan="25%">
+			        <label class="control-label">Hora Saida:</label>
+			        <input type="text" class="amu-control" id="horaSaida" name="horaSaida" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  onkeyup="formatarHora(this)" maxlength="5">
+			    </td>
+			    <td style="width: 25%;" colspan="25%">
+			        <label class="control-label">AMU Nº:</label>
+			        <input type="text" class="amu-control" id="AMUnumero" name="AMUnumero" >
+			    </td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>História:</label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="historia" name="historia" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>Antecedentes (COMORBIDADES. MEDICAÇÕES, CIRURGIAS. ALERGIAS): <strong id="obrigatoriedadeAntecedentes" class=" text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="Antecedentes" name="Antecedentes" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>Exame Físico: <strong id="obrigatoriedadeExameFisico" class=" text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="exame_fisico" name="exame_fisico" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+				</td>
+			</tr>
+			<tr>
+			    <td colspan="100%" style="width: 100%;">
+			        <label class="control-label">Hipótese diagnóstica (CID n.º):</label>
+			        <input type="text" class="amu-control" id="hipoteseDeDiagnostico" name="hipoteseDeDiagnostico" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  >
+			    </td>
+			</tr>
+			<tr>
+			    <td colspan="100%" style="width: 100%;">
+			        <div class="row">
+					    <div class="col-md-12" id="botaoAdicionar">
+					    	<label class="control-label">Classificação do Cuidado:<strong id="obrigatoriedadeClassCuidado" class=" text-danger"></strong></label>
+					        <button type="button" class="wcm-panel-bt-custom wcm-panel-right" onclick="zoomClassCuidado()">Selecionar</button>
+					    </div>
+					</div>
+					</br>
+					<div class="row" style="padding-left: 20px;padding-right: 20px;">
+					    <div class="col-md-12" style="border-top: 1px solid #D1D3D4;border-left: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;
+					    Descrição</label>
+					    </div>
+					</div>
+					<div class="row" style="padding-left: 20px;padding-right: 20px;">
+					    <div class="table-responsive">
+					        <table class="table table-bordered" id="itensClassCuidado" tablename="itensClassCuidado" noaddbutton="true" nodeletebutton="false">
+					            <thead>
+					                <tr class="fs-display-none">
+					                    <th></th>
+					                    <th></th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr detail="true" detailname="VIEW_ITEM" class="fw-table-tr itensTabelaClassCuidado">
+					                    <td id="tdFields" class="fw-table-td fs-full-width">
+					                        <div class="row">
+					                            <div class=" col-md-10 ">	
+					                                <input type="text" class="amu-control input-sm" id="classCuidadoDescr" name="classCuidadoDescr"/>                               		
+					                            </div>
+					                        </div> 
+					                    </td>    
+					                </tr> 
+					            </tbody> 
+					        </table> 
+					    </div> 
+					</div>
+			    </td>
+			</tr>
+			<tr>
+			    <td colspan="70%" style="width: 70%;">
+					<label>Prescrição Medica<strong id="obrigatoriedadePrescricao" class=" text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="precricaoMedica" name="precricaoMedica" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+			        <!-- <label class="control-label">Tratamento Indicado: </label>
+			        <textarea style="resize: none;height: 174px;" rows="8" class="amu-control" id="tratamento" name="tratamento" 
+			         data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   ></textarea> -->
+			    </td>
+			    <td colspan="30%" style="width: 30%;">
+				    <center>
+				    	<button type="button" class="btn btn-primary assinarButton" onclick="SignatureButton('1')">Assinar</button>
+						<button type="button" class="btn btn-primary" onclick="DownloadSignature('1')">Baixar</button>
+				    </center>
+				    <img id="signatureImage1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVChTYxgFgxIwMAAAAZoAAXcn7CgAAAAASUVORK5CYII=" style="width: 260px;height: 129px;">
+			        <input style="resize: none;margin-bottom: 5px;" type="text" class="amu-control" id="medicoSME" name="medicoSME"
+			        data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+			        <input type="hidden" id="signatureImageData1" name="signatureImageData1">
+			        <center><label class="control-label">Médico <strong class="required text-danger" id="medicoObrigatoriedade"></strong> </label></center>
+					<input style="resize: none;margin-bottom: 5px;" type="text" class="amu-control" id="crmMedico" name="crmMedico"
+			        data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" >
+			        <center><label class="control-label">CRM <strong class="required text-danger" id="crmMedicoObrigatoriedade"></strong></label></center>
+			    </td>
+			</tr>
+			<tr>
+				<td colspan="100%" style="width: 100%;">
+					<!-- <label>Prescrição Medica:<strong id="obrigatoriedadePrescricao" class=" text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="precricaoMedica" name="precricaoMedica" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea> -->
+			    </td>
+		    </tr>
+            <tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>Reavaliação: <strong id="obrigatoriedadeReavaliacao" class=" text-danger"></strong></label>
+				    <textarea style="resize: none;height: 100px;" rows="6" class="amu-control" id="reavaliacao" name="reavaliacao" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+				</td>
+			</tr>
+			 <tr>
+				<td colspan="100%" style="width: 100%;">
+					<label>Considerações/Intercorrências do atendimento: </label>
+				    <textarea style="resize: none;height: 100px;" rows="6" class="amu-control" id="considInterAtend" name="considInterAtend" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"></textarea>
+				</td>
+			</tr>
+        </table>
+
+		<table class="table table-bordered" style="width: 100% !important; display: none;" id="posologia">
+			<tr>
+			    <td colspan="100%" style="width: 100%;">
+			        <!-- <div class="row">
+					    <div class="col-md-12" id="botaoAdicionar">
+					    	<label class="control-label"><h2>Materiais/Medicamentos Utilizados&nbsp;&nbsp;&nbsp;&nbsp;</h2></label>
+					        <button type="button" class="wcm-panel-bt-custom wcm-panel-right" onclick="zoomGastos()">Selecionar</button>
+					    </div>
+					</div> -->
+					</br>
+					<div class="row" style="padding-left: 20px;padding-right: 20px;">
+<!-- 					
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-left: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;Código</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">&nbsp;&nbsp;&nbsp;Descrição</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Quantidade</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Unidade</label>
+					    </div>
+						<div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Lote</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Hora</label>
+					    </div>
+					    <div class="col-md-2" style="border-top: 1px solid #D1D3D4;border-right: 1px solid #D1D3D4;padding: 10px;">
+					        <label class="control-label">Responsável</label>
+					    </div> -->
+							<tr>
+								<td colspan="100%" style="width: 100%;">
+									<center><h1>Administração de Medicamentos</h1></center>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25%" style="width: 25%;">
+									<center><h4>HORA</h4></center>
+								</td>
+								<td colspan="34%" style="width: 34%;">
+									<center><h4>MEDICAÇÃO</h4></center>
+								</td>
+								<td colspan="33%" style="width: 33%;">
+									<center><h4>RESPONSÁVEL</h4></center>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25% style="width: 25%;">
+									<input type="text" class="amu-control" id="table11" name="table11" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  onkeyup="formatarHora(this)" maxlength="5" >
+								</td>
+								<td colspan="34% style="width: 34%;">
+									<input type="text" class="amu-control" id="table12" name="table12" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+								<td colspan="33% style="width: 33%;">
+									<input type="text" class="amu-control" id="table13" name="table13" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25% style="width: 25%;">
+									<input type="text" class="amu-control" id="table21" name="table21" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   onkeyup="formatarHora(this)" maxlength="5">
+								</td>
+								<td colspan="34% style="width: 34%;">
+									<input type="text" class="amu-control" id="table22" name="table22" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+								<td colspan="33% style="width: 33%;">
+									<input type="text" class="amu-control" id="table23" name="table23" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25% style="width: 25%;">
+									<input type="text" class="amu-control" id="table31" name="table31" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   onkeyup="formatarHora(this)" maxlength="5">
+								</td>
+								<td colspan="34% style="width: 34%;">
+									<input type="text" class="amu-control" id="table32" name="table32" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+								<td colspan="33% style="width: 33%;">
+									<input type="text" class="amu-control" id="table33" name="table33" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25% style="width: 25%;">
+									<input type="text" class="amu-control" id="table41" name="table41" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  onkeyup="formatarHora(this)" maxlength="5" >
+								</td>
+								<td colspan="34% style="width: 34%;">
+									<input type="text" class="amu-control" id="table42" name="table42" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+								<td colspan="33% style="width: 33%;">
+									<input type="text" class="amu-control" id="table43" name="table43" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25% style="width: 25%;">
+									<input type="text" class="amu-control" id="table51" name="table51" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"  onkeyup="formatarHora(this)" maxlength="5" >
+								</td>
+								<td colspan="34% style="width: 34%;">
+									<input type="text" class="amu-control" id="table52" name="table52" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+								<td colspan="33% style="width: 33%;">
+									<input type="text" class="amu-control" id="table53" name="table53" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+							</tr>
+							<tr>
+								<td colspan="25% style="width: 25%;">
+									<input type="text" class="amu-control" id="table61" name="table61" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   onkeyup="formatarHora(this)" maxlength="5">
+								</td>
+								<td colspan="34% style="width: 34%;">
+									<input type="text" class="amu-control" id="table62" name="table62" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+								<td colspan="33% style="width: 33%;">
+									<input type="text" class="amu-control" id="table63" name="table63" 
+									data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22"   >
+								</td>
+							</tr> 
+					</div>
+					<!-- <div class="row" style="padding-left: 20px;padding-right: 20px;">
+					    <div class="table-responsive">
+					        <table class="table table-bordered" id="itensGastos" tablename="itensGastos" noaddbutton="true" nodeletebutton="false">
+					            <thead>
+					                <tr class="fs-display-none">
+					                    <th></th>
+					                    <th></th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr detail="true" detailname="VIEW_ITEM" class="fw-table-tr itensTabelaGastos">
+					                    <td id="tdFields" class="fw-table-td fs-full-width">
+					                        <div class="row">
+					                            <div class=" col-md-2 " style="display:none">
+					                            	<label for="codGasto"> Código produto </label>
+					                                <input type="text" class="amu-control input-sm" id="codGasto" name="codGasto" />                               		
+					                            </div>
+					                            <div class=" col-md-2 ">
+					                            	<label for="descrGasto"> Descrição </label>	
+					                                <input type="text" class="amu-control input-sm" id="descrGasto" name="descrGasto"   />                               		
+					                            </div>
+					                            <div class=" col-md-2 ">	
+					                            	<label for="quantidade"> Quantidade </label>	
+					                                <input type="number" class="amu-control input-sm" id="quantidade" name="quantidade"  
+					                                data-fluig-write="0,4,13,22"/>                               		
+					                            </div>
+					                            <div class=" col-md-2" style="display:none">	
+					                            	<label for="unidade"> Unidade </label>	
+					                                <input type="text" class="amu-control input-sm" id="unidade" name="unidade"   />                               		
+					                            </div>
+												<div class=" col-md-4 ">
+													<label for="lote"> Lote </label>	
+													<div class="input-group">														
+														<input type="text" class="amu-control zoom-tdi" id="lote" name="lote"  
+					                               		data-fluig-write="0,4,13,22"/> 
+														<div class="input-group-addon" style="cursor:pointer;" onclick="zoomLote(this)" >
+															<span class="fluigicon fluigicon-zoom-in fluigicon-sm" > </span>
+														</div>
+													</div>                              		
+					                            </div>
+					                            <div class=" col-md-2 ">
+					                            	<label for="respGasto"> Responsável </label>	
+					                                <input type="text" class="amu-control input-sm" id="respGasto" name="respGasto"  data-fluig-write="0,4,13,22"/>                               		
+					                            </div>
+					                            <div class=" col-md-2 ">
+					                            	<label for="horaGasto"> Horário </label>	
+					                                <input type="text" class="amu-control input-sm" id="horaGasto" name="horaGasto" data-fluig-write="0,4,13,22" onkeyup="formatarHora(this)" maxlength="5" />                               		
+					                            </div>
+					                        </div> 
+					                    </td>    
+					                </tr> 
+					            </tbody> 
+					        </table> 
+					    </div> 
+					</div> -->
+			    </td>
+			</tr>
+			<tr>    
+				<td colspan="100%" style="width: 100%;">
+					<!-- <label>Anotação do Técnico de Enfermagem:<strong class="required text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="anotacao_enfermagem" name="anotacao_enfermagem" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+				    <br> -->
+				    <label>Evolução de Enfermagem:<strong id="obrigatoriedadeEvolucaoEnf" class=" text-danger"></strong></label>
+				    <textarea style="resize: none;height: 174px;" rows="6" class="amu-control" id="evolucao_enfermagem" name="evolucao_enfermagem" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'"></textarea>
+			    </td>     
+            </tr>
+		</table>
+
+
+		<table class="table table-bordered" style="width: 100% !important; display: none;" id="termoRecusa">
+            <tr>
+            	<td colspan="100%" style="width: 100%">
+            		<center>
+            			<h3>TERMO DE RECUSA DE ATENDIMENTO/CONTINUAÇÃO DE TRATAMENTO/REMOÇÃO</h3>
+            		</center>
+            		<br>
+            		<h5>
+						Eu,
+						<input type="text" class="amu-control" id="termoRecusa1" name="termoRecusa1" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 400px;display: inline-block;">
+						,gozando de plena consciência dos meus atos, recuso:
+					</h5>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="termoRecusa2" name="termoRecusa2" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+					    <label for="termoRecusa2">ATENDIMENTO</label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="termoRecusa3" name="termoRecusa3" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+					    <label for="termoRecusa3">CONTINUAÇÃO DE TRATAMENTO</label>
+					</div>
+					<div class="custom-checkbox custom-checkbox-primary">
+					    <input type="checkbox" id="termoRecusa4" name="termoRecusa4" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" data-fluig-conditional-valid="$('#recusado').val() != 'SIM'">
+					    <label for="termoRecusa4">REMOÇÃO</label>
+					</div>
+					<h5>Prestado pela MEDMAIS Medicina e Segurança do Trabalho junto ao cliente, mesmo que isto traga prejuizo à minha saúde.</h5>
+					<br>
+					<center>
+						<center>
+				    		<button type="button" class="btn btn-primary assinarButton" onclick="SignatureButton('3')">Assinar</button>
+							<button type="button" class="btn btn-primary" onclick="DownloadSignature('3')">Baixar</button>
+						</center>
+						<img id="signatureImage3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVChTYxgFgxIwMAAAAZoAAXcn7CgAAAAASUVORK5CYII=" style="width: 260px;height: 129px;">
+						<input type="hidden" id="signatureImageData3" name="signatureImageData3">
+						<h5>
+							<input type="text" class="amu-control" id="termoRecusa5" name="termoRecusa5" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 400px;">
+							Assinatura do paciente
+							
+						</h5>
+					</center>
+					<center>
+						<h5>
+							Testemunha:
+							<input type="text" class="amu-control" id="termoRecusa6" name="termoRecusa6" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 400px;display: inline-block;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							Testemunha:
+							<input type="text" class="amu-control" id="termoRecusa7" name="termoRecusa7" data-fluig-state-valid="0,4,13,22" data-fluig-write="0,4,13,22" style="width: 400px;display: inline-block;">
+						</h5>
+					</center>
+            	</td>            
+            </tr>
+		</table>
+	</div>
+	
+	<!-- Campos HIDDEN -->
+	<input type="hidden" id="dataEmissao" name="dataEmissao">
+	<input type="hidden" id="actualPage" name="actualPage" value="1">
+	<input type="hidden" id="qtdTipoAtendimento" name="qtdTipoAtendimento" value="0">
+	<input type="hidden" id="qtdClassCuidado" name="qtdClassCuidado" value="0">
+	<input type="hidden" id="qtdGastos" name="qtdGastos" value="0">
+	<input type="hidden" id="atualSignature" name="atualSignature">
+	<input type="hidden" id="codigoCentroCusto" name="codigoCentroCusto">
+	<input type="hidden" id="filial" name="filial">
+	<input type="hidden" id="armazem" name="armazem">
+	<input type="hidden" id="grupoAMU" name="grupoAMU">
+	<input type="hidden" id="estado" name="estado">
+	<input type="hidden" id="reavaliacaoMedico" name="reavaliacaoMedico">
+</form>
+</div>
+</body>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="FLUIGIP.js"></script>
+	<script type="text/javascript" src="AMU.js"></script>
+	<script type="text/javascript" src="AMU_zoons.js"></script>
+	<script type="text/javascript" src="AMU_stepsFunctions.js"></script>
+	<script type="text/javascript" src="AMU_tableFunctions.js"></script>
+	<script type="text/javascript" src="AMU_signatureFunctions.js"></script>
+
+</html>

@@ -1,0 +1,65 @@
+function beforeTaskSave(colleagueId,nextSequenceId,userList){
+
+var state = getValue("WKNumState");
+   var completTask = getValue("WKCompletTask");
+
+log.info(">>>>> Envio de email customizado beforeTaskSave: state " + state);
+log.info(">>>>> Envio de email customizado beforeTaskSave: completTask " + completTask);
+   //if (completTask.equals("true")) {
+
+       if (state == 4) {
+           try {
+               var param = new java.util.HashMap();
+               var dest = new java.util.ArrayList();
+               var etapa_do_processo = Nome_Etapa;
+               var cidade = hAPI.getCardValue('cidade');
+               var uf = hAPI.getCardValue('uf');
+               var cnpj = hAPI.getCardValue('cnpj');
+               var gerente = hAPI.getCardValue('gerente');
+               var via_do_showroom = hAPI.getCardValue('via_do_showroom');
+               var server = "http://portal.medmais.com:8007/";
+
+               dest.add(hAPI.getCardValue("email"));
+
+               param.put("SERVER_URL", server);
+               param.put("TENANT_ID", getValue("WKCompany"));
+               param.put("RECEIVER", hAPI.getCardValue("nome"));
+               param.put("MsgEmail", "Olá, foi realizado o estorno no valor de R$ "+hAPI.getCardValue("valor_cancelar")+", conforme solicitado em uma de nossas lojas física.<br>Segue em anexo, comprovante do estorno.");
+               param.put("tipo_sr", tipo_sr);
+               param.put("numero_solicitacao", processo);
+               param.put("etapa_do_processo", etapa_do_processo);
+               param.put("cidade", cidade);
+               param.put("cnpj", cnpj);
+               param.put("gerente", gerente);
+               param.put("via_do_showroom", via_do_showroom);
+               //param.put("representante", hAPI.getCardValue("nome"));                
+               //param.put("Param1", hAPI.getCardValue("cpf"));
+               //param.put("Param2", hAPI.getCardValue("email"));
+               
+               
+               var anexos = new java.util.ArrayList();
+               var docs = hAPI.listAttachments();
+               for (var i = 0; i < docs.size(); i++) {
+                   var doc = docs.get(i);
+                   var anexo = new java.util.HashMap();
+                   
+                   var url = fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId());
+                   
+                   //anexo.put("link", server + "/portal/p/1/ecmnavigation?app_ecm_navigation_doc=" + doc.getDocumentId());
+                   anexo.put("link", url);
+                   anexo.put("description", doc.getDocumentDescription());
+                   log.error(">>>>> Envio de email de customizado: " + url);
+                   anexos.add(anexo);
+               }
+
+               param.put("anexos", anexos);
+
+               if (dest.size() > 0)
+                   notifier.notify(colleagueId, "EMAIL_COM_ANEXO", param, dest, "text/html");    
+
+           } catch (e) {
+               log.error(">>>>> Erro Envio de email de customizado: " + e);
+           }
+       }
+
+}

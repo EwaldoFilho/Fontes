@@ -1,0 +1,83 @@
+function beforeTaskSave(colleagueId,nextSequenceId,userList){
+
+var state = getValue("WKNumState");
+   var completTask = getValue("WKCompletTask");
+   var rem = "manutencao";
+
+log.info(">>>>> Envio de email customizado beforeTaskSave: state " + state);
+log.info(">>>>> Envio de email customizado beforeTaskSave: completTask " + completTask);
+   //if (completTask.equals("true")) {
+
+       if (state == 4 || state == 0 ) {
+    	   try{
+    		    //Monta mapa com parâmetros do template
+    		    var parametros = new java.util.HashMap();
+    		    
+    		  
+    		    
+    		    //Veja mais detalhes em: 
+    		    parametros.put("NOME_USUARIO", "UsuarioFluig");
+    		    parametros.put("CODIGO_USUARIO", "UsuarioFluig");
+    		    parametros.put("calculo", 1+1);
+    		    parametros.put("SERVER_URL",    fluigAPI.getPageService().getServerURL()  ) ;
+    		    
+    	//E-mail
+    		    parametros.put("subject", "Assunto do E-mail");
+    		     
+    		     var ufs = new java.util.ArrayList();
+    		     ufs.add("GO");
+    		     ufs.add("SP");
+    		     ufs.add("AC");
+    		     
+    		     
+    		     var carrosList = new java.util.ArrayList();
+    		     
+    		     var carro = new java.util.HashMap();
+    			   
+    		     carro.put("modelo", "GOL");
+    		     carro.put("cor", "BRANCO");
+    		     carro.put("motor", "1.0");
+    		     
+    		     carrosList.add(carro);
+    		     
+    		     var carro = new java.util.HashMap();
+    		     
+    		     carro.put("modelo", "Civic");
+    		     carro.put("cor", "cinza");
+    		     carro.put("motor", "5.0");
+    		     
+    		     carrosList.add(carro);
+    		     
+    		     var carro = new java.util.HashMap();
+    		     
+    		     carro.put("modelo", "PALIO");
+    		     carro.put("cor", "verde");
+    		     carro.put("motor", "1.5");
+    		     
+    		     carrosList.add(carro);
+    		     
+    		     var carro = new java.util.HashMap();
+    		     
+    		      
+    		    
+    		    parametros.put("estados", ufs);
+    		    parametros.put("carros", carrosList);
+    		 
+    		    //Monta lista de destinatários
+    		   
+    		    
+    		    var destinatarios = new java.util.ArrayList();
+    		    
+    		    
+    		    destinatarios.add("andre.longhini@medmais.com");
+    		    
+    		    	//Envia e-mail
+    		    	notifier.notify("manutencao.fluig", "EMAIL_HOMOLOGACAO", parametros, destinatarios, "text/html");
+    		    
+    		     
+    		} catch(e){
+    			throw e;
+    		    log.info(e);
+    		}
+       }
+}

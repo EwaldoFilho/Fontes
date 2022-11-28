@@ -1,0 +1,404 @@
+<html>
+   <head>
+      <link type="text/css" rel="stylesheet" href="AMU.css" />
+      <link type="text/css" rel="stylesheet" href="style.css" />
+      <link type="text/css" rel="stylesheet" href="http://portal.medmais.com:8007/style-guide/css/fluig-style-guide.min.css" />
+
+      <script type="text/javascript" src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript"  src="http://portal.medmais.com:8007/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript"  src="http://portal.medmais.com:8007/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+      
+      <script src="http://portal.medmais.com:8007/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="FLUIGIP.js"></script>
+      <script type="text/javascript" src="compras.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+
+   </head>
+   <body>      
+      <div class="fluig-style-guide">
+         <div class="fs-huge-margin-top fs-xl-margin-left fs-md-margin-right">
+            <div class="row text-center" data-type="header"  data-field-name="headerCompras">
+               <div class="col-md-2">
+                  <img src="imagens/logo.png" style="width: auto; height: 100px">
+               </div>
+               <div class="col-md-8">
+                  <h2 class="text-center" id="tituloSolicitacao">Pedido de Compra</h2>
+                  <h2 class="text-center" id="tituloCadastroProtheus">Integração Protheus</h2>
+                  <h2 class="text-center" id="tituloApGerente">Validação do Gestor Imediato</h2>
+                  <h2 class="text-center" id="tituloCotacao">Analisar Cotação – Pedido de Compra</h2>
+                  <h2 class="text-center" id="tituloContratacaoServiço">Em processo de compra</h2>
+                  <h2 class="text-center" id="tituloAssinaturaContrato">Assinatura contrato</h2>
+                  <h2 class="text-center" id="tituloValidarContrato">Validação do contrato</h2>
+                  <h2 class="text-center" id="tituloValidarServico">Retirada de insumo</h2>
+                  <h2 class="text-center" id="tituloSolicitacaoFinalizada">Solicitação finalizada</h2>
+               </div>
+               <div class="col-md-2"  id="logo-right">
+                  <img src="imagens/logo.png" style="width: auto; height: 100px">
+               </div>
+            </div>
+            
+            <form class="form-horizontal fs-sm-margin-top" name="form" role="form">               
+               <div class="panel panel-success" id="panelDadoSolicitante" name="panelDadoSolicitante" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+                  <div class="panel-heading">
+                      <p class="panel-title">
+                         <i class="flaticon flaticon-person icon-lg"></i>
+                         <strong class="fs-xs-margin-left">Dados do Solicitante</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                     <div class="row">
+                        <div class="form-group col-md-2 ms-left"> 
+                           <div class="input-group col-md-12">                  
+                              <label for="nameUser">Nome do Usuário<strong class="required text-danger"></strong></label>
+                              <input type="text" class="form-control zoom-tdi" id="nameUser" name="nameUser" style="width: 100%!important;" readonly analytics="true" gooddataid="1">
+                           </div>
+                        </div>
+                        <div class="form-group col-md-4 ms-left">                            
+                           <label for="empresa">Empresa\Filial<strong class="required text-danger"></strong></label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                                    <input type="hidden" id="codFilial" name="codFilial" data-fluig-state-valid="0,4,119,491,505"
+                                        data-fluig-write="0,4,119,491,505">
+                                        <input type="hidden" id="codArmazem" name="codArmazem" data-fluig-state-valid="0,4,119,491,505"
+                                        data-fluig-write="0,4,119,491,505">
+                                    <input type="text" class="form-control zoom-tdi" id="empresa" name="empresa"
+                                        data-fluig-state-valid="0,4,119,491" data-fluig-write="0,4,119,491,505" onchange="validaCampo(this)"
+                                        required="required" readonly placeholder="Selecione a Empresa ">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomEmpresa(this)" data-toggle="tooltip"
+                                        data-placement="bottom" title="Pesquisar empresa">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="form-group col-md-4 ms-left">
+                            <label for="centroCusto">Centro de Custo:<strong class="required text-danger"></strong></label>
+                            <div class="input-group" readonly="">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                                <input type="hidden" id="codCentroCusto" name="codCentroCusto">
+                                <input type="text" class="form-control zoom-tdi" id="descricao" name="descricao" onchange="validaCampo(this)"
+                                    required="required" readonly="readonly" placeholder="Clique na lupa para selecionar">
+                                <div class="input-group-addon zoom-tdi" id="bottom" onchange="habilitaBtn()" onclick="zoomCusto(this)"
+                                    data-toggle="tooltip" data-placement="bottom" title="Pesquisar empresa">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-field" data-type="date" data-show-properties="" data-field-name="prazoEntrega">
+                            <div class="col-md-2">
+                                <label for="prazoEntrega" style="color:red;">Prazo de Entrega: </label>                                    
+                                <input type="date" id="prazoEntrega" onkeypress="return false" name="prazoEntrega" min=""
+                                    class="form-control" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-md-4 ms-left" id="setorDiv" name="setorDiv"> 
+                           <div class="input-group col-md-12">                  
+                              <label for="setor">Setor</label>
+                              <input type="text" class="form-control zoom-tdi" id="setor" name="setor" style="width: 100%!important;" analytics="true" gooddataid="1" value="Suprimentos">
+                           </div>
+                        </div>                   
+                     </div>                     
+                    
+                  </div> 
+               </div>   
+               
+               <!-- formulário dados da solicitação-->
+            <div class="panel panel-danger" id="panelDadoSolicitacao" name="panelDadoSolicitacao"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+                <div class="panel-heading">
+                    <p class="panel-title">
+                        <i class="flaticon flaticon-content-paste icon-lg"></i>
+                        <strong class="fs-xs-margin-left">Dados da Solicitação</strong>
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group col-md-12">
+                        <div class="table-datatable">
+                            <div class="form-group col-md-12">
+                                <div class="row fs-xs-margin-left">
+                                    <div class="col-md-6 text-left">
+                                        <h2 name="tituloProdutos" id="tituloProdutos">Produtos</h2>
+                                    </div>
+                                    <div class="col-md-6 text-right" id="grupoBotaoProdutos">
+                                        <!-- <button type="button" class="btn btn-success" name="modalAdicionarProduto" id="modalAdicionarProduto" data-toggle="tooltip" data-placement="bottom" title="Adicionar novo produto" >
+                                                   <i class="flaticon flaticon-add-box icon-sm"></i>
+                                                   Solicitar cadastro de produto
+                                                </button>  -->
+                                        <button type="button" class="btn btn-info" name="modalBuscarProduto" id="modalBuscarProduto"
+                                            data-toggle="tooltip" data-placement="bottom" title="Buscar produto">
+                                            <i class="flaticon flaticon-search icon-sm"></i>
+                                            Buscar Produto
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- tabela de produtos cadastrados no sistema e adicionados pelo usuário -->
+                            <div class="row">
+                                <div class="col-md-12 table-responsive fs-md-margin-top">
+                                    <h3 id="labelProdutosAdicionais">Produtos Adicionados</h3>
+                                    <table name="tb_produtos" id="tb_produtos"
+                                        class="table table-bordered table-striped inline-flex ">
+                                        <thead>
+                                            <tr>
+                                                <th>Código Produto</th>
+                                                <th>Descrição</th>
+                                                <th>Quantidade</th>
+                                                <th>Orçamento Disponível no Contrato</th>
+                                                <th>Especificação Técnica</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!-- tabela de produtos para visualização -->
+                                    <div id="produtosView"></div>
+                                    <input type="hidden" id="listaProdutos" name="listaProdutos">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div name="produtoTab" id="produtoTab">
+                        <div class="form-group col-md-12">
+                            <div class="input-group col-md-12">
+                                <label for="justificativa" class="col-md-12">Justificativa</label>
+                                <textarea class="form-control" rows="5" name="justificativa" id="justificativa"
+                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+               <!-- Panel controle orcamentario -->
+            
+                <div class="panel panel-danger" id="panelOrcamento"
+                    style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+                    <div class="panel-heading">
+                        <p class="panel-title">
+                            <i class="flaticon flaticon-content-paste icon-lg"></i>
+                            <strong class="fs-xs-margin-left">Controle Orçamentário</strong>
+                        </p>
+                    </div>
+                    <div class="panel-body">
+                        <!-- ORÇAMENTO FEITO PELO EMBAIXADOR -->
+                        <div class="row col-md-12 fs-huge-margin-top" data-type="table" data-field-name="tableOrcamento">
+                            <h2>Controle Orçamentário Realizado pelo Embaixador </h2>
+                            <div class="col-md-12 table-responsive fs-md-margin-top">
+                                <table name="tb_orcamento" id="tb_orcamento" class="table table-bordered table-striped  ">
+                                    <thead>
+                                        <tr>
+                                            <th>Descrição</th>
+                                            <th>Quantidade</th>
+                                            <th>Orçamento Disponível no Contrato</th>
+                                            <th>Especificação Técnica</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            
+                        <!-- APRESENTACAO VALOR TOTAL ORÇAMENTO -->
+                        <div class="row md-valores-cotacao">
+                            <div class="form-group col-md-4 ms-left">
+                                <div class="input-group col-md-12">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 ms-left">
+                                <div class="input-group col-md-12">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 ms-left">
+                                <div class="input-group col-md-12">
+                                    <h2>Orçamento Total</h2>
+                                    <span class="font-span" id="totalOrcamento"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+
+            <!-- Panel cotacoes -->            	
+            <div class="panel panel-success" id="panelCotacoes"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+                <div class="panel-heading">
+                    <p class="panel-title">
+                        <i class="flaticon flaticon-content-paste icon-lg"></i>
+                        <strong class="fs-xs-margin-left">Análise de Cotação</strong>
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <!-- analise de cotação equipe de compras -->
+                    <div class="row col-md-12 fs-huge-margin-top" data-type="table" data-field-name="tableCotacoes">
+                        <h2>Cotação Realizada Equipe de Compras </h2>
+                        <div class="col-md-12 table-responsive fs-md-margin-top">
+                            <table name="tb_cotacoes" id="tb_cotacoes" class="table table-bordered table-striped  ">
+                                <thead>
+                                    <tr>
+                                        <th>Descrição</th>
+                                        <th>Quantidade</th>
+                                        <th>Fornecedores</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Cotacoes a serem enviadas no taskScript130 -->
+                        <input type="hidden" name="cotacoesInput" id="cotacoesInput">
+                    </div>
+            
+                    <div class="row col-md-12 fs-huge-margin-top" id="erroCotacao">
+                        <span> Existem cotações que não foram realizadas. Favor entrar em contato com o setor de compras.</span>
+                    </div>
+            
+                    <!-- --- INICIO - APRESENTAÇÃO DE VALORES COTAÇÃO ----- -->
+            
+                 <!--   <div class="row ms-valores-cotacao">
+                        <div class="form-group col-md-3 ms-left">
+                            <div class="input-group col-md-12">
+                                <h2 id="labelValorMercadoria">Valor da Mercadoria</h2>
+                                <span class="font-span" id="valorMercadoria"></span>
+                            </div>
+                        </div> -->
+                        <div class="form-group col-md-3 ms-left">
+                            <div class="input-group col-md-12">
+                                <h2 id="labelDespesasFrete">Despesas</h2>
+                                <span class="font-span" id="valorDespesas"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 ms-left">
+                            <div class="input-group col-md-12">
+                                <h2 id="labelDespesasFrete">Frete</h2>
+                                <span class="font-span" id="valorFrete"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 ms-left">
+                            <div class="input-group col-md-12">
+                                <h2 id="labelTotalDesconto">Descontos</h2>
+                                <span class="font-span" id="valorDescontos"></span>
+                            </div>
+                        </div>
+            
+                    </div>
+            
+                    <div class="row ms-valores-cotacao">
+                        <div class="form-group col-md-4 ms-left">
+                            <div class="input-group col-md-12">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 ms-left">
+                            <div class="input-group col-md-12">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 ms-left">
+                            <div class="input-group col-md-12">
+                                <h2>Total Líquido da Cotação</h2>
+                                <span class="font-span" id="valorTotalCompra"></span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- <div class="row ms-valores-cotacao">
+                                    <div class="form-group col-md-4 ms-left"> 
+                                       <div class="input-group col-md-12">
+                                       </div>
+                                    </div>
+                                    <div class="form-group col-md-4 ms-left"> 
+                                       <div class="input-group col-md-12">                  
+                                       </div>
+                                    </div>
+                                    <div class="form-group col-md-4 ms-left"> 
+                                       <div class="input-group col-md-12">                  
+                                          <h2 id="labelTotalCompra">Valor total da compra</h2>
+                                          <span class="font-span" id="valorTotalCompra"></span>              
+                                       </div> 
+                                    </div>
+                                 </div>                     -->
+                    <!-- --- FIM - APRESENTAÇÃO DE VALORES COTAÇÃO ----- -->
+                </div>
+            </div>
+            
+               
+               <!-- formulario de validacao de servico -->
+               <div class="panel panel-success" id="panelValidarServico" style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
+                  <div class="panel-heading">
+                     <p class="panel-title">                      
+                        <i class="flaticon  flaticon-document-check  icon-lg"></i>
+                        <strong class="fs-xs-margin-left">Recebimento de Compra</strong>
+                     </p>
+                  </div>
+                  <div class="panel-body">
+                     <div id="montarInputServico"></div>
+                     <input type="hidden" id="countValidaInputServico" name="countValidaInputServico">
+                  </div>
+               </div>
+
+               <!-- campos hidden -->
+               <input type="hidden" class="form-control" id="processo" name="processo" >
+               <input type="hidden" class="form-control" id="estado" name="estado" >
+               <input type="hidden" class="form-control" id="existeProdutoNovo" name="existeProdutoNovo" >
+               <input type="hidden" class="form-control" id="existeGerente" name="existeGerente" >
+               <input type="hidden" class="form-control" id="isGerente" name="isGerente" value="false">
+               <input type="hidden" class="form-control" id="matriculaUsuario" name="matriculaUsuario">
+               <input type="hidden" id="responsavelAtendimento" name="responsavelAtendimento">
+               <input type="hidden" class="form-control" id="etapa" name="etapa" >
+            </form>
+         </div>         
+      </div> 
+      
+      <script type="text/javascript" src="scriptApp.js"></script>
+      <script type="text/javascript" src="modalBuscarProduto.js"></script>
+      <script type="text/javascript" src="editarProduto.js"></script>
+      <script type="text/javascript" src="scriptCotacao.js"></script> 	
+	  <script type="text/javascript" src="validarServico.js"></script>
+      <script type="text/javascript" src="validaItens.js"></script>    
+	  <script type="text/javascript" src="scriptOrcamentoEmbaixador.js"></script>  
+	  <script type="text/javascript" src="scriptGerenteResponsavel.js"></script>    
+      
+      <script type="text/javascript">
+      $(document).ready(function() {
+
+        $("#justificativa").bind('paste', function(e) {
+            e.preventDefault();
+        });   
+    });
+
+
+    var today = new Date();
+    today.setDate(today.getDate() + 15); //Voalá
+    today = today.toISOString().split('T')[0];
+                
+    document.getElementsByName("prazoEntrega")[0].setAttribute('min', today);
+    $("#prazoEntrega").keyup(function () {
+                $("#prazoEntrega").val("");
+            });
+
+                        
+
+            $.each($("[data-date]"), function (i, o) {
+                var id = $(o).attr("id");
+                FLUIGC.calendar("#" + id);
+            });
+
+            $(document).ready(function () {
+                $.each($("[data-date]"), function (i, o) {
+                    var id = $(o).attr("id");
+                    if ($("#" + id).attr("readonly")) {
+                        $("#" + id).data('DateTimePicker').disable();
+                    }
+                });
+            });
+
+    </script>
+   </body>
+</html>

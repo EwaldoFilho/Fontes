@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fluig</title>
+        <link href="${SERVER_URL}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+        <div align="center">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                <tr>
+                    <td>
+                        <img src="${SERVER_URL}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID}">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div align="center">
+            <p class="DescrMsgForum">
+                <b>¡Hola, ${RECEIVER}</b>
+            </p>
+        </div>
+        <div align="center">
+            <table cellspacing="0" cellpadding="0" border="0" align="center">
+                <tbody align="center">
+                <tr>
+                    <td>
+                        <p class="DescrMsgForum">
+                            <b>${SENDERS_LINKS!""}</b> ${EVENT!""} ${DESCRIPTION!""} <#if
+                                OBJECT?has_content>'${OBJECT!""}'</#if> ${OBJECTDETAIL!""} <#if
+                                PLACE?has_content>em <b>${PLACE!""}</b></#if> ${PLACEDETAIL!""}
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br /><br />
+        <div align="center" class="DescrMsgForum actions">
+            <a class="action" href="${LINK!''}">r a fluig</a>
+            <div style="...">&nbsp;</div>
+        </div>
+
+        <div align="center">
+            <p class="DescrMsgForum">Este correo electrónico es automática y no debe ser respondido.</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+
+
+//Função para adicionar itens em uma tabela pai x filho.
+function adicionarRateioCusto(CTT_CUSTO,CTT_DESC01) {
+    var id = wdkAddChild("rateioCusto");
+    var qtd = $("#baseRateio").val();
+    var atividade = getWKNumState();
+
+    $("#codCentroCustoForn___" + id).val(CTT_CUSTO);
+    $("#descricaoForn___" + id).val(CTT_DESC01);
+
+    qtd++
+    $("#baseRateio").val(qtd);
+    
+    
+   
+}
+
+
+function somaValor(){
+
+    var soma = 0;    
+    var porcento = 0;
+    $(":input[id^='valor___']").each(function (index, value) {
+           soma = soma + parseFloat($(this).val());
+           
+                });
+    
+ $("#valorTotal").val(soma.toFixed(2));
+ 
+
+ 	
+
+}
+
+function calcular(){
+    var util = new Util();
+    var i = util.IndicePaiFilho(obj);
+
+    var n1 = util.ItensPaiFilho("input","n1", i).val();
+    var n2 = util.ItensPaiFilho("input","n2", i).val();
+
+    util.ItensPaiFilho("input","total", i).val(n1 + n2);
+
+
+}
+
+function calculaTotal(obj) {
+    let id = obj.substring(17),
+        quantidade = parseInt($(`#CP_QUANT___${id}`).val()) || 0,
+        valor_unit = brlToFloat($(`#valor_unitario___${id}`).val())
+        total = quantidade * valor_unit;
+        $(`#valor_total___${id}`).val(floatToBrl(total));
+
+    somarTotal();
+}
