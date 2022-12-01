@@ -15,7 +15,7 @@
     <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
     <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
     <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
-
+    <script src="/webdesk/vcXMLRPC.js"></script>
     <!-- <link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/1.css' type='text/css' rel='stylesheet' />-->
 
 
@@ -61,11 +61,7 @@
         </div>
         <br><br>
 
-        <div class="panel-body fs-sm-margin">
-            <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos
-                com
-                * são de preenchimento obrigatório.</div>
-        </div>
+        
 
         <div class="panel panel-success fs-xl-margin" id="panelDadosSolicitante"
             style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');">
@@ -247,21 +243,7 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label" for="numProcesso">Número Processo</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="flaticon flaticon-folder-person icon-sm" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" id="numProcesso" name="numProcesso"
-                                    readonly="readonly" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
         <div class="panel panel-primary" id="confirmacao" name="confirmacao"
@@ -275,13 +257,13 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="form-group col-md-5"></div>
-                    <div align="center" class="alignment" style="line-height:10px"><img alt="Main Image"
+                    <div class="form-group col-xl-5"></div>
+                    <div align="center" class="form-group col-xl-2" style="line-height:10px"><img alt="Main Image"
                             src="https://s8.gifyu.com/images/selo-15-anos.gif"
                             style="display: block; height: auto; border: 0; width: 232px; max-width: 100%;"
                             title="Main Image" width="232" />
                     </div>
-                    <div class="form-group col-md-5"></div>
+                    <div class="form-group col-xl-5"></div>
                     <br><br><br><br>
                 </div>
                 <div class="row">
@@ -292,17 +274,14 @@
                                 <div class="txtTinyMce-wrapper"
                                     style="font-size: 14px; mso-line-height-alt: 21px; color: #000000; line-height: 1.5; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif;">
                                     <p style="margin: 0; font-size: 14px; text-align: center;">
-                                        <strong>Sua solicitação foi registrada com sucesso</strong>
-                                    </p>
-                                    <p style="margin: 0; font-size: 14px; text-align: center;">
-                                        E gerou o protocolo abaixo</p>
+                                        <strong>Segue Abaixo Solicitação Anterior</strong>
+                                    </p>                                    
                                 </div>
                             </div>
                         </td>
                     </div>
                 </div>
                 <div class="row">
-
                     <div class="form-group col-md-12">
                         <input readonly id="numSolicitacao" type="text" class="form-control" name="numSolicitacao"
                             style="padding-left:25px;padding-right:25px;font-size:15px;display:inline-block;letter-spacing:normal;text-align: center;">
@@ -318,8 +297,7 @@
                         target="_blank"><span
                             style="padding-left:25px;padding-right:25px;font-size:15px;display:inline-block;letter-spacing:normal;text-align: center;"><span
                                 style="word-break: break-word;"><span data-mce-style=""
-                                    style="line-height: 30px;"><strong>CLIQUE AQUI PARA VOLTAR AO
-                                        SITE.</strong></span></span></span></a>
+                                    style="line-height: 30px;"><strong>CLIQUE AQUI PARA ACOMPANHAR SUA SOLICITAÇÃO</strong></span></span></span></a>
 
                 </div>
 

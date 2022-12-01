@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;resgataDados.js&apos; to &apos;3458 - Formulário de Solicitação de adiantamento de viagem&apos;&#x0D;&#x0A;- Original project: &apos;cartaoCredito&apos;&#x0D;&#x0A;- Destination element: &apos;3458 - Formulário de Solicitação de adiantamento de viagem&apos;&#x0D;&#x0A;- Original element: &apos;resgataDados.js&apos;" description="Copy file" element1="forms/3518 - Formulário de Solicitação de cartão de crédito/resgataDados.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1669730639638" target="/adiantamentoViagem2/forms/3458 - Formulário de Solicitação de adiantamento de viagem" units="0" version="1.0"/>
+</session>
