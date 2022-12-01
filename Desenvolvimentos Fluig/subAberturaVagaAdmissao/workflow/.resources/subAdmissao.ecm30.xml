@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Admissão - Abertura de Vaga</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>60207</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -207,8 +207,8 @@
         <version>1</version>
         <sequence>14</sequence>
       </processStatePK>
-      <stateName>Serviço</stateName>
-      <stateDescription>Serviço</stateDescription>
+      <stateName>Integração Protheus</stateName>
+      <stateDescription>Integração Protheus</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -228,8 +228,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>260</positionX>
-      <positionY>56</positionY>
+      <positionX>340</positionX>
+      <positionY>70</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -255,7 +255,7 @@
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
         <version>1</version>
-        <sequence>18</sequence>
+        <sequence>17</sequence>
       </processStatePK>
       <stateName>Erro Protheus</stateName>
       <stateDescription>Erro Protheus</stateDescription>
@@ -278,8 +278,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>450</positionX>
-      <positionY>56</positionY>
+      <positionX>560</positionX>
+      <positionY>50</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -305,7 +305,7 @@
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
         <version>1</version>
-        <sequence>17</sequence>
+        <sequence>15</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
       <stateDescription>Intermediário</stateDescription>
@@ -329,7 +329,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>336</positionX>
+      <positionX>416</positionX>
       <positionY>70</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -453,7 +453,7 @@
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
         <version>1</version>
-        <linkSequence>15</linkSequence>
+        <linkSequence>16</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -470,12 +470,12 @@
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
         <version>1</version>
-        <linkSequence>16</linkSequence>
+        <linkSequence>18</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>14</initialStateSequence>
-      <finalStateSequence>11</finalStateSequence>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -492,7 +492,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>17</initialStateSequence>
-      <finalStateSequence>18</finalStateSequence>
+      <finalStateSequence>14</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -508,8 +508,8 @@
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>18</initialStateSequence>
-      <finalStateSequence>14</finalStateSequence>
+      <initialStateSequence>14</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -527,38 +527,12 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function servicetask14(attempt, message) {
-log.info(&quot;### Inclusão de pré nota - servicetask12 - INICIO ###&quot;);
+log.info(&quot;### Inclusão de ADMISSÃO - servicetask14 - INICIO ###&quot;);
 	
 
-	var cFilial        = &apos;&quot;&apos;+hAPI.getCardValue(&quot;codFilialForn&quot;)+&apos;&quot;&apos;;
-	var cNumero        = &apos;&quot;&apos;+hAPI.getCardValue(&quot;numeroNF&quot;)+&apos;&quot;&apos;;
-	var cNumFlg        = &apos;&quot;&apos;+hAPI.getCardValue(&quot;processo&quot;)+&apos;&quot;&apos;;
-	var Ccusto       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;codCentroCusto&quot;)+&apos;&quot;&apos;;
-	var cSerie       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;serieNF&quot;)+&apos;&quot;&apos;;
-	var cFornecedor  = &apos;&quot;&apos;+hAPI.getCardValue(&quot;codForn&quot;)+&apos;&quot;&apos;;
-	var cLoja        =  &apos;&quot;&apos;+hAPI.getCardValue (&quot;codLoja&quot;)+&apos;&quot;&apos;;
-	var cCondPagto       = &quot;&quot;;
-	var dDTemissao       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;dataFormatada&quot;)+&apos;&quot;&apos;;
-	var cEspecie       = &quot;&quot;;
-	var cEstado       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;estadoForn&quot;)+&apos;&quot;&apos;;
-	var cValor       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;valorFormatado&quot;)+&apos;&quot;&apos;;
+	var cObj       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;obj&quot;)+&apos;&quot;&apos;;	
 	
-	log.info(&quot;VARIAVEIS OBJETO PAGAMENTO PJ INICIO&quot;);
-	log.info(&quot;cFilial&quot; + cFilial);
-	log.info(&quot;cNumero&quot; + cNumero);
-	log.info(&quot;cNumFlg&quot; + cNumFlg);
-	log.info(&quot;Ccusto&quot; + Ccusto);
-	log.info(&quot;cSerie&quot; + cSerie);
-	log.info(&quot;cFornecedor&quot; + cFornecedor);
-	log.info(&quot;cLoja&quot; + cLoja);
-	log.info(&quot;cCondPagto&quot; + cCondPagto);
-	log.info(&quot;dDTemissao&quot; + dDTemissao);
-	log.info(&quot;cEspecie&quot; + cEspecie);
-	log.info(&quot;cEstado&quot; + cEstado);
-	log.info(&quot;cValor&quot; + cValor);
-	log.info(&quot;VARIAVEIS OBJETO PAGAMENTO PJ FIM&quot;);
-	
-	var objBackEnd = JSON.parse(&apos;{&quot;cNumFlg&quot;:&apos;+cNumFlg+&apos;,&quot;Ccusto&quot;:&apos;+Ccusto+&apos;,&quot;cNumero&quot;: &apos;+cNumero+&apos;, &quot;cSerie&quot;:&apos;+cSerie+&apos;, &quot;cFornecedor&quot;:&apos;+cFornecedor+&apos;, &quot;cLoja&quot;:&apos;+cLoja+&apos;, &quot;cCondPagto&quot;:&quot;12&quot;, &quot;dDTemissao&quot;:&apos;+dDTemissao+&apos;,&quot;cEspecie&quot;:&quot;NF&quot;,&quot;cEstado&quot;:&apos;+cEstado+&apos;,&quot;nota1&quot;:[{&quot;D1_FILIAL&quot;:&apos;+cFilial+&apos;,&quot;D1_ITEM&quot;:&quot;0001&quot;,&quot;D1_COD&quot;:&quot;100000000002255&quot;,&quot;D1_UM&quot;:&quot;UN&quot;,&quot;D1_QUANT&quot;:&quot;1&quot;,&quot;D1_VUNIT&quot;:&apos;+cValor+&apos;,&quot;D1_TOTAL&quot;:&apos;+cValor+&apos;}]}&apos;);
+	var objBackEnd = JSON.parse(cObj);
 
 	log.info(&quot;INFO OBJBACK::::&quot;+JSON.stringify(objBackEnd));
 	
@@ -570,7 +544,7 @@ log.info(&quot;### Inclusão de pré nota - servicetask12 - INICIO ###&quot;);
 		var data = {
 			companyId: compID + &quot;&quot;,
 			serviceCode: &quot;WSRESTPROTHEUS&quot;,
-			endpoint: &quot;/WSPREDOCUMENTO&quot;,
+			endpoint: &quot;/WSFUNC&quot;,
 			method: &quot;post&quot;,
 			timeoutService: &quot;200&quot;,
 			params: objBackEnd,
@@ -603,7 +577,7 @@ log.info(&quot;### Inclusão de pré nota - servicetask12 - INICIO ###&quot;);
 		log.info(&quot;Erro::::&quot;+error);
 		throw error;
 	 }
-	 log.info(&quot;### Finalização da integração Pré Nota TOTVS Protheus - servicetask12 - FIM ###&quot;);
+	 log.info(&quot;### Finalização da integração ADMISSÃO TOTVS Protheus - servicetask14 - FIM ###&quot;);
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -613,11 +587,9 @@ log.info(&quot;### Inclusão de pré nota - servicetask12 - INICIO ###&quot;);
         <processId>subAdmissao</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>#Thu Nov 10 08:23:36 BRT 2022&#xd;
-process.category=&#xd;
-process.description=Admissão - Abertura de Vaga&#xd;
-process.instructions=&#xd;
-</eventDescription>
+      <eventDescription>process.description=Admissão - Abertura de Vaga
+process.category=
+process.instructions=</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -626,11 +598,9 @@ process.instructions=&#xd;
         <processId>subAdmissao</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>#Thu Nov 10 08:23:36 BRT 2022&#xd;
-process.category=&#xd;
-process.description=Admissão - Abertura de Vaga&#xd;
-process.instructions=&#xd;
-</eventDescription>
+      <eventDescription>process.description=Admissão - Abertura de Vaga
+process.category=
+process.instructions=</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -639,11 +609,9 @@ process.instructions=&#xd;
         <processId>subAdmissao</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>#Thu Nov 10 08:23:36 BRT 2022&#xd;
-process.category=&#xd;
-process.description=Admissão - Abertura de Vaga&#xd;
-process.instructions=&#xd;
-</eventDescription>
+      <eventDescription>process.description=Admissão - Abertura de Vaga
+process.category=
+process.instructions=</eventDescription>
     </WorkflowProcessEvent>
   </list>
   <list/>
@@ -704,7 +672,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -715,12 +683,23 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
-        <version>1</version>
-        <linkSequence>20</linkSequence>
+        <version>2</version>
+        <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>404</positionX>
-      <positionY>27</positionY>
+      <positionX>494</positionX>
+      <positionY>67</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>subAdmissao</processId>
+        <version>2</version>
+        <linkSequence>19</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>505</positionX>
+      <positionY>111</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

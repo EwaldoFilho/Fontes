@@ -2,9 +2,9 @@ function servicetask14(attempt, message) {
 log.info("### Inclusão de ADMISSÃO - servicetask14 - INICIO ###");
 	
 
-	var cObj       = '"'+hAPI.getCardValue("obj")+'"';	
+	var cFilial        = '"'+hAPI.getCardValue("codFilialForn")+'"';	
 	
-	var objBackEnd = JSON.parse(cObj);
+	var objBackEnd = JSON.parse('{"cNumFlg":'+cNumFlg+',"Ccusto":'+Ccusto+',"cNumero": '+cNumero+', "cSerie":'+cSerie+', "cFornecedor":'+cFornecedor+', "cLoja":'+cLoja+', "cCondPagto":"12", "dDTemissao":'+dDTemissao+',"cEspecie":"NF","cEstado":'+cEstado+',"nota1":[{"D1_FILIAL":'+cFilial+',"D1_ITEM":"0001","D1_COD":"100000000002255","D1_UM":"UN","D1_QUANT":"1","D1_VUNIT":'+cValor+',"D1_TOTAL":'+cValor+'}]}');
 
 	log.info("INFO OBJBACK::::"+JSON.stringify(objBackEnd));
 	
