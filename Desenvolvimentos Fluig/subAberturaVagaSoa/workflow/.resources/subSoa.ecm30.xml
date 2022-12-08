@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>SubProcessos.SOA</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Uniforme SOA - Abertura de Vaga</processId>
-      <version>3</version>
+      <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -60,7 +60,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;ProcessosEspecifico&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -110,8 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;03185055179&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;admissaoSOA&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -162,8 +162,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;03185055179&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;admissaoSOA&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -312,7 +312,7 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Thu Nov 10 08:16:09 BRT 2022&#xd;
-process.category=&#xd;
+process.category=SubProcessos.SOA&#xd;
 process.description=Uniforme SOA - Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -325,7 +325,7 @@ process.instructions=&#xd;
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Thu Nov 10 08:16:09 BRT 2022&#xd;
-process.category=&#xd;
+process.category=SubProcessos.SOA&#xd;
 process.description=Uniforme SOA - Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -338,7 +338,7 @@ process.instructions=&#xd;
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Thu Nov 10 08:16:09 BRT 2022&#xd;
-process.category=&#xd;
+process.category=SubProcessos.SOA&#xd;
 process.description=Uniforme SOA - Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -402,7 +402,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subSoa</processId>
-        <version>3</version>
+        <version>7</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

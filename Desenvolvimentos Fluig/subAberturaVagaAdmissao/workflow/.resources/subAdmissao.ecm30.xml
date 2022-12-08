@@ -5,12 +5,13 @@
       <processId>subAdmissao</processId>
     </processDefinitionPK>
     <processDescription>Admissão - Abertura de Vaga</processDescription>
-    <instruction></instruction>
+    <instruction>Validar integração</instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>SubProcessos.Departamento Pessoal</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;0078&lt;/User&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -28,10 +29,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Admissão - Abertura de Vaga</processId>
-      <version>2</version>
+      <version>13</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>60207</formId>
+    <formId>84269</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -60,7 +61,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;ProcessosEspecifico&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -110,8 +111,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;03185055179&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;admissao&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -155,15 +156,15 @@
         <version>1</version>
         <sequence>11</sequence>
       </processStatePK>
-      <stateName>integração</stateName>
-      <stateDescription>integração</stateDescription>
+      <stateName>Validação</stateName>
+      <stateDescription>Validação</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;03185055179&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;5&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -257,13 +258,15 @@
         <version>1</version>
         <sequence>17</sequence>
       </processStatePK>
-      <stateName>Erro Protheus</stateName>
-      <stateDescription>Erro Protheus</stateDescription>
+      <stateName>Erro Protheus Admissão</stateName>
+      <stateDescription>Erro Protheus Admissão</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -530,13 +533,165 @@
 log.info(&quot;### Inclusão de ADMISSÃO - servicetask14 - INICIO ###&quot;);
 	
 
-	var cObj       = &apos;&quot;&apos;+hAPI.getCardValue(&quot;obj&quot;)+&apos;&quot;&apos;;	
-	
-	var objBackEnd = JSON.parse(cObj);
+var RA_FILIAL        = &apos;&apos;+hAPI.getCardValue(&quot;RA_FILIAL&quot;)+&apos;&apos;;    	
+var RA_NOME          = &apos;&apos;+hAPI.getCardValue(&quot;RA_NOME&quot;)+&apos;&apos;;
+var RA_NOMECMP       = &apos;&apos;+hAPI.getCardValue(&quot;RA_NOMECMP&quot;)+&apos;&apos;;
+var RA_MAE           = &apos;&apos;+hAPI.getCardValue(&quot;RA_MAE&quot;)+&apos;&apos;;
+var RA_PAI           = &apos;&apos;+hAPI.getCardValue(&quot;RA_PAI&quot;)+&apos;&apos;;
+var RA_SEXO          = &apos;&apos;+hAPI.getCardValue(&quot;RA_SEXO&quot;)+&apos;&apos;;
+var RA_RACACOR       =  &apos;&apos;+hAPI.getCardValue(&quot;RA_RACACOR&quot;)+&apos;&apos;;
+var RA_NASC          = &apos;&apos;+hAPI.getCardValue(&quot;nascFormatado&quot;)+&apos;&apos;;
+var RA_ESTCIVI       = &apos;&apos;+hAPI.getCardValue(&quot;RA_ESTCIVI&quot;)+&apos;&apos;;
+var RA_CPAISOR       = &apos;&apos;+hAPI.getCardValue(&quot;RA_CPAISOR&quot;)+&apos;&apos;;
+var RA_DTFIMCT       = &apos;&apos;+hAPI.getCardValue(&quot;RA_DTFIMCT&quot;)+&apos;&apos;;    	
+var RA_NATURAL       = &apos;&apos;+hAPI.getCardValue(&quot;RA_NATURAL&quot;)+&apos;&apos;;
+var RA_NACIONA       = &apos;&apos;+hAPI.getCardValue(&quot;RA_NACIONA&quot;)+&apos;&apos;;
+var RA_NACIONC       = &apos;&apos;+hAPI.getCardValue(&quot;RA_CPAISOR&quot;)+&apos;&apos;;
+var RA_CODMUNN       = &apos;&apos;+hAPI.getCardValue(&quot;RA_CODMUNN&quot;)+&apos;&apos;;
+var RA_MUNNASC       = &apos;&apos;+hAPI.getCardValue(&quot;descricaoMun&quot;)+&apos;&apos;;
+var RA_GRINRAI       = &apos;&apos;+hAPI.getCardValue(&quot;RA_GRINRAI&quot;)+&apos;&apos;;
+var RA_EMAIL         = &apos;&apos;+hAPI.getCardValue(&quot;RA_EMAIL&quot;)+&apos;&apos;;
+var RA_BRPDH         = &apos;&apos;+hAPI.getCardValue(&quot;RA_BRPDH&quot;)+&apos;&apos;;
+var RA_DEFIFIS       = &apos;&apos;+hAPI.getCardValue(&quot;RA_DEFIFIS&quot;)+&apos;&apos;;
+var RA_CC            = &apos;&apos;+hAPI.getCardValue(&quot;RA_CC&quot;)+&apos;&apos;;
+var RA_TIPOADM       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TIPOADM&quot;)+&apos;&apos;;
+var RA_ADMISSA       = &apos;&apos;+hAPI.getCardValue(&quot;dataFormatada&quot;)+&apos;&apos;;
+var RA_OPCAO         = &apos;&apos;+hAPI.getCardValue(&quot;RA_OPCAO&quot;)+&apos;&apos;;
+var RA_BCDEPSA       = &apos;&apos;+hAPI.getCardValue(&quot;RA_BCDEPSA&quot;)+&apos;&apos;;
+var RA_CTDEPSA       = &apos;&apos;+hAPI.getCardValue(&quot;RA_CTDEPSA&quot;)+&apos;&apos;;
+var RA_TPPREVI       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TPPREVI&quot;)+&apos;&apos;;
+var RA_PROCES        = &apos;&apos;+hAPI.getCardValue(&quot;RA_PROCES&quot;)+&apos;&apos;;
+var RA_HRSMES        = &apos;&apos;+hAPI.getCardValue(&quot;RA_HRSMES&quot;)+&apos;&apos;;
+var RA_CATFUNC       = &apos;&apos;+hAPI.getCardValue(&quot;RA_CATFUNC&quot;)+&apos;&apos;;
+var RA_HRSEMAN       = &apos;&apos;+hAPI.getCardValue(&quot;RA_HRSEMAN&quot;)+&apos;&apos;;
+var RA_HRSDIA        = &apos;&apos;+hAPI.getCardValue(&quot;RA_HRSDIA&quot;)+&apos;&apos;;
+var RA_CODFUNC       = &apos;&apos;+hAPI.getCardValue(&quot;RA_CODFUNC&quot;)+&apos;&apos;;
+var RA_SALARIO       = &apos;&apos;+hAPI.getCardValue(&quot;valorFormatado&quot;)+&apos;&apos;;
+var RA_TPCONTR       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TPCONTR&quot;)+&apos;&apos;;
+var RA_HOPARC        = &apos;&apos;+hAPI.getCardValue(&quot;RA_HOPARC&quot;)+&apos;&apos;;
+var RA_SINDICA       = &apos;&apos;+hAPI.getCardValue(&quot;RA_SINDICA&quot;)+&apos;&apos;;
+var RA_TIPOPGT       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TIPOPGT&quot;)+&apos;&apos;;
+var RA_VIEMRAI       = &apos;&apos;+hAPI.getCardValue(&quot;RA_VIEMRAI&quot;)+&apos;&apos;;
+var RA_CATEFD        = &apos;&apos;+hAPI.getCardValue(&quot;RA_CATEFD&quot;)+&apos;&apos;;
+var RA_CONFED        = &apos;&apos;+hAPI.getCardValue(&quot;RA_CONFED&quot;)+&apos;&apos;;
+var RA_MENSIND       = &apos;&apos;+hAPI.getCardValue(&quot;RA_MENSIND&quot;)+&apos;&apos;;
+var RA_ASSIST        = &apos;&apos;+hAPI.getCardValue(&quot;RA_ASSIST&quot;)+&apos;&apos;;
+var RA_DEPTO         = &apos;&apos;+hAPI.getCardValue(&quot;RA_DEPTO&quot;)+&apos;&apos;;
+var RA_COMPSAB       = &apos;&apos;+hAPI.getCardValue(&quot;RA_COMPSAB&quot;)+&apos;&apos;;
+var RA_CIC           = &apos;&apos;+hAPI.getCardValue(&quot;RA_CIC&quot;)+&apos;&apos;;
+var RA_PIS           = &apos;&apos;+hAPI.getCardValue(&quot;RA_PIS&quot;)+&apos;&apos;;
+var RA_RG            = &apos;&apos;+hAPI.getCardValue(&quot;RA_RG&quot;)+&apos;&apos;;
+var RA_DTRGEXP       = &apos;&apos;+hAPI.getCardValue(&quot;expFormatado&quot;)+&apos;&apos;;
+var RA_RGUF          = &apos;&apos;+hAPI.getCardValue(&quot;RA_RGUF&quot;)+&apos;&apos;;
+var RA_RGORG         = &apos;&apos;+hAPI.getCardValue(&quot;RA_RGORG&quot;)+&apos;&apos;;
+var RA_RGEXP         = &apos;&apos;+hAPI.getCardValue(&quot;RA_RGEXP&quot;)+&apos;&apos;;
+var RA_ORGEMRG       = &apos;&apos;+hAPI.getCardValue(&quot;RA_ORGEMRG&quot;)+&apos;&apos;;
+var RA_TITULOE       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TITULOE&quot;)+&apos;&apos;;
+var RA_ZONASEC       = &apos;&apos;+hAPI.getCardValue(&quot;RA_ZONASEC&quot;)+&apos;&apos;;
+var RA_SECAO         = &apos;&apos;+hAPI.getCardValue(&quot;RA_SECAO&quot;)+&apos;&apos;;
+var RA_LOCBNF        = &apos;&apos;+hAPI.getCardValue(&quot;RA_LOCBNF&quot;)+&apos;&apos;;    	
+var RA_TNOTRAB       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TNOTRAB&quot;)+&apos;&apos;;
+var RA_REGRA         = &apos;&apos;+hAPI.getCardValue(&quot;RA_REGRA&quot;)+&apos;&apos;;
+var RA_SEQTURN       = &apos;&apos;+hAPI.getCardValue(&quot;RA_SEQTURN&quot;)+&apos;&apos;;
+var RA_TIPENDE       = &apos;&apos;+hAPI.getCardValue(&quot;RA_TIPENDE&quot;)+&apos;&apos;;
+var RA_LOGRTP        = &apos;&apos;+hAPI.getCardValue(&quot;RA_LOGRTP&quot;)+&apos;&apos;;
+var RA_LOGRDSC       = &apos;&apos;+hAPI.getCardValue(&quot;RA_LOGRDSC&quot;)+&apos;&apos;;
+var RA_LOGRNUM       = &apos;&apos;+hAPI.getCardValue(&quot;RA_LOGRNUM&quot;)+&apos;&apos;;
+var RA_ENDEREC       = &apos;&apos;+hAPI.getCardValue(&quot;RA_ENDEREC&quot;)+&apos;&apos;;
+var RA_NUMENDE       = &apos;&apos;+hAPI.getCardValue(&quot;RA_NUMENDE&quot;)+&apos;&apos;;
+var RA_COMPLEM       = &apos;&apos;+hAPI.getCardValue(&quot;RA_COMPLEM&quot;)+&apos;&apos;;
+var RA_BAIRRO        = &apos;&apos;+hAPI.getCardValue(&quot;RA_BAIRRO&quot;)+&apos;&apos;;
+var RA_ESTADO        = &apos;&apos;+hAPI.getCardValue(&quot;RA_ESTADO&quot;)+&apos;&apos;;
+var RA_CODMUN        = &apos;&apos;+hAPI.getCardValue(&quot;RA_CODMUN&quot;)+&apos;&apos;;    	
+var RA_MUNICIP       = &apos;&apos;+hAPI.getCardValue(&quot;RA_MUNICIP&quot;)+&apos;&apos;;
+var RA_CEP           = &apos;&apos;+hAPI.getCardValue(&quot;RA_CEP&quot;)+&apos;&apos;;
+var RA_DDDCELU       = &apos;&apos;+hAPI.getCardValue(&quot;RA_DDDCELU&quot;)+&apos;&apos;;
+var RA_NUMCELU       = &apos;&apos;+hAPI.getCardValue(&quot;RA_NUMCELU&quot;)+&apos;&apos;;
+var RA_ADCPERI       = &apos;&apos;+hAPI.getCardValue(&quot;RA_ADCPERI&quot;)+&apos;&apos;;
+var RA_ADCINS        = &apos;&apos;+hAPI.getCardValue(&quot;RA_ADCINS&quot;)+&apos;&apos;;
+var RA_XTPCON        = &apos;&apos;+hAPI.getCardValue(&quot;RA_XTPCON&quot;)+&apos;&apos;;	
+log.info(&quot;RA_FILIAL::::&quot;+RA_FILIAL);
+log.info(&quot;RA_NOME::::&quot;+RA_NOME);
+log.info(&quot;RA_NOMECMP::::&quot;+RA_NOMECMP);
+log.info(&quot;RA_MAE::::&quot;+RA_MAE);
+log.info(&quot;RA_PAI::::&quot;+RA_PAI);
+log.info(&quot;RA_SEXO::::&quot;+RA_SEXO);
+log.info(&quot;RA_RACACOR::::&quot;+RA_RACACOR);
+log.info(&quot;RA_NASC::::&quot;+RA_NASC);
+log.info(&quot;RA_ESTCIVI::::&quot;+RA_ESTCIVI);
+log.info(&quot;RA_CPAISOR::::&quot;+RA_CPAISOR);
+log.info(&quot;RA_DTFIMCT::::&quot;+RA_DTFIMCT);
+log.info(&quot;RA_NATURAL::::&quot;+RA_NATURAL);
+log.info(&quot;RA_NACIONA::::&quot;+RA_NACIONA);
+log.info(&quot;RA_CODMUNN::::&quot;+RA_CODMUNN);
+log.info(&quot;RA_MUNNASC::::&quot;+RA_MUNNASC);
+log.info(&quot;RA_GRINRAI::::&quot;+RA_GRINRAI);
+log.info(&quot;RA_EMAIL::::&quot;+RA_EMAIL);
+log.info(&quot;RA_BRPDH::::&quot;+RA_BRPDH);
+log.info(&quot;RA_DEFIFIS::::&quot;+RA_DEFIFIS);
+log.info(&quot;RA_CC::::&quot;+RA_CC);
+log.info(&quot;RA_TIPOADM::::&quot;+RA_TIPOADM);
+log.info(&quot;RA_OPCAO::::&quot;+RA_OPCAO);
+log.info(&quot;RA_BCDEPSA::::&quot;+RA_BCDEPSA);
+log.info(&quot;RA_CTDEPSA::::&quot;+RA_CTDEPSA);
+log.info(&quot;RA_TPPREVI::::&quot;+RA_TPPREVI);
+log.info(&quot;RA_PROCES::::&quot;+RA_PROCES);
+log.info(&quot;RA_HRSMES::::&quot;+RA_HRSMES);
+log.info(&quot;RA_CATFUNC::::&quot;+RA_CATFUNC);
+log.info(&quot;RA_HRSEMAN::::&quot;+RA_HRSEMAN);
+log.info(&quot;RA_HRSDIA::::&quot;+RA_HRSDIA);
+log.info(&quot;RA_CODFUNC::::&quot;+RA_CODFUNC);
+log.info(&quot;RA_SALARIO::::&quot;+RA_SALARIO);
+log.info(&quot;RA_TPCONTR::::&quot;+RA_TPCONTR);
+log.info(&quot;RA_HOPARC::::&quot;+RA_HOPARC);
+log.info(&quot;RA_SINDICA::::&quot;+RA_SINDICA);
+log.info(&quot;RA_TIPOPGT::::&quot;+RA_TIPOPGT);
+log.info(&quot;RA_VIEMRAI::::&quot;+RA_VIEMRAI);
+log.info(&quot;RA_CATEFD::::&quot;+RA_CATEFD);
+log.info(&quot;RA_CONFED::::&quot;+RA_CONFED);
+log.info(&quot;RA_MENSIND::::&quot;+RA_MENSIND);
+log.info(&quot;RA_ASSIST::::&quot;+RA_ASSIST);
+log.info(&quot;RA_DEPTO::::&quot;+RA_DEPTO);
+log.info(&quot;RA_COMPSAB::::&quot;+RA_COMPSAB);
+log.info(&quot;RA_CIC::::&quot;+RA_CIC);
+log.info(&quot;RA_PIS::::&quot;+RA_PIS);
+log.info(&quot;RA_RG::::&quot;+RA_RG);
+log.info(&quot;RA_DTRGEXP::::&quot;+RA_DTRGEXP);
+log.info(&quot;RA_RGUF::::&quot;+RA_RGUF);
+log.info(&quot;RA_RGORG::::&quot;+RA_RGORG);
+log.info(&quot;RA_RGEXP::::&quot;+RA_RGEXP);
+log.info(&quot;RA_ORGEMRG::::&quot;+RA_ORGEMRG);
+log.info(&quot;RA_TITULOE::::&quot;+RA_TITULOE);
+log.info(&quot;RA_ZONASEC::::&quot;+RA_ZONASEC);
+log.info(&quot;RA_SECAO::::&quot;+RA_SECAO);
+log.info(&quot;RA_LOCBNF::::&quot;+RA_LOCBNF);
+log.info(&quot;RA_TNOTRAB::::&quot;+RA_TNOTRAB);
+log.info(&quot;RA_REGRA::::&quot;+RA_REGRA);
+log.info(&quot;RA_SEQTURN::::&quot;+RA_SEQTURN);
+log.info(&quot;RA_TIPENDE::::&quot;+RA_TIPENDE);
+log.info(&quot;RA_LOGRTP::::&quot;+RA_LOGRTP);
+log.info(&quot;RA_LOGRDSC::::&quot;+RA_LOGRDSC);
+log.info(&quot;RA_LOGRNUM::::&quot;+RA_LOGRNUM);
+log.info(&quot;RA_ENDEREC::::&quot;+RA_ENDEREC);
+log.info(&quot;RA_NUMENDE::::&quot;+RA_NUMENDE);
+log.info(&quot;RA_COMPLEM::::&quot;+RA_COMPLEM);
+log.info(&quot;RA_BAIRRO::::&quot;+RA_BAIRRO);
+log.info(&quot;RA_ESTADO::::&quot;+RA_ESTADO);
+log.info(&quot;RA_CODMUN::::&quot;+RA_CODMUN);
+log.info(&quot;RA_MUNICIP::::&quot;+RA_MUNICIP);
+log.info(&quot;RA_CEP::::&quot;+RA_CEP);
+log.info(&quot;RA_DDDCELU::::&quot;+RA_DDDCELU);
+log.info(&quot;RA_NUMCELU::::&quot;+RA_NUMCELU);
+log.info(&quot;RA_ADCPERI::::&quot;+RA_ADCPERI);
+log.info(&quot;RA_ADCINS::::&quot;+RA_ADCINS);
+log.info(&quot;RA_XTPCON::::&quot;+RA_XTPCON);
+
+
+	var objBackEnd = JSON.parse(&apos;{&quot;RA_FILIAL&quot;:&quot;&apos;+RA_FILIAL+&apos;&quot;,&quot;RA_NOME&quot;:&quot;&apos;+RA_NOME+&apos;&quot;,&quot;RA_NOMECMP&quot;:&quot;&apos;+RA_NOMECMP+&apos;&quot;,&quot;RA_MAE&quot;:&quot;&apos;+RA_MAE+&apos;&quot;,&quot;RA_PAI&quot;:&quot;&apos;+RA_PAI+&apos;&quot;,&quot;RA_SEXO&quot;:&quot;&apos;+RA_SEXO+&apos;&quot;,&quot;RA_RACACOR&quot;:&quot;&apos;+RA_RACACOR+&apos;&quot;,&quot;RA_NASC&quot;:&quot;&apos;+RA_NASC+&apos;&quot;,&quot;RA_ESTCIVI&quot;:&quot;&apos;+RA_ESTCIVI+&apos;&quot;,&quot;RA_CPAISOR&quot;:&quot;&apos;+RA_CPAISOR+&apos;&quot;,&quot;RA_DTFIMCT&quot;:&quot;&apos;+RA_DTFIMCT+&apos;&quot;,&quot;RA_NATURAL&quot;:&quot;&apos;+RA_NATURAL+&apos;&quot;,&quot;RA_NACIONA&quot;:&quot;&apos;+RA_NACIONA+&apos;&quot;,&quot;RA_NACIONC&quot;:&quot;&apos;+RA_NACIONC+&apos;&quot;,&quot;RA_CODMUNN&quot;:&quot;&apos;+RA_CODMUNN+&apos;&quot;,&quot;RA_MUNNASC&quot;:&quot;&apos;+RA_MUNNASC+&apos;&quot;,&quot;RA_GRINRAI&quot;:&quot;&apos;+RA_GRINRAI+&apos;&quot;,&quot;RA_EMAIL&quot;:&quot;&apos;+RA_EMAIL+&apos;&quot;,&quot;RA_BRPDH&quot;:&quot;&apos;+RA_BRPDH+&apos;&quot;,&quot;RA_DEFIFIS&quot;:&quot;&apos;+RA_DEFIFIS+&apos;&quot;,&quot;RA_CC&quot;:&quot;&apos;+RA_CC+&apos;&quot;,&quot;RA_TIPOADM&quot;:&quot;&apos;+RA_TIPOADM+&apos;&quot;,&quot;RA_ADMISSA&quot;:&quot;&apos;+RA_ADMISSA+&apos;&quot;,&quot;RA_OPCAO&quot;:&quot;&apos;+RA_OPCAO+&apos;&quot;,&quot;RA_BCDEPSA&quot;:&quot;&apos;+RA_BCDEPSA+&apos;&quot;,&quot;RA_CTDEPSA&quot;:&quot;&apos;+RA_CTDEPSA+&apos;&quot;,&quot;RA_TPPREVI&quot;:&quot;&apos;+RA_TPPREVI+&apos;&quot;,&quot;RA_PROCES&quot;:&quot;&apos;+RA_PROCES+&apos;&quot;,&quot;RA_HRSMES&quot;:&quot;&apos;+RA_HRSMES+&apos;&quot;,&quot;RA_CATFUNC&quot;:&quot;&apos;+RA_CATFUNC+&apos;&quot;,&quot;RA_HRSEMAN&quot;:&quot;&apos;+RA_HRSEMAN+&apos;&quot;,&quot;RA_HRSDIA&quot;:&quot;&apos;+RA_HRSDIA+&apos;&quot;,&quot;RA_CODFUNC&quot;:&quot;&apos;+RA_CODFUNC+&apos;&quot;,&quot;RA_SALARIO&quot;:&quot;&apos;+RA_SALARIO+&apos;&quot;,&quot;RA_TPCONTR&quot;:&quot;&apos;+RA_TPCONTR+&apos;&quot;,&quot;RA_HOPARC&quot;:&quot;&apos;+RA_HOPARC+&apos;&quot;,&quot;RA_SINDICA&quot;:&quot;&apos;+RA_SINDICA+&apos;&quot;,&quot;RA_TIPOPGT&quot;:&quot;&apos;+RA_TIPOPGT+&apos;&quot;,&quot;RA_VIEMRAI&quot;:&quot;&apos;+RA_VIEMRAI+&apos;&quot;,&quot;RA_CATEFD&quot;:&quot;&apos;+RA_CATEFD+&apos;&quot;,&quot;RA_CONFED&quot;:&quot;&apos;+RA_CONFED+&apos;&quot;,&quot;RA_MENSIND&quot;:&quot;&apos;+RA_MENSIND+&apos;&quot;,&quot;RA_ASSIST&quot;:&quot;&apos;+RA_ASSIST+&apos;&quot;,&quot;RA_DEPTO&quot;:&quot;&apos;+RA_DEPTO+&apos;&quot;,&quot;RA_COMPSAB&quot;:&quot;&apos;+RA_COMPSAB+&apos;&quot;,&quot;RA_CIC&quot;:&quot;&apos;+RA_CIC+&apos;&quot;,&quot;RA_PIS&quot;:&quot;&apos;+RA_PIS+&apos;&quot;,&quot;RA_RG&quot;:&quot;&apos;+RA_RG+&apos;&quot;,&quot;RA_DTRGEXP&quot;:&quot;&apos;+RA_DTRGEXP+&apos;&quot;,&quot;RA_RGUF&quot;:&quot;&apos;+RA_RGUF+&apos;&quot;,&quot;RA_RGORG&quot;:&quot;&apos;+RA_RGORG+&apos;&quot;,&quot;RA_RGEXP&quot;:&quot;&apos;+RA_RGEXP+&apos;&quot;,&quot;RA_ORGEMRG&quot;:&quot;&apos;+RA_ORGEMRG+&apos;&quot;,&quot;RA_TITULOE&quot;:&quot;&apos;+RA_TITULOE+&apos;&quot;,&quot;RA_ZONASEC&quot;:&quot;&apos;+RA_ZONASEC+&apos;&quot;,&quot;RA_SECAO&quot;:&quot;&apos;+RA_SECAO+&apos;&quot;,&quot;RA_LOCBNF&quot;:&quot;&apos;+RA_LOCBNF+&apos;&quot;,&quot;RA_TNOTRAB&quot;:&quot;&apos;+RA_TNOTRAB+&apos;&quot;,&quot;RA_REGRA&quot;:&quot;&apos;+RA_REGRA+&apos;&quot;,&quot;RA_SEQTURN&quot;:&quot;&apos;+RA_SEQTURN+&apos;&quot;,&quot;RA_TIPENDE&quot;:&quot;&apos;+RA_TIPENDE+&apos;&quot;,&quot;RA_LOGRTP&quot;:&quot;&apos;+RA_LOGRTP+&apos;&quot;,&quot;RA_LOGRDSC&quot;:&quot;&apos;+RA_LOGRDSC+&apos;&quot;,&quot;RA_LOGRNUM&quot;:&quot;&apos;+RA_LOGRNUM+&apos;&quot;,&quot;RA_ENDEREC&quot;:&quot;&apos;+RA_ENDEREC+&apos;&quot;,&quot;RA_NUMENDE&quot;:&quot;&apos;+RA_NUMENDE+&apos;&quot;,&quot;RA_COMPLEM&quot;:&quot;&apos;+RA_COMPLEM+&apos;&quot;,&quot;RA_BAIRRO&quot;:&quot;&apos;+RA_BAIRRO+&apos;&quot;,&quot;RA_ESTADO&quot;:&quot;&apos;+RA_ESTADO+&apos;&quot;,&quot;RA_CODMUN&quot;:&quot;&apos;+RA_CODMUN+&apos;&quot;,&quot;RA_MUNICIP&quot;:&quot;&apos;+RA_MUNICIP+&apos;&quot;,&quot;RA_CEP&quot;:&quot;&apos;+RA_CEP+&apos;&quot;,&quot;RA_DDDCELU&quot;:&quot;&apos;+RA_DDDCELU+&apos;&quot;,&quot;RA_NUMCELU&quot;:&quot;&apos;+RA_NUMCELU+&apos;&quot;,&quot;RA_ADCPERI&quot;:&quot;&apos;+RA_ADCPERI+&apos;&quot;,&quot;RA_ADCINS&quot;:&quot;&apos;+RA_ADCINS+&apos;&quot;,&quot;RA_XTPCON&quot;:&quot;&apos;+RA_XTPCON+&apos;&quot;}&apos;);
 
 	log.info(&quot;INFO OBJBACK::::&quot;+JSON.stringify(objBackEnd));
 	
-	try {
+
 	
 		var clientService = fluigAPI.getAuthorizeClientService();	
 		var compID = getValue(&quot;WKCompany&quot;);
@@ -555,30 +710,25 @@ log.info(&quot;### Inclusão de ADMISSÃO - servicetask14 - INICIO ###&quot;);
 		}
 		
 		var vo = clientService.invoke(JSONUtil.toJSON(data));
-		
-		if(vo.getResult() == null || vo.getResult().isEmpty()){
-			throw &quot;Erro na integração da Pré Nota.&quot;;	
-		}else{	
-			var response =  vo.getResult();
-			var responseJson = JSON.parse(response);//Para os erros que são gerados via Protheus
-			var erroRest =  &quot;com.fluig.authorize.client.exception.ClientBasicAuthorizeException: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.200.66:8012 [/192.168.200.66] failed: Connection refused: connect&quot;;			
-			
-			log.info(&quot;RESPONSE:::&quot;+response);
-			
-			if ((response.indexOf(erroRest)) == 0){
-				throw &quot;Não foi possível estabelecer uma conexçao com o Protheus. Tente novamente!&quot;
-			}else if(responseJson.errorCode == 500){
-				throw &quot;Erro interno no servidor! Entre em contato com o administrador do sistema.&quot;;
-			}else if(responseJson.errorCode == 401 || responseJson.errorCode == 403 || responseJson.errorCode == 404 ){
-				throw &quot;Erro na autenticação/endereço inexistente&quot;; 
-			}
-		}		
-	 } catch (error) {
-		log.info(&quot;Erro::::&quot;+error);
-		throw error;
-	 }
-	 log.info(&quot;### Finalização da integração ADMISSÃO TOTVS Protheus - servicetask14 - FIM ###&quot;);
-}</eventDescription>
+        if (vo.getResult() == null || vo.getResult().isEmpty()) {
+            throw &quot;Erro na integração da admissão.&quot;;
+        } else {
+            log.info(&quot;### Integração Admissão - servicetask14 - response - &quot; + vo.getResult());
+            
+            var response = JSON.parse(vo.getResult());
+            var numSolicitacao = getValue(&quot;WKNumProces&quot;);
+             hAPI.setCardValue(&quot;matriculaProtheus&quot;,response.MESSAGE);             
+            if (response.STATUS == undefined || response.STATUS == null) {
+                throw &quot;Erro de comunicação com o Protheus&quot;;
+            } else {
+                if (response.STATUS == false) {
+                    throw response.MESSAGE;
+                }
+            }
+        }   
+	}
+
+</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -588,7 +738,7 @@ log.info(&quot;### Inclusão de ADMISSÃO - servicetask14 - INICIO ###&quot;);
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>process.description=Admissão - Abertura de Vaga
-process.category=
+process.category=SubProcessos.Departamento Pessoal
 process.instructions=</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -599,7 +749,7 @@ process.instructions=</eventDescription>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>process.description=Admissão - Abertura de Vaga
-process.category=
+process.category=SubProcessos.Departamento Pessoal
 process.instructions=</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -610,7 +760,7 @@ process.instructions=</eventDescription>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>process.description=Admissão - Abertura de Vaga
-process.category=
+process.category=SubProcessos.Departamento Pessoal
 process.instructions=</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -672,7 +822,7 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
-        <version>2</version>
+        <version>13</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -683,7 +833,7 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
-        <version>2</version>
+        <version>13</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -694,7 +844,7 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subAdmissao</processId>
-        <version>2</version>
+        <version>13</version>
         <linkSequence>19</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

@@ -104,6 +104,7 @@
 	        var data = new Date();		    
 		    var valorFormatado = $("#RA_SALARIO").val();
 		    var dataFormatada = $("#RA_ADMISSA").val();
+		    var nscFormatada = $("#RA_NASC").val();
 		    
 		    v = valorFormatado.replace(/\D/g,''); 
 
@@ -114,9 +115,23 @@
 
 		    $("#valorFormatado").val(v);
 		    $("#dataFormatada").val(dataFormatada.split("-").join(""));
-		    $("#RA_OPCAO").val(dataFormatada.split("-").join(""));	
+		    $("#RA_OPCAO").val(dataFormatada.split("-").join(""));
+		    $("#nascFormatado").val(nscFormatada.split("-").join(""));
 	 }
 
 
  }
  
+ function formNascimento (){
+	 
+	 var nscFormatada = $("#RA_NASC").val();
+	 $("#nascFormatado").val(nscFormatada.split("-").join(""));
+	 
+ }
+
+ function formExpd (){
+	 
+	 var nscFormatada = $("#RA_DTRGEXP").val();
+	 $("#expFormatado").val(nscFormatada.split("-").join(""));
+	 
+ }

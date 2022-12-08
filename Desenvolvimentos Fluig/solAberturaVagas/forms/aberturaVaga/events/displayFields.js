@@ -55,6 +55,15 @@ function displayFields(form, customHTML) {
 		form.setVisibleById("panelDadosContratado",false);
 		form.setValue('processo', processo);
 		
+	}if (state == 18) {
+		form.setVisibleById("panelDadosSolicitacao",true);
+		form.setVisibleById("panelDadosContratado",false);
+				
+	}if (state == 28) {
+		form.setVisibleById("panelDadosSolicitacao",true);
+		form.setVisibleById("panelDadosContratado",false);
+		
+		
 	}
 	
 

@@ -1,0 +1,44 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<div class="fs-xl-margin-left fs-md-margin-right">
+			<div class="row text-center" data-type="header"  data-field-name="headerRetirarMateriais">
+				<h1></h1>
+			</div>
+			<form class="form-horizontal fs-sm-margin-top" name="form" role="form">
+				<div class="row" data-type="content"  data-field-name="contentRetirarMateriais">
+					<div class="panel panel-success fs-xl-margin-right">
+						<div class="panel-heading">
+							<p class="panel-title">
+								<i class="flaticon flaticon-transport icon-md"></i>
+								<strong>Saída de insumos e produtos</strong>
+						   </p>
+						</div>
+						<div class="panel-body">
+							<div class="row fs-sm-margin-left fs-xl-margin-top form-group" data-type="table"  data-field-name="produtosView" >
+								<div class="table-responsive form-group col-sm-12" id="produtosView"></div>
+							 </div>
+						</div>
+					</div>
+					<input type="hidden" name="processo" id="processo">
+					<input type="hidden" name="processoPai" id="processoPai">
+					<input type="hidden" name="listaProdutosRetirada" id="listaProdutosRetirada">
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<script type="text/javascript" src="scriptApp.js">
+    </script>
+</body>
+</html>

@@ -578,7 +578,7 @@
                                             class="required text-danger"></strong></label>
                                     <input type="Date" class="form-control" id="RA_NASC" name="RA_NASC" value=""
                                         required data-toggle="tooltip" title="Informe a Data de Nascimento do
-                                    funcionário." />
+                                    funcionário." onchange="formNascimento()"/>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -728,6 +728,14 @@
                                     <option value="3">Não Aplicavel</option>
                                     <option value="X">Anonimizado</option>
                                 </select>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">Matrícula Protheus</label>
+                                    <input type="text" class="form-control input-sm" id="matriculaProtheus" name="matriculaProtheus"
+                                        data-toggle="tooltip"  readonly                                       
+                                        title="Matrícula Protheus" />                                   
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -1203,7 +1211,7 @@
                                         <label class="control-label" for="RA_DTRGEXP">Dt Emiss RG<strong
                                                 class="required text-danger"></strong></label>
                                         <input type="Date" class="form-control" id="RA_DTRGEXP" name="RA_DTRGEXP"
-                                            value="" data-toggle="tooltip" title="Informe a data de expedição do RG." />
+                                            value="" data-toggle="tooltip" title="Informe a data de expedição do RG." onchange="formExpd()"/>
                                     </div>
                                 </div>
                             </div>
@@ -1697,8 +1705,10 @@
                                     <input type="hidden" id="valorFormatado" name="valorFormatado">
                                     <input type="hidden" id="qtdCandidato" name="qtdCandidato">
                                     <input type="hidden" id="dataFormatada" name="dataFormatada">
+                                    <input type="hidden" id="nascFormatado" name="nascFormatado" value="">
+                                    <input type="hidden" id="expFormatado" name="expFormatado" value="">
                                     <input type="hidden" id="modulo" name="modulo" value="Acesso ao sistema">
-                                    <input type="hidden" id="obj" name="obj" value="">
+                                    <input type="hidden" id="obj" name="obj" value="">                                    
                                     <!-- -->
         </form>
         
@@ -1744,13 +1754,13 @@
             $("#indicacaoNome").hide();
             $("#indicacaoContato").hide();
             $("#tipoFolguista").hide();
-            $('#cardFuncionais').show();
-            $('#cardDocumentos').show();
-            $('#cardBeneficios').show();
-            $('#cardPonto').show();
-            $('#cardInformacoes').show();
-            $('#cardAdicionais').show();
-            $('#cardEndereco').show();
+            $('#cardFuncionais').hide();
+            $('#cardDocumentos').hide();
+            $('#cardBeneficios').hide();
+            $('#cardPonto').hide();
+            $('#cardInformacoes').hide();
+            $('#cardAdicionais').hide();
+            $('#cardEndereco').hide();
 
             function campos() {
                 var x = document.getElementById("headCount").value;

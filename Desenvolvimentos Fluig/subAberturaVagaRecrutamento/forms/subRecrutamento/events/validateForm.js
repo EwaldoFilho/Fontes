@@ -2,7 +2,7 @@ function validateForm(form) {
 	var activity = getValue('WKNumState');
 	var state    = getValue("WKNumState");
 	
-	if (state == 5) {		
+	if (state == 10) {		
 
 			if ((form.getValue("nomeColaborador") == null || form.getValue("nomeColaborador") == "") && ( getValue('nomeColaborador') == null )) {
 					throw "Informe o NOME do Colaborador Selecionado";

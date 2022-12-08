@@ -1,0 +1,83 @@
+function enableFields(form) {
+    var activity = getValue('WKNumState');
+    var indexes = form.getChildrenIndexes("rateioCusto");
+
+    
+    
+    if (activity == 0) {
+        form.setEnabled('descricaoCentroCustoSol', true);
+        form.setEnabled('headCount', true);
+        form.setEnabled('Tcontratacao', true);
+        form.setEnabled('substituicaoNome', true);
+        form.setEnabled('tipoFolguista', true);
+        form.setEnabled('descricaoCentroCusto', false);
+        form.setEnabled('descricaoTcontrato', true);
+        form.setEnabled('descricaoFunc', false);
+        form.setEnabled('localVaga', true);
+        form.setEnabled('indicacao', true);
+        form.setEnabled('indicacaoNome', true);
+        form.setEnabled('indicacaoContato', true);
+        form.setEnabled('dataDocumentacao', true);
+        form.setEnabled('dataDesejada', true);
+        form.setEnabled('cargahora', true);
+        form.setEnabled('salario', true);
+        form.setEnabled('adicional', true);
+        form.setEnabled('valeRefeicao', true);
+        form.setEnabled('valorTransporte', true);
+        form.setEnabled('cursos', true);
+        form.setEnabled('experienciaPro', true);
+        form.setEnabled('atividade', true);
+        form.setEnabled('observacao', true);
+        
+        
+    }
+    if (activity == 18) {
+    	form.setEnabled('descricaoCentroCustoSol', true);
+        form.setEnabled('headCount', true);
+        form.setEnabled('Tcontratacao', true);
+        form.setEnabled('substituicaoNome', true);
+        form.setEnabled('tipoFolguista', true);
+        form.setEnabled('descricaoCentroCusto', false);
+        form.setEnabled('descricaoTcontrato', true);
+        form.setEnabled('descricaoFunc', false);
+        form.setEnabled('localVaga', true);
+        form.setEnabled('indicacao', true);
+        form.setEnabled('indicacaoNome', true);
+        form.setEnabled('indicacaoContato', true);
+        form.setEnabled('dataDocumentacao', true);
+        form.setEnabled('dataDesejada', true);
+        form.setEnabled('cargahora', true);
+        form.setEnabled('salario', true);
+        form.setEnabled('adicional', true);
+        form.setEnabled('valeRefeicao', true);
+        form.setEnabled('valorTransporte', true);
+        form.setEnabled('cursos', true);
+        form.setEnabled('experienciaPro', true);
+        form.setEnabled('atividade', true);
+        form.setEnabled('observacao', true);
+        
+    }
+    if (activity == 6) {
+    	form.setEnabled('empresas', false);
+        form.setEnabled('fornecedor', false);
+        form.setEnabled('numeroNF', false);
+        form.setEnabled('serieNF', false);
+        form.setEnabled('tipoRegime', false);
+        form.setEnabled('valorTotal', false);
+        form.setEnabled('centroCusto', false);
+        form.setEnabled('dataEmissao', false);
+        
+    }
+    if (activity == 22) {
+    	form.setEnabled('empresas', false);
+        form.setEnabled('fornecedor', false);
+        form.setEnabled('numeroNF', false);
+        form.setEnabled('serieNF', false);
+        form.setEnabled('tipoRegime', false);
+        form.setEnabled('valorTotal', false);
+        form.setEnabled('centroCusto', false);
+        form.setEnabled('dataEmissao', false);
+        
+    }
+    
+}

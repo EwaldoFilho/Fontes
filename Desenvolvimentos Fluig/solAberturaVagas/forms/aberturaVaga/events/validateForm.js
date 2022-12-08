@@ -3,10 +3,18 @@ function validateForm(form) {
 	var state    = getValue("WKNumState");
 	
 	if (state == 0 || state == 4) {		
-
+			
+		
+		
+			if ((form.getValue("descricaoCentroCustoSol") == null || form.getValue("descricaoCentroCustoSol") == "") && ( getValue('descricaoCentroCustoSol') == null )) {
+					throw "Favor Informar o seu Centro de Custo";
+					}
 			if ((form.getValue("headCount") == null || form.getValue("headCount") == "") && ( getValue('headCount') == null )) {
 					throw "Selecionar Headcount.";
 					}
+			if ((form.getValue("Tcontratacao") == null || form.getValue("Tcontratacao") == "") && ( getValue('Tcontratacao') == null )) {
+				throw "Selecionar o tipo de Contratação.";
+				}
 
 			if ((form.getValue("codCentroCusto") == null || form.getValue("codCentroCusto") == "") && ( getValue('codCentroCusto') == null )) {
 					throw "Selecionar Contrato.";

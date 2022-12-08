@@ -1,4 +1,6 @@
+var state = $("#estado").val;
 
+if (state == 61 || state == 40 || state == 53 || state == 57) {
    $(document).ready(function (){
 	   
 	   $.ajax({
@@ -102,5 +104,5 @@
         }
     });
     
-    
+} 
    

@@ -1,0 +1,572 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="http://portal.medmais.com:8007/style-guide/css/fluig-style-guide.min.css">
+    <script src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery.js"></script>
+    <script src="http://portal.medmais.com:8007/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="http://portal.medmais.com:8007/portal/resources/js/mustache/mustache-min.js"></script>
+    <script src="http://portal.medmais.com:8007/style-guide/js/fluig-style-guide.min.js"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/dist/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script type="text/javascript" src="FLUIGIP.js"></script>
+    <script type="text/javascript" src="zoom.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
+    <script type="text/javascript" src="scriptGerentes.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+
+
+</head>
+<style>
+    hr {
+        height: 4px;
+        background-color: red;
+
+    }
+
+    input.type.text {
+        border-radius: 1em;
+        border-radius: 10px/20px;
+        box-shadow: black 0.5em 0.5em 0.3em
+    }
+
+    form {
+        width: 100%;
+        margin: 100px 0;
+        border: 5px solid black;
+        padding: 20px;
+        border-style: inset;
+        border-radius: 40px;
+        border-color: rgb(101 163 13);
+        position: absolute;
+
+    }
+
+    .linha {
+        color: #cc3d3d;
+
+
+
+    }
+
+    .linha:after {
+        content: "_____________________________________________________________________________________________________________";
+        color: #d9edf7;
+    }
+
+    .borda {
+        background: #d9edf7;
+        border-radius: 20px 20px 0px 0px;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" autocomplete="off"
+            style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+            <div class="row text-center" data-type="header" data-field-name="">
+
+                <div class="col-md-2">
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/responsive_logo_image.png"
+                        style="width: auto; height: 100px; opacity: 100%;">
+                </div>
+                <div class="col-md-8">
+
+                    <h1 class="text-center" id="tituloSolicitacaoFerias"
+                        style="font-family: Verdana, sans-serif;font-size: 45px;">
+                        Solicitação de Férias
+                    </h1>
+                </div>
+                <div class="col-md-2">
+                    <img src="http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/responsive_logo_image.png"
+                        style="width: auto; height: 100px; opacity: 100%;">
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitante"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados do Solicitante</b>
+                    </h3>
+                </div>
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="col-md-2 ">
+                        <div class="form-group">
+
+                            <label class="control-label" for="datasolicitacao">Data</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-event icon-sm" aria-hidden="true"></i></span>
+                                <input id="datasolicitacao" type="text" class="form-control" name="datasolicitacao"
+                                    readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+
+                            <label class="control-label  " for="solicitanteNome">Nome do Solicitante</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-folder-person icon-sm" aria-hidden="true"></i></span>
+                                <input type="hidden" id="solicitanteCode" name="solicitanteCode" />
+                                <input type="text" readonly class="form-control" id="solicitanteNome"
+                                    name="solicitanteNome" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="solicitanteEmail">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-drafts icon-sm" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail"
+                                    readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="descricaoCentroCustoSol">Centro de custo<strong class="required text-danger"
+                                    data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                            <div class="input-group col-sm-12">
+                                <input type="hidden" class="form-control zoom-tdi" id="codCentroCustoSol"
+                                    name="codCentroCustoSol" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                <span class="input-group-addon">
+                                    <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control zoom-tdi" id="descricaoCentroCustoSol"
+                                    name="descricaoCentroCustoSol" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                    readonly onchange="validaCampo(this)" analytics="true" gooddataid="2">
+                                <div class="input-group-addon zoom-tdi" onclick="zoomCustoSol(this)" data-toggle=""
+                                    data-placement="bottom" title="Pesquisar centro de custo">
+                                    <i class="flaticon flaticon-search icon-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel panel-success fs-xl-margin-top" id="panelDadosSolicitacao"
+                style="background-image: url('http://portal.medmais.com:8007/portal/api/servlet/image/0101001/custom/abstrato-branco-3d.jpg');  ">
+                <div class="panel-heading fs-sm-padding-top fs-sm-padding-bottom">
+                    <h3 class="panel-title">
+                        <b>Dados da Solicitação</b>
+                    </h3>
+                </div>
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+                <div class="panel-body fs-sm-margin-top">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="descricaoCentroCusto">Centro de custo<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <input type="hidden" class="form-control zoom-tdi" id="codCentroCusto"
+                                        name="codCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-company icon-sm" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control zoom-tdi" id="descricaoCentroCusto"
+                                        name="descricaoCentroCusto" data-fluig-state-valid="0,4" data-fluig-write="0,4"
+                                        readonly onchange="validaCampo(this)" analytics="true" gooddataid="2">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomCusto(this)" data-toggle=""
+                                        data-placement="bottom" title="Pesquisar centro de custo">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="colaborador">Colaborador<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-person-refresh icon-sm"
+                                            aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control zoom-tdi" id="colaborador" name="colaborador"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" readonly
+                                        onchange="validaCampo(this)" required="required" analytics="true" gooddataid="2"
+                                        data-toggle="tooltip" title="Selecione o colaborador.">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomColaboradores(this)">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="perFerias">Período de Férias<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-tasks icon-sm" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control zoom-tdi" id="perFerias" name="perFerias"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" readonly
+                                        onchange="validaCampo(this)" required="required" analytics="true" gooddataid="2"
+                                        data-toggle="tooltip" title="Selecione o Período de Férias.">
+                                    <div class="input-group-addon zoom-tdi" onclick="zoomPeriodos(this)">
+                                        <i class="flaticon flaticon-search icon-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="perLimite">Período Limite de Gozo<strong class="required text-danger"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4"></strong></label>
+                                <div class="input-group col-sm-12">
+                                    <span class="input-group-addon">
+                                        <i class="flaticon flaticon-event icon-sm" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" id="perLimite" name="perLimite"
+                                        data-fluig-state-valid="0,4" data-fluig-write="0,4" readonly
+                                        onchange="validaCampo(this)" required="required" analytics="true" gooddataid="2"
+                                        data-toggle="tooltip"
+                                        title="Este é o período no qual o gozo de férias deve ocorrer.">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-offset-2 col-md-8">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" style="text-align:center;">Regras para Concessão de Férias
+                                </h3>
+                            </div>
+                            <div class="panel-body" style="text-align:justify;">
+                                <b>•</b> Quem determina quando o empregado deve sair de férias <b>é o empregador</b>;
+                                <br><b>•</b> As férias <b>não podem</b> ter sua data de início em dois dias antecedentes
+                                a um feriado ou
+                                do dia de descanso semanal remunerado (DSR) do colaborador(<b>*Escalas 12x36 não se
+                                    aplica esta regra*</b>);
+                                <br><b>• SÓ PODERÁ DIVIDIR AS FÉRIAS EM ATÉ DOIS PERÍODOS</b>: pelo menos um destes
+                                períodos não
+                                deve ser inferior a 14 dias corridos e o outro não pode ser inferior a 5 dias corridos;
+                                <br><b>• ABONO PECUNIÁRIO</b>: somente com autorização da DIRETORIA;
+                                <br><b>•</b> A concessão de férias deverá ser comunicada ao funcionário com <b>no mínimo
+                                    30 dias</b> de
+                                antecedência;
+                                <br><b>•</b> O pagamento do adiantamento de férias deve ocorrer em <b>até dois dias
+                                    antes do início do
+                                    período de gozo</b> do colaborador, conforme determina o artigo 145 da CLT;
+                                <br><b>•</b> Não se esqueça que faltas e alguns afastamentos podem interferir no período
+                                de férias
+                                dos colaboradores.
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Dt. Programação</th>
+                                    <th>Qt. Dias</th>
+                                    <th>Abono Pecuniário</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="flaticon flaticon-event icon-sm"
+                                                            aria-hidden="true"></i></span>
+                                                    <input id="dt1programacao" type="Date" class="form-control"
+                                                        name="dt1programacao" onclick="myFunction3()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="flaticon flaticon-arrange icon-sm"
+                                                        aria-hidden="true"></i></span>
+                                                <input type="number" name="qtDias1" id="qtDias1" class="form-control"
+                                                    data-only-numbers="" min="6" max="30" onchange="myFunction()">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="flaticon flaticon-file-check icon-sm"
+                                                        aria-hidden="true"></i></span>
+                                                <select class="form-control" name="abonoPecuniario1"
+                                                    id="abonoPecuniario1" required="required" data-toggle="tooltip"
+                                                    title="" style="cursor:pointer;" tabindex="-1">
+                                                    <option value=""></option>
+                                                    <option value="sim">Sim</option>
+                                                    <option value="nao">Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="flaticon flaticon-event icon-sm"
+                                                            aria-hidden="true"></i></span>
+                                                    <input id="dt2programacao" type="Date" class="form-control"
+                                                        name="dt2programacao" onclick="myFunction3()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="flaticon flaticon-arrange icon-sm"
+                                                        aria-hidden="true"></i></span>
+                                                <input type="number" name="qtDias2" id="qtDias2" class="form-control"
+                                                    data-only-numbers="" min="6" max="30" onchange="myFunction2()">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="flaticon flaticon-file-check icon-sm"
+                                                        aria-hidden="true"></i></span>
+                                                <select class="form-control" name="abonoPecuniario2"
+                                                    id="abonoPecuniario2" required="required" data-toggle="tooltip"
+                                                    title="" style="cursor:pointer;" tabindex="-1">
+                                                    <option value=""></option>
+                                                    <option value="sim">Sim</option>
+                                                    <option value="nao">Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-warning" id="panelAvisoFerias1">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="text-align:center;">AVISO DE FÉRIAS
+                    </h3>
+                </div>
+                <div>
+                    <button onclick="javascript: printWebDeskFrame();" id="printBt">Imprimir</button>
+                </div>
+                <div class="row">
+                    <h2 style="text-align:center"><strong>AVISO DE F&Eacute;RIAS</strong></h2>
+
+                    <p style="text-align:right;padding-right: 100px;"><input class="input-group-offset" maxlength="20" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="DATAATUALIMP1" id="DATAATUALIMP1" size="20" type="text" />&nbsp;
+                    </p>
+
+                    <p style="padding-left: 100px;">A(O) SR(A)</p>
+
+                    <p>&nbsp;</p>
+
+                    <p style="padding-left: 100px;"><input maxlength="8" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" name="MATRICULA1" readonly id="MATRICULA1"size="8" type="text" /> - <input maxlength="30"
+                        style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="NOMECOLABORADOR1" id="NOMECOLABORADOR1" size="30" type="text" /></p>
+
+                    <p style="padding-left: 100px;"><input maxlength="30" class="input-group" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="CENTROCUSTOIMP1" id="CENTROCUSTOIMP1"
+                        size="30" type="text" /></p>
+
+                    <p style="margin-left:80px">&nbsp;</p>
+
+                    <p style="margin-left:80px; padding-left: 100px;">Nos termos da legisla&ccedil;&atilde;o vigente, suas f&eacute;rias
+                        ser&atilde;o concedidas conforme o demonstrativo abaixo:</p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">Per&iacute;odo Aquisitivo:&nbsp; <input maxlength="30" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly
+                            name="PERIODOAQUISITIVOIMP" id="PERIODOAQUISITIVOIMP" size="30" type="text" /></p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">Per&iacute;odo de Gozo: <input maxlength="30" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="PERIODODEGOZOIMP1" id="PERIODODEGOZOIMP1"
+                            size="30" type="text" /></p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">Retorno ao Trabalho: <input maxlength="15" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="RETORNOTRABALHO1" id="RETORNOTRABALHO1"
+                            size="15" type="text" /></p>
+
+                    <p style="margin-left:80px;padding-left: 100px;">A remunera&ccedil;&atilde;o correspondente as ferias e, se for o caso,
+                        ao abono pecuni&aacute;rio e ao adiantamento da&nbsp;</p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">gratifica&ccedil;&atilde;o de natal, encontra-se no caixa e
+                        poder&aacute; ser recebida no dia&nbsp; <input maxlength="15" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="PAGAMENTO1" id="PAGAMENTO1" size="15"
+                            type="text" /> .&nbsp;</p>
+
+                    <p>&nbsp;</p>
+
+                    <p style="text-align:center">__________________________________________________________________</p>
+
+                    <p style="text-align:center">Assinatura do Colaborador</p>
+
+
+                </div>
+
+            </div>
+            <div class="panel panel-warning" id="panelAvisoFerias2">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="text-align:center;">AVISO DE FÉRIAS
+                    </h3>
+                </div>               
+                <div class="row">
+                    <h2 style="text-align:center"><strong>AVISO DE F&Eacute;RIAS</strong></h2>
+
+                    <p style="text-align:right;padding-right: 100px;"><input class="input-group-offset" maxlength="20" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="DATAATUALIMP2" id="DATAATUALIMP2" size="20" type="text" />&nbsp;
+                    </p>
+
+                    <p style="padding-left: 100px;">A(O) SR(A)</p>
+
+                    <p>&nbsp;</p>
+
+                    <p style="padding-left: 100px;"><input maxlength="8" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" name="MATRICULA2" readonly id="MATRICULA2"size="8" type="text" /> - <input maxlength="30"
+                        style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="NOMECOLABORADOR" id="NOMECOLABORADOR" size="30" type="text" /></p>
+
+                    <p style="padding-left: 100px;"><input maxlength="30" class="input-group" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="CENTROCUSTOIMP2" id="CENTROCUSTOIMP2"
+                        size="30" type="text" /></p>
+
+                    <p style="margin-left:80px">&nbsp;</p>
+
+                    <p style="margin-left:80px; padding-left: 100px;">Nos termos da legisla&ccedil;&atilde;o vigente, suas f&eacute;rias
+                        ser&atilde;o concedidas conforme o demonstrativo abaixo:</p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">Per&iacute;odo Aquisitivo:&nbsp; <input maxlength="30" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly
+                            name="PERIODOAQUISITIVOIMP2" id="PERIODOAQUISITIVOIMP2" size="30" type="text" /></p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">Per&iacute;odo de Gozo: <input maxlength="30" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="PERIODODEGOZOIMP2" id="PERIODODEGOZOIMP2"
+                            size="30" type="text" /></p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">Retorno ao Trabalho: <input maxlength="15" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="RETORNOTRABALHO2" id="RETORNOTRABALHO2"
+                            size="15" type="text" /></p>
+
+                    <p style="margin-left:80px;padding-left: 100px;">A remunera&ccedil;&atilde;o correspondente as ferias e, se for o caso,
+                        ao abono pecuni&aacute;rio e ao adiantamento da&nbsp;</p>
+
+                    <p style="margin-left:40px;padding-left: 100px;">gratifica&ccedil;&atilde;o de natal, encontra-se no caixa e
+                        poder&aacute; ser recebida no dia&nbsp; <input maxlength="15" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="PAGAMENTO2" id="PAGAMENTO2" size="15"
+                            type="text" /> .&nbsp;</p>
+
+                    <p>&nbsp;</p>
+
+                    <p style="text-align:center">__________________________________________________________________</p>
+
+                    <p style="text-align:center">Assinatura do Colaborador</p>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Campos de controle -->
+
+            <input type="hidden" class="form-control" id="isGerente" name="isGerente" value="false">
+            <input type="hidden" class="form-control" id="matriculaUsuario" name="matriculaUsuario">
+            <input type="hidden" id="responsavelAtendimento" name="responsavelAtendimento">
+            <input type="hidden" id="processo" name="processo">
+            <input type="hidden" id="estado" name="estado">
+            <input type="hidden" id="matColaborador" name="matColaborador">
+            <input type="hidden" id="dataBaseIni" name="dataBaseIni">
+            <input type="hidden" id="dataBaseFim" name="dataBaseFim">
+            <input type="hidden" id="programado1" name="programado1">
+            <input type="hidden" id="programado2" name="programado2">
+            <input type="hidden" id="qtDias1Prog" name="qtDias1Prog">
+            <input type="hidden" id="qtDias2Prog" name="qtDias2Prog">
+            <input type="hidden" id="diasProporcionais" name="diasProporcionais">
+            <!-- -->
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        const nameField = document.querySelector("input");
+
+        nameField.addEventListener("input", () => {
+            nameField.setCustomValidity("");
+            nameField.checkValidity();
+            console.log(nameField.checkValidity());
+        });
+
+        nameField.addEventListener("invalid", () => {
+            nameField.setCustomValidity("Please fill in your First Name.");
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.date').mask('11/11/1111');
+            $('.time').mask('00:00:00');
+            $('.date_time').mask('00/00/0000 00:00:00');
+            $('.cep').mask('00000-000');
+            $('.phone').mask('0000-0000');
+            $('.phone_with_ddd').mask('(00) 0000-0000');
+            $("#RA_HRSMES").mask('000.0000');
+            $('.mixed').mask('AAA 000-S0S');
+            $('.cpf').mask('000.000.000-00', { reverse: true });
+            $('#RA_SALARIO').mask('000.000.000.000.000,00', { reverse: true });
+            $('.money').mask('000.000.000.000.000,00', { reverse: true });
+        });
+    </script>
+    
+    <script>
+        $("#dt1programacao").keyup(function () {
+            $("#dt1programacao").val("");
+        });
+
+
+
+        $.each($("[data-date]"), function (i, o) {
+            var id = $(o).attr("id");
+            FLUIGC.calendar("#" + id);
+        });
+
+        $(document).ready(function () {
+            $.each($("[data-date]"), function (i, o) {
+                var id = $(o).attr("id");
+                if ($("#" + id).attr("readonly")) {
+                    $("#" + id).data('DateTimePicker').disable();
+                }
+            });
+        });
+    </script>
+    <script>
+        function lettersOnly(evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+            if (charCode > 32 && (charCode < 65 || charCode > 90) &&
+                (charCode < 97 || charCode > 122)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Digite Apenas Letras sem Acentos'
+                })
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <script type="text/javascript" src="javaAdmissao.js"></script>
+
+</body>
+
+</html>

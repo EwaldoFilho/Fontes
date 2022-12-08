@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>SubProcessos.Saúde e Segurança do Trabalho</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>ASO - Abertura de Vaga</processId>
-      <version>5</version>
+      <version>8</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -60,7 +60,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;ProcessosEspecifico&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -110,8 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;03185055179&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;areatecnica&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -162,8 +162,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;03185055179&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;areatecnica&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -179,7 +179,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>450</positionX>
-      <positionY>230</positionY>
+      <positionY>220</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -312,7 +312,7 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Tue Nov 08 11:53:02 BRT 2022&#xd;
-process.category=&#xd;
+process.category=SubProcessos.Saúde e Segurança do Trabalho&#xd;
 process.description=ASO - Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -325,7 +325,7 @@ process.instructions=&#xd;
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Tue Nov 08 11:53:02 BRT 2022&#xd;
-process.category=&#xd;
+process.category=SubProcessos.Saúde e Segurança do Trabalho&#xd;
 process.description=ASO - Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -338,7 +338,7 @@ process.instructions=&#xd;
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Tue Nov 08 11:53:02 BRT 2022&#xd;
-process.category=&#xd;
+process.category=SubProcessos.Saúde e Segurança do Trabalho&#xd;
 process.description=ASO - Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -402,7 +402,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subAso</processId>
-        <version>5</version>
+        <version>8</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

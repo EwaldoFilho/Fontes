@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Teste Produção</categoryId>
+    <categoryId>Gestão de pessoas</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Abertura de Vaga</processId>
-      <version>9</version>
+      <version>16</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>81096</formId>
@@ -60,7 +60,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;ProcessosEspecifico&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -205,58 +205,6 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <version>1</version>
-        <sequence>31</sequence>
-      </processStatePK>
-      <stateName>Validação Gestão RH</stateName>
-      <stateDescription>Validação Gestão RH</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>210</positionX>
-      <positionY>290</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>1</version>
         <sequence>40</sequence>
       </processStatePK>
       <stateName>Definição Admissão</stateName>
@@ -266,8 +214,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;desenvolvedores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;18&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -318,6 +266,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;18&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -368,6 +318,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -413,13 +365,15 @@
       </processStatePK>
       <stateName>Validação ASO</stateName>
       <stateDescription>Validação ASO</stateDescription>
-      <instruction>Validar deferimento de ASO</instruction>
+      <instruction>Validar deferimento de ASO&#xd;
+1 - SOA&#xd;
+2 - Novo Recrutamento</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Campo Formulário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;responsavelAtendimento&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;18&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -504,7 +458,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -534,8 +488,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>210</positionX>
-      <positionY>660</positionY>
+      <positionX>490</positionX>
+      <positionY>530</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -554,7 +508,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -584,8 +538,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>730</positionX>
-      <positionY>654</positionY>
+      <positionX>490</positionX>
+      <positionY>626</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -604,7 +558,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -654,7 +608,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -704,7 +658,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -754,7 +708,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -836,6 +790,81 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <version>1</version>
+        <sequence>68</sequence>
+      </processStatePK>
+      <stateName>Paralelo</stateName>
+      <stateDescription>Paralelo</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>false</automatic>
+      <positionX>230</positionX>
+      <positionY>602</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>3</stateType>
+      <bpmnType>126</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <sequence>72</sequence>
+      </processStatePK>
+      <stateName>Join</stateName>
+      <stateDescription>Join</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>false</automatic>
+      <positionX>690</positionX>
+      <positionY>610</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>4</stateType>
+      <bpmnType>127</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <sequence>77</sequence>
+      </processStatePK>
+      <stateName>Exclusivo</stateName>
+      <stateDescription>Exclusivo</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>110</positionX>
+      <positionY>602</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -885,11 +914,11 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <expressionOrder>1</expressionOrder>
-        <version>9</version>
+        <version>16</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition></condition>
-      <destinationSequenceId>31</destinationSequenceId>
+      <destinationSequenceId>12</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -897,7 +926,7 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <expressionOrder>2</expressionOrder>
-        <version>9</version>
+        <version>16</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition></condition>
@@ -905,6 +934,30 @@
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;responsavelAtendimento&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Campo Formulário</engineAllocationId>
       <conditionType>1</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>16</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;Tcontratacao&quot;) == &quot;PJ&quot;</condition>
+      <destinationSequenceId>40</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>16</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;Tcontratacao&quot;) != &quot;PJ&quot;</condition>
+      <destinationSequenceId>68</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
   <list>
@@ -970,57 +1023,6 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>28</initialStateSequence>
       <finalStateSequence>18</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>1</version>
-        <linkSequence>32</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>31</initialStateSequence>
-      <finalStateSequence>12</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>1</version>
-        <linkSequence>33</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>15</initialStateSequence>
-      <finalStateSequence>31</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>1</version>
-        <linkSequence>34</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>18</initialStateSequence>
-      <finalStateSequence>31</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1219,46 +1221,12 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <version>1</version>
-        <linkSequence>60</linkSequence>
+        <linkSequence>65</linkSequence>
       </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>27</initialStateSequence>
-      <finalStateSequence>40</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>1</version>
-        <linkSequence>62</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>26</initialStateSequence>
-      <finalStateSequence>61</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>1</version>
-        <linkSequence>63</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
+      <actionLabel>2 - Novo Recrutamento - Reprovado ASO</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>61</initialStateSequence>
-      <finalStateSequence>27</finalStateSequence>
+      <finalStateSequence>12</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1270,11 +1238,45 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <version>1</version>
-        <linkSequence>64</linkSequence>
+        <linkSequence>66</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>12</initialStateSequence>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>12</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>67</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>18</initialStateSequence>
+      <finalStateSequence>12</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>70</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>68</initialStateSequence>
       <finalStateSequence>26</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -1287,12 +1289,131 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <version>1</version>
-        <linkSequence>65</linkSequence>
+        <linkSequence>71</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
+      <initialStateSequence>68</initialStateSequence>
+      <finalStateSequence>27</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>73</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>26</initialStateSequence>
+      <finalStateSequence>72</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>74</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>27</initialStateSequence>
+      <finalStateSequence>72</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>75</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>72</initialStateSequence>
+      <finalStateSequence>61</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>76</linkSequence>
+      </processLinkPK>
+      <actionLabel>1 - Aprovado Enviar para Definição de Data Admissão</actionLabel>
+      <returnPermited>false</returnPermited>
       <initialStateSequence>61</initialStateSequence>
-      <finalStateSequence>12</finalStateSequence>
+      <finalStateSequence>40</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>78</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>12</initialStateSequence>
+      <finalStateSequence>77</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>79</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>68</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>1</version>
+        <linkSequence>80</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>40</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1310,7 +1431,7 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Wed Oct 19 09:40:41 BRT 2022&#xd;
-process.category=&#xd;
+process.category=Gestão de pessoas&#xd;
 process.description=Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -1323,7 +1444,7 @@ process.instructions=&#xd;
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Wed Oct 19 09:40:41 BRT 2022&#xd;
-process.category=&#xd;
+process.category=Gestão de pessoas&#xd;
 process.description=Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -1336,7 +1457,7 @@ process.instructions=&#xd;
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>#Wed Oct 19 09:40:41 BRT 2022&#xd;
-process.category=&#xd;
+process.category=Gestão de pessoas&#xd;
 process.description=Abertura de Vaga&#xd;
 process.instructions=&#xd;
 </eventDescription>
@@ -1416,18 +1537,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>9</version>
-        <linkSequence>34</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>443</positionX>
-      <positionY>328</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>solAberturaVaga</processId>
-        <version>9</version>
+        <version>16</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1438,7 +1548,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>9</version>
+        <version>16</version>
         <linkSequence>56</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1449,23 +1559,89 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>9</version>
-        <linkSequence>62</linkSequence>
+        <version>16</version>
+        <linkSequence>67</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>552</positionX>
-      <positionY>689</positionY>
+      <positionX>442</positionX>
+      <positionY>437</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>9</version>
-        <linkSequence>63</linkSequence>
+        <version>16</version>
+        <linkSequence>70</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>552</positionX>
-      <positionY>684</positionY>
+      <positionX>259</positionX>
+      <positionY>560</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>16</version>
+        <linkSequence>73</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>720</positionX>
+      <positionY>560</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>16</version>
+        <linkSequence>75</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>720</positionX>
+      <positionY>435</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>16</version>
+        <linkSequence>76</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>783</positionX>
+      <positionY>435</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>16</version>
+        <linkSequence>78</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>140</positionX>
+      <positionY>436</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>16</version>
+        <linkSequence>80</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>129</positionX>
+      <positionY>745</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>solAberturaVaga</processId>
+        <version>16</version>
+        <linkSequence>80</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>780</positionX>
+      <positionY>744</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

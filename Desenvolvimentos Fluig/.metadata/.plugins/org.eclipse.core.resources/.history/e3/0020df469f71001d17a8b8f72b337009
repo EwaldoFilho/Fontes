@@ -1,0 +1,128 @@
+function servicetask14(attempt, message) {
+log.info("### Inclusão de ADMISSÃO - servicetask14 - INICIO ###");
+	
+
+	var cObj       = '"'+hAPI.getCardValue("obj")+'"';	
+	
+	var objBackEnd = JSON.parse('{"RA_FILIAL":"'+RA_FILIAL+'",' +    			
+			'"RA_NOME":"'+RA_NOME+'",' +
+			'"RA_NOMECMP":"'+RA_NOMECMP+'",' +
+			'"RA_MAE":"'+RA_MAE+'",' +
+			'"RA_PAI":"'+RA_PAI+'",' +
+			'"RA_SEXO":"'+RA_SEXO+'",' +
+			'"RA_RACACOR":"'+RA_RACACOR+'",' +
+			'"RA_NASC":"'+RA_NASC+'",' +
+			'"RA_ESTCIVI":"'+RA_ESTCIVI+'",' +
+			'"RA_CPAISOR":"'+RA_CPAISOR+'",' +
+			'"RA_DTFIMCT":"'+RA_DTFIMCT+'",' +    			
+			'"RA_NATURAL":"'+RA_NATURAL+'",' +
+			'"RA_NACIONA":"'+RA_NACIONA+'",' +
+			'"RA_CODMUNN":"'+RA_CODMUNN+'",' +
+			'"RA_MUNNASC":"'+RA_MUNNASC+'",' +
+			'"RA_GRINRAI":"'+RA_GRINRAI+'",' +
+			'"RA_EMAIL":"'+RA_EMAIL+'",' +
+			'"RA_BRPDH":"'+RA_BRPDH+'",' +
+			'"RA_DEFIFIS":"'+RA_DEFIFIS+'",' +
+			'"RA_CC":"'+RA_CC+'",' +
+			'"RA_TIPOADM":"'+RA_TIPOADM+'",' +
+			'"RA_ADMISSA":"'+RA_ADMISSA+'",' +
+			'"RA_OPCAO":"'+RA_OPCAO+'",' +
+			'"RA_BCDEPSA":"'+RA_BCDEPSA+'",' +
+			'"RA_CTDEPSA":"'+RA_CTDEPSA+'",' +
+			'"RA_TPPREVI":"'+RA_TPPREVI+'",' +
+			'"RA_PROCES":"'+RA_PROCES+'",' +
+			'"RA_HRSMES":"'+RA_HRSMES+'",' +
+			'"RA_CATFUNC":"'+RA_CATFUNC+'",' +
+			'"RA_HRSEMAN":"'+RA_HRSEMAN+'",' +
+			'"RA_HRSDIA":"'+RA_HRSDIA+'",' +
+			'"RA_CODFUNC":"'+RA_CODFUNC+'",' +
+			'"RA_SALARIO":"'+RA_SALARIO+'",' +
+			'"RA_TPCONTR":"'+RA_TPCONTR+'",' +
+			'"RA_HOPARC":"'+RA_HOPARC+'",' +
+			'"RA_SINDICA":"'+RA_SINDICA+'",' +
+			'"RA_TIPOPGT":"'+RA_TIPOPGT+'",' +
+			'"RA_VIEMRAI":"'+RA_VIEMRAI+'",' +
+			'"RA_CATEFD":"'+RA_CATEFD+'",' +
+			'"RA_CONFED":"'+RA_CONFED+'",' +
+			'"RA_MENSIND":"'+RA_MENSIND+'",' +
+			'"RA_ASSIST":"'+RA_ASSIST+'",' +
+			'"RA_DEPTO":"'+RA_DEPTO+'",' +
+			'"RA_COMPSAB":"'+RA_COMPSAB+'",' +
+			'"RA_CIC":"'+RA_CIC+'",' +
+			'"RA_PIS":"'+RA_PIS+'",' +
+			'"RA_RG":"'+RA_RG+'",' +
+			'"RA_DTRGEXP":"'+RA_DTRGEXP+'",' +
+			'"RA_RGUF":"'+RA_RGUF+'",' +
+			'"RA_RGORG":"'+RA_RGORG+'",' +
+			'"RA_RGEXP":"'+RA_RGEXP+'",' +
+			'"RA_ORGEMRG":"'+RA_ORGEMRG+'",' +
+			'"RA_TITULOE":"'+RA_TITULOE+'",' +
+			'"RA_ZONASEC":"'+RA_ZONASEC+'",' +
+			'"RA_SECAO":"'+RA_SECAO+'",' +
+			'"RA_LOCBNF":"'+RA_LOCBNF+'",' +    			
+			'"RA_TNOTRAB":"'+RA_TNOTRAB+'",' +
+			'"RA_REGRA":"'+RA_REGRA+'",' +
+			'"RA_SEQTURN":"'+RA_SEQTURN+'",' +
+			'"RA_TIPENDE":"'+RA_TIPENDE+'",' +
+			'"RA_LOGRTP":"'+RA_LOGRTP+'",' +
+			'"RA_LOGRDSC":"'+RA_LOGRDSC+'",' +
+			'"RA_LOGRNUM":"'+RA_LOGRNUM+'",' +
+			'"RA_ENDEREC":"'+RA_ENDEREC+'",' +
+			'"RA_NUMENDE":"'+RA_NUMENDE+'",' +
+			'"RA_COMPLEM":"'+RA_COMPLEM+'",' +
+			'"RA_BAIRRO":"'+RA_BAIRRO+'",' +
+			'"RA_ESTADO":"'+RA_ESTADO+'",' +
+			'"RA_CODMUN":"'+RA_CODMUN+'",' +    			
+			'"RA_MUNICIP":"'+RA_MUNICIP+'",' +
+			'"RA_CEP":"'+RA_CEP+'",' +
+			'"RA_DDDCELU":"'+RA_DDDCELU+'",' +
+			'"RA_NUMCELU":"'+RA_NUMCELU+'",' +
+			'"RA_ADCPERI":"'+RA_ADCPERI+'",' +
+			'"RA_ADCINS":"'+RA_ADCINS+'",' +    			
+			'"RA_XTPCON":"'+RA_XTPCON+'"}');
+
+	log.info("INFO OBJBACK::::"+JSON.stringify(objBackEnd));
+	
+	try {
+	
+		var clientService = fluigAPI.getAuthorizeClientService();	
+		var compID = getValue("WKCompany");
+		
+		var data = {
+			companyId: compID + "",
+			serviceCode: "WSRESTPROTHEUS",
+			endpoint: "/WSFUNC",
+			method: "post",
+			timeoutService: "200",
+			params: objBackEnd,
+			options : {
+				encoding : "iso-8859-1",
+				mediaType: "application/json"
+			}
+		}
+		
+		var vo = clientService.invoke(JSONUtil.toJSON(data));
+		
+		if(vo.getResult() == null || vo.getResult().isEmpty()){
+			throw "Erro na integração da Pré Nota.";	
+		}else{	
+			var response =  vo.getResult();
+			var responseJson = JSON.parse(response);//Para os erros que são gerados via Protheus
+			var erroRest =  "com.fluig.authorize.client.exception.ClientBasicAuthorizeException: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.200.66:8012 [/192.168.200.66] failed: Connection refused: connect";			
+			
+			log.info("RESPONSE:::"+response);
+			
+			if ((response.indexOf(erroRest)) == 0){
+				throw "Não foi possível estabelecer uma conexçao com o Protheus. Tente novamente!"
+			}else if(responseJson.errorCode == 500){
+				throw "Erro interno no servidor! Entre em contato com o administrador do sistema.";
+			}else if(responseJson.errorCode == 401 || responseJson.errorCode == 403 || responseJson.errorCode == 404 ){
+				throw "Erro na autenticação/endereço inexistente"; 
+			}
+		}		
+	 } catch (error) {
+		log.info("Erro::::"+error);
+		throw error;
+	 }
+	 log.info("### Finalização da integração ADMISSÃO TOTVS Protheus - servicetask14 - FIM ###");
+}

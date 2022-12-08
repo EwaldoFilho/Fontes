@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;events&apos; to &apos;subUniformeSoa&apos;&#x0D;&#x0A;- Original project: &apos;subAberturaVagaASO&apos;&#x0D;&#x0A;- Destination element: &apos;subUniformeSoa&apos;&#x0D;&#x0A;- Original element: &apos;events&apos;" description="Copy folder" element1="forms/subAso/events" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1670264493621" target="/subAberturaVagaSoa/forms/subUniformeSoa" units="0" version="1.0"/>
+</session>
