@@ -14,6 +14,7 @@
     <script type="text/javascript" src="FLUIGIP.js"></script>
     <script type="text/javascript" src="zoom.js"></script>
     <script type="text/javascript" src="custom.js"></script>
+    <script type="text/javascript" src="aviso.js"></script>
     <script type="text/javascript" src="scriptGerentes.js"></script>
     <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -381,7 +382,7 @@
                 <div class="row">
                     <h2 style="text-align:center"><strong>AVISO DE F&Eacute;RIAS</strong></h2>
 
-                    <p style="text-align:right;padding-right: 100px;"><input class="input-group-offset" maxlength="20" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="DATAATUALIMP1" id="DATAATUALIMP1" size="20" type="text" />&nbsp;
+                    <p style="text-align:right;padding-right: 100px;"><input class="input-group-offset"  style="width: 560px;box-shadow: 0 0 0 0;border: 0 none;outline: 0;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="DATAATUALIMP1" id="DATAATUALIMP1" size="20" type="text" />&nbsp;
                     </p>
 
                     <p style="padding-left: 100px;">A(O) SR(A)</p>
@@ -400,7 +401,7 @@
                         ser&atilde;o concedidas conforme o demonstrativo abaixo:</p>
 
                     <p style="margin-left:40px;padding-left: 100px;">Per&iacute;odo Aquisitivo:&nbsp; <input maxlength="30" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly
-                            name="PERIODOAQUISITIVOIMP" id="PERIODOAQUISITIVOIMP" size="30" type="text" /></p>
+                            name="PERIODOAQUISITIVOIMP1" id="PERIODOAQUISITIVOIMP1" size="30" type="text" /></p>
 
                     <p style="margin-left:40px;padding-left: 100px;">Per&iacute;odo de Gozo: <input maxlength="30" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="PERIODODEGOZOIMP1" id="PERIODODEGOZOIMP1"
                             size="30" type="text" /></p>
@@ -433,7 +434,7 @@
                 <div class="row">
                     <h2 style="text-align:center"><strong>AVISO DE F&Eacute;RIAS</strong></h2>
 
-                    <p style="text-align:right;padding-right: 100px;"><input class="input-group-offset" maxlength="20" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="DATAATUALIMP2" id="DATAATUALIMP2" size="20" type="text" />&nbsp;
+                    <p style="text-align:right;padding-right: 100px;"><input class="input-group-offset"  style="width: 560px;box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="DATAATUALIMP2" id="DATAATUALIMP2" size="20" type="text" />&nbsp;
                     </p>
 
                     <p style="padding-left: 100px;">A(O) SR(A)</p>
@@ -441,7 +442,7 @@
                     <p>&nbsp;</p>
 
                     <p style="padding-left: 100px;"><input maxlength="8" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" name="MATRICULA2" readonly id="MATRICULA2"size="8" type="text" /> - <input maxlength="30"
-                        style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="NOMECOLABORADOR" id="NOMECOLABORADOR" size="30" type="text" /></p>
+                        style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="NOMECOLABORADOR2" id="NOMECOLABORADOR2" size="30" type="text" /></p>
 
                     <p style="padding-left: 100px;"><input maxlength="30" class="input-group" style="box-shadow: 0 0 0 0;border: 0 none;outline: 0;outline: none;border: opx solid #ccc;border-color: rgb(255, 255, 255);" readonly name="CENTROCUSTOIMP2" id="CENTROCUSTOIMP2"
                         size="30" type="text" /></p>
@@ -497,7 +498,17 @@
             <!-- -->
         </form>
     </div>
+<script type="text/javascript">
+    $("#panelAvisoFerias1").show();
+    $("#panelAvisoFerias2").show();
 
+    var data = new Date();
+    var options = { year: 'numeric', month: 'long', day: 'numeric' , timeZoneName:'long' };
+    var dataAtual = data.toLocaleDateString("pt-BR", options)
+    var dataReplace = dataAtual.replace("Horário Padrão de",", ")
+    $("#DATAATUALIMP1").val(dataReplace);
+    $("#DATAATUALIMP2").val(dataReplace);
+</script>
     <script type="text/javascript">
         const nameField = document.querySelector("input");
 

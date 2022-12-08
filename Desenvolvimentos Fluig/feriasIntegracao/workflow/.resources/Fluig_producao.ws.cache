@@ -10,6 +10,170 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 83615</string>
+   <array class="java.lang.String" length="53">
+    <void index="0">
+     <string>adicional</string>
+    </void>
+    <void index="1">
+     <string>atividade</string>
+    </void>
+    <void index="2">
+     <string>botaSoa</string>
+    </void>
+    <void index="3">
+     <string>cargahora</string>
+    </void>
+    <void index="4">
+     <string>codCentroCusto</string>
+    </void>
+    <void index="5">
+     <string>codCentroCustoSol</string>
+    </void>
+    <void index="6">
+     <string>codTcontrato</string>
+    </void>
+    <void index="7">
+     <string>cpfAso</string>
+    </void>
+    <void index="8">
+     <string>cursos</string>
+    </void>
+    <void index="9">
+     <string>dataDesejada</string>
+    </void>
+    <void index="10">
+     <string>dataDocumentacao</string>
+    </void>
+    <void index="11">
+     <string>dataFormatada</string>
+    </void>
+    <void index="12">
+     <string>datasolicitacao</string>
+    </void>
+    <void index="13">
+     <string>descricaoCentroCusto</string>
+    </void>
+    <void index="14">
+     <string>descricaoCentroCustoSol</string>
+    </void>
+    <void index="15">
+     <string>descricaoFunc</string>
+    </void>
+    <void index="16">
+     <string>descricaoTcontrato</string>
+    </void>
+    <void index="17">
+     <string>dtCandidato</string>
+    </void>
+    <void index="18">
+     <string>dtNascimentoAso</string>
+    </void>
+    <void index="19">
+     <string>emailCandidato</string>
+    </void>
+    <void index="20">
+     <string>emalColaborador</string>
+    </void>
+    <void index="21">
+     <string>estado</string>
+    </void>
+    <void index="22">
+     <string>experienciaPro</string>
+    </void>
+    <void index="23">
+     <string>fdAnexoCandidato</string>
+    </void>
+    <void index="24">
+     <string>fnanexoCandidato</string>
+    </void>
+    <void index="25">
+     <string>headCount</string>
+    </void>
+    <void index="26">
+     <string>indicacao</string>
+    </void>
+    <void index="27">
+     <string>indicacaoContato</string>
+    </void>
+    <void index="28">
+     <string>indicacaoNome</string>
+    </void>
+    <void index="29">
+     <string>isGerente</string>
+    </void>
+    <void index="30">
+     <string>localVaga</string>
+    </void>
+    <void index="31">
+     <string>matriculaUsuario</string>
+    </void>
+    <void index="32">
+     <string>nomeCandidato</string>
+    </void>
+    <void index="33">
+     <string>nomeColaborador</string>
+    </void>
+    <void index="34">
+     <string>observacao</string>
+    </void>
+    <void index="35">
+     <string>observacaoCandidato</string>
+    </void>
+    <void index="36">
+     <string>processo</string>
+    </void>
+    <void index="37">
+     <string>qtdCandidato</string>
+    </void>
+    <void index="38">
+     <string>responsavelAtendimento</string>
+    </void>
+    <void index="39">
+     <string>rgAso</string>
+    </void>
+    <void index="40">
+     <string>salario</string>
+    </void>
+    <void index="41">
+     <string>solicitanteCode</string>
+    </void>
+    <void index="42">
+     <string>solicitanteEmail</string>
+    </void>
+    <void index="43">
+     <string>solicitanteNome</string>
+    </void>
+    <void index="44">
+     <string>substituicaoNome</string>
+    </void>
+    <void index="45">
+     <string>Tcontratacao</string>
+    </void>
+    <void index="46">
+     <string>telCandidato</string>
+    </void>
+    <void index="47">
+     <string>telefoneCandidato</string>
+    </void>
+    <void index="48">
+     <string>tipoFolguista</string>
+    </void>
+    <void index="49">
+     <string>uniformeSoa</string>
+    </void>
+    <void index="50">
+     <string>valeRefeicao</string>
+    </void>
+    <void index="51">
+     <string>valorFormatado</string>
+    </void>
+    <void index="52">
+     <string>valorTransporte</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismoGrupo</string>
    <object class="java.util.ArrayList">
     <void method="add">
@@ -1895,8 +2059,160 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 54032</string>
+   <array class="java.lang.String" length="49">
+    <void index="0">
+     <string>aberturaAso</string>
+    </void>
+    <void index="1">
+     <string>adicional</string>
+    </void>
+    <void index="2">
+     <string>agencia</string>
+    </void>
+    <void index="3">
+     <string>agenciaDV</string>
+    </void>
+    <void index="4">
+     <string>angencia</string>
+    </void>
+    <void index="5">
+     <string>atividade</string>
+    </void>
+    <void index="6">
+     <string>banco</string>
+    </void>
+    <void index="7">
+     <string>cargahora</string>
+    </void>
+    <void index="8">
+     <string>cargos</string>
+    </void>
+    <void index="9">
+     <string>codCargos</string>
+    </void>
+    <void index="10">
+     <string>codCentroCusto</string>
+    </void>
+    <void index="11">
+     <string>codTcontrato</string>
+    </void>
+    <void index="12">
+     <string>columna_1</string>
+    </void>
+    <void index="13">
+     <string>conta</string>
+    </void>
+    <void index="14">
+     <string>cpf</string>
+    </void>
+    <void index="15">
+     <string>cursos</string>
+    </void>
+    <void index="16">
+     <string>dataDesejada</string>
+    </void>
+    <void index="17">
+     <string>dataDocumentacao</string>
+    </void>
+    <void index="18">
+     <string>dataInicio</string>
+    </void>
+    <void index="19">
+     <string>dataRealAdemissao</string>
+    </void>
+    <void index="20">
+     <string>datasolicitacao</string>
+    </void>
+    <void index="21">
+     <string>descricaoCentroCusto</string>
+    </void>
+    <void index="22">
+     <string>descricaoTcontrato</string>
+    </void>
+    <void index="23">
+     <string>Emailtabela</string>
+    </void>
+    <void index="24">
+     <string>emalColaborador</string>
+    </void>
+    <void index="25">
+     <string>experienciaPro</string>
+    </void>
+    <void index="26">
+     <string>headCount</string>
+    </void>
+    <void index="27">
+     <string>indicacao</string>
+    </void>
+    <void index="28">
+     <string>indicacaoContato</string>
+    </void>
+    <void index="29">
+     <string>indicacaoNome</string>
+    </void>
+    <void index="30">
+     <string>isGerente</string>
+    </void>
+    <void index="31">
+     <string>localVaga</string>
+    </void>
+    <void index="32">
+     <string>matriculaUsuario</string>
+    </void>
+    <void index="33">
+     <string>nome</string>
+    </void>
+    <void index="34">
+     <string>nomeColaborado</string>
+    </void>
+    <void index="35">
+     <string>numeroColaborado</string>
+    </void>
+    <void index="36">
+     <string>observacao</string>
+    </void>
+    <void index="37">
+     <string>pix</string>
+    </void>
+    <void index="38">
+     <string>responsavelAtendimento</string>
+    </void>
+    <void index="39">
+     <string>salario</string>
+    </void>
+    <void index="40">
+     <string>solicitanteCode</string>
+    </void>
+    <void index="41">
+     <string>solicitanteNome</string>
+    </void>
+    <void index="42">
+     <string>substituicaoNome</string>
+    </void>
+    <void index="43">
+     <string>Tcontratacao</string>
+    </void>
+    <void index="44">
+     <string>telefoneTabela</string>
+    </void>
+    <void index="45">
+     <string>tipoConta</string>
+    </void>
+    <void index="46">
+     <string>tipoFolguista</string>
+    </void>
+    <void index="47">
+     <string>valeRefeicao</string>
+    </void>
+    <void index="48">
+     <string>valorTransporte</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>camposFormulario, documentoId = 86777</string>
-   <array class="java.lang.String" length="30">
+   <array class="java.lang.String" length="46">
     <void index="0">
      <string>abonoPecuniario1</string>
     </void>
@@ -1904,87 +2220,135 @@
      <string>abonoPecuniario2</string>
     </void>
     <void index="2">
-     <string>codCentroCusto</string>
+     <string>CENTROCUSTOIMP1</string>
     </void>
     <void index="3">
-     <string>codCentroCustoSol</string>
+     <string>CENTROCUSTOIMP2</string>
     </void>
     <void index="4">
-     <string>colaborador</string>
+     <string>codCentroCusto</string>
     </void>
     <void index="5">
-     <string>dataBaseFim</string>
+     <string>codCentroCustoSol</string>
     </void>
     <void index="6">
-     <string>dataBaseIni</string>
+     <string>colaborador</string>
     </void>
     <void index="7">
-     <string>datasolicitacao</string>
+     <string>DATAATUALIMP1</string>
     </void>
     <void index="8">
-     <string>descricaoCentroCusto</string>
+     <string>DATAATUALIMP2</string>
     </void>
     <void index="9">
-     <string>descricaoCentroCustoSol</string>
+     <string>dataBaseFim</string>
     </void>
     <void index="10">
-     <string>diasProporcionais</string>
+     <string>dataBaseIni</string>
     </void>
     <void index="11">
-     <string>dt1programacao</string>
+     <string>datasolicitacao</string>
     </void>
     <void index="12">
-     <string>dt2programacao</string>
+     <string>descricaoCentroCusto</string>
     </void>
     <void index="13">
-     <string>estado</string>
+     <string>descricaoCentroCustoSol</string>
     </void>
     <void index="14">
-     <string>isGerente</string>
+     <string>diasProporcionais</string>
     </void>
     <void index="15">
-     <string>matColaborador</string>
+     <string>dt1programacao</string>
     </void>
     <void index="16">
-     <string>matriculaUsuario</string>
+     <string>dt2programacao</string>
     </void>
     <void index="17">
-     <string>perFerias</string>
+     <string>estado</string>
     </void>
     <void index="18">
-     <string>perLimite</string>
+     <string>isGerente</string>
     </void>
     <void index="19">
-     <string>processo</string>
+     <string>matColaborador</string>
     </void>
     <void index="20">
-     <string>programado1</string>
+     <string>MATRICULA1</string>
     </void>
     <void index="21">
-     <string>programado2</string>
+     <string>MATRICULA2</string>
     </void>
     <void index="22">
-     <string>qtDias1</string>
+     <string>matriculaUsuario</string>
     </void>
     <void index="23">
-     <string>qtDias1Prog</string>
+     <string>NOMECOLABORADOR1</string>
     </void>
     <void index="24">
-     <string>qtDias2</string>
+     <string>NOMECOLABORADOR2</string>
     </void>
     <void index="25">
-     <string>qtDias2Prog</string>
+     <string>PAGAMENTO1</string>
     </void>
     <void index="26">
-     <string>responsavelAtendimento</string>
+     <string>PAGAMENTO2</string>
     </void>
     <void index="27">
-     <string>solicitanteCode</string>
+     <string>perFerias</string>
     </void>
     <void index="28">
-     <string>solicitanteEmail</string>
+     <string>PERIODOAQUISITIVOIMP</string>
     </void>
     <void index="29">
+     <string>PERIODOAQUISITIVOIMP2</string>
+    </void>
+    <void index="30">
+     <string>PERIODODEGOZOIMP1</string>
+    </void>
+    <void index="31">
+     <string>PERIODODEGOZOIMP2</string>
+    </void>
+    <void index="32">
+     <string>perLimite</string>
+    </void>
+    <void index="33">
+     <string>processo</string>
+    </void>
+    <void index="34">
+     <string>programado1</string>
+    </void>
+    <void index="35">
+     <string>programado2</string>
+    </void>
+    <void index="36">
+     <string>qtDias1</string>
+    </void>
+    <void index="37">
+     <string>qtDias1Prog</string>
+    </void>
+    <void index="38">
+     <string>qtDias2</string>
+    </void>
+    <void index="39">
+     <string>qtDias2Prog</string>
+    </void>
+    <void index="40">
+     <string>responsavelAtendimento</string>
+    </void>
+    <void index="41">
+     <string>RETORNOTRABALHO1</string>
+    </void>
+    <void index="42">
+     <string>RETORNOTRABALHO2</string>
+    </void>
+    <void index="43">
+     <string>solicitanteCode</string>
+    </void>
+    <void index="44">
+     <string>solicitanteEmail</string>
+    </void>
+    <void index="45">
      <string>solicitanteNome</string>
     </void>
    </array>

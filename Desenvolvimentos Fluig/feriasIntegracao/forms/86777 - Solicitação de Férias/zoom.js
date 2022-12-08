@@ -119,12 +119,15 @@ function setSelectedZoomItem(selectedItem) {
 	} else if (name == "descricaoCentroCusto") {
 		$("#codCentroCusto").val(selectedItem.CTT_CUSTO);
 		$("#descricaoCentroCusto").val(selectedItem.CTT_DESC01);
-		$("#CENTROCUSTOIMP").val(selectedItem.CTT_DESC01);
+		$("#CENTROCUSTOIMP1").val(selectedItem.CTT_DESC01);
+		$("#CENTROCUSTOIMP2").val(selectedItem.CTT_DESC01);
 	} else if (name == "colaborador") {
 		$("#colaborador").val(selectedItem.NOME_COMPLETO);
 		$("#matColaborador").val(selectedItem.RA_MAT);
-		$("#MATRICULA").val(selectedItem.RA_MAT);
-		$("#NOMECOLABORADOR").val(selectedItem.NOME_COMPLETO);
+		$("#MATRICULA1").val(selectedItem.RA_MAT);
+		$("#MATRICULA2").val(selectedItem.RA_MAT);
+		$("#NOMECOLABORADOR1").val(selectedItem.NOME_COMPLETO);
+		$("#NOMECOLABORADOR2").val(selectedItem.NOME_COMPLETO);
 	} else if (name == "perFerias") {
 		var RF_DATAINI = selectedItem.RF_DATAINI;
 		var RF_DATINI2 = selectedItem.RF_DATINI2;
@@ -169,6 +172,8 @@ function setSelectedZoomItem(selectedItem) {
 		$("#dataBaseIni").val(selectedItem.RF_DATABAS);
 		$("#dataBaseFim").val(selectedItem.RF_DATAFIM);
 		$("#perFerias").val(selectedItem.PER);
+		$("#PERIODOAQUISITIVOIMP1").val(selectedItem.PER);
+		$("#PERIODOAQUISITIVOIMP2").val(selectedItem.PER);
 		$("#perLimite").val(limitMax);
 		$("#diasProporcionais").val(selectedItem.RF_DFERAAT);
 		$("#dt1programacao").val("");
