@@ -11,6 +11,19 @@ var gratidaoWidget = SuperWidget.extend({
 	},
 
 	init: function() {
+		$.ajax({
+		    url: '/api/public/2.0/users/getCurrent', 
+		    type: "GET",
+		}).then(function(data) {
+		    //redireciona a pagina caso 
+		    var petrobras = data.content.extData.petrobras;		    
+
+		    if (petrobras == "true") {
+		    	window.location.replace("http://portal.medmais.com:8007/portal/p/0101001/powerbi");
+		    }else{
+		    }
+		});
+				
         try {        	
             var datasetCGratidao = DatasetFactory.getDataset("dsGratidaoC", null, null, null);
             

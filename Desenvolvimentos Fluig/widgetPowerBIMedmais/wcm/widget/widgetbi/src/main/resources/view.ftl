@@ -32,7 +32,7 @@
 				<a href="#" class="dash" onclick="myFunction()">
 					<i class="fa fa-laptop fa-2x"></i>
 					<span class="nav-text">
-						DashBoard TeleMedicina
+						DashBoard Telesaúde
 					</span>
 				</a>
 

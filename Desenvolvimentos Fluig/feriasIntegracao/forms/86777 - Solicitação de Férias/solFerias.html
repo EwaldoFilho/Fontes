@@ -15,6 +15,8 @@
     <script type="text/javascript" src="zoom.js"></script>
     <script type="text/javascript" src="custom.js"></script>
     <script type="text/javascript" src="aviso.js"></script>
+    <script type="text/javascript" src="convertInputs.js"></script>
+    <script type="text/javascript" src="imprimeComent.js"></script>
     <script type="text/javascript" src="scriptGerentes.js"></script>
     <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -290,7 +292,7 @@
                                                         <i class="flaticon flaticon-event icon-sm"
                                                             aria-hidden="true"></i></span>
                                                     <input id="dt1programacao" type="Date" class="form-control"
-                                                        name="dt1programacao" onclick="myFunction3()">
+                                                        name="dt1programacao" onclick="myFunction3()" onchange="formatar()">
                                                 </div>
                                             </div>
                                         </div>
@@ -302,7 +304,7 @@
                                                     <i class="flaticon flaticon-arrange icon-sm"
                                                         aria-hidden="true"></i></span>
                                                 <input type="number" name="qtDias1" id="qtDias1" class="form-control"
-                                                    data-only-numbers="" min="6" max="30" onchange="myFunction()">
+                                                    data-only-numbers="" min="6" max="30" onchange="myFunction();calculaAviso()">
                                             </div>
                                         </div>
                                     </td>
@@ -314,7 +316,7 @@
                                                         aria-hidden="true"></i></span>
                                                 <select class="form-control" name="abonoPecuniario1"
                                                     id="abonoPecuniario1" required="required" data-toggle="tooltip"
-                                                    title="" style="cursor:pointer;" tabindex="-1">
+                                                    title="" style="cursor:pointer;" tabindex="-1" onchange="formatar()">
                                                     <option value=""></option>
                                                     <option value="sim">Sim</option>
                                                     <option value="nao">Não</option>
@@ -333,7 +335,7 @@
                                                         <i class="flaticon flaticon-event icon-sm"
                                                             aria-hidden="true"></i></span>
                                                     <input id="dt2programacao" type="Date" class="form-control"
-                                                        name="dt2programacao" onclick="myFunction3()">
+                                                        name="dt2programacao" onclick="myFunction3()" onchange="formatar()">
                                                 </div>
                                             </div>
                                         </div>
@@ -345,7 +347,7 @@
                                                     <i class="flaticon flaticon-arrange icon-sm"
                                                         aria-hidden="true"></i></span>
                                                 <input type="number" name="qtDias2" id="qtDias2" class="form-control"
-                                                    data-only-numbers="" min="6" max="30" onchange="myFunction2()">
+                                                    data-only-numbers="" min="6" max="30" onchange="myFunction2();calculaAviso()">
                                             </div>
                                         </div>
                                     </td>
@@ -357,7 +359,7 @@
                                                         aria-hidden="true"></i></span>
                                                 <select class="form-control" name="abonoPecuniario2"
                                                     id="abonoPecuniario2" required="required" data-toggle="tooltip"
-                                                    title="" style="cursor:pointer;" tabindex="-1">
+                                                    title="" style="cursor:pointer;" tabindex="-1" onchange="formatar()">
                                                     <option value=""></option>
                                                     <option value="sim">Sim</option>
                                                     <option value="nao">Não</option>
@@ -378,6 +380,9 @@
                 </div>
                 <div>
                     <button onclick="javascript: printWebDeskFrame();" id="printBt">Imprimir</button>
+                </div>
+                <div>
+                    <button onclick="imprimirComentarios();" id="imprimeComentarios">Imprimir Comentários</button>
                 </div>
                 <div class="row">
                     <h2 style="text-align:center"><strong>AVISO DE F&Eacute;RIAS</strong></h2>
@@ -488,12 +493,19 @@
             <input type="hidden" id="processo" name="processo">
             <input type="hidden" id="estado" name="estado">
             <input type="hidden" id="matColaborador" name="matColaborador">
+            <input type="hidden" id="filialColab" name="filialColab">
             <input type="hidden" id="dataBaseIni" name="dataBaseIni">
             <input type="hidden" id="dataBaseFim" name="dataBaseFim">
+            <input type="hidden" id="dtBaseIni" name="dtBaseIni">
+            <input type="hidden" id="dtBaseFim" name="dtBaseFim">
             <input type="hidden" id="programado1" name="programado1">
             <input type="hidden" id="programado2" name="programado2">
+            <input type="hidden" id="dtFormatado1" name="dtFormatado1">
+            <input type="hidden" id="dtFormatado2" name="dtFormatado2">
             <input type="hidden" id="qtDias1Prog" name="qtDias1Prog">
             <input type="hidden" id="qtDias2Prog" name="qtDias2Prog">
+            <input type="hidden" id="qtAbono1" name="qtAbono1">
+            <input type="hidden" id="qtAbono2" name="qtAbono2">
             <input type="hidden" id="diasProporcionais" name="diasProporcionais">
             <!-- -->
         </form>

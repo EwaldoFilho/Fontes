@@ -144,6 +144,10 @@ function displayFields(form,customHTML){
 	 	form.setVisibleById("panelDadoSolicitante", true);
     	form.setVisibleById("panelDadoSolicitacao", true);		
 		form.setVisibleById("tituloSolicitacaoFinalizada", true);
+		form.setVisibleById("panelCotacoes", true);
+		form.setVisibleById("panelOrcamento", true);
+		form.setVisibleById("tituloCotacao", true);
+		form.setVisibleById("setorDiv", true);
 	 }
 	
 	if (state=="497") {
@@ -195,6 +199,10 @@ function displayFields(form,customHTML){
 			form.setVisibleById("tituloSolicitacao", true);
 			form.setVisibleById("tb_produtos", true);
 			form.setVisibleById("panelCancelamento", true);
+			form.setVisibleById("panelCotacoes", true);
+			form.setVisibleById("panelOrcamento", true);
+			form.setVisibleById("tituloCotacao", true);
+			form.setVisibleById("setorDiv", true);
 		}
 	
 	if (state=="537") {
@@ -209,6 +217,10 @@ function displayFields(form,customHTML){
     	form.setVisibleById("panelDadoSolicitacao", true);
 		form.setVisibleById("tituloSolicitacao", true);
 		form.setVisibleById("tb_produtos", true);
+		form.setVisibleById("panelCotacoes", true);
+		form.setVisibleById("panelOrcamento", true);
+		form.setVisibleById("tituloCotacao", true);
+		form.setVisibleById("setorDiv", true);
 		
 	 }
 	

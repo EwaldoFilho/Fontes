@@ -67,7 +67,7 @@ function zoomColaboradores(obj) {
 																											// a
 																											// serem
 																											// exibidos
-					"RA_MAT,NOME_COMPLETO,TPCONTRATO,DDD,NUM_CEL,EMAIL,CPF,FUNCAO,RG", // Campos
+					"RA_FILIAL,RA_MAT,NOME_COMPLETO,TPCONTRATO,DDD,NUM_CEL,EMAIL,CPF,FUNCAO,RG", // Campos
 																						// de
 																						// retorno
 					"Colaboradores", // Titulo
@@ -83,9 +83,10 @@ function zoomColaboradores(obj) {
 function zoomPeriodos(obj) {
 	var type = $(obj).prev("input").attr("name");
 	var matColaborador = $("#matColaborador").val();
-
+	var FILIAL = $("#filialColab").val();
 	// var tipoContrato = $("#tipoContrato").val("TPCONTRATO");
-	var filters = "MATCOLABORADOR," + matColaborador.toString();
+	
+	var filters = "MATCOLABORADOR," + matColaborador.toString() + ",FILIAL," + FILIAL;
 	var searchby = "FILTRO";
 
 	tdizoom
@@ -123,6 +124,7 @@ function setSelectedZoomItem(selectedItem) {
 		$("#CENTROCUSTOIMP2").val(selectedItem.CTT_DESC01);
 	} else if (name == "colaborador") {
 		$("#colaborador").val(selectedItem.NOME_COMPLETO);
+		$("#filialColab").val(selectedItem.RA_FILIAL);		
 		$("#matColaborador").val(selectedItem.RA_MAT);
 		$("#MATRICULA1").val(selectedItem.RA_MAT);
 		$("#MATRICULA2").val(selectedItem.RA_MAT);

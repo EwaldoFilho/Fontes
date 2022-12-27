@@ -3,7 +3,9 @@ function validateForm(form) {
 	var state    = getValue("WKNumState");
 	
 	if (state == 5 || state == 10) {		
-
+			if ((form.getValue("nomeColaborador") == null || form.getValue("nomeColaborador") == "") && ( getValue('nomeColaborador') == null )) {
+				throw "Favor informar que os dados do contratado está em branco";
+				}
 			if ((form.getValue("aprovAso") == null || form.getValue("aprovAso") == "") && ( getValue('aprovAso') == null )) {
 					throw "Informar se o ASO foi aprovado ou reprovado";
 					}

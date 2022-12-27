@@ -2,7 +2,7 @@ function validateForm(form){
 	var state = getValue('WKNumState');
 	var PROXIMATIVIDADE = Number(getValue("WKNextState"));
 	
-	if( PROXIMATIVIDADE =="502" || PROXIMATIVIDADE =="124" || PROXIMATIVIDADE =="472" || PROXIMATIVIDADE =="537"){
+	if( PROXIMATIVIDADE =="521" || PROXIMATIVIDADE =="535" || PROXIMATIVIDADE =="548" || PROXIMATIVIDADE =="540"){
 
 		if ((form.getValue("motivoCancelamento") == null || form.getValue("motivoCancelamento") == "")) {
 			throw "INFORMAR O MOTIVO DO CANCELAMENTO.";

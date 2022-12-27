@@ -119,7 +119,7 @@ function displayFields(form,customHTML){
 
 	if (state=="124") {
 		form.setVisibleById("panelDadoSolicitante", true);
-    	form.setVisibleById("panelDadoSolicitacao", false);
+    	form.setVisibleById("panelDadoSolicitacao", true);
 		form.setVisibleById("panelCotacoes", true);
 		form.setVisibleById("panelOrcamento", true);
 		form.setVisibleById("tituloCotacao", true);

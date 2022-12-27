@@ -30,6 +30,7 @@ function displayFields(form,customHTML){
 		form.setVisibleById("dadosDocumentos", false);
 		form.setVisibleById("dadosAREATECNICA", false);
 		form.setVisibleById("dadosTecnologia", false);
+		
 	}
 /*-----------------------------------------------------------------*/
 	/* Painel docuento*/
@@ -719,6 +720,7 @@ function displayFields(form,customHTML){
 	customHTML.append("		function getWKUserName(){ return '" + userName + "'};");
 	customHTML.append("		function getWKNumProces(){ return '" + processo + "'};");
 	customHTML.append("		function getWKUserLocale(){ return '" + locale + "'};");
+	customHTML.append("<script>var FORM_MODE = '" + form.getFormMode() + "'</script>")
 	customHTML.append("</script>");	
 }
 

@@ -73,7 +73,7 @@
                 totalDespesa  = parseFloat(totalDespesa) + parseFloat(fornecedores[countFornecedor].totalDespesas) +  parseFloat(fornecedores[countFornecedor].totalSeguro);
                 totalDescontos = parseFloat(totalDescontos) + parseFloat(fornecedores[countFornecedor].totalDescontos);
                 totalSeguro   = parseFloat(totalSeguro) + parseFloat(fornecedores[countFornecedor].totalSeguro);
-                taxaFrete     = parseFloat(taxaFrete) + parseFloat(fornecedores[countFornecedor].taxaFrete);
+                taxaFrete     = parseFloat(taxaFrete) + parseFloat(fornecedores.taxaFrete);
 
                 totalSolicitacaoCompra = parseFloat(totalSolicitacaoCompra) +  parseFloat(fornecedores[countFornecedor].precoTotalFormatado) ;
                 }

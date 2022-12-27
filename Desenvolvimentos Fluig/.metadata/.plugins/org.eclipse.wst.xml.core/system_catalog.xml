@@ -34,5 +34,5 @@
   <uri name="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200802" uri="jar:file:/C:/eclipse/plugins/org.eclipse.wst.standard.schemas_1.0.700.v201304171715.jar!/xsd/ws-securitypolicy.xsd"/>
   <system systemId="http://www.w3.org/2001/xml.xsd" uri="jar:file:/C:/eclipse/plugins/org.eclipse.xsd_2.10.0.v20150123-0452.jar!/cache/www.w3.org/2001/xml.xsd"/>
   <uri name="http://www.w3.org/2001/XMLSchema" uri="jar:file:/C:/eclipse/plugins/org.eclipse.xsd_2.10.0.v20150123-0452.jar!/cache/www.w3.org/2001/XMLSchema.xsd"/>
-  <uri name="http://www.omg.org/spec/BPMN/20100524/MODEL" uri="jar:file:/C:/eclipse/plugins/com.totvs.tds.ecm.designer.eclipse_1.7.1.jar!/xsd/BPMN20.xsd"/>
+  <uri name="http://www.omg.org/spec/BPMN/20100524/MODEL" uri="jar:file:/C:/eclipse/plugins/com.totvs.tds.ecm.designer.eclipse_1.8.0.1.jar!/xsd/BPMN20.xsd"/>
 </catalog>

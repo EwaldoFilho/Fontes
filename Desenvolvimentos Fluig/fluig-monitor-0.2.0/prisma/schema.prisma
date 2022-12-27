@@ -1,0 +1,163 @@
+// Prisma schema docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/main/generated/client"
+}
+
+// generator erd {
+//   provider = "prisma-erd-generator"
+//   output   = "./ERD.svg"
+// }
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Environment {
+  id               Int                  @id @default(autoincrement())
+  name             String
+  release          String
+  baseUrl          String
+  kind             String
+  oAuthKeysId      EnvironmentAuthKeys?
+  updateScheduleId UpdateSchedule?
+  httpResponses    HTTPResponse[]
+  licenseHistory   LicenseHistory[]
+  monitorHistory   MonitorHistory[]
+  statisticHistory StatisticsHistory[]
+  logCreatedAt     DateTime             @default(now())
+  logUpdateAt      DateTime             @default(now())
+  logDeleted       Boolean              @default(false)
+  logDeletedAt     DateTime?
+  isFavorite       Boolean              @default(false)
+  favoritedAt      DateTime?
+}
+
+model EnvironmentAuthKeys {
+  id            Int         @id @default(autoincrement())
+  payload       String
+  hash          String
+  environmentId Int         @unique
+  environment   Environment @relation(fields: [environmentId], references: [id])
+}
+
+model UpdateSchedule {
+  id              Int          @id @default(autoincrement())
+  scrapeFrequency String
+  pingFrequency   String
+  environmentId   Int          @unique
+  environment     Environment? @relation(fields: [environmentId], references: [id])
+}
+
+model HTTPResponse {
+  id               Int                @id @default(autoincrement())
+  environmentId    Int
+  environment      Environment        @relation(fields: [environmentId], references: [id])
+  timestamp        DateTime           @default(now())
+  endpoint         String?
+  resourceType     String?
+  statusCode       Int
+  statusMessage    String?
+  responseTimeMs   Int
+  licenseHistory   LicenseHistory?
+  monitorHistory   MonitorHistory?
+  statisticHistory StatisticsHistory?
+}
+
+model LicenseHistory {
+  id             Int          @id @default(autoincrement())
+  environmentId  Int
+  environment    Environment  @relation(fields: [environmentId], references: [id])
+  httpResponseId Int          @unique
+  httpResponse   HTTPResponse @relation(fields: [httpResponseId], references: [id])
+
+  tenantId          Int
+  activeUsers       Int
+  totalLicenses     Int
+  remainingLicenses Int
+}
+
+model MonitorHistory {
+  id             Int          @id @default(autoincrement())
+  environmentId  Int
+  environment    Environment  @relation(fields: [environmentId], references: [id])
+  httpResponseId Int          @unique
+  httpResponse   HTTPResponse @relation(fields: [httpResponseId], references: [id])
+
+  analytics     String?
+  licenseServer String?
+  mailServer    String?
+  solrServer    String?
+  viewer        String?
+  openOffice    String?
+  realTime      String?
+  MSOffice      String?
+}
+
+model StatisticsHistory {
+  id             Int          @id @default(autoincrement())
+  environmentId  Int
+  environment    Environment  @relation(fields: [environmentId], references: [id])
+  httpResponseId Int          @unique
+  httpResponse   HTTPResponse @relation(fields: [httpResponseId], references: [id])
+
+  dataSourceFluigDs      String?
+  dataSourceFluigDsRo    String?
+  dbName                 String?
+  dbVersion              String?
+  dbDriverName           String?
+  dbDriverVersion        String?
+  connectedUsers         BigInt?
+  memoryHeap             BigInt?
+  nonMemoryHeap          BigInt?
+  dbTraficRecieved       BigInt?
+  dbTraficSent           BigInt?
+  dbSize                 BigInt?
+  artifactsApps          String?
+  artifactsCore          String?
+  artifactsSystem        String?
+  externalConverter      Boolean?
+  runtimeStart           DateTime?
+  runtimeUptime          BigInt?
+  threadingCount         BigInt?
+  threadingPeakCount     BigInt?
+  threadingDaemonCount   BigInt?
+  threadingTotalStarted  BigInt?
+  detailedMemory         String?
+  systemServerMemorySize BigInt?
+  systemServerMemoryFree BigInt?
+  systemServerHDSize     String?
+  systemServerHDFree     String?
+  systemServerCoreCount  Int?
+  systemServerArch       String?
+  systemTmpFolderSize    BigInt?
+  systemLogFolderSize    BigInt?
+  systemHeapMaxSize      BigInt?
+  systemHeapSize         BigInt?
+  systemUptime           BigInt?
+}
+
+model AppSetting {
+  id        Int     @id @default(autoincrement())
+  settingId String  @unique
+  value     String
+  group     String?
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  type      String
+  title     String?
+  body      String
+  createdAt DateTime @default(now())
+  readed    Boolean  @default(false)
+}
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  type      String
+  message   String
+}

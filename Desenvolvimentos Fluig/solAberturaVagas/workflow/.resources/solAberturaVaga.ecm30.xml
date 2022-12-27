@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Abertura de Vaga</processId>
-      <version>16</version>
+      <version>18</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>81096</formId>
@@ -214,8 +214,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Executor Atividade</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;18&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;responsavelAtendimento&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -914,7 +914,7 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <expressionOrder>1</expressionOrder>
-        <version>16</version>
+        <version>18</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition></condition>
@@ -926,7 +926,7 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <expressionOrder>2</expressionOrder>
-        <version>16</version>
+        <version>18</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition></condition>
@@ -940,11 +940,13 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <expressionOrder>1</expressionOrder>
-        <version>16</version>
+        <version>18</version>
         <sequence>77</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Tcontratacao&quot;) == &quot;PJ&quot;</condition>
       <destinationSequenceId>40</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;ProcessosEspecifico&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -952,11 +954,13 @@
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
         <expressionOrder>2</expressionOrder>
-        <version>16</version>
+        <version>18</version>
         <sequence>77</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Tcontratacao&quot;) != &quot;PJ&quot;</condition>
       <destinationSequenceId>68</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;responsavelAtendimento&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -1537,7 +1541,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1548,7 +1552,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>56</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1559,7 +1563,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>67</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1570,7 +1574,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>70</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1581,7 +1585,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>73</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1592,7 +1596,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>75</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1603,7 +1607,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>76</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1614,7 +1618,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>78</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1625,7 +1629,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>80</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1636,7 +1640,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>solAberturaVaga</processId>
-        <version>16</version>
+        <version>18</version>
         <linkSequence>80</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>

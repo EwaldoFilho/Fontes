@@ -1,0 +1,139 @@
+.center-view-container {
+  width: 100%;
+  height: 100%;
+}
+
+.empty-server-view {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img.icon {
+    height: 5rem;
+    margin: 2rem;
+  }
+}
+
+.environment-data-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  height: 100%;
+
+  .side-menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 90%;
+
+    min-width: 13rem;
+    transition: all var(--transition);
+
+    margin-left: -1rem;
+    padding-left: 1rem;
+
+    &.closed {
+      min-width: 0rem;
+
+      .menu-items,
+      .last-menu-items {
+        .item-text {
+          font-size: 0rem;
+        }
+      }
+    }
+
+    .menu-items,
+    .last-menu-items {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column;
+
+      gap: 0.5rem;
+
+      width: 100%;
+    }
+
+    a,
+    button {
+      .item-text {
+        transition: all var(--transition);
+        color: var(--font-primary);
+      }
+      color: var(--font-primary);
+      font-size: 0.9rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.5rem 0.5rem 0rem;
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+
+      transition: all var(--transition);
+
+      svg {
+        margin-right: 0.75rem;
+        font-size: 1.3rem;
+      }
+
+      &::before {
+        width: 0.3rem;
+        height: 100%;
+        border-radius: 4px;
+        content: '';
+        background-color: transparent;
+
+        transform: translateX(-0.7rem);
+
+        transition: background-color var(--transition);
+      }
+
+      &:hover,
+      &.active {
+        .item-text {
+          color: var(--purple);
+        }
+
+        background-color: var(--card);
+        color: var(--purple);
+        box-shadow: var(--card-shadow);
+
+        padding: 0.75rem;
+
+        &::before {
+          background-color: var(--purple);
+        }
+      }
+    }
+  }
+
+  #menu-content {
+    height: inherit;
+    width: 100%;
+    overflow: auto;
+  }
+
+  #environment-edit-form-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 1rem;
+  }
+
+  #environment-summary-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    #server-data {
+      width: 100%;
+    }
+
+    #server-info {
+      min-width: 18rem;
+    }
+  }
+}
