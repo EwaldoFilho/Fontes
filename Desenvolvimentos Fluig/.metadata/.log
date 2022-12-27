@@ -9561,3 +9561,13 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.totvs.tds.ecm.designer.eclipse 4 2 2022-12-27 16:03:18.865
+!MESSAGE Problems occurred when invoking code from plug-in: "com.totvs.tds.ecm.designer.eclipse".
+!STACK 0
+java.lang.NullPointerException
+	at com.totvs.tds.ecm.designer.eclipse.ui.ExportMarshallerRunnable$1.run(ExportMarshallerRunnable.java:170)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at com.totvs.tds.ecm.designer.eclipse.ui.ExportMarshallerRunnable.invokeExportMarshaller(ExportMarshallerRunnable.java:238)
+	at com.totvs.tds.ecm.designer.eclipse.ui.ExportMarshallerRunnable.run(ExportMarshallerRunnable.java:125)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
